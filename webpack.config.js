@@ -1,4 +1,5 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 // Example: build with iblock names
 // npm run devjs -- --env names=name1,name2,...
@@ -27,6 +28,7 @@ module.exports = (...args) => {
     output: {
       path: path.resolve(__dirname, "./dist"),
       filename: "index.js",
+      libraryTarget: "umd",
     },
 
     devtool: isProduction ? false : "inline-source-map",
@@ -40,6 +42,8 @@ module.exports = (...args) => {
         },
       ],
     },
+
+    plugins: [new CleanWebpackPlugin()],
   };
 
   return config;
