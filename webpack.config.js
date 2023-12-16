@@ -1,4 +1,5 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 // Example: build with iblock names
 // npm run devjs -- --env names=name1,name2,...
@@ -38,10 +39,28 @@ module.exports = () => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          loader: "babel-loader",
+          use: [
+            {
+              loader: "babel-loader",
+              options: {
+                presets: [
+                  "@babel/env",
+                  [
+                    "@babel/react",
+                    {
+                      runtime: "automatic",
+                    },
+                  ],
+                ],
+              },
+            },
+            // { loader: "ts-loader" },
+          ],
         },
       ],
     },
+
+    plugins: [new CleanWebpackPlugin()],
   };
 
   return config;
