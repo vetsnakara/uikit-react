@@ -1,14 +1,15 @@
 import React from "react";
+import PropsTypes, { InferProps } from "prop-types";
+
+const ButtonPropTypes = {
+  title: PropsTypes.string,
+};
 
 /**
- * @typedef Props
- * @prop {string} title
- */
-
-/**
+ * Button component
  *
- * @param {Props} props
- * @returns
+ * @type {React.FC<InferProps<ButtonPropTypes>>} props
+ * @returns {React.ReactElement}
  */
 export const Button = (props) => {
   const { title, children, ...restProps } = props;
@@ -20,3 +21,5 @@ export const Button = (props) => {
     </div>
   );
 };
+
+Button.propTypes = ButtonPropTypes;
