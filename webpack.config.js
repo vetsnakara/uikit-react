@@ -23,7 +23,7 @@ module.exports = () => {
     entry: "./src/index.js",
 
     resolve: {
-      extensions: [".js", ".jsx"],
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
     },
 
     output: {
@@ -37,7 +37,7 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js|jsx|ts|tsx)$/,
           exclude: /node_modules/,
           use: [
             {
@@ -54,7 +54,7 @@ module.exports = () => {
                 ],
               },
             },
-            // { loader: "ts-loader" },
+            { loader: "ts-loader" },
           ],
         },
       ],
