@@ -1,8 +1,9 @@
 import React from "react";
-import PropsTypes, { InferProps } from "prop-types";
+import PropTypes, { InferProps } from "prop-types";
 
 const ButtonPropTypes = {
-  title: PropsTypes.string,
+  title: PropTypes.string,
+  optionalEnum: PropTypes.oneOf(["News", "Photos"]),
 };
 
 /**
