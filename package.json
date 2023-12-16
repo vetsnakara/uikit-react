@@ -6,7 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "npx webpack",
-    "build": "npx webpack --mode=production"
+    "build": "npx webpack --mode=production",
+    "prepare": "npm build"
   },
   "keywords": [],
   "author": "",
