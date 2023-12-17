@@ -2,7 +2,7 @@
  * @param {import('./Button').Props} props
  */
 export const Button = (props) => {
-  const { title, children } = props;
+  const { title, children, ...restProps } = props;
 
   return (
     <div>
