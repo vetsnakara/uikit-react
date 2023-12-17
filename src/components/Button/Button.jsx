@@ -1,5 +1,5 @@
 /**
- * Button component
+ * @param {import('./Button').Props} props
  */
 export const Button = (props) => {
   const { title, children, ...restProps } = props;
