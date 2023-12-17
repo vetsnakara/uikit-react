@@ -1,6 +1,9 @@
+type Variant = "primary" | "secondary";
+
 interface Props {
   text: string;
   title: string;
+  variant: Variant;
   onClick: () => void;
 }
 
