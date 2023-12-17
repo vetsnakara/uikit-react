@@ -1,6 +1,8 @@
+import { ButtonHTMLAttributes } from "react";
+
 type Variant = "primary" | "secondary";
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   title: string;
   variant: Variant;
