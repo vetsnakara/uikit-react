@@ -1,0 +1,136 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+
+$background: #69B3E7 !default;
+$color: #FFFFFF !default;
+$button__color: #FFFFFF !default;
+$button__border-color: #FFFFFF !default;
+$color__close: #FFFFFF !default;
+$control__border-color: #FFFFFF !default;
+$area__max-width: functions.px(1200);
+$breakpoint-md: functions.px(768);
+
+.ib-notification-banner-static {
+  background: $background;
+  color: $color;
+
+  &__wrap {
+    background-image: functions.inlineSVG(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="211" height="90" fill="none"><mask id="a" width="211" height="90" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#69B3E7" d="M0 0h211v90H0z"/></mask><g mask="url(#a)"><mask id="b" width="93" height="93" x="110" y="23" maskUnits="userSpaceOnUse" style="mask-type:luminance"><path fill="#fff" fill-rule="evenodd" d="M110.77 23.166h91.705v92.115H110.77V23.166Z" clip-rule="evenodd"/></mask><g mask="url(#b)"><path fill="#4BA3E3" fill-rule="evenodd" d="m201.714 39.498-26.447-16.103c-1.046-.636-2.378.126-2.378 1.36v32.206c0 1.234-1.332 1.997-2.378 1.36l-26.448-16.102v-.001l-30.916-18.823c-1.046-.636-2.377.126-2.377 1.36v70.026c0 1.234 1.331 1.996 2.377 1.361l26.305-16.016c1.045-.637 2.377.125 2.377 1.36v32.204c0 1.236 1.332 1.998 2.378 1.361l26.447-16.102c1.014-.617 1.014-2.104 0-2.72l-26.591-16.19c-.942-.574-1.007-1.9-.196-2.579h-.038l57.885-35.242c1.014-.617 1.014-2.104 0-2.72Z" clip-rule="evenodd"/></g><path fill="#4BA3E3" fill-rule="evenodd" d="M141.922 5.7v32.444c0 1.244 1.329 2.011 2.372 1.37l26.382-16.221c1.011-.622 1.011-2.12 0-2.741L144.294 4.33c-1.043-.641-2.372.127-2.372 1.37Z" clip-rule="evenodd"/><mask id="c" width="92" height="94" x="17" y="2" maskUnits="userSpaceOnUse" style="mask-type:luminance"><path fill="#fff" fill-rule="evenodd" d="M17 2.887h91.705v92.115H17V2.887Z" clip-rule="evenodd"/></mask><g mask="url(#c)"><path fill="#4BA3E3" fill-rule="evenodd" d="M107.944 19.219 81.497 3.117c-1.046-.637-2.378.125-2.378 1.36v32.205c0 1.235-1.332 1.997-2.378 1.36L50.294 21.94 19.377 3.116C18.331 2.48 17 3.242 17 4.477v70.025c0 1.234 1.33 1.996 2.377 1.361l26.305-16.016c1.045-.636 2.377.126 2.377 1.36v32.205c0 1.235 1.332 1.997 2.378 1.36L76.884 78.67c1.014-.617 1.014-2.104 0-2.72l-26.59-16.19c-.943-.573-1.008-1.899-.197-2.578h-.038l57.885-35.243c1.014-.616 1.014-2.103 0-2.72Z" clip-rule="evenodd"/></g><path fill="#4BA3E3" fill-rule="evenodd" d="M48.152-14.578v32.443c0 1.244 1.329 2.012 2.372 1.37L76.906 3.014c1.011-.622 1.011-2.12 0-2.741L50.524-15.948c-1.043-.642-2.372.126-2.372 1.37Z" clip-rule="evenodd"/></g></svg>'
+    );
+    background-position: 94% 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0 auto;
+    max-width: $area__max-width;
+    padding: $gap * 2.5 $gap * 1.5;
+    padding-left: $gap * 1.5;
+    padding-right: $gap * 1.5;
+    position: relative;
+    width: 100%;
+  }
+
+  &__button {
+    border-color: $button__border-color;
+    color: $button__color;
+  }
+
+  &__button:hover {
+    border-color: $button__color;
+    color: $button__color;
+    opacity: .85;
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__controls {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    margin-left: auto;
+    max-width: functions.px(80);
+    padding-left: $gap * 1.5;
+    position: relative;
+    width: 100%;
+
+    @media (min-width: $breakpoint-md) {
+      max-width: functions.px(135);
+    }
+  }
+
+  &__nav-container {
+    display: flex;
+  }
+
+  &__control {
+    background: none;
+    border: 1px solid $control__border-color;
+    border-radius: 100%;
+    cursor: pointer;
+    height: functions.px(32);
+    position: relative;
+    width: functions.px(32);
+
+    @media (min-width: $breakpoint-md) {
+      height: functions.px(39);
+      width: functions.px(39);
+    }
+  }
+
+  &__control:hover {
+    opacity: .85;
+  }
+
+  &__control_prev {
+    margin-right: $gap * 0.5;
+  }
+
+  &__control::before {
+    border-right: functions.px(2) solid $control__border-color;
+    border-top: functions.px(2) solid $control__border-color;
+    content: "";
+    height: $gap * 0.9;
+    margin-top: -$gap * 0.5;
+    position: absolute;
+    top: 50%;
+    width: $gap * 0.9;
+  }
+
+  &__control_next::before {
+    left: $gap * 0.9;
+    transform: rotate(45deg);
+
+    @media (min-width: $breakpoint-md) {
+      left: $gap * 1.2;
+    }
+  }
+
+  &__control_prev::before {
+    left: $gap * 1.2;
+    transform: rotate(225deg);
+
+    @media (min-width: $breakpoint-md) {
+      left: $gap * 1.5;
+    }
+  }
+
+  &__close {
+    align-self: flex-start;
+    color: $color__close;
+    margin-left: auto;
+    position: absolute;
+    right: 0;
+    top: -$gap * 1.5;
+  }
+
+  &__close:hover {
+    opacity: .85;
+  }
+
+}

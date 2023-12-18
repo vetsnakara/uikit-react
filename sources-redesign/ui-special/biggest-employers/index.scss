@@ -1,0 +1,21 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$font-size: functions.px(16) !default;
+$line-height__title: $font-size * 1.5;
+
+.biggest-employers {
+
+  &__logo {
+    float: right;
+    margin-left: $gap;
+  }
+
+  &__title {
+    font-size: $font-size;
+    font-weight: 600;
+    height: $line-height__title * 2;
+    line-height: $line-height__title;
+    margin-bottom: $gap * 0.8;
+  }
+}

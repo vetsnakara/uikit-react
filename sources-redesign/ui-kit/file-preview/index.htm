@@ -1,0 +1,152 @@
+<doc-component name="Превью файла / File preview"
+  link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=4276%3A6334">
+
+  <doc-tab name="Default">
+    <doc-info>
+      <p class="content__paragraph">Важно соблюдать порядок и вложенность div в превью.</p>
+      <ul class="list">
+        <li class="list__item"><code>.file-preview</code> - основной класс блока превью;</li>
+        <li class="list__item"><code>.file-preview_extended</code> - модификатор для превью с возможностью скачивания
+          файла;</li>
+        <li class="list__item"><code>.file-preview__type-img</code> - класс изображения типа файла;</li>
+        <li class="list__item"><code>.file-preview__wrapper</code> - класс обёртки для названия и типа файла;</li>
+        <li class="list__item"><code>.file-preview__name</code> - класс название файла;</li>
+        <li class="list__item"><code>.file-preview__data</code> - класс информации о файле;</li>
+        <li class="list__item"><code>.file-preview__actions</code> - класс блока исполняемых действий с файлом (удалить,
+          скачать и т.д.);</li>
+        <li class="list__item"><code>.file-preview__action</code> - класс исполняемого действия файла.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ name }}</dt>
+            <dd class="definitions__value"> - название файла;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ src }}</dt>
+            <dd class="definitions__value"> - ссылка на изображение типа файла;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ info }}</dt>
+            <dd class="definitions__value"> - информация о файле (если её нет просто не вставлять этот элемент).
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-5">
+          <span class="file-preview">
+            <img class="file-preview__type-img" src="uikit/file-preview/pdf.svg" width="32" height="32">
+            <span class="file-preview__wrapper">
+              <span class="file-preview__name">Договор на проведение практики</span>
+              <span class="file-preview__data">PDF file</span>
+            </span>
+            <span class="file-preview__actions">
+              <button class="file-preview__action button button_plain">
+                <svg class="icon button__icon">
+                  <use href="uikit/icon/icons.svg#pen"></use>
+                </svg>
+              </button>
+              <button class="button-close file-preview__action" type="button">
+                <svg class="icon button__icon">
+                  <use href="uikit/icon/icons.svg#close"></use>
+                </svg>
+              </button>
+            </span>
+          </span>
+          <hr class="separator my-2">
+          <span class="file-preview">
+            <img class="file-preview__type-img" src="uikit/file-preview/pdf.svg" width="32" height="32" alt="Файл.">
+            <span class="file-preview__wrapper">
+              <a class="file-preview__name link" href="#" target="_blank">Договор на проведение практики</a>
+              <span class="file-preview__data">PDF file</span>
+            </span>
+          </span>
+          <hr class="separator my-2">
+          <span class="file-preview">
+            <img class="file-preview__type-img" src="uikit/file-preview/pdf.svg" width="32" height="32" alt="Файл.">
+            <span class="file-preview__wrapper">
+              <a class="file-preview__name link" href="#" target="_blank">Договор на проведение практики</a>
+              <span class="file-preview__data">PDF file</span>
+            </span>
+            <span class="file-preview__actions">
+              <button class="file-preview__action button button_plain" type="button">
+                <svg class="icon button__icon">
+                  <use href="uikit/icon/icons.svg#pen"></use>
+                </svg>
+              </button>
+              <button class="button-close file-preview__action" type="button">
+                <svg class="icon button__icon">
+                  <use href="uikit/icon/icons.svg#close"></use>
+                </svg>
+              </button>
+            </span>
+          </span>
+          <hr class="separator my-2">
+          <span class="file-preview file-preview_extended">
+            <img class="file-preview__type-img" src="uikit/file-preview/pdf.svg" width="32" height="32" alt="Файл.">
+            <span class="file-preview__wrapper">
+              <span class="file-preview__name">Договор на проведение практики</span>
+
+            </span>
+            <hr class="separator my-2">
+            <span class="file-preview file-preview_extended">
+              <img class="file-preview__type-img" src="uikit/file-preview/pdf.svg" width="32" height="32" alt="Файл.">
+              <span class="file-preview__wrapper">
+                <span class="file-preview__name">Договор на проведение практики</span>
+              </span>
+            </span>
+          </span>
+          <hr class="separator my-2">
+          <span class="file-preview file-preview_extended">
+            <img class="file-preview__type-img" src="uikit/file-preview/pdf.svg" width="32" height="32" alt="Файл.">
+            <span class="file-preview__wrapper">
+              <span class="file-preview__name">Договор на проведение практики</span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <span class="file-preview">
+        <img class="file-preview__type-img" src="{{ src }}" width="32" height="32" alt="Файл.">
+        <span class="file-preview__wrapper">
+          <span class="file-preview__name">{{ name }}</span>
+          <span class="file-preview__data">{{ info }}</span>
+        </span>
+        <span class="file-preview__actions">
+          <button class="file-preview__action button button_plain">
+            <svg class="icon button__icon">
+              <use href="/assets/redesign-theme/uikit/icon/icons.svg#pen"></use>
+            </svg>
+          </button>
+          <button class="button-close file-preview__action" type="button">
+            <svg class="icon button__icon">
+              <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </span>
+      </span>
+      <span class="file-preview file-preview_extended">
+        <img class="file-preview__type-img" src="{{ src }}" width="32" height="32" alt="Файл.">
+        <span class="file-preview__wrapper">
+          <span class="file-preview__name">{{ name }}</span>
+        </span>
+        <span class="file-preview__actions">
+          <a class="button button_icontext button_plain" download="" href="#">
+            <svg class="icon button__icon">
+              <use href="/assets/redesign-theme/uikit/icon/icons.svg#download"></use>
+            </svg>
+            Скачать
+          </a>
+        </span>
+      </span>
+
+    </doc-code>
+  </doc-tab>
+</doc-component>

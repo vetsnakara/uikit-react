@@ -1,0 +1,65 @@
+<doc-component name="Список кнопок" link="">
+  <doc-tab name="Default">
+    <doc-info>
+      Список кнопок
+    </doc-info>
+
+    <doc-view>
+      <ul class="quiz">
+        <li class="quiz__item">
+          <input type="radio" name="button-switch-name" value="{{value}}" id="button-switch-id" class="quiz__control">
+          <button class="quiz__button">текст 1</button>
+        </li>
+        <li class="quiz__item">
+          <input type="radio" name="button-switch-name" value="{{value}}" id="button-switch-id2" class="quiz__control">
+          <button class="quiz__button">текст 2</button>
+        </li>
+        <li class="quiz__item">
+          <input type="radio" name="button-switch-name" value="{{value}}" id="button-switch-id3" class="quiz__control">
+          <button class="quiz__button">текст 3</button>
+        </li>
+      </ul>
+    </doc-view>
+
+    <doc-code>
+      <ul class="quiz">
+        <li class="quiz__item">
+          <input type="radio" name="{{button-switch-name}}" value="{{value}}" id="{{button-switch-id}}" class="quiz__control">
+          <button class="quiz__button">{{text}}</button>
+        </li>
+      </ul>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="список кнопок горизонтальный">
+    <doc-info>
+      список кнопок горизонтальный
+    </doc-info>
+
+    <doc-view>
+      <ul class="quiz quiz_row">
+        <li class="quiz__item">
+          <input type="radio" name="button-switch-name" value="3" id="button-switch-id" class="quiz__control">
+          <button class="quiz__button">текст 1</button>
+        </li>
+        <li class="quiz__item">
+          <input type="radio" name="button-switch-name" value="3" id="button-switch-id2" class="quiz__control">
+          <button class="quiz__button">текст 2</button>
+        </li>
+        <li class="quiz__item">
+          <input type="radio" name="button-switch-name" value="3" id="button-switch-id3" class="quiz__control">
+          <button class="quiz__button">текст 3</button>
+        </li>
+      </ul>
+    </doc-view>
+
+    <doc-code>
+      <ul class="quiz quiz_row">
+        <li class="quiz__item">
+          <input type="radio" name="{{button-switch-name}}" value="{{value}}" id="{{button-switch-id}}" class="quiz__control">
+          <button class="quiz__button">{{text}}</button>
+        </li>
+      </ul>
+    </doc-code>
+  </doc-tab>
+</doc-component>

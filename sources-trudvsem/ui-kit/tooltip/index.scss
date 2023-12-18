@@ -1,0 +1,113 @@
+@use "sass:map";
+
+$gap: 20px !default;
+$radius: 4px !default;
+$border: rgb(235, 235, 235) !default;
+$border-size: 1px !default;
+$background: rgb(255, 255, 255) !default;
+$text: rgb(52, 52, 52) !default;
+$arrow-size: 12px !default;
+$font: 16px !default;
+$max-width: 540px !default;
+$shadow-params: 0 5px 10px rgba(0,0,0,.2) !default;
+
+$helper-text: $border !default;
+$helper-active: rgb(255, 68, 82) !default;
+$helper-active-text: $background !default;
+$helper-gap: 10px !default;
+$z-index: 10005 !default;
+$themes: () !default;
+
+[data-tooltip-toggle] {
+  user-select: none;
+}
+
+.tooltip {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0;
+  top: 0;
+  z-index: $z-index;
+
+  &__arrow {
+    position: absolute;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+  }
+
+  @each $theme in $themes {
+    $scroll-offset: 22px;
+    $local-gap: map.get($theme, "gap") or $gap;
+    $local-max-width: map.get($theme, "max-width") or $max-width;
+    $local-border-size: map.get($theme, "border-size") or $border-size;
+
+    &_theme-#{map.get($theme, "name")} {
+      border: $local-border-size solid;
+      border-color: map.get($theme, "border") or $border;
+      border-radius: map.get($theme, "radius") or $radius;
+      background: map.get($theme, "background") or $background;
+      color: map.get($theme, "text") or $text;
+      font-size: map.get($theme, "font") or $font;
+      padding: $local-gap;
+      box-shadow: map.get($theme, "shadow-params") or $shadow-params;
+      max-width: $local-max-width;
+    }
+
+    @media (max-width: #{$local-max-width + $scroll-offset * 2}) {
+      max-width: calc(100% - #{$scroll-offset * 2});
+    }
+
+    &_theme-#{map.get($theme, "name")}  &__arrow {
+      width: 0;
+      top: -$local-border-size;
+      position: relative;
+      margin-top: -($local-gap + $local-border-size);
+      margin-left: -($local-gap + $local-border-size);
+      border: solid transparent;
+      border-width: map.get($theme, "arrow-size") or $arrow-size;
+      border-top-color: map.get($theme, "border") or $border;
+      border-bottom-width: 0;
+
+      &::after {
+        display: block;
+        position: absolute;
+        left: -1 * (map.get($theme, "arrow-size") or $arrow-size);
+        bottom: $local-border-size;
+        content: "";
+        border: (map.get($theme, "arrow-size") or $arrow-size) solid transparent;
+        border-top-color: map.get($theme, "background") or $background;
+        border-bottom-width: 0;
+      }
+    }
+  }
+}
+
+.tooltip__handler {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  border: thin solid;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-rendering: optimizelegibility;
+  color: $helper-text;
+  box-sizing: border-box;
+  font-weight: normal;
+
+  &.tooltip_active {
+    background-color: $helper-active;
+    border: none;
+    color: $helper-active-text;
+  }
+
+  &:not(:first-child) {
+    margin-left: $helper-gap;
+  }
+
+  &::before {
+    content: "?";
+  }
+}

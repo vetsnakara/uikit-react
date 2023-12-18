@@ -1,0 +1,336 @@
+<doc-component name="Таблица / Table" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=1%3A8082">
+  <doc-tab name="Обычный">
+    <doc-info>
+      <p>При необходимости, у ячейки таблицы может быть указанна минимальная ширина.</p>
+      <p>Условия: тег - TD, свойство - min-width, единицы измерения - px, таблица - не .table_balanced</p>
+      <p>Указать минимальную ширину можно у td в любой tr, или даже во всех tr одновременно.</p>
+      <ul class="list">
+        <li class="list__item"><code>.table__wrapper</code> - класс обёртки таблицы;</li>
+        <li class="list__item"><code>.table__wrapper_noborder</code> - обёртка таблицы без внешней рамки;</li>
+        <li class="list__item"><code>.table__wrapper_relative</code> - для компонента tree-table, когда таблица заполнена чекбоксами;</li>
+        <li class="list__item"><code>.table</code> - класс таблицы;</li>
+        <li class="list__item"><code>.table__header</code> - класс хэдера для thead;</li>
+        <li class="list__item"><code>.table__head</code> - класс для строки thead;</li>
+        <li class="list__item"><code>.table__title</code> - класс для ячейки thead;</li>
+        <li class="list__item"><code>.table__body</code> - класс хэдера для tbody;</li>
+        <li class="list__item"><code>.table__item</code> - класс для tbody;</li>
+        <li class="list__item"><code>.table__cell</code> - класс для ячейки tbody;</li>
+        <li class="list__item"><code>.table__footer</code> - класс строки tfoot. Строки и ячейки у него как у tbody.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - содержимое ячеек thead;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ content }}</dt>
+            <dd class="definitions__value"> - контент основных ячеек таблицы;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ footer-content }}</dt>
+            <dd class="definitions__value"> - содержимое ячеек tfoot.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="table__wrapper" tabindex="0">
+        <table class="table">
+          <thead class="table__header">
+            <tr class="table__head">
+              <th class="table__title" width="1%">Фильм</th>
+              <th class="table__title"><button type="button" class="table__sort table__sort_desc">Год/Церемония</button></th>
+              <th class="table__title"><button type="button" class="table__sort">Кинокомпания</button></th>
+              <th class="table__title"><button type="button" class="table__sort">Продюсер</button></th>
+            </tr>
+          </thead>
+
+          <tbody class="table__body">
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">★ «Крылья»<br>1929 (1-я)</td>
+              <td class="table__cell">Paramount Pictures</td>
+              <td class="table__cell">Люсьен Хаббард</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Рэкет»<br>1929 (1-я)</td>
+              <td class="table__cell">Caddo, Paramount</td>
+              <td class="table__cell">Говард Хьюз</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Седьмое небо»<br>1929 (1-я)</td>
+              <td class="table__cell">Fox Film Corporation</td>
+              <td class="table__cell">Уильям Фокс</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">★ «Бродвейская мелодия»<br>1930-I (2-я)</td>
+              <td class="table__cell">Metro-Goldwyn-Mayer</td>
+              <td class="table__cell">Ирвинг Талберг</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Алиби»<br>1930-I (2-я)</td>
+              <td class="table__cell">Feature Productions</td>
+              <td class="table__cell">Роланд Уэст</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Голливудское ревю 1929 года»<br>1930-I (2-я)</td>
+              <td class="table__cell">Metro-Goldwyn-Mayer</td>
+              <td class="table__cell">Гарри Рапф</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«В старой Аризоне»<br>1930-I (2-я)</td>
+              <td class="table__cell">Fox Film Corporation</td>
+              <td class="table__cell">Уинфилд Шихэн</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Патриот»<br>1930-I (2-я)</td>
+              <td class="table__cell">Paramount Pictures</td>
+              <td class="table__cell">Эрнст Любич</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">★ «На западном фронте без перемен»<br>1930-II (3-я)</td>
+              <td class="table__cell">Universal</td>
+              <td class="table__cell">Карл Леммле-мл.</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Казённый дом»<br>1930-II (3-я)</td>
+              <td class="table__cell">Metro-Goldwyn-Mayer</td>
+              <td class="table__cell">Ирвинг Талберг</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Дизраэли»<br>1930-II (3-я)</td>
+              <td class="table__cell">Warner Bros.</td>
+              <td class="table__cell">Джек Уорнер</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Парад любви»<br>1930-II (3-я)</td>
+              <td class="table__cell">Paramount</td>
+              <td class="table__cell">Эрнст Любич</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell" colspan="2">«Развод»<br>1930-II (3-я)</td>
+              <td class="table__cell">Metro-Goldwyn-Mayer</td>
+              <td class="table__cell">Роберт Леонард</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      
+      <div class="table__wrapper table__wrapper_noborder" tabindex="0">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Фильм</th>
+              <th>Год/Церемония</button></th>
+              <th>Кинокомпания</button></th>
+              <th><button type="button" class="table__sort">Продюсер</button></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td colspan="2">★ «Крылья»<br>1929 (1-я)</td>
+              <td>Paramount Pictures</td>
+              <td>Люсьен Хаббард</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Рэкет»<br>1929 (1-я)</td>
+              <td>Caddo, Paramount</td>
+              <td>Говард Хьюз</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Седьмое небо»<br>1929 (1-я)</td>
+              <td>Fox Film Corporation</td>
+              <td>Уильям Фокс</td>
+            </tr>
+            <tr>
+              <td colspan="2">★ «Бродвейская мелодия»<br>1930-I (2-я)</td>
+              <td>Metro-Goldwyn-Mayer</td>
+              <td>Ирвинг Талберг</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Алиби»<br>1930-I (2-я)</td>
+              <td>Feature Productions</td>
+              <td>Роланд Уэст</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Голливудское ревю 1929 года»<br>1930-I (2-я)</td>
+              <td>Metro-Goldwyn-Mayer</td>
+              <td>Гарри Рапф</td>
+            </tr>
+            <tr>
+              <td colspan="2">«В старой Аризоне»<br>1930-I (2-я)</td>
+              <td>Fox Film Corporation</td>
+              <td>Уинфилд Шихэн</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Патриот»<br>1930-I (2-я)</td>
+              <td>Paramount Pictures</td>
+              <td>Эрнст Любич</td>
+            </tr>
+            <tr>
+              <td colspan="2">★ «На западном фронте без перемен»<br>1930-II (3-я)</td>
+              <td>Universal</td>
+              <td>Карл Леммле-мл.</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Казённый дом»<br>1930-II (3-я)</td>
+              <td>Metro-Goldwyn-Mayer</td>
+              <td>Ирвинг Талберг</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Дизраэли»<br>1930-II (3-я)</td>
+              <td>Warner Bros.</td>
+              <td>Джек Уорнер</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Парад любви»<br>1930-II (3-я)</td>
+              <td>Paramount</td>
+              <td>Эрнст Любич</td>
+            </tr>
+            <tr>
+              <td colspan="2">«Развод»<br>1930-II (3-я)</td>
+              <td>Metro-Goldwyn-Mayer</td>
+              <td>Роберт Леонард</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="table__wrapper" tabindex="0">
+        <table class="table">
+          <thead class="table__header">
+            <tr class="table__head">
+              <th class="table__title">{{ title }}</th>
+              <th class="table__title">{{ title }}</th>
+              <th class="table__title">
+                <button type="button" class="table__sort table__sort_ask">{{ title }}</button>
+              </th>
+              <th class="table__title">
+                <button type="button" class="table__sort table__sort_desc">{{ title }}</button>
+              </th>
+              <th class="table__title">
+                <button type="button" class="table__sort">{{ title }}</button>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody class="table__body">
+            <tr class="table__item">
+              <td colspan="2" class="table__cell">{{ content of both }}</td>
+              <td class="table__cell">{{ content }}</td>
+              <td class="table__cell">{{ content }}</td>
+              <td class="table__cell">{{ content }}</td>
+            </tr>
+          </tbody>
+          <tfoot class="table__footer">
+            <tr class="table__item">
+              <td class="table__cell">{{ footer-content }}</td>
+              <td class="table__cell">{{ footer-content }}</td>
+              <td class="table__cell">{{ footer-content }}</td>
+              <td class="table__cell">{{ footer-content }}</td>
+              <td class="table__cell">{{ footer-content }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Таблица c фисированной равной шириной колонок">
+    <doc-info>
+      <p>При необходимости, у ячейки таблицы может быть указанна минимальная ширина.</p>
+      <p>Условия: тег - TD, свойство - min-width, единицы измерения - px, таблица - не .table_balanced</p>
+      <p>Указать минимальную ширину можно у td в любой tr, или даже во всех tr одновременно.</p>
+      <ul class="list">
+        <li class="list__item"><code>.table__wrapper</code> - класс обёртки таблицы;</li>
+        <li class="list__item"><code>.table</code> - класс таблицы;</li>
+        <li class="list__item"><code>.table_balanced</code> - модификатор для таблицы с фиксированной щириной колонок;</li>
+        <li class="list__item"><code>.table__header</code> - класс хэдера для thead;</li>
+        <li class="list__item"><code>.table__head</code> - класс для строки thead;</li>
+        <li class="list__item"><code>.table__title</code> - класс для ячейки thead;</li>
+        <li class="list__item"><code>.table__body</code> - класс хэдера для tbody;</li>
+        <li class="list__item"><code>.table__item</code> - класс для tbody;</li>
+        <li class="list__item"><code>.table__cell</code> - класс для ячейки tbody;</li>
+        <li class="list__item"><code>.table__footer</code> - класс строки tfoot. Строки и ячейки у него как у tbody.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - содержимое ячеек thead;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ content }}</dt>
+            <dd class="definitions__value"> - контент основных ячеек таблицы;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ footer-content }}</dt>
+            <dd class="definitions__value"> - содержимое ячеек tfoot.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="table__wrapper" tabindex="0">
+        <table class="table table_balanced">
+          <thead class="table__header">
+            <tr class="table__head">
+              <th class="table__title">Год</th>
+              <th class="table__title">Фильм</th>
+              <th class="table__title">Достижение</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr class="table__item">
+              <td class="table__cell">1935</td>
+              <td class="table__cell">Это случилось однажды ночью</td>
+              <td class="table__cell">Первый из трёх фильмов победитель в пяти самых престижных номинаций «Оскара», включая Лучший фильм (лучший актёр, лучшая актриса, лучшая режиссура, лучший сценарий/лучший адаптированный сценарий)</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell">1952</td>
+              <td class="table__cell">Решение перед рассветом</td>
+              <td class="table__cell">Первый фильм, номинированный за Лучший фильм и имеющий только одну номинацию в других категориях, после того, когда в 1944 году начали награждать 5 фильмов</td>
+            </tr>
+            <tr class="table__item">
+              <td class="table__cell">1998</td>
+              <td class="table__cell">Титаник</td>
+              <td class="table__cell">Последний победитель в номинации «лучший фильм» в настоящее время, который не имеет номинаций «за лучший сценарий» (адаптированный или оригинальный)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="table__wrapper" tabindex="0">
+        <table class="table table_balanced">
+          <thead class="table__header">
+            <tr class="table__head">
+              <th class="table__title">{{ title }}</th>
+            </tr>
+          </thead>
+          <tbody class="table__body">
+            <tr class="table__item">
+              <td class="table__cell">{{ content }}</td>
+            </tr>
+          </tbody>
+          <tfoot class="table__footer">
+            <tr class="table__item">
+              <td class="table__cell">{{ footer-content }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

@@ -1,0 +1,87 @@
+@use "../../../functions";
+
+$datepickerDayCellSize: functions.px(40) !default;
+$datepickerWidth: functions.px(320) !default;
+$datepickerWidthXs: functions.px(290) !default;
+$datepickerXsBp: functions.px(576) !default;
+$datepickerMinBodyHeight: functions.px(170) !default;
+$datepickerBorderRadius: functions.px(8) !default;
+$datepickerPadding: functions.px(4) !default;
+$datepickerZIndex: 10009 !default;
+$font-size-datepicker-nav-title: functions.px(14) !default;
+
+$datepickerYearsPerRow: 4 !default;
+
+$datepickerTextColor: (
+  button: #5CC4EF,
+  otherMonth: #DEDEDE,
+  otherMonthInRange: #CCC,
+  disabled: #AEAEAE,
+  currentDate: #4EB5E6,
+  common: #4A4A4A,
+  dayNames: #FF9A19,
+  navArrows: #9C9C9C,
+) !default;
+
+$datepickerBG: (
+  selected: #5CC4EF,
+  selectedHover: darken(#5CC4EF, 5),
+  inRange: rgba(#5CC4EF, 0.1),
+  hover: #F0F0F0,
+) !default;
+
+$datepickerBorderColor: (
+  nav: #EFEFEF,
+  inline: #D7D7D7,
+  default: #DBDBDB,
+) !default;
+
+$datepickerNavigationHeight: functions.px(32) !default;
+$datepickerNavigationButtonsOffset: functions.px(2) !default;
+
+$datepickerPointerSize: functions.px(10) !default;
+$datepickerPointerOffset: functions.px(10) !default;
+
+// Transitions
+$datepickerTransitionSpeed: 0.3s !default;
+$datepickerTransitionEase: ease !default;
+$datepickerTransitionOffset: functions.px(8) !default;
+
+// Objects
+%otherMonth {
+  color: map_get($datepickerTextColor, otherMonth);
+
+  &:hover {
+    color: darken(map_get($datepickerTextColor, otherMonth), 10);
+  }
+
+  &.-disabled- {
+
+    &.-focus- {
+      color: map_get($datepickerTextColor, otherMonth);
+    }
+  }
+
+  &.-selected- {
+    background: lighten(map_get($datepickerBG, selected), 15);
+    color: #FFF;
+
+    &.-focus- {
+      background: lighten(map_get($datepickerBG, selected), 10);
+    }
+  }
+
+  &.-in-range- {
+    background-color: map_get($datepickerBG, inRange);
+    color: darken(map_get($datepickerTextColor, otherMonth), 7);
+
+    &.-focus- {
+      background-color: rgba(map_get($datepickerBG, inRange), 0.2);
+    }
+  }
+
+  &:empty {
+    background: none;
+    border: none;
+  }
+}

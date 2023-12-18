@@ -1,0 +1,43 @@
+$text-width-default: 210px !default;
+
+.login-gosuslugi {
+  @media (min-width: 992px) {
+    width: 750px;
+    height: 857px;
+    background: transparent url("login-gosuslugi/login_new.png") no-repeat top center;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__text {
+    @media (min-width: 992px) {
+      position: absolute;
+      width: $text-width-default;
+
+      &:nth-child(1) {
+        width: 100%;
+        text-align: center;
+      }
+
+      &:nth-child(2) {
+        left: 196px;
+        top: 305px;
+      }
+
+      &:nth-child(3) {
+        left: 548px;
+        top: 403px;
+      }
+
+      &:nth-child(4) {
+        left: 478px;
+        top: 549px;
+      }
+
+      &:nth-child(5) {
+        right: 0;
+        top: 787px;
+      }
+    }
+  }
+}

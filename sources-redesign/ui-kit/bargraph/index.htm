@@ -1,0 +1,53 @@
+<doc-component name="Столбчатая диаграмма">
+  <doc-tab name="Default">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.bargraph</code> - класс блока диаграмм;</li>
+        <li class="list__item"><code>.bargraph__item</code> - класс блока отдельной диаграммы;</li>
+        <li class="list__item"><code>.bargraph__label</code> - класс значения столбика диаграммы;</li>
+        <li class="list__item"><code>.bargraph__amount</code> - класс числового значения диаграммы.</li>
+      </ul>
+        <dl class="definitions">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ label }}</dt>
+            <dd class="definitions__value"> - текст значения столбика диаграммы;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ percents }}</dt>
+            <dd class="definitions__value"> - процент длины диаграммы от ширины блока, выглядит как инлайн стиль - <strong>style="width:98.7%"</strong> - например;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ amount }}</dt>
+            <dd class="definitions__value"> - числовой показатель столбика диаграммы. Выводиться справа.
+            </dd>
+          </div>
+          </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="bargraph">
+        <div class="bargraph__item">
+          <div class="bargraph__label">Договоры на проведение практик</div>
+          <div class="bargraph__amount" style="width:98.7%" data-amount="987"></div>
+        </div>
+        <div class="bargraph__item">
+          <div class="bargraph__label">Заключенные договоры на проведение практик</div>
+          <div class="bargraph__amount" style="width:2.9%" data-amount="29"></div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="bargraph">
+        <div class="bargraph__item">
+          <div class="bargraph__label">{{ label }}</div>
+          <div class="bargraph__amount"
+               style="width: {{ percents }}"
+               data-amount="{{ amount }}"></div>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

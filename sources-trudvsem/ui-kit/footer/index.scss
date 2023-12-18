@@ -1,0 +1,81 @@
+$font-size: 14px !default;
+$gap: 10px !default;
+$background: rgb(235, 235, 235) !default;
+$copyright: rgb(235, 235, 235) !default;
+$separator: $copyright !default;
+$titles: rgb(255, 255, 255) !default;
+
+.footer {
+  background: $background;
+  display: flex;
+  flex-flow: column nowrap;
+  color: $copyright;
+  font-size: $font-size;
+
+  &__projects {
+    text-align: center;
+    padding: $gap * 2;
+
+    @media (max-width: 576px) {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: $gap 0;
+    }
+
+    > * {
+      padding: 0 $gap;
+      white-space: nowrap;
+    }
+  }
+
+  &__common {
+    padding: 10px;
+    border-top: 1px solid $separator;
+  }
+
+  &__link {
+    display: inline-block;
+    margin: 3px;
+  }
+
+  &__column {
+    padding: $gap;
+
+    @media (max-width: 470px) {
+      flex: 1 1 100%;
+    }
+  }
+
+  &__title {
+    color: $titles;
+    font-size: inherit;
+    font-weight: bold;
+    margin: 0 0 $gap 0;
+  }
+
+  &__links-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__copyright {
+    padding: $gap * 2;
+    text-align: center;
+  }
+
+  // Custom
+  .googleplay {
+    background: url("../images/googleplay.png") no-repeat 0 0 transparent;
+    display: inline-block;
+    height: 41px;
+    width: 142px;
+  }
+
+  .appstore {
+    background: url("../images/appstore.png") no-repeat 0 0 transparent;
+    display: inline-block;
+    height: 41px;
+    width: 142px;
+  }
+}

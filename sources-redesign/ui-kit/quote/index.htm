@@ -1,0 +1,70 @@
+<doc-component name="Цитата">
+  <doc-tab name="Default">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.quote</code> - класс цитаты для blockquote;</li>
+        <li class="list__item"><code>.quote__text</code> - класс автора сообщения;</li>
+        <li class="list__item"><code>.quote__footer</code> - класс футера цитаты где идёт вся информация о цитируемом;</li>
+        <li class="list__item"><code>.quote__img</code> - класс аватара автора;</li>
+        <li class="list__item"><code>.quote__caption</code> - класс блока для имени и должности автора;</li>
+        <li class="list__item"><code>.quote__author</code> - класс аватара автора;</li>
+        <li class="list__item"><code>.quote__author-text</code> - класс должности автора.</li>
+      </ul>
+			<dl class="definitions">
+			  <div class="definitions__item">
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ text }}</dt>
+				  <dd class="definitions__value"> - сам текст цитаты;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ src }}</dt>
+				  <dd class="definitions__value"> - ссылка на аватар;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ author }}</dt>
+				  <dd class="definitions__value"> - имя автора;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ authorText }}</dt>
+				  <dd class="definitions__value"> - должность автора.
+				  </dd>
+				</div>
+			</dl>
+    </doc-info>
+
+    <doc-view>
+      <blockquote class="quote">
+        <p class="quote__text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a fringilla diam, et egestas sem. Pellentesque
+          eget dui condimentum,
+          auctor quam non, cursus est. Nunc ultrices aliquet feugiat. Praesent semper nec felis sed imperdiet. Quisque
+          consectetur vitae dolor nec aliquet. Suspendisse
+          pulvinar lectus purus.
+        </p>
+        <footer class="quote__footer">
+          <img class="quote__img" src="https://via.placeholder.com/80x80.jpg?text=Image" alt="" width="90" height="90">
+          <div class="quote__caption">
+            <cite class="quote__author">John Doe</cite>
+            <p class="quote__author-text">CEO</p>
+          </div>
+        </footer>
+      </blockquote>
+    </doc-view>
+
+    <doc-code>
+      <blockquote class="quote">
+        <p class="quote__text">{{ text }}</p>
+        <footer class="quote__footer">
+          <img class="quote__img" src="{{ src }}" alt="" width="90" height="90">
+          <div class="quote__caption">
+            <cite class="quote__author">{{ author }}</cite>
+            <p class="quote__author-text">{{ authorText }}</p>
+          </div>
+        </footer>
+      </blockquote>
+    </doc-code>
+  </doc-tab>
+</doc-component>

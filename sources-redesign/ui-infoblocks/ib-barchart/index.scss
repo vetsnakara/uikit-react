@@ -1,0 +1,19 @@
+@use "../../functions";
+
+$color: #25282B !default;
+$stroke: #25282B !default;
+
+.ib-barchart {
+
+  & text {
+    color: $color;
+  }
+
+  & path {
+    stroke: $stroke;
+  }
+
+  & line {
+    stroke: $stroke;
+  }
+}

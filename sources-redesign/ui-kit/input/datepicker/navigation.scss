@@ -1,0 +1,97 @@
+/* -------------------------------------------------
+    Navigation
+   ------------------------------------------------- */
+@use "../../../functions";
+
+.datepicker--nav {
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  min-height: $datepickerNavigationHeight;
+  padding: $datepickerPadding;
+
+  .-only-timepicker- & {
+    display: none;
+  }
+}
+
+.datepicker--nav-title,
+.datepicker--nav-action {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.datepicker--nav-action {
+  border-radius: $datepickerBorderRadius;
+  user-select: none;
+  width: $datepickerDayCellSize;
+
+  &:hover {
+    background: map_get($datepickerBG, hover);
+  }
+
+  &.-disabled- {
+    visibility: hidden;
+  }
+
+  svg {
+    height: functions.px(32);
+    width: functions.px(32);
+  }
+
+  path {
+    fill: none;
+    stroke: map_get($datepickerTextColor, navArrows);
+    stroke-width: functions.px(2);
+  }
+}
+
+.datepicker--nav-title {
+  border-radius: $datepickerBorderRadius;
+  color: map_get($datepickerTextColor, title);
+  font-size: $font-size-datepicker-nav-title;
+  font-weight: 600;
+  padding: 0 functions.px(8);
+
+  i {
+    color: map_get($datepickerTextColor, title);
+    font-style: normal;
+    margin-left: functions.px(5);
+  }
+
+  &:hover {
+    background: map_get($datepickerBG, hover);
+  }
+
+  &.-disabled- {
+    background: none;
+    cursor: default;
+  }
+}
+
+//  Buttons
+// -------------------------------------------------
+
+.datepicker--buttons {
+  border-top: functions.px(1) solid map_get($datepickerBorderColor, nav);
+  display: flex;
+  padding: $datepickerPadding;
+}
+
+.datepicker--button {
+  align-items: center;
+  border-radius: $datepickerBorderRadius;
+  color: map_get($datepickerTextColor, currentDate);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1;
+  height: functions.px(32);
+  justify-content: center;
+
+  &:hover {
+    background: map_get($datepickerBG, hover);
+    color: map_get($datepickerTextColor, common);
+  }
+}

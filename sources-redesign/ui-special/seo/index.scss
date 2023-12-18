@@ -1,0 +1,13 @@
+@use "../../functions";
+
+$font-size-title: functions.px(28) !default;
+
+.seo {
+
+  &__h2 {
+    font-size: $font-size-title;
+    font-weight: 600;
+    line-height: 1.357;
+    margin-bottom: functions.px(20);
+  }
+}

@@ -1,0 +1,21 @@
+<doc-component name="Контейнер целевого действия / Container-target" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/Дизайн-система?node-id=1%3A8065">
+
+    <doc-tab name="Default">
+        <doc-info>
+            <p class="content__paragraph">Класс <code>container-target</code> нужен для фиксации блока в мобильной версии по низу экрана. Чаще всего используется для кнопок. Вешать на внешний блок, содержащий кнопки, не на сами кнопки! <strong>{{ action-target }}</strong> - содержимое контейнера, которое надо зафиксировать.</p>
+        </doc-info>
+        <doc-view height="300">
+            <div class="container-target">
+                <button class="button">Кнопка</button>
+            </div>
+        </doc-view>
+
+        <doc-code>
+            <div class="container-target">
+                {{ action-target }}
+            </div>
+        </doc-code>
+
+    </doc-tab>
+
+</doc-component>

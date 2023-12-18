@@ -1,0 +1,31 @@
+$size: 30px !default;
+$font: "AA-BebasNeue", sans-serif !default;
+$default: rgb(96, 143, 187) !default;
+$muted: rgb(119, 119, 119) !default;
+$success: rgb(24, 189, 28) !default;
+$warning: rgb(248, 195, 52) !default;
+$danger: rgb(202, 72, 82) !default;
+
+.status {
+  font-size: $size;
+  color: $default;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: $font;
+
+  &_muted {
+    color: $muted;
+  }
+
+  &_success {
+    color: $success;
+  }
+
+  &_warning {
+    color: $warning;
+  }
+
+  &_danger {
+    color: $danger;
+  }
+}

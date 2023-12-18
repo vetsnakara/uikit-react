@@ -1,0 +1,140 @@
+@use "../../functions";
+
+$background__select: #FFFFFF !default;
+$color__value: #52575C !default;
+$color__value_hover: #25282B !default;
+$color-icon: #0E65B7 !default;
+$border-color__select: #E8E8E8 !default;
+$z-index-tooltip: 10011 !default;
+$shadow: 0 px(4) px(8) rgba(#25282B, 0.15) !default;
+$ib-arrow-bg: functions.inlineSVG(
+  '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 6L8 11L13 6H3Z" fill="' + #{$color-icon}+
+  '"/></svg>'
+);
+
+.ib-sorting {
+  position: relative;
+
+  &__value-icon {
+    background-image: functions.inlineSVG(
+      '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19"><path d="M14 9.495H4M19.997 4.747h-16M8.003 14.242l-4 .002" stroke="' +
+      $color-icon + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    );
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    height: functions.px(19);
+    margin-right: functions.px(5);
+    width: functions.px(24);
+
+    &_desc {
+      transform: scale(1);
+    }
+
+    &_asc {
+      transform: scale(1, -1);
+    }
+  }
+
+  &__value {
+    align-items: center;
+    color: $color__value;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.875em;
+    font-weight: 500;
+    justify-content: flex-start;
+
+    &:hover {
+      color: $color__value_hover;
+    }
+  }
+
+  &__selected {
+    padding-right: functions.px(20);
+    position: relative;
+
+    &::after {
+      background-image: $ib-arrow-bg;
+      content: "";
+      display: block;
+      height: functions.px(16);
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: functions.px(16);
+    }
+  }
+
+  &__selected &__value_text {
+    position: relative;
+
+    &::before {
+      background-image: functions.inlineSVG(
+        '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 6l5 5 5-5H3z" fill="' +
+        $color-icon + '"/></svg>'
+      );
+      background-position: center;
+      background-repeat: no-repeat;
+      content: "";
+      display: block;
+      height: functions.px(16);
+      position: absolute;
+      right: functions.px(-25);
+      top: 50%;
+      transform: translateY(-50%);
+      width: functions.px(16);
+    }
+  }
+
+  &__select {
+    background: $background__select;
+    border-color: $border-color__select;
+    border-radius: functions.px(4);
+    box-shadow: $shadow;
+    display: none;
+    left: functions.px(-20);
+    max-width: 100%;
+    min-width: functions.px(150);
+    opacity: 0;
+    padding: functions.px(20);
+    position: absolute;
+    top: functions.px(45);
+    z-index: $z-index-tooltip;
+
+    &:before {
+      border: functions.px(6) solid transparent;
+      border-bottom-width: 0;
+      border-top-color: $background__select;
+      bottom: functions.px(1);
+      box-shadow: $shadow;
+      content: "";
+      display: block;
+      left: 10%;
+      position: absolute;
+    }
+
+    &_show {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  &__select-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__select-item:not(:last-child) {
+    margin-bottom: functions.px(10);
+  }
+
+  &__selected_show::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  &__selected_show &__value-text::before {
+    transform: translateY(-50%) scale(1, -1);
+  }
+}

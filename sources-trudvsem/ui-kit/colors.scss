@@ -1,0 +1,52 @@
+// X: Color type (Base \ Brand \ etc)
+// Y: Content type (Background \ Text \ etc)
+// Z: Dark or Light version
+// Final color name: $x-z-y
+
+$base-light-back: rgb(255, 255, 255);
+$base-light-text: $base-light-back;
+$base-light-line: $base-light-text;
+
+$base-dark-back: rgb(52, 52, 52);
+$base-dark-text: $base-dark-back;
+$base-dark-line: $base-dark-back;
+
+$neutral-light-back: rgb(249, 249, 251);
+$neutral-light-text: rgb(171,171,171);
+$neutral-light-line: rgb(235, 235, 235);
+
+$neutral-dark-back: rgb(81, 81, 81);
+$neutral-dark-text: $neutral-dark-back;
+$neutral-dark-line: $neutral-dark-text;
+
+$brand-light-back: rgb(233, 235, 244);
+$brand-light-text: $brand-light-back;
+$brand-light-line: $brand-light-text;
+
+$brand-dark-back: rgb(31, 53, 136);
+$brand-dark-text: $brand-dark-back;
+$brand-dark-line: $brand-dark-text;
+
+$accent-light-back: rgb(254, 203, 212);
+$accent-light-text: $accent-light-back;
+$accent-light-line: $accent-light-text;
+
+$accent-dark-back: rgb(255, 66, 82);
+$accent-dark-text: $accent-dark-back;
+$accent-dark-line: $accent-dark-text;
+
+$positive-light-back: false;
+$positive-light-text: $positive-light-back;
+$positive-light-line: $positive-light-text;
+
+$positive-dark-back: rgb(91, 196, 49);
+$positive-dark-text: $positive-dark-back;
+$positive-dark-line: $positive-dark-text;
+
+$negative-light-back: rgb(254, 203, 212);
+$negative-light-text: $negative-light-back;
+$negative-light-line: $negative-light-text;
+
+$negative-dark-back: rgb(255, 66, 82);
+$negative-dark-text: $negative-dark-back;
+$negative-dark-line: $negative-dark-text;

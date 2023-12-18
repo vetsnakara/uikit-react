@@ -1,0 +1,156 @@
+$border-radius: 8px !default;
+$border-color: #CACCCF !default;
+$close-color: #A0A4A8 !default;
+$accent-color: #0E65B7 !default;
+$success-color: #1AB759 !default;
+$warning-color: #F6A609 !default;
+$danger-color: #E93C3C !default;
+$default-color: #25282B !default;
+
+$default-bg-color: #FFFFFF !default;
+$success-bg-color: #F6FDF9 !default;
+$warning-bg-color: #FFFBF5 !default;
+$danger-bg-color: #FFF8F8 !default;
+$gap: 10px !default;
+$header-gap: 105px !default;
+
+$title-font-size: 16px !default;
+$content-font-size: $title-font-size !default;
+$title-font-weight: 400 !default;
+$z-index: 10005 !default;
+
+.notifications {
+  position: fixed;
+  top: $header-gap + $gap * 4;
+  right: $gap * 4;
+  height: 100vh;
+  z-index: $z-index;
+  overflow: auto;
+  pointer-events: none;
+
+  &__icon {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  @media (max-width: 990px){
+    right: $gap * 3;
+  }
+
+  @media (max-width: 575px) {
+    right: $gap * 1.5;
+    left: $gap * 1.5;
+  }
+
+  &__card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    max-width: 615px;
+    background: #FFFFFF;
+    border: 1px solid $border-color;
+    border-left: 4px solid #0e65b7;
+    box-shadow: 0 4px 20px rgba(37, 40, 43, 0.15);
+    border-radius: $border-radius;
+    padding: $gap $gap * 1.5;
+    box-sizing: border-box;
+    pointer-events: auto;
+
+    animation: fade-in 0.3s ease-in;
+    transition: transform 0.3s ease-in;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 576px) {
+      max-width: 100%;
+      left: $gap * 3;
+    }
+
+    &-icon {
+      padding-right: $gap * 2;
+      color: $accent-color;
+    }
+
+    &-title {
+      padding-right: $gap * 2;
+      font-size: $title-font-size;
+      font-weight: $title-font-weight;
+      line-height: 24px;
+    }
+
+    &-close {
+      grid-column: 3;
+      color: $close-color;
+      background: transparent;
+      padding: 0;
+    }
+
+    &-content {
+      grid-column: 1 / span 3;
+      grid-row: 2;
+      margin-top: $gap;
+      font-size: $content-font-size;
+      color: $default-color;
+    }
+
+    &_success {
+      border-left: 1px solid;
+      border-color: $success-color;
+      background-color: $success-bg-color;
+      color: $success-color;
+    }
+
+    &_success &-icon {
+      color: $success-color;
+    }
+
+    &_warning {
+      border-left: 1px solid;
+      border-color: $warning-color;
+      background-color: $warning-bg-color;
+      color: $warning-color;
+    }
+
+    &_warning &-icon {
+      color: $warning-color;
+    }
+
+    &_danger {
+      border-left: 1px solid;
+      border-color: $danger-color;
+      background-color: $danger-bg-color;
+      color: $danger-color;
+    }
+
+    &_danger &-icon {
+      color: $danger-color;
+    }
+  }
+
+  &_hide {
+    right: -100%;
+  }
+}
+
+/* Animations */
+
+@keyframes fade-in {
+  0% {
+    transform: translate(calc(100% + #{$gap} * 3), 0);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animation-fade-out {
+  transform: translate(calc(100% + #{$gap} * 3), 0);
+}
+
+.animation-scaling {
+  transform: scale(0);
+}
+
+/* End of animations */

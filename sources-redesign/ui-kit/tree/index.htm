@@ -1,0 +1,211 @@
+<doc-component name="Дерево / Tree" link="https://www.figma.com/file/dhIQRPB3OVk3ftHsavE9Hc/%D0%A6%D0%93%D0%A3-%D0%B8-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5-%D0%A0%D0%BE%D1%81%D1%82%D1%80%D1%83%D0%B4%D0%B0-2021?node-id=185%3A9625&viewport=343%2C48%2C0.39">
+  <doc-tab name="Развернуто">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.tree</code> - класс оболочки</li>
+        <li class="list__item"><code>.tree__label</code> - класс элемента дерева(наименование, иконки)</li>
+        <li class="list__item"><code>.tree__label_final</code> - модификатор, для элементов без вложений</li>
+        <li class="list__item"><code>.tree__label_active</code> - модификатор активного элемента</li>
+        <li class="list__item"><code>.tree__label_main, .tree__label_archive</code> - модификаторы для стилизации главной папки и архива</li>
+      </ul>
+    </doc-info>
+
+    <doc-view>
+      <ul class="tree">
+        <li class="tree__item">
+          <input class="tree__switch" type="checkbox" checked="checked" id="c1" />
+          <label class="tree__label tree__label_main tree__label_active" for="c1">Все</label>
+          <ul class='tree__list'>
+            <li class="tree__item">
+              <input class="tree__switch" type="checkbox" checked="checked" id="c2" />
+              <label for="c2" class="tree__label tree__label_active">Папка 1</label>
+              <ul class='tree__list'>
+                <li class="tree__item"><span class="tree__label tree__label_final">Папка 1.2</span></li>
+                <li class="tree__item"><span class="tree__label tree__label_final tree__label_active">Папка 1.3</span></li>
+              </ul>
+            </li>
+            <li class="tree__item">
+              <input class="tree__switch" type="checkbox" id="c3" />
+              <label for="c3" class="tree__label">Папка 2</label>
+              <ul class='tree__list'>
+                <li class="tree__item"><span class="tree__label tree__label_final">Папка 2.1</span></li>
+                <li class="tree__item">
+                  <input class="tree__switch" type="checkbox" id="c4" />
+                  <label for="c4" class="tree__label">Папка 2.2</label>
+                  <ul class='tree__list'>
+                    <li class="tree__item"><span class="tree__label tree__label_final">Папка 2.2.1</span></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="tree__item">
+          <label class="tree__label tree__label_archive tree__label_final">Архив</label>
+        </li>
+        <div class="tree__footer">
+          <div class="mb-2">
+            <button class="button button_icontext button_plain" type="button">
+              <svg class="icon button__icon">
+                <use href="/uikit/icon/icons.svg#folder-plus"/>
+              </svg>
+              Добавить папку
+            </button>
+          </div>
+          <div>
+            <button class="button button_icontext button_plain" type="button">
+              <svg class="icon button__icon">
+                <use href="/uikit/icon/icons.svg#gear"/>
+              </svg>
+              Настройки
+            </button>
+          </div>
+        </div>
+
+        <div class="tree__hide-button">
+          <input class="tree__switch" id="hide" type="checkbox" />
+          <label class="tree__hide-button-ico" for="hide"></label>
+        </div>
+      </ul>
+    </doc-view>
+
+    <doc-code>
+      <ul class="tree">
+        <li class="tree__item">
+          <input class="tree__switch" type="checkbox" checked="checked" id="{{ id }}" />
+          <label class="tree__label tree__label_main tree__label_active" for="c1">{{label}}</label>
+          <ul>
+            <li class="tree__item">
+              <input class="tree__switch" type="checkbox" checked="checked" id="{{ id }}" />
+              <label for="c2" class="tree__label tree__label_active">{{label}}</label>
+              <ul>
+                <li class="tree__item"><span class="tree__label tree__label_final">{{label}}</span></li>
+                <li class="tree__item"><span class="tree__label tree__label_final tree__label_active">{{label}}</span></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="tree__item">
+          <label class="tree__label tree__label_archive tree__label_final">{{label}}</label>
+        </li>
+        <div class="tree__footer">
+          <div class="mb-2">
+            <button class="button button_icontext button_plain" type="button">
+              <svg class="icon button__icon">
+                <use href="/assets/redesign-theme//uikit/icon/icons.svg#{{ico}}"/>
+              </svg>
+              {{label}}
+            </button>
+          </div>
+          <div>
+            <button class="button button_icontext button_plain" type="button">
+              <svg class="icon button__icon">
+                <use href="/assets/redesign-theme//uikit/icon/icons.svg#{{ico}}"/>
+              </svg>
+              {{label}}
+            </button>
+          </div>
+        </div>
+
+        <div class="tree__hide-button">
+          <input id="hide" type="checkbox" />
+          <label for="hide"></label>
+        </div>
+      </ul>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Свернуто">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.tree_hidden</code> - модификатор для свернутого режима, убирается список, добавляются иконки;</li>
+      </ul>
+    </doc-info>
+
+    <doc-view>
+      <div class="tree tree_hidden">
+        <div class="tree__folders">
+          <div class="mb-2">
+            <button class="button button_icon button_plain" type="button" aria-label>
+              <svg class="icon button__icon">
+                <use href="/uikit/icon/icons.svg#folder"/>
+              </svg>
+            </button>
+          </div>
+          <div>
+            <button class="button button_icon button_plain" type="button" aria-label>
+              <svg class="icon button__icon">
+                <use href="/uikit/icon/icons.svg#archive"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="tree__footer">
+          <div class="mb-2">
+            <button class="button button_icon button_plain" type="button" aria-label>
+              <svg class="icon button__icon">
+                <use href="/uikit/icon/icons.svg#folder-plus"/>
+              </svg>
+            </button>
+          </div>
+          <div>
+            <button class="button button_icon button_plain" type="button" aria-label>
+              <svg class="icon button__icon">
+                <use href="/uikit/icon/icons.svg#gear"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="tree__hide-button">
+          <input id="hide" checked type="checkbox" />
+          <label for="hide"></label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="tree tree_hidden">
+        <div class="tree__folders">
+          <div class="mb-2">
+            <button class="button button_icon button_plain" type="button" aria-label>
+              <svg class="icon button__icon">
+                <use href="/assets/redesign-theme//uikit/icon/icons.svg#{{ico}}"/>
+              </svg>
+            </button>
+          </div>
+          <div>
+            <button class="button button_icon button_plain" type="button" aria-label>
+              <svg class="icon button__icon">
+                <use href="/assets/redesign-theme//uikit/icon/icons.svg#{{ico}}"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="tree__footer">
+          <div class="mb-2">
+            <button class="button button_icon button_plain" type="button" aria-label>
+              <svg class="icon button__icon">
+                <use href="/assets/redesign-theme//uikit/icon/icons.svg#{{ico}}"/>
+              </svg>
+            </button>
+          </div>
+          <div>
+            <button class="button button_icon button_plain" type="button" aria-label>
+              <svg class="icon button__icon">
+                <use href="/assets/redesign-theme//uikit/icon/icons.svg#{{ico}}"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="tree__hide-button">
+          <input id="hide" checked type="checkbox" />
+          <label for="hide"></label>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

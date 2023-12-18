@@ -1,0 +1,140 @@
+<doc-component name="Коллапс / Collapse" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/Дизайн-система?node-id=4%3A0">
+
+  <doc-tab name="Default">
+    <doc-info>
+      <p class="content__paragraph">Всего может быть 4 тайтла заголовка:</p>
+      <ul class="list list_ordered">
+        <li class="list__item">
+          <code>content__subtitle</code>
+          (28px)
+        </li>
+        <li class="list__item">
+          <code>content__section-title</code>
+          (22px)
+        </li>
+        <li class="list__item">
+          <code>content__section-title content__section-title_small</code>
+          (20px)
+        </li>
+        <li class="list__item">- (16px)</li>
+      </ul>
+      <p class="content__paragraph">Компонент заголовок вешается на ноду к
+        <code>collapse__control</code>
+        .
+      </p>
+      <p class="content__paragraph">Если встречается заголовок триггер отличающийся от приведенных выше, нужно
+        согласовывать с дизайнерами, менять дизайн систему, вносить правки в доку
+      </p>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{id}}</dt>
+          <dd class="definitions__value"> - якорь элемента;
+          </dd>
+        </div>
+        <div class="definitions__item">
+          <dt class="definitions__key">{{title}}</dt>
+          <dd class="definitions__value"> - заголовок спойлера;
+          </dd>
+        </div>
+        <div class="definitions__item">
+          <dt class="definitions__key">{{content}}</dt>
+          <dd class="definitions__value"> - содержимое спойлера.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <button class="collapse__control collapse__control_closed content__subtitle" type="button" data-target="#description-1">Headline 28
+      </button>
+      <div class="collapse" id="description-1">
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consectetur consequatur doloremque dolores excepturi, incidunt itaque laboriosam maiores natus necessitatibus porro, possimus quasi quo soluta sunt tempora, tenetur voluptatum?</span>
+      </div>
+      <hr class="separator my-2">
+      <button class="collapse__control collapse__control_closed content__section-title" type="button" data-target="#description-2">Headline 22
+      </button>
+      <div class="collapse" id="description-2">
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consectetur consequatur doloremque dolores excepturi, incidunt itaque laboriosam maiores natus necessitatibus porro, possimus quasi quo soluta sunt tempora, tenetur voluptatum?</span>
+      </div>
+      <hr class="separator my-2">
+      <button class="collapse__control collapse__control_closed content__section-title content__section-title_small" type="button" data-target="#description-3">Headline 20
+      </button>
+      <div class="collapse" id="description-3">
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consectetur consequatur doloremque dolores excepturi, incidunt itaque laboriosam maiores natus necessitatibus porro, possimus quasi quo soluta sunt tempora, tenetur voluptatum?</span>
+      </div>
+      <hr class="separator my-2">
+      <button class="collapse__control collapse__control_closed content" type="button" data-target="#description-4">
+        Headline 16
+      </button>
+      <div class="collapse" id="description-4">
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consectetur consequatur doloremque dolores excepturi, incidunt itaque laboriosam maiores natus necessitatibus porro, possimus quasi quo soluta sunt tempora, tenetur voluptatum?</span>
+      </div>
+      <hr class="separator my-2 mb-5">
+
+      <h3 class="content__subtitle content__subtitle_small">
+        Группа Аккордеонов
+      </h3>
+      <button class="collapse__control collapse__control_closed content__section-title content__section-title_small" type="button" data-target="#description-5">Headline 20
+      </button>
+      <div class="collapse" id="description-5">
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consectetur consequatur doloremque dolores excepturi, incidunt itaque laboriosam maiores natus necessitatibus porro, possimus quasi quo soluta sunt tempora, tenetur voluptatum?</span>
+      </div>
+      <button class="collapse__control collapse__control_closed content__section-title content__section-title_small" type="button" data-target="#description-6">Headline 20
+      </button>
+      <div class="collapse" id="description-6">
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consectetur consequatur doloremque dolores excepturi, incidunt itaque laboriosam maiores natus necessitatibus porro, possimus quasi quo soluta sunt tempora, tenetur voluptatum?</span>
+      </div>
+      <button class="collapse__control collapse__control_closed content__section-title content__section-title_small" type="button" data-target="#description-7">Headline 20
+      </button>
+      <div class="collapse" id="description-7">
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consectetur consequatur doloremque dolores excepturi, incidunt itaque laboriosam maiores natus necessitatibus porro, possimus quasi quo soluta sunt tempora, tenetur voluptatum?</span>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <button class="collapse__control collapse__control_closed {{contentTitle}}" type="button" data-target="#{{id}}">
+        {{title}}
+      </button>
+      <div class="collapse" id="{{id}}">{{content}}</div>
+    </doc-code>
+  </doc-tab>
+  <doc-tab name="Аккордеон - триггер меняет текст, раскрытие наверх">
+    <doc-info>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{id}}</dt>
+          <dd class="definitions__value"> - якорь элемента;
+          </dd>
+        </div>
+        <div class="definitions__item">
+          <dt class="definitions__key">{{closeTitle}}</dt>
+          <dd class="definitions__value"> - заголовок закрытого спойлера;
+          </dd>
+        </div>
+        <div class="definitions__item">
+          <dt class="definitions__key">{{openTitle}}</dt>
+          <dd class="definitions__value"> - заголовок открытого спойлера;
+          </dd>
+        </div>
+        <div class="definitions__item">
+          <dt class="definitions__key">{{content}}</dt>
+          <dd class="definitions__value"> - содержимое спойлера.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="collapse collapse_top" id="description-10">контент1</div>
+      <button class="collapse__control collapse__control_closed" data-target="#description-10" data-name="Открыть" aria-expanded="false">Закрыть
+      </button>
+    </doc-view>
+
+    <doc-code>
+      <div class="collapse collapse_top" id="{{id}}">{{content}}</div>
+      <button class="collapse__control collapse__control_closed" data-target="#{{id}}" data-name="{{openTitle}}" aria-expanded="false">
+        {{closeTitle}}
+      </button>
+    </doc-code>
+  </doc-tab>
+</doc-component>

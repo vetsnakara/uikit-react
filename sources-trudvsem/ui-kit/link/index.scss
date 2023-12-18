@@ -1,0 +1,107 @@
+$default: rgb(31, 53, 136) !default;
+$default-hover: rgb(255, 66, 82) !default;
+$bright: rgb(255, 255, 255) !default;
+$bright-hover: rgb(254, 203, 212) !default;
+
+// User eXperience
+%disabled {
+  color: currentColor;
+  cursor: default;
+  text-decoration: none;
+
+  &:hover {
+    color: currentColor;
+    text-decoration: none;
+  }
+}
+
+%default {
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+%extra {
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// View
+.link {
+  text-align: left; // override button, when button look as link
+  user-select: auto; // reset user-select if element is button
+  background: none;
+  border: none;
+  padding: 0;
+  color: $default;
+
+  &:hover {
+    color: $default-hover;
+  }
+}
+
+.link_bright {
+  background: none;
+  border: none;
+  color: $bright;
+
+  &:hover {
+    color: $bright-hover;
+  }
+}
+
+a:not([href]).link,
+a:not([href]).link_bright,
+button[disabled].link {
+  @extend %disabled;
+}
+
+a[href].link,
+a[href].link_bright,
+button:not([disabled]).link {
+  @extend %default;
+}
+
+a[href][target="_blank"].link_bright,
+a[href][target="_blank"].link,
+a[href^="http"].link_bright,
+a[href^="http"].link,
+a[href^="//"].link_bright,
+a[href^="//"].link {
+  @extend %extra;
+}
+
+//Cutsom
+.rb {
+  white-space: normal;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.rb::before {
+  background: url("../images/rb.png") no-repeat 0 0 transparent;
+  content: "";
+  width: 19px;
+  height: 1em;
+  margin-right: 5px;
+}
+
+.feedback::before {
+  background: url("../images/feedback.png") no-repeat 0 0 transparent;
+  content: "";
+  display: inline-block;
+  width: 19px;
+  height: 1em;
+  margin-right: 2px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+// .security

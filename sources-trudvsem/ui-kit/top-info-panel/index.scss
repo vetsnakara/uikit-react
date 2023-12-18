@@ -1,0 +1,15 @@
+$z-index: 10003 !default;
+
+.top-info-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index;
+  overflow: hidden;
+}
+
+// iframe is gosbar
+iframe + .top-info-panel {
+  top: 50px;
+}

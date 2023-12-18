@@ -1,0 +1,98 @@
+@use "sass:math";
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$radius: functions.px(8) !default;
+$background__message_in: #D5F8E3 !default;
+$background__message_out: #EDF5FC !default;
+$background__message_gray: #E8E8E8 !default;
+$background__date-separator: #E8E8E8 !default;
+$font-size-smaller: functions.px(12) !default;
+$font-size-small: functions.px(14) !default;
+$color__name: #A0A4A8 !default;
+$color__date: #A0A4A8 !default;
+
+.dialog {
+
+  &__message {
+    max-width: 75%;
+    width: auto;
+
+    &:not(:last-child) {
+      margin-bottom: $gap * 3;
+    }
+
+    &_in {
+      margin-left: auto;
+    }
+  }
+
+  &__message_in &__item {
+    background: rgba($background__message_in, 0.5);
+  }
+
+  &__message_out &__item {
+    background: $background__message_out;
+  }
+
+  &__message_gray &__item {
+    background-color: $background__message_gray;
+  }
+
+  &__item {
+    border-radius: $radius $radius 0 $radius;
+    font-size: $font-size-smaller;
+    padding: $gap * 2 $gap * 2.5;
+  }
+
+  &_reverse &__message_in {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  &_reverse &__message_out {
+    margin-left: auto;
+  }
+
+  &__name {
+    color: $color__name;
+    font-size: $font-size-small;
+    margin-bottom: math.div($gap, 2);
+  }
+
+  &__message_in &__name {
+    text-align: right;
+  }
+
+  &__date {
+    color: $color__date;
+    font-size: $font-size-small;
+    margin: $gap * 2 0;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &__date-separator {
+    display: inline-block;
+    position: relative;
+
+    &::before,
+    &::after {
+      background-color: $background__date-separator;
+      content: "";
+      display: block;
+      height: functions.px(1);
+      position: absolute;
+      top: $gap;
+      width: functions.px(700);
+    }
+
+    &::before {
+      left: functions.px(-720);
+    }
+
+    &::after {
+      right: functions.px(-720);
+    }
+  }
+}

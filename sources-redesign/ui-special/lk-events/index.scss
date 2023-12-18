@@ -1,0 +1,67 @@
+@use "../../functions";
+
+$stroke: #A0A4A8 !default;
+$color_amount: #52575C !default;
+$gap: functions.px(10) !default;
+$color_title: #25282B !default;
+
+$font-size: functions.px(16) !default;
+$box-shadow-focus: 0 0 0 functions.px(3) #B4D9F3 !default;
+$width_icon: functions.px(24);
+$margin-top_amount_after: functions.px(-1);
+
+.lk-events {
+  display: grid;
+  grid-template-columns: auto 1fr $gap * 7;
+  position: relative;
+
+  &_icon {
+    align-items: center;
+    display: flex;
+    margin-right: $gap;
+    width: $width_icon;
+
+    .icon {
+      stroke: $stroke;
+    }
+  }
+
+  &_title {
+    align-items: center;
+    color: $color_title;
+    display: flex;
+    font-size: $font-size;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-right: $gap;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      box-shadow: $box-shadow-focus;
+      outline: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      box-shadow: $box-shadow-focus;
+    }
+  }
+
+  &_amount {
+    color: $color_amount;
+    font-size: $font-size;
+    font-weight: 600;
+
+    &:after {
+      margin-top: $margin-top_amount_after;
+      position: relative;
+    }
+  }
+}

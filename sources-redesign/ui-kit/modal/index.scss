@@ -1,0 +1,283 @@
+@use "../../functions";
+
+$background: #25282B !default;
+$color__title: #25282B !default;
+$border__separator: #FFFFFF !default;
+$background__content: #FFFFFF !default;
+$background__separator: #E8E8E8 !default;
+$border__footer: #E8E8E8 !default;
+$border__header: #E8E8E8 !default;
+$background-color__close: #A0A4A8 !default;
+$background-color__close-hover: #CACCCF !default;
+$radius: functions.px(8) !default;
+$z-index: 10006 !default;
+$gosbar-height: functions.px(50) !default;
+$gap: functions.px(10) !default;
+$font-size-section-title-big: functions.px(22) !default;
+$line-height__title: 1.273;
+$font-size-section-title: functions.px(20) !default;
+$line-height__title-dialog: 1.4;
+$shadow: 0 functions.px(4) functions.px(8) rgba($background, 0.12) !default;
+$shadow-big: 0 functions.px(12) functions.px(40) rgba($background, 0.3) !default;
+
+$width__content: functions.px(930);
+$width_dialog: functions.px(660);
+$v-min-padding: functions.px(15);
+$root-of-two: 1.41421356237;
+$close-size: functions.px(12);
+$margin__separator: functions.px(25);
+$box-shadow-focus: 0 0 0 functions.px(3) #B4D9F3 !default;
+
+.modal {
+  background: rgba($background, 0.4);
+  bottom: 0;
+  display: none;
+  left: 0;
+  padding: ($gosbar-height + $gap * 1.5) $gap * 4 $gap * 4;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-index; // Compatibility: 1040 is .modal-backdrop
+
+  &__title {
+    color: $color__title;
+    font-size: $font-size-section-title-big;
+    font-weight: 600;
+    line-height: $line-height__title;
+    padding-right: $gap * 2;
+  }
+
+  &__content {
+    background-color: $background__content;
+    box-shadow: $shadow;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-height: calc(100vh - #{$gosbar-height + $gap * 1.5 + $gap * 4});
+    max-width: 100%;
+    width: $width__content;
+
+    @media (min-width: functions.px(576)) {
+      border-radius: $radius;
+    }
+  }
+
+  &_open {
+    align-items: center; // fix ie bug
+    display: flex;
+  }
+
+  &_open &__content {
+    animation: modal-fade-in-scale 0.25s ease-out, modal-fade-in-opacity 0.25s linear;
+  }
+
+  &:not(&_open) {
+    display: none;
+  }
+
+  &__header,
+  &__body,
+  &__footer {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  &__header {
+    border-bottom: functions.px(1) solid $border__header;
+    flex: 0 0 auto;
+    min-height: $close-size + ($v-min-padding * 2);
+    overflow: hidden;
+    padding: $gap * 2 $gap * 6 $gap * 2;
+    position: relative;
+  }
+
+  &__header-box {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  &__header-icon {
+    height: functions.px(20);
+    margin-right: $gap * 1.5;
+    min-width: functions.px(20);
+    width: functions.px(20);
+  }
+
+  &__body {
+    flex: auto; // cross-browser fix
+    overflow: auto;
+    padding: $gap * 2 $gap * 6 0;
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      max-height: calc(100vh - #{functions.px(273)});
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      flex: 0 0 $gap * 2;
+      height: $gap * 3;
+      width: 100%;
+    }
+  }
+
+  &__footer {
+    border-top: functions.px(1) solid $border__footer;
+    padding: $gap * 2 $gap * 6 $gap * 3;
+  }
+
+  @media (max-width: functions.px(575)), (max-height: functions.px(380)) {
+
+    &:not(&_dialog) {
+      border-radius: 0;
+      padding: ($gosbar-height + $gap * 1.5) 0 $gap * 4;
+    }
+
+    &:not(&_dialog) &__header,
+    &:not(&_dialog) &__body,
+    &:not(&_dialog) &__footer {
+      border-radius: 0;
+      padding-left: $gap * 2;
+      padding-right: $gap * 2;
+    }
+  }
+
+  &__separator {
+    background: $background__separator;
+    border-bottom: $v-min-padding solid $border__separator;
+    border-left: none;
+    border-right: none;
+    border-top: $v-min-padding solid $border__separator;
+    height: functions.px(1);
+    margin-left: -$margin__separator;
+    margin-right: -$margin__separator;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    box-sizing: content-box;
+    cursor: pointer;
+    height: $close-size;
+    padding: functions.px(5);
+    position: absolute;
+    right: $gap * 2;
+    top: $gap * 2.3;
+    width: $close-size;
+
+    @media (min-width: functions.px(576)) {
+      right: $gap * 5.5;
+    }
+
+    &:focus {
+      box-shadow: $box-shadow-focus;
+      outline: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      box-shadow: $box-shadow-focus;
+    }
+
+    &::before,
+    &::after {
+      background-color: $background-color__close;
+      border-radius: functions.px(2);
+      content: "";
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::before {
+      height: $close-size * $root-of-two;
+      width: functions.px(2);
+    }
+
+    &::after {
+      height: functions.px(2);
+      width: $close-size * $root-of-two;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      background-color: $background-color__close-hover;
+    }
+  }
+
+  &_dialog {
+    @media (max-width: functions.px(575)), (max-height: functions.px(380)) {
+      padding: ($gosbar-height + $gap) $gap;
+    }
+  }
+
+  &_dialog &__title {
+    font-size: $font-size-section-title;
+    line-height: $line-height__title-dialog;
+  }
+
+  &_dialog &__close {
+    right: $gap * 2.5;
+    top: $gap * 2;
+
+    &::before {
+      height: $close-size * $root-of-two;
+      width: functions.px(1.5);
+    }
+
+    &::after {
+      height: functions.px(1.5);
+      width: $close-size * $root-of-two;
+    }
+  }
+
+  &_dialog &__content {
+    border-radius: $radius;
+    box-shadow: $shadow-big;
+    width: $width_dialog;
+  }
+
+  &_dialog &__header {
+    border-bottom: 0;
+    padding: $gap * 2 $gap * 3 $gap;
+  }
+
+  &_dialog &__body {
+    padding: 0 $gap * 3;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &_dialog &__footer {
+    border-top: 0;
+    padding: $gap * 2.5 $gap * 3;
+  }
+
+  &_dialog &__close {
+    height: $close-size - functions.px(2);
+    width: $close-size - functions.px(2);
+  }
+}
+
+@keyframes modal-fade-in-scale {
+
+  from {
+    transform: scale(0);
+  }
+}
+
+@keyframes modal-fade-in-opacity {
+
+  from {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,117 @@
+<doc-component name="Сайдбар вакансии" link="">
+  <doc-tab name="Default">
+    <doc-info>
+      Сайдбар вакансии
+    </doc-info>
+
+    <doc-view>
+      <div class="vacancy-sidebar">
+        <div class="row">
+          <div class="col">
+            <div class="vacancy-sidebar__price">80 000 - 150 000 руб.</div>
+          </div>
+          <div class="col-auto">
+            <label class="button-switch">
+              <input type="checkbox" name="button-switch-fav" value="" id="button-switch-fav" class="button-switch__control">
+              <svg class="icon button-switch__icon"> <use href="uikit/icon/icons.svg#heart"></use> </svg>
+            </label>
+          </div>
+        </div>
+
+        <div class="vacancy-sidebar__customer">
+          ООО Юридическая компания
+          <div class="vacancy-sidebar__customer-label">Работодатель</div>
+        </div>
+
+        <div class="vacancy-sidebar__address">
+          г. Санкт-Петербург, Московское шоссе
+          <div class="vacancy-sidebar__address-metro">Метро: Балтийская</div>
+        </div>
+
+        <div class="vacancy-sidebar__date">Дата публикации: 27.05.2020</div>
+
+        <div class="vacancy-sidebar__approve">
+          <button class="button">Откликнуться</button>
+        </div>
+
+        <hr class="separator separator_wide" />
+
+        <div class="vacancy-sidebar__actions">
+          <button class="button button_plain">
+            <svg class="icon">
+              <use href="uikit/icon/icons.svg#notice"></use>
+            </svg>
+          </button>
+          <button class="button button_plain">
+            <svg class="icon">
+              <use href="uikit/icon/icons.svg#link"></use>
+            </svg>
+          </button>
+          <button class="button button_plain">
+            <svg class="icon">
+              <use href="uikit/icon/icons.svg#printer"></use>
+            </svg>
+          </button>
+          <button class="button button_plain">
+            <svg class="icon">
+              <use href="uikit/icon/icons.svg#claim"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="vacancy-sidebar">
+        <div class="row">
+          <div class="col">
+            <div class="vacancy-sidebar__price">{{vacancy-salary}}</div>
+          </div>
+          <div class="col-auto">
+            <label class="button-switch">
+              <input type="checkbox" name="button-switch-fav" value="" id="{{fav-id}}" class="button-switch__control">
+              <svg class="icon button-switch__icon">
+                <use href="/assets/redesign-theme/uikit/icon/icons.svg#heart"></use>
+              </svg>
+            </label>
+          </div>
+        </div>
+        <div class="vacancy-sidebar__customer">
+          {{vacancy-castomer-name}}
+          <div class="vacancy-sidebar__customer-label">{{vacancy-castomer-type}}</div>
+        </div>
+        <div class="vacancy-sidebar__address">
+          {{vacancy-address}}
+          <div class="vacancy-sidebar__address-metro">{{vacancy-metro}}</div>
+        </div>
+        <div class="vacancy-sidebar__date">{{vacancy-date}}</div>
+        <div class="vacancy-sidebar__approve">
+          <button class="button">Откликнуться</button>
+        </div>
+        <hr class="separator separator_wide" />
+        <div class="vacancy-sidebar__actions">
+          <button class="button button_plain">
+            <svg class="icon">
+              <use href="/assets/redesign-theme/uikit/icon/icons.svg#notice"></use>
+            </svg>
+          </button>
+          <button class="button button_plain">
+            <svg class="icon">
+              <use href="/assets/redesign-theme/uikit/icon/icons.svg#link"></use>
+            </svg>
+          </button>
+          <button class="button button_plain">
+            <svg class="icon">
+              <use href="/assets/redesign-theme/uikit/icon/icons.svg#printer"></use>
+            </svg>
+          </button>
+          <button class="button button_plain">
+            <svg class="icon">
+              <use href="/assets/redesign-theme/uikit/icon/icons.svg#claim"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

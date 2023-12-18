@@ -1,0 +1,37 @@
+@use "../../functions";
+
+$font-size-section-title-big: functions.px(22) !default;
+$color: #69B3E7 !default;
+$color_muted: #A0A4A8 !default;
+$color_success: #1AB759 !default;
+$color_warning: #E89806 !default;
+$color_danger: #FF6262 !default;
+$font-family: "Montserrat", "Helvetica", "Arial", sans-serif !default;
+
+.status {
+  color: $color;
+  font-family: $font-family;
+  font-size: $font-size-section-title-big;
+  font-weight: 500;
+  line-height: 1.272;
+
+  &_success {
+    color: $color_success;
+  }
+
+  &_warning {
+    color: $color_warning;
+  }
+
+  &_danger {
+    color: $color_danger;
+  }
+
+  &_muted {
+    color: $color_muted;
+  }
+
+  @media (max-width: functions.px(575)) {
+    font-size: $font-size-section-title-big * 0.9;
+  }
+}

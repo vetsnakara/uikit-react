@@ -1,0 +1,226 @@
+@use "../../functions";
+
+$background-color__content: #FFFFFF !default;
+$border__content: #CCCCCC !default;
+$background-color__header: #EDF5FC !default;
+$border__content-footer: #CACCCF !default;
+$background-mobile: #F9F9FA !default;
+$gap: functions.px(10) !default;
+$radius: functions.px(10) !default;
+$width: functions.px(1240) !default;
+$z-index-aside: 10000 !default;
+$width-lg-aside: functions.px(340);
+$outer-gap: functions.px(20);
+$width-xl-aside: functions.px(400);
+
+.main {
+  flex: 1 0 auto;
+  margin-top: $gap * 1.5;
+  padding-bottom: $gap * 7;
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+    // ie fix big strange indent
+    &:not(.main_index-template) {
+      overflow: hidden;
+    }
+  }
+
+  &__wrapper {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: $width;
+    padding-left: $gap * 1.5;
+    padding-right: $gap * 1.5;
+    width: 100%;
+  }
+
+  &__content {
+    background-color: $background-color__content;
+    border-bottom: functions.px(1) solid $border__content;
+    border-top: functions.px(1) solid $border__content;
+    box-sizing: border-box;
+    margin-left: -$outer-gap;
+    margin-right: -$outer-gap;
+    padding: $gap * 2 $gap * 1.5 $gap * 2.5;
+
+    .card {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    @media (min-width: functions.px(576)) {
+      border-left: functions.px(1) solid $border__content;
+      border-radius: $radius;
+      border-right: functions.px(1) solid $border__content;
+      margin-left: 0;
+      margin-right: 0;
+      padding: $gap * 3;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: $gap * 3;
+    }
+
+    &_default-page {
+      @media (min-width: functions.px(576)) and (max-width: functions.px(1240)) {
+        margin-left: functions.px(15);
+        margin-right: functions.px(15);
+      }
+    }
+  }
+
+  &_index-template {
+    padding-bottom: 0;
+  }
+
+  &_index-template .main__wrapper,
+  &_index-template .container {
+    @media (min-width: functions.px(576)) and (max-width: functions.px(1240)) {
+      padding-left: functions.px(30);
+      padding-right: functions.px(30);
+    }
+  }
+
+  &__header {
+    background-color: $background-color__header;
+    background-image: functions.inlineSVG('<svg width="200" height="87" fill="#fff" xmlns="http://www.w3.org/2000/svg"><mask id="a"><path fill="#69B3E7" d="M0 0h200v87H0z"/></mask><g mask="url(#a)"><path d="M134.523 1.99v40.452c0 1.551 1.259 2.509 2.248 1.709l25.007-20.226c.958-.775.958-2.643 0-3.418L136.771.282c-.989-.8-2.248.157-2.248 1.708zM75.129 7.411v40.452c0 1.551 1.26 2.509 2.248 1.709l25.007-20.226c.958-.775.958-2.643 0-3.418L77.377 5.703c-.989-.8-2.248.157-2.248 1.708z"/><path d="M191.199 45.41L166.13 25.332c-.992-.794-2.254.157-2.254 1.696v40.155c0 1.54-1.262 2.49-2.254 1.696l-25.069-20.077-29.304-23.47c-.992-.794-2.254.157-2.254 1.696v87.312c0 1.539 1.262 2.489 2.253 1.697l24.934-19.97c.991-.794 2.254.157 2.254 1.696v40.155c0 1.54 1.262 2.49 2.253 1.696l25.069-20.077c.96-.77.96-2.623 0-3.393l-25.205-20.186c-.893-.715-.954-2.367-.185-3.214h-.037L191.199 48.8c.96-.769.96-2.622 0-3.392z"/></g></svg>');
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  // Prevent horizontal overflow
+  & > .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__content-footer {
+    border-top: functions.px(1) solid $border__content-footer;
+    margin: 0 functions.px(-15) functions.px(-25);
+    padding: functions.px(15) functions.px(30) functions.px(18);
+
+    @media (min-width: functions.px(576)) {
+      margin: 0 functions.px(-30) functions.px(-30);
+    }
+  }
+
+  &__content_default-template {
+    @media (min-width: functions.px(576)) and (max-width: functions.px(1239)) {
+      margin-left: $gap * 1.5;
+      margin-right: $gap * 1.5;
+    }
+  }
+
+  &__aside {
+    min-height: functions.px(80);
+    order: 1;
+    width: 100%;
+
+    @media (min-width: functions.px(992)) {
+      align-self: flex-start;
+      order: 2;
+      width: $width-lg-aside;
+    }
+
+    @media (min-width: functions.px(1240)) {
+      width: $width-xl-aside;
+    }
+
+    &-neighbour {
+      box-sizing: border-box;
+      order: 2;
+      padding-left: functions.px(10);
+      padding-right: functions.px(10);
+      width: 100%;
+
+      @media (min-width: functions.px(576)) {
+        padding-left: functions.px(15);
+        padding-right: functions.px(15);
+      }
+
+      @media (min-width: functions.px(992)) {
+        order: 1;
+        width: calc(100% - #{$width-lg-aside});
+      }
+
+      @media (min-width: functions.px(1240)) {
+        width: calc(100% - #{$width-xl-aside});
+      }
+    }
+
+    &-container {
+      box-sizing: border-box;
+      min-height: functions.px(1);
+      padding: functions.px(20) functions.px(10);
+      transition: margin 250ms;
+      width: 100%;
+
+      @media (min-width: functions.px(576)) {
+        padding: functions.px(20) functions.px(15);
+      }
+
+      @media (min-width: functions.px(992)) {
+        padding: 0 functions.px(15);
+        width: $width-lg-aside;
+      }
+
+      @media (min-width: functions.px(1240)) {
+        width: $width-xl-aside;
+      }
+
+      &_sticky {
+        background: $background-mobile;
+
+        left: 0;
+        margin-top: functions.px(-20);
+        padding-left: functions.px(15);
+        padding-right: functions.px(15);
+
+        position: fixed;
+        z-index: $z-index-aside;
+
+        @media (min-width: functions.px(576)) and (max-width: functions.px(991)) {
+          padding-left: functions.px(30);
+          padding-right: functions.px(30);
+        }
+
+        @media (min-width: functions.px(992)) {
+          background: transparent;
+          left: auto;
+          margin-top: 0;
+        }
+      }
+
+      &_stop {
+        position: relative;
+        z-index: $z-index-aside;
+      }
+    }
+  }
+
+  &__aside_reverse {
+    box-sizing: border-box;
+    order: 0;
+
+    @media (min-width: functions.px(992)) {
+      padding: 0 functions.px(15);
+      width: functions.px(300);
+    }
+  }
+
+  @media (min-width: functions.px(992)) {
+
+    &__aside_reverse &__aside-container {
+      padding: 0;
+      width: functions.px(270);
+    }
+
+    &__aside_reverse + &__aside-neighbour {
+      width: calc(100% - functions.px(300));
+    }
+  }
+}

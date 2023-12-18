@@ -1,0 +1,7 @@
+.icon-nowrap {
+  flex-wrap: nowrap;
+
+  &__item {
+    flex: 0 1 auto;
+  }
+}

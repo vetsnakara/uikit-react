@@ -1,0 +1,133 @@
+@use "functions" as *;
+@use "constants" as *;
+@use "colors" as *;
+
+@use "ib-news" with ($gap: $gap);
+
+@use "ib-articles" with ($gap: $gap);
+
+@use "ib-notification-banner-modal" with (
+  $gap: $gap,
+  $radius: $radius,
+  $area__banner-background: $brand-light-back,
+  $area__z-index: $header-mobile-index,
+  $color__close: $neutral-dark-text,
+  $control__border-color: $brand-dark-text,
+  $color__close_hover: $brand-dark-line,
+  $control__border-color_disabled: $neutral-dark-line
+);
+
+@use "ib-notification-banner-static" with (
+  $gap: $gap,
+  $background: $brand2-dark-back,
+  $color: $base-light-text,
+  $button__color: $base-light-text,
+  $button__border-color: $base-light-line,
+  $color__close: $base-light-text,
+  $control__border-color: $base-light-line
+);
+
+@use "ib-slider" with (
+  $background: $base-light-back,
+  $arrows-bg: $brand-dark-back,
+  $arrows-bg-hover: $brand-dark-back,
+  $border-color: $neutral-light-line,
+  $button-color-decor: $neutral-dark-line,
+  $shadow: $shadow
+);
+
+@use "ib-text-widget" with
+  ($gap: $gap, $radius: $radius, $border-bottom__item: $neutral-light-line, $border: $brand-dark-line);
+
+@use "ib-region-map" with (
+  $gap: $gap,
+  $background__legend-range-bg: $neutral-light-back,
+  $font-size-small: $font-size-small,
+  $radius: $radius,
+  $background__zoom-button: $base-light-back,
+  $background__tooltip: $base-light-back,
+  $color__tooltip: $neutral-dark-text,
+  $border__tooltip: $neutral-light-line,
+  $shadow: $shadow,
+  $shadow-big: $shadow-big
+);
+
+@use "ib-feedback" with (
+  $gap: $gap,
+  $radius: $radius,
+  $color__button: $base-light-text,
+  $background-color__button: $brand-dark-back,
+  $color__appraisal: $neutral-light-text,
+  $color__appraisal_hover: $brand-dark-text,
+  $z-index: $feedback-index,
+  $font-size-small: $font-size-small,
+  $font-size-section-title: $font-size-section-title,
+  $background-color__appraisal-label: $base-light-back,
+  $color__error: $negative-dark-text
+);
+
+@use "ib-container";
+
+@use "ib-prr_configurable_form" with (
+  $gap: $gap,
+  $color: $brand-dark-text,
+  $color_hover: $brand-light-text,
+  $color__input-help-text: $neutral-dark-text,
+  $font-size-smaller: $font-size-smaller
+);
+
+@use "ib-filter" with (
+  $gap: $gap,
+  $font-size-smaller: $font-size-smaller,
+  $color__switch-item: $base-dark-text,
+  $border__switch-item: $neutral-dark-line,
+  $background__switch-item: $base-light-back,
+  $color__switch-item_active: $base-light-text,
+  $background-color__switch-item_active: $brand-dark-back,
+  $border-color__switch-item_active: $brand-dark-back,
+  $color__result-counter: $neutral-dark-text,
+  $font-size-small: $font-size-small
+);
+
+@use "ib-error" with (
+  $gap: $gap,
+  $radius: $radius,
+  $border: $neutral-light-line,
+  $background: $base-light-back,
+  $color__text: $brand2-dark-back
+);
+
+@use "lk-news" with (
+  $border-top__item: $neutral-light-text,
+  $color__time: $neutral-light-text,
+  $gap: $gap,
+  $font-size-subtitle: $font-size-subtitle,
+  $font-size: $font-size,
+  $font-size-small: $font-size-small
+);
+
+@use "ib-sorting" with (
+  $background__select: $base-light-back,
+  $color__value: $neutral-dark-text,
+  $color__value_hover: $base-dark-text,
+  $color-icon: $brand-dark-back,
+  $shadow: $shadow,
+  $z-index-tooltip: $tooltip-index,
+  $border-color__select: $neutral-light-line
+);
+
+@use "ib-questionnaire" with (
+  $gap: $gap,
+  $radius: $radius,
+  $max-width__progressbar: px(680),
+  $height__stat-diagram: px(24),
+  $background__stat-diagram: $brand-dark-back,
+  $social-icon-color: $brand-dark-back,
+  $color__stat-variant: $neutral-dark-text,
+  $color__stat: $base-dark-text,
+  $color__finished_notpassed: $neutral-dark-text,
+  $breakpoint-mobile: px(767),
+  $font-size-big: $font-size-big
+);
+
+@use "ib-barchart" with ($color: $base-dark-text, $stroke: $base-dark-text);

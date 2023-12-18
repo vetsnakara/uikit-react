@@ -1,0 +1,720 @@
+@use "sass:math";
+
+@use "sass:color" as *;
+@use "functions" as *;
+@use "constants" as *;
+@use "colors" as *;
+
+// Layout
+
+@use "header" with
+  (
+    $gap: $gap,
+    $background: $base-light-back,
+    $width-content: $width-content,
+    $header-index: $header-index,
+    $box-shadow-focus: $box-shadow-focus,
+    $header-mobile-index: $header-mobile-index,
+    $fixed-header: $fixed-header,
+    $gosbar-height: $gosbar-height,
+    $shadow: $shadow,
+    $font-size-small: $font-size-small
+  );
+
+@use "breadcrumbs" with
+  (
+    $gap: $gap,
+    $box-shadow-focus: $box-shadow-focus,
+    $color: $neutral-dark-text,
+    $color__arrow: $neutral-dark-text,
+    $color__item-link: $neutral-dark-text,
+    $color__item-link_hover: $brand-light-text,
+    $color__item-link_active: $neutral-dark-text,
+    $font-size-small: $font-size-small
+  );
+
+@use "seo" with ($font-size-title: $font-size-title);
+
+@use "burger" with ($gap: $gap, $background-color__inner_after: $brand-dark-back);
+
+@use "sorting-control" with
+  (
+    $gap: $gap,
+    $font-size-small: $font-size-small,
+    $color__text: $neutral-dark-text,
+    $color-arrow: $brand-dark-text,
+    $color__text_show: $brand-dark-text,
+    $box-shadow-focus: $box-shadow-focus,
+    $color__button_hover: $brand-light-text,
+    $color-hover: $brand-light-text
+  );
+
+@use "main" with
+  (
+    $gap: $gap,
+    $radius: $radius,
+    $background-color__header: $brand2-light-back,
+    $background-color__content: $base-light-back,
+    $border__content: $neutral-light-line,
+    $background-mobile: $neutral-light-back,
+    $z-index-aside: $aside-index,
+    $width: $width-content,
+    $border__content-footer: $neutral-dark-back
+  );
+
+@use "main-edge" with
+  (
+    $radius: $radius,
+    $gap: $gap,
+    $background__header: $brand2-light-back,
+    $border: $neutral-light-line,
+    $background: $base-light-back
+  );
+
+@use "main-search-layout" with
+  (
+    $gap: $gap,
+    $background__search-content_active: $base-light-back,
+    $content-start: $content-start,
+    $color__search-sidebar-extra: $neutral-dark-text
+  );
+
+@use "schedule" with
+  (
+    $gap: $gap,
+    $radius: $radius,
+    $background__grid: $neutral-light-line,
+    $background__issue_success: $positive-dark-back,
+    $background__issue: $brand2-light-back,
+    $border-left__issue: $brand2-dark-line,
+    $border-color__issue_success: $positive-dark-text,
+    $color__issue_success: $positive-dark-text,
+    $color__issue-status: $brand2-dark-text,
+    $background__daytitle_current: $brand-dark-back,
+    $color__daytitle_current: $base-light-text,
+    $font-size-smaller: $font-size-smaller,
+    $font-size-small: $font-size-small
+  );
+
+@use "footer" with
+  (
+    $gap: $gap,
+    $width-content: $width-content,
+    $footer-background: $footer-background,
+    $color__title: $base-dark-text,
+    $color__link: $base-dark-text,
+    $color__nav-title: $base-dark-text,
+    $color: $neutral-dark-text,
+    $border-right__important: $neutral-dark-text,
+    $font-size-big: $font-size-big,
+    $font-size-small: $font-size-small,
+    $font-size-smaller: $font-size-smaller,
+    $box-shadow-focus: $box-shadow-focus,
+    $separator: $neutral-dark-line
+  );
+
+@use "blind-panel" with
+  (
+    $gap: $gap,
+    $color: $base-dark-text,
+    $color__tooltip: $base-dark-text,
+    $background-image__button: $base-dark-text,
+    $background: $base-light-back,
+    $radius: $radius,
+    $shadow: $shadow,
+    $max-width__tooltip: px(320),
+    $border__tooltip: $neutral-light-line,
+    $border__tooltip-arrow: $neutral-light-line,
+    $font-size-small: $font-size-small,
+    $width-content: $width-content
+  );
+
+// Custom
+
+@use "media-partners" with ($gap: $gap);
+
+@use "icon-nowrap";
+
+@use "tag" with
+  (
+    $gap: $gap,
+    $radius: $radius,
+    $background: $brand2-light-back,
+    $background__dropdown-item: $base-light-back,
+    $color_disabled: $neutral-dark-back,
+    $background_disabled: $neutral-light-back,
+    $font-size-small: $font-size-small,
+    $color__close: $neutral-dark-text,
+    $color__button: $neutral-dark-text,
+    $color-arrow: $brand-dark-text,
+    $color__button_active: $brand-light-text,
+    $box-shadow-focus: $box-shadow-focus
+  );
+
+@use "card-notifications" with ($gap: $gap, $background_active: $brand2-light-back);
+
+@use "text-widget" with ($color__tip: $neutral-dark-text, $font-size-smaller: $font-size-smaller);
+
+@use "card-opendata" with ($background: $base-light-back, $border: $neutral-light-line, $gap: $gap, $radius: $radius);
+
+@use "map-elements" with
+  (
+    $gap: $gap,
+    $radius: $radius,
+    $gosbar-height: $gosbar-height,
+    $background__placemark: $base-light-back,
+    $background__sidebar-inner: $base-light-back,
+    $background__counter: $base-light-back,
+    $background__button: $base-light-back,
+    $border__counter: $neutral-light-line,
+    $color__button_active: $neutral-dark-text,
+    $color__close: $neutral-dark-text,
+    $border__placemark: $brand-dark-line,
+    $background-image__dropdown: $brand-dark-line,
+    $color__button: $brand-dark-line,
+    $shadow: $shadow
+  );
+
+@use "search-content" with
+  (
+    $gap: $gap,
+    $border__input-control: $brand-dark-line,
+    $border__dropdown-toggle: $brand-dark-line,
+    $stroke__button: $brand-dark-line,
+    $stroke__mobile-button: $brand-dark-line,
+    $background__button: $brand3-dark-back,
+    $background__user-counter-after: $brand3-dark-back,
+    $color__button: $base-light-text,
+    $color__user-counter: $brand-dark-back,
+    $color__user-counter-after: $base-light-text,
+    $radius: $radius,
+    $font-size: $font-size,
+    $box-shadow-focus: $box-shadow-focus,
+    $font-size-small: $font-size-small,
+    $fixed-header: $fixed-header,
+    $caret-color: $brand-light-text,
+    $background: $base-light-back,
+    $border__select-focus: hsl(hue($brand-dark-back), 75%, 65%),
+        $border-color__input-control-hover: $brand-light-text,
+        $border-color__dropdown-toggl-hover: $brand-light-text,
+        $font-size-smaller: $font-size-smaller
+    );
+
+@use "block-mobile" with
+  ($gap: $gap, $box-shadow-focus: $box-shadow-focus, $font-size-title: $font-size-section-title-big);
+
+@use "landing" with
+  (
+    $gap: $gap,
+    $background-color__section_white: $base-light-back,
+    $background-color__section_grey: $neutral-light-back,
+    $background-color__section_blue: $brand2-dark-back,
+    $font-size-main-title: $bfont-M,
+    $font-size-big-title: $bfont-L,
+    $font-size-medium-title: $bfont-J,
+    $font-size-subtitle-big: $font-size-subtitle-big,
+    $font-size-small-title: $font-size-title,
+    $font-size-main-text: $font-size-subtitle,
+    $font-size-big-text: $font-size-section-title-big,
+    $font-size-section-title: $font-size-section-title,
+    $font-size-big: $font-size-big,
+    $font-size: $font-size,
+    $font-size-small: $font-size-small
+  );
+
+@use "mobile-app" with
+  (
+    $gap: $gap,
+    $background__capabilities-card: $brand2-light-back,
+    $background__qr-code: $brand2-light-back,
+    $color__section_attachment: $base-light-text,
+    $background-color__section_attachment: $brand2-dark-back,
+    $font-size-section-title: $font-size-section-title,
+    $font-size-big: $font-size-big,
+    $color__qr-code: $base-dark-text
+  );
+
+@use "internships" with
+  (
+    $gap: $gap,
+    $border-color__section: $brand2-dark-line,
+    $border-color__bordered-box: $brand2-dark-line,
+    $border-color__capabilities-img: $brand2-dark-line,
+    $background-color: $base-light-back,
+    $background-color__bordered-box: $base-light-back,
+    $font-size-main-title: $bfont-L,
+    $font-size-subtitle-big: $font-size-subtitle-big,
+    $font-size-section-title: $font-size-section-title,
+    $font-size-big: $font-size-big,
+    $color__item: $base-dark-text,
+    $color__item_active: $brand-dark-text,
+    $font-size-title: $bfont-O,
+    $background__item: $brand-dark-back
+  );
+
+@use "stats-card" with
+  (
+    $background: $base-light-back,
+    $background__number: $base-light-back,
+    $border: $neutral-light-line,
+    $gap: $gap,
+    $radius: $radius,
+    $color__number: $brand-dark-text,
+    $color__description: $neutral-dark-text,
+    $font-size-main-title: $bfont-N,
+    $font-size-title-huge: $font-size-title-huge,
+    $font-size-title: $font-size-title,
+    $font-size-big: $font-size-big,
+    $font-size: $font-size
+  );
+
+@use "table-championship" with
+  (
+    $background-color__row: $neutral-light-back,
+    $font-size-title-huge: $font-size-title-huge,
+    $font-size-section-title-big: $font-size-section-title-big,
+    $font-size-big: $font-size-big
+  );
+
+@use "vacation-table" with
+  ($gap: $gap, $background__item_active: $brand2-light-back, $box-shadow__cell_active: $brand2-dark-line);
+
+@use "mail-layout" with ($radius: $radius, $background: $brand2-light-back, $gap: $gap, $max-width__wrapper: px(820));
+
+@use "professions" with ($gap: $gap, $color__icon: $brand-dark-text);
+
+@use "lk-events" with
+  (
+    $stroke: $neutral-light-text,
+    $color_amount: $neutral-dark-text,
+    $gap: $gap,
+    $box-shadow-focus: $box-shadow-focus,
+    $color_title: $base-dark-text,
+    $font-size: $font-size
+  );
+
+@use "vacancy-sidebar" with
+  (
+    $gap: $gap,
+    $color__customer: $neutral-dark-text,
+    $font-size-big: $font-size-big,
+    $color__date: $neutral-light-text,
+    $font-size-small: $font-size-small
+  );
+
+@use "vacancy-banner" with ($gap: $gap, $background-color: $brand2-light-back);
+
+@use "czn-avatar" with ($gap: $gap, $background-image: $brand2-light-back);
+
+@use "recomendation-resume" with
+  (
+    $color__experience: $neutral-dark-text,
+    $color__link: $neutral-dark-text,
+    $color__updated: $neutral-dark-line,
+    $color__like: $neutral-dark-line,
+    $color__type: $neutral-dark-line,
+    $color__like_hover: $brand-dark-text,
+    $color__type_hover: $brand-dark-text,
+    $color__link_hover: $brand-dark-text,
+    $gap: $gap,
+    $color__name: $base-dark-text,
+    $font-size-small: $font-size-small,
+    $box-shadow-focus: $box-shadow-focus,
+    $color__name_hover: $brand-dark-text,
+    $font-size: $bfont-3
+  );
+
+@use "recomendation-vacancy" with
+  (
+    $color__type: $neutral-dark-text,
+    $color__like_hover: $brand-dark-text,
+    $color__link_hover: $brand-dark-text,
+    $background__case: $neutral-light-back,
+    $color__case: $brand-dark-back,
+    $box-shadow-focus: $box-shadow-focus,
+    $color__name_hover: $brand-dark-text,
+    $color__updated: $neutral-dark-line,
+    $color__like: $neutral-dark-line,
+    $gap: $gap,
+    $radius: $radius,
+    $border: $neutral-dark-back,
+    $color__name: $base-dark-text,
+    $color__experience: $base-dark-text,
+    $font-size-small: $font-size-small,
+    $font-size: $bfont-3
+  );
+
+@use "resume-data" with ($gap: $gap, $font-size-small: $font-size-small);
+
+@use "calendar" with
+  (
+    $gap: $gap,
+    $radius: $radius,
+    $background-color__info: $base-light-back,
+    $background-color__week: $base-light-back,
+    $background__table-row: $neutral-light-back,
+    $background-color__week_even-row: $neutral-light-back,
+    $background__month-title: $brand2-dark-back,
+    $border__month-title: $neutral-dark-back,
+    $border__day: $neutral-dark-back,
+    $border__table-row_head: $neutral-dark-back,
+    $color_weekend: $negative-dark-text,
+    $color_placeholder: $neutral-light-text,
+    $font-size-small: $bfont-3,
+    $font-size-month: $font-size-small,
+    $font-size-big: $font-size-big,
+    $font-size-title: $font-size-title
+  );
+
+@use "search-panel" with
+  (
+    $gap: $gap,
+    $color__buttons: $brand-dark-text,
+    $color__button-light: $brand-dark-text,
+    $background__button-light: $brand2-light-back,
+    $font-size: $font-size
+  );
+
+@use "videoprofessiogram" with
+  ($gap: $gap, $box-shadow-focus: $box-shadow-focus, $color__button-title_hover: $brand-dark-text);
+
+@use "search-results-simple-card" with
+  (
+    $background: $base-light-back,
+    $border: $neutral-light-line,
+    $border-color_active: $brand-dark-line,
+    $radius: $radius,
+    $gap: $gap,
+    $color_viewed: $neutral-light-text,
+    $color__go-to-button: $neutral-light-text,
+    $color__go-to-button_hover: $brand-dark-back,
+    $color__wrapper: $neutral-dark-text,
+    $color_on-map_hover: $brand-dark-text,
+    $color__internships: $brand-dark-line,
+    $background__internships: $neutral-light-back,
+    $shadow: $shadow-big
+  );
+
+@use "search-results-full-card" with
+  (
+    $radius: $radius,
+    $gap: $gap,
+    $background: $base-light-back,
+    $border: $neutral-light-line,
+    $background__internships: $neutral-light-back,
+    $color__internships: $brand-dark-line,
+    $gosbar-height: $gosbar-height,
+    $font-size: $font-size,
+    $font-size-small: $font-size-small,
+    $font-size-section-title: $font-size-section-title,
+    $color__extra-info: $neutral-dark-text
+  );
+
+@use "logo";
+
+@use "choose-photo" with
+  (
+    $background-color__button: $neutral-light-back,
+    $border__button: $neutral-dark-back,
+    $background-image__button: $neutral-light-text,
+    $background-image__button_hover: $brand-dark-back,
+    $background-color__thumb: $brand-dark-back,
+    $background-color__thumb_hover: $brand-light-text,
+    $background-color__track: $neutral-light-line,
+    $stroke__edit-button_hover: $brand-light-text,
+    $box-shadow-focus: $box-shadow-focus,
+    $gap: $gap,
+    $font-size-big: $font-size-big,
+    $font-size-small: $font-size-small,
+    $color__placeholder: $neutral-dark-text
+  );
+
+@use "login-gosuslugi" with ($gap: $gap);
+
+@use "gosuslugi-faq-separator" with ($background-color: $neutral-light-text);
+
+@use "banner-employers" with
+  (
+    $background: $brand2-light-back,
+    $gap: $gap,
+    $radius: $radius,
+    $box-shadow-focus: $box-shadow-focus,
+    $color__title: $brand-dark-text,
+    $color__title-hover: $brand-light-text,
+    $font-size-big: $font-size-big
+  );
+
+@use "company-title" with ($gap: $gap, $font-size-section-title-small: $font-size-section-title-small);
+
+@use "sorting" with
+  (
+    $color__delete: $neutral-dark-text,
+    $color__arrow: $neutral-dark-back,
+    $color__arrow_hover: $brand-light-text,
+    $color__delete_hover: $neutral-dark-line,
+    $box-shadow-focus: $box-shadow-focus,
+    $gap: $gap,
+    $color__arrow_active: $brand-dark-back
+  );
+
+@use "body" with ($content-start: $content-start);
+
+@use "mega-menu" with
+  (
+    $border-bottom: $neutral-light-line,
+    $color__text: $base-dark-text,
+    $color__text_hover: $brand-dark-text,
+    $background_fsin-active: $brand-dark-text,
+    $background__button_active_before: $brand-dark-back,
+    $background__toggle_before: $brand-dark-back,
+    $color__user-item: $brand-dark-back,
+    $color__user-item_hover: $brand-light-text,
+    $color__user-link_hover: $brand-light-text,
+    $background-color: $base-light-back,
+    $background-color_opened: $base-light-back,
+    $background-color__user-menu: $base-light-back,
+    $fixed-header: $fixed-header,
+    $mega-menu-index: $mega-menu-index,
+    $gosbar-height: $gosbar-height,
+    $gap: $gap,
+    $box-shadow-focus: $box-shadow-focus,
+    $content-start: $content-start,
+        $border-color__user-interface: $neutral-dark-back,
+        $color__user-text: $base-dark-text,
+        $color__dropdown: $base-dark-text,
+        $color__ser-title: $neutral-light-text,
+        $color__user-name: $neutral-dark-text,
+        $background-color__user-menu_user: $neutral-light-back,
+        $background-color__choose-region: $neutral-light-back,
+        $background-color__boolean-counter: $negative-dark-back,
+        $color__user-link: $brand-dark-back,
+        $color__user-company: $neutral-dark-text,
+        $color__spoiler-icon: $base-dark-text,
+        $color__user-sublink: $base-dark-text,
+        $border-bottom__user-menu: $neutral-light-line,
+        $shadow: $shadow,
+        $background__user-count_after: $brand3-dark-back,
+        $radius: $radius,
+        $font-size-small: $font-size-small,
+        $font-size-smaller: $font-size-smaller
+    );
+
+@use "range-slider" with
+  (
+    $gap: $gap,
+    $radius: $radius,
+    $font-size-smaller: $font-size-smaller,
+    $font-size-small: $font-size-small,
+    $color__title: $neutral-dark-text,
+    $color__control: $base-dark-back,
+    $background__line: $neutral-dark-back,
+    $background__bar: $brand-dark-back,
+    $background__handle: $brand-dark-back,
+    $border__input-decor: $neutral-dark-back
+  );
+
+@use "control-card" with ($color-icon: $neutral-light-line);
+
+@use "choose-region" with
+  (
+    $color__letter: $brand-dark-text,
+    $color__item_hover: $brand-light-text,
+    $background-colo__tooltip: $base-light-back,
+    $color__tooltip-text: $neutral-dark-text,
+    $border-radius__tooltip: math.div($radius, 2),
+    $tooltip-index: $tooltip-index,
+    $gap: $gap,
+    $box-shadow-focus: $box-shadow-focus,
+    $shadow: $shadow,
+    $font-size-small: $font-size-small,
+    $font-size-title-huge: $font-size-title-huge
+  );
+
+@use "document-editor" with
+  (
+    $gap: $gap,
+    $background: $base-light-back,
+    $border: $neutral-light-line,
+    $border__swiper: $brand-dark-line,
+    $radius: $radius
+  );
+
+@use "widgets-website" with
+  (
+    $gap: $gap,
+    $radius: $radius,
+    $stroke__arrow: $brand-light-text,
+    $border-color: $neutral-light-line,
+    $background-color: $base-light-back,
+    $background__img: $brand2-dark-back,
+    $box-shadow-focus: $box-shadow-focus,
+    $stroke__icon: $brand-dark-back
+  );
+
+@use "index/index" with
+  (
+    $white: $base-light-back,
+    $blue: $brand2-dark-back,
+    $gray: $neutral-light-back,
+    $bg-slider: $brand2-light-back,
+    $caret-color: $brand-light-text,
+    $gap: $gap,
+    $radius: $radius,
+    $border-focus: $brand-dark-line,
+    $box-shadow-focus: $box-shadow-focus,
+    $shadow-control: $brand-dark-back,
+    $shadow-card: $brand2-dark-back,
+    $accent: $brand3-dark-back,
+    $color-input: $neutral-dark-text,
+    $links-list: $neutral-dark-text,
+    $banner-bg: $brand2-dark-back,
+    $font-size-big: $bfont-I,
+    $font-size-medium: $font-size-big,
+    $font-size-small: $font-size,
+        $background: $base-light-back,
+        $line-color: $base-light-back
+    );
+
+@use "gosbar" with ($gosbar-height: $gosbar-height, $z-index-gosbar: $gosbar-index);
+
+@use "cookies" with ($gap: $gap, $z-index: $cookies-index, $shadow: $shadow-big);
+
+@use "banner-unemployed";
+
+@use "banner-monitoring";
+
+@use "input" with
+  (
+    $gap: $gap,
+    $color: $negative-dark-text,
+    $background__control: $brand2-light-back,
+    $border-color__control: $brand2-dark-back
+  );
+
+@use "banner-triangle";
+
+@use "job-fair";
+
+@use "job-fair-banner" with (
+  $gap: $gap,
+  $color__job-fair-banner: $base-light-text,
+  $color__button: $base-light-text,
+  $color_accent: $brand3-dark-text,
+  $font-size__job-fair-banner: $bfont-B,
+  $border-color__button: $base-light-text,
+  $background__blind: $base-dark-back
+);
+
+@use "biggest-employers" with ($gap: $gap, $font-size: $font-size);
+
+@use "quiz" with
+  (
+    $gap: $gap,
+    $border__button: $neutral-light-line,
+    $background__button: $neutral-light-back,
+    $box-shadow-focus: $box-shadow-focus,
+    $color__button: $base-dark-text,
+    $font-size: $font-size
+  );
+
+@use "rbg-landing" with
+  (
+    $gap: $gap,
+    $background-color: $base-light-text,
+    $background-color__partner-logo: $base-light-text,
+    $title-font-exlarge: $bfont-M,
+    $title-font-large: $bfont-J,
+    $title-font-exmedium: $bfont-I,
+    $title-font-medium: $font-size-title
+  );
+
+@use "ya-share2" with ($icon-color: $brand-dark-line);
+
+@use "vr-effective" with
+  (
+    $background-final: $positive-dark-text,
+    $background-red: $negative-dark-back,
+    $background-orange: $attention-dark-back,
+    $gap: $gap,
+    $border-right__recomend: $neutral-dark-back,
+    $color__name: $base-dark-text,
+    $font-size-small: $font-size-small
+  );
+
+@use "czn-badge" with
+  (
+    $font-size-small: $font-size-small,
+    $radius: $radius,
+    $background-color: $attention-light-back,
+    $stroke__icon: $attention-dark-line,
+    $gap: $gap
+  );
+
+@use "announcement" with
+  (
+    $font-size-small: $font-size-small,
+    $radius: $radius,
+    $shadow-big: $shadow-big,
+    $border: $attention-dark-line,
+    $background-color: $attention-light-back,
+    $stroke__icon: $attention-dark-line,
+    $gap: $gap
+  );
+
+@use "home" with
+  (
+    $color__employer-name: neutral-dark-text,
+    $color__section-banner: $base-light-back,
+    $color__white: $base-light-back,
+    $color__button-white: $base-light-back,
+    $color__search-button: $base-light-back,
+    $color__card_blue: $base-light-back,
+    $color__search-control: $neutral-dark-text,
+    $color__search-link: $neutral-dark-text,
+    $color__employer-count: $base-dark-text,
+    $background-color__section-search: $base-light-back,
+    $background-color__section-vacancy: $base-light-back,
+    $background-color__section-support: $base-light-back,
+    $background-color__section-employers: $neutral-light-back,
+    $background-color__footer-line: $base-light-back,
+    $background__search: $base-light-back,
+    $background__owl-dot: $base-light-back,
+    $background__list-item: $base-light-back,
+    $background__card_blue: $brand2-dark-back,
+        $background__search-button: $brand3-dark-back,
+        $background__banner: $brand2-dark-back,
+        $border__search-control: $brand2-dark-back,
+        $border__search-control-focus: $brand-dark-line,
+        $box-shadow__card: $brand2-dark-back,
+        $box-shadow__search: $brand-dark-back,
+        $gap: $gap,
+        $radius: $radius,
+        $box-shadow-focus: $box-shadow-focus,
+        $font-size-big: $bfont-I,
+        $font-size-subtitle: $font-size-subtitle,
+        $font-size-small: $font-size-small,
+        $font-size: $font-size,
+        $font-size-section-subtitle: $font-size-section-subtitle
+    );
+
+@use "table-schedule" with
+  (
+    $gap: $gap,
+    $radius: $radius,
+    $font-size-section-title: $font-size-section-title,
+    $font-size-small: $font-size-small,
+    $color__hour: $neutral-dark-text,
+    $color__date: $neutral-dark-text,
+    $color__hour_error: $negative-dark-text,
+    $font-size-smaller: $font-size-smaller
+  );
+
+@use "practice" with
+  (
+    $gap: $gap,
+    $background__button-student: $base-light-back,
+    $background__button-student_disabled: $neutral-light-back,
+    $background__button-student_choosen: $brand2-light-back
+  );
+
+@use "scrollable-block";

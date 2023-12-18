@@ -1,0 +1,9 @@
+$top: rgb(235, 235, 235) !default;
+$bottom: rgb(233, 235, 244) !default;
+
+.separator {
+  display: block;
+  border-top: 1px solid $top;
+  border-bottom: 1px solid $bottom;
+  flex: 1 0 100%;
+}

@@ -1,0 +1,109 @@
+$radius: 4px !default;
+$text-color-white: rgb(255, 255, 255) !default;
+$text-color-black: rgb(52, 52, 52) !default;
+$background-color-white: $text-color-white !default;
+$background-color-red:  rgb(255, 66, 82) !default;
+$background-color-blue: rgb(31, 53, 136) !default;
+$shadow-color-white: $text-color-white !default;
+$shadow-color-black: rgb(52, 52, 52) !default;
+$shadow-inset-color-grey: rgba(81, 81, 81) !default;
+$margin-left: 10px !default;
+
+%button {
+  appearance: initial;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  outline: 0;
+  user-select: none;
+  pointer-events: auto;
+  nav-index: 1;
+}
+
+%button_element {
+  @extend %button; // TODO: fix extend
+
+  border-radius: $radius;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  padding: 6px 12px;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  min-height: 34px;
+  text-align: center;
+  vertical-align: middle;
+  transition: box-shadow 150ms;
+  box-shadow: inset 0 -2px rgba($shadow-color-black, 0.2), inset 0 0 0 1px rgba($shadow-color-white, 0.15);
+
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+    box-shadow: inset 0 -2px rgba($shadow-color-black, 0.2), inset 0 5px 20px 5px rgba($shadow-color-white, 0.15);
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: inset 0 0 rgba($shadow-color-black, 0.2), inset 0 0 0 1px rgba($shadow-color-white, 0.15);
+    outline: none;
+    text-decoration: none;
+  }
+
+  & + & {
+    margin-left: $margin-left;
+  }
+}
+
+$shadow:
+  inset 0 -2px rgba($shadow-inset-color-grey, 0.25),
+  inset 0 -3px 0 0 rgba($shadow-inset-color-grey, 0.15);
+
+.button {
+  @extend %button_element;
+  $color: $background-color-red;
+
+  color: $text-color-white;
+  background-color: $color;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $text-color-white;
+  }
+}
+
+.button_blue {
+  @extend %button_element;
+  $color: lighten(desaturate(adjust-hue($background-color-blue, -26), 26), 6);
+
+  color: $text-color-white;
+  background-color: $color;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $text-color-white;
+  }
+}
+
+.button_white {
+  @extend %button_element;
+  $color: lighten(desaturate(adjust-hue($background-color-white, -26), 26), 6);
+
+  color: $text-color-black;
+  background-color: $color;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $text-color-black;
+  }
+}

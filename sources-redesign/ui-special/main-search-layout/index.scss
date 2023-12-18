@@ -1,0 +1,119 @@
+@use "../../functions";
+
+$background__search-content_active: #FFFFFF !default;
+$gap: functions.px(10) !default;
+$content-start: functions.px(105) !default;
+$search-width: functions.px(1200);
+$search-max-height: functions.px(700);
+$search-sidebar-width: functions.px(410);
+$search-md-width: functions.px(991);
+$color__search-sidebar-extra: #52575C !default;
+
+.main {
+  // TODO BEM (после разработки всех страниц поисковых выдач, сделать рефактор шаблонов инфоблоков и сделать класс по названию компонента)
+  &__search {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    max-width: $search-width;
+    padding: 0 $gap * 1.5;
+  }
+
+  &__search-error-message {
+    flex: 1 1 100%;
+  }
+
+  &__search-error-message:empty {
+    display: none;
+  }
+
+  &__search-sidebar {
+    box-sizing: border-box;
+    max-height: $search-max-height;
+    overflow: auto;
+    padding-right: $gap;
+    position: relative; // fix strange chrome bug - not working overflow
+    width: $search-sidebar-width;
+  }
+
+  // Additional space for search sidebar for filters, counters, dropdowns...
+  &__search-sidebar-extra {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    margin-right: -$gap;
+    padding-right: $gap;
+    width: $search-sidebar-width;
+  }
+
+  &__search-content {
+    box-sizing: border-box;
+    padding-left: $gap * 2;
+    position: relative;
+    width: calc(100% - #{$search-sidebar-width});
+  }
+
+  // Additional space for search main card (content) for filters, counters, dropdowns...
+  &__search-content-extra {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    padding-left: $gap * 3;
+    width: calc(100% - #{$search-sidebar-width});
+  }
+
+  &__search-full {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  &__search-content-extra,
+  &__search-sidebar-extra {
+    align-items: flex-start;
+    color: $color__search-sidebar-extra;
+    height: $gap * 4;
+  }
+
+  &__search-auto {
+    flex: 0 0 auto;
+    max-width: none;
+    width: auto;
+  }
+
+  @media (max-width: $search-md-width) {
+
+    &__search-sidebar {
+      margin-right: 0;
+      max-height: none;
+      overflow: visible;
+      padding-right: 0;
+      width: 100%;
+    }
+
+    &__search-content,
+    &__search-sidebar-extra {
+      // hide sorting & filter, they relocate to modal filters on responsive
+      display: none;
+    }
+
+    &__search-content-extra {
+      padding: 0 0 $gap 0;
+      width: 100%;
+    }
+
+    &__search-content_active {
+      background: $background__search-content_active;
+      bottom: 0;
+      display: block;
+      left: 0;
+      padding: 0;
+      position: fixed;
+      right: 0;
+      top: $content-start;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+}

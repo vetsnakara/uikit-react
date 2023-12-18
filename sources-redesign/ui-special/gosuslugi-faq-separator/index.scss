@@ -1,0 +1,21 @@
+@use "../../functions";
+
+$background-color: #A0A4A8 !default;
+
+.gosuslugi-item {
+  position: relative;
+
+  @media (min-width: functions.px(992)) {
+
+    &:not(:last-child)::before {
+      background-color: $background-color;
+      content: "";
+      height: functions.px(1);
+      position: absolute;
+      right: 0;
+      top: 35%;
+      transform: translateX(50%);
+      width: 25%;
+    }
+  }
+}

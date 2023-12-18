@@ -1,0 +1,594 @@
+<doc-component name="Бейдж / Badge" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/Дизайн-система?node-id=5295%3A170">
+
+  <doc-tab name="Default">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <p class="content__paragraph">
+        <strong>{{ content }}</strong>
+        - текст бейджа.
+      </p>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge">
+          <span class="badge__text">Текст</span>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge">
+        <span class="badge__text">{{ content }}</span>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Бейдж с ошибкой">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge_error</code>
+          - модификатор бейджа с ошибкой;
+        </li>
+        <li class="list__item">
+          <code>.badge__button-icon</code>
+          - класс оболочки управляющих элементов бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__close</code>
+          - класс иконки закрытия бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{ content }}</dt>
+          <dd class="definitions__value"> - текст бейджа.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge badge_error">
+          <span class="badge__text">Текст</span>
+        </div>
+        <br>
+        <br>
+        <div class="badge badge_error">
+          <span class="badge__text">Текст</span>
+          <button type="button" class="badge__button-icon">
+            <svg class="badge__close icon icon_s">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge badge_error">
+        <span class="badge__text">{{ content }}</span>
+      </div>
+    </doc-code>
+
+    <doc-code>
+      <div class="badge badge_error">
+        <span class="badge__text">{{ content }}</span>
+        <button type="button" class="badge__button-icon">
+          <svg class="badge__close icon icon_s">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="с иконкой">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__icon</code>
+          - класс иконки внутри бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{ content }}</dt>
+          <dd class="definitions__value"> - текст бейджа.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-tab name="с максимальной шириной 250px">
+      <doc-info>
+        <ul class="list">
+          <li class="list__item">
+            <code>.badge</code>
+            - класс блока бейджа;
+          </li>
+          <li class="list__item">
+            <code>.badge_max-width-250</code>
+            - модификатор для ограничения ширины
+          </li>
+        </ul>
+        <dl class="definitions">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ content }}</dt>
+            <dd class="definitions__value"> - текст бейджа.
+            </dd>
+          </div>
+        </dl>
+      </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge badge_max-width-250">
+          <span class="badge__text">Длинный текст, который нужно обрезать.</span>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge badge_max-width-250">
+        <span class="badge__text">{{ content }}</span>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="кнопка-переключатель">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge_switchable</code>
+          - модификатор бейджа-переключателя;
+        </li>
+        <li class="list__item">
+          <code>.badge__icon</code>
+          - класс иконки внутри бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{ content }}</dt>
+          <dd class="definitions__value"> - текст бейджа.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <label class="button-switch">
+          <input type="checkbox" name="button-switch-name" value="" id="button-switch-id-2" class="button-switch__control" />
+          <span class="badge badge_switchable">
+            <svg class="icon badge__icon">
+              <use href="uikit/icon/icons.svg#book"></use>
+            </svg>
+            <span class="badge__text">Текст с иконкой</span>
+          </span>
+        </label>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="button-switch">
+        <input type="checkbox" name="{{ switch-name }}" value="" id="{{ switch-id }}" class="button-switch__control" />
+        <span class="badge badge_switchable">
+          <svg class="icon badge__icon">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#{{ icon-name }}"></use>
+          </svg>
+          <span class="badge__text">{{ content }}</span>
+        </span>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="со статусом warning">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge_warning</code>
+          - модификатор бейджа-предупреждения;
+        </li>
+        <li class="list__item">
+          <code>.badge__icon</code>
+          - класс иконки внутри бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{ content }}</dt>
+          <dd class="definitions__value"> - текст бейджа.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge badge_warning">
+          <svg class="icon badge__icon">
+            <use href="uikit/icon/icons.svg#book"></use>
+          </svg>
+          <span class="badge__text">Текст с иконкой и статусом warning</span>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge badge_warning">
+        <svg class="icon badge__icon">
+          <use href="/assets/redesign-theme/uikit/icon/icons.svg#{{ icon-name }}"></use>
+        </svg>
+        <span class="badge__text">{{ content }}</span>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="со статусом danger">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge_danger</code>
+          - модификатор бейджа-ошибки;
+        </li>
+        <li class="list__item">
+          <code>.badge__icon</code>
+          - класс иконки внутри бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{ content }}</dt>
+          <dd class="definitions__value"> - текст бейджа.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge badge_danger">
+          <svg class="icon badge__icon">
+            <use href="uikit/icon/icons.svg#book"></use>
+          </svg>
+          <span class="badge__text">Текст с иконкой и статусом danger</span>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge badge_danger">
+        <svg class="icon badge__icon">
+          <use href="/assets/redesign-theme/uikit/icon/icons.svg#{{ icon-name }}"></use>
+        </svg>
+        <span class="badge__text">{{ content }}</span>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="со статусом success">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge_success</code>
+          - модификатор бейджа-success;
+        </li>
+        <li class="list__item">
+          <code>.badge__icon</code>
+          - класс иконки внутри бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{ content }}</dt>
+          <dd class="definitions__value"> - текст бейджа.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge badge_success">
+          <svg class="icon badge__icon">
+            <use href="uikit/icon/icons.svg#book"></use>
+          </svg>
+          <span class="badge__text">Текст с иконкой и статусом success</span>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge badge_success">
+        <svg class="icon badge__icon">
+          <use href="/assets/redesign-theme/uikit/icon/icons.svg#{{ icon-name }}"></use>
+        </svg>
+        <span class="badge__text">{{ content }}</span>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Круглый для иконок без текста">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge_round</code>
+          - модификатор круглого бейджа без текста;
+        </li>
+        <li class="list__item">
+          <code>.badge__icon</code>
+          - класс иконки внутри бейджа;
+        </li>
+      </ul>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge badge_round">
+          <svg class="icon badge__icon icon_s">
+            <use href="uikit/icon/icons.svg#book"></use>
+          </svg>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge badge_round">
+        <svg class="icon badge__icon icon_s">
+          <use href="/assets/redesign-theme/uikit/icon/icons.svg#{{ icon-name }}"></use>
+        </svg>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Со звездами">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__stars</code>
+          - класс блока звёзд;
+        </li>
+        <li class="list__item">
+          <code>.badge__star-button</code>
+          - класс отдельно взятой звезды;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{ content }}</dt>
+          <dd class="definitions__value"> - текст бейджа.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge">
+          <span class="badge__text">Ключевой навык</span>
+          <div class="badge__stars">
+            <button type="button" class="badge__star-button">
+              <svg class="icon badge__star badge__star_active">
+                <use href="uikit/icon/icons.svg#star"></use>
+              </svg>
+            </button>
+
+            <button type="button" class="badge__star-button">
+              <svg class="icon badge__star badge__star_active">
+                <use href="uikit/icon/icons.svg#star"></use>
+              </svg>
+            </button>
+
+            <button type="button" class="badge__star-button">
+              <svg type="button" class="icon badge__star badge__star_active">
+                <use href="uikit/icon/icons.svg#star"></use>
+              </svg>
+            </button>
+
+            <button type="button" type="button" class="badge__star-button">
+              <svg class="icon badge__star">
+                <use href="uikit/icon/icons.svg#star"></use>
+              </svg>
+            </button>
+          </div>
+          <button type="button" class="badge__button-icon">
+            <svg class="badge__close icon icon_s">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge">
+        <span class="badge__text">{{ content }}</span>
+        <div class="badge__stars">
+          <button type="button" class="badge__star-button">
+            <svg class="icon badge__star badge__star_active">
+              <use href="uikit/icon/icons.svg#star"></use>
+            </svg>
+          </button>
+
+          <button type="button" class="badge__star-button">
+            <svg class="icon badge__star badge__star_active">
+              <use href="uikit/icon/icons.svg#star"></use>
+            </svg>
+          </button>
+
+          <button type="button" class="badge__star-button">
+            <svg class="icon badge__star badge__star_active">
+              <use href="uikit/icon/icons.svg#star"></use>
+            </svg>
+          </button>
+
+          <button type="button" class="badge__star-button">
+            <svg class="icon badge__star">
+              <use href="uikit/icon/icons.svg#star"></use>
+            </svg>
+          </button>
+        </div>
+        <button type="button" class="badge__button-icon">
+          <svg class="badge__close icon icon_s">
+            <use href="uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Бейдж без фона">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item">
+          <code>.badge</code>
+          - класс блока бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge_transparent</code>
+          - модификатор прозрачного бейджа;
+        </li>
+        <li class="list__item">
+          <code>.badge__stars</code>
+          - класс блока звёзд;
+        </li>
+        <li class="list__item">
+          <code>.badge__star-button</code>
+          - класс отдельно взятой звезды;
+        </li>
+        <li class="list__item">
+          <code>.badge__text</code>
+          - класс текста бейджа, не вкладывайте туда ни иконок, ни управляющих элементов.
+        </li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <dt class="definitions__key">{{ content }}</dt>
+          <dd class="definitions__value"> - текст бейджа.
+          </dd>
+        </div>
+        </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="badge badge_transparent">
+          <div class="badge__stars ml-0 mr-1">
+            <button type="button" class="badge__star-button">
+              <svg class="icon badge__star badge__star_active">
+                <use href="uikit/icon/icons.svg#star"></use>
+              </svg>
+            </button>
+            <button type="button" class="badge__star-button">
+              <svg class="icon badge__star badge__star_active">
+                <use href="uikit/icon/icons.svg#star"></use>
+              </svg>
+            </button>
+            <button type="button" class="badge__star-button">
+              <svg class="icon badge__star">
+                <use href="uikit/icon/icons.svg#star"></use>
+              </svg>
+            </button>
+          </div>
+          <span class="badge__text">Ключевой навык</span>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="badge badge_transparent">
+        <div class="badge__stars ml-0 mr-1">
+          <button type="button" class="badge__star-button">
+            <svg class="icon badge__star badge__star_active">
+              <use href="uikit/icon/icons.svg#star"></use>
+            </svg>
+          </button>
+          <button type="button" class="badge__star-button">
+            <svg class="icon badge__star badge__star_active">
+              <use href="uikit/icon/icons.svg#star"></use>
+            </svg>
+          </button>
+          <button type="button" class="badge__star-button">
+            <svg class="icon badge__star">
+              <use href="uikit/icon/icons.svg#star"></use>
+            </svg>
+          </button>
+        </div>
+        <span class="badge__text">{{ content }}</span>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

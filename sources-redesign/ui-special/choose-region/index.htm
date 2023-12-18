@@ -1,0 +1,606 @@
+<doc-component name="Модальное окно выбора региона" link="">
+    <doc-tab name="Default">
+        <doc-info> Модальное окно выбора региона </doc-info>
+
+        <doc-view>
+            <div
+                id="choose-region"
+                class="modal modal_dialog modal_open"
+                role="dialog"
+                aria-hidden="true"
+                tabindex="-1"
+            >
+                <div class="modal__content">
+                    <div class="modal__header">
+                        <h3 class="content__section-title_small">Выберите ваш регион</h3>
+                        <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal"></button>
+                        <label class="input">
+                            <input type="search" class="input__control" name="" placeholder="Ваш регион..." />
+                        </label>
+                    </div>
+                    <div class="modal__body" role="document">
+                        <div class="choose-region">
+                            <ul class="choose-region__list-region">
+                                <li class="choose-region__region">
+                                    <button class="choose-region__item" type="button">г. Москва</button>
+                                </li>
+                                <li class="choose-region__region">
+                                    <button class="choose-region__item" type="button">г. Санкт-Петербург</button>
+                                </li>
+                                <li class="choose-region__region">
+                                    <button class="choose-region__item" type="button">г. Севастополь</button>
+                                </li>
+                                <li class="choose-region__region">
+                                    <button class="choose-region__item" type="button">г. Байконур</button>
+                                </li>
+                            </ul>
+                            <ol class="choose-region__alphabet" type="A">
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">А</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Алтайский край</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Амурская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Архангельская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Астраханская область
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Б</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Белгородская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Брянская область</button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">В</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Владимирская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Волгоградская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Вологодская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Воронежская область
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Е</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Еврейская автономная область
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">З</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Забайкальский край
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">И</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ивановская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Иркутская область</button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">К</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Кабардино-Балкарская Республика
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Калининградская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Калужская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Камчатский край</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Карачаево-Черкесская Республика
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Кемеровская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Кировская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Костромская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Краснодарский край
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Красноярский край</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Курская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Курганская область
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Л</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ленинградская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Липецкая область</button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">М</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Магаданская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Московская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Мурманская область
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Н</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ненецкий автономный округ
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Нижегородская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Новгородская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Новосибирская область
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">О</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Омская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Оренбургская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Орловская область</button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">П</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Пензенская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Пермский край</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Приморский край</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Псковская область</button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Р</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Республика Адыгея</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Республика Алтай</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Башкортостан
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Бурятия
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Дагестан
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Ингушетия
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Калмыкия
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Карелия
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Республика Коми</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Республика Крым</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Марий Эл
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Мордовия
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Саха (Якутия)
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Северная Осетия - Алания
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Татарстан
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Республика Тыва</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Республика Хакасия
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ростовская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Рязанская область</button>
+                                        </li>
+                                        <li class="choose-region__region"></li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">С</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Самарская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Саратовская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Сахалинская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Свердловская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Смоленская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ставропольский край
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Т</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Тамбовская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Тверская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Томская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Тульская область</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Тюменская область</button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">У</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Удмуртская Республика
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ульяновская область
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Х</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">Хабаровский край</button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ханты-Мансийский автономный округ - Югра
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Ч</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Челябинская область
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Чеченская Республика
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Чувашская Республика
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Чукотский автономный округ
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li class="choose-region__alphabet-item">
+                                    <span class="choose-region__letter">Я</span>
+                                    <hr class="separator mt-0" />
+                                    <ol class="choose-region__list-region">
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ямало-Ненецкий автономный округ
+                                            </button>
+                                        </li>
+                                        <li class="choose-region__region">
+                                            <button class="choose-region__item" type="button">
+                                                Ярославская область
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </doc-view>
+
+        <doc-code>
+            <div class="choose-region">
+                <label class="input">
+                    <input type="search" class="input__control" placeholder="Ваш регион..." />
+                </label>
+                <ul class="choose-region__list-region">
+                    <li class="choose-region__region">
+                        <button class="choose-region__item" type="button">{{ city }}</button>
+                    </li>
+                </ul>
+                <ol class="choose-region__alphabet" type="A">
+                    <li class="choose-region__alphabet-item">
+                        <span class="choose-region__letter">{{ letter }}</span>
+                        <hr class="separator mt-0" />
+                        <ol class="choose-region__list-region">
+                            <li class="choose-region__region">
+                                <button class="choose-region__item" type="button">{{ aria }}</button>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+        </doc-code>
+    </doc-tab>
+
+    <doc-tab name="Модальное окно выбора региона пример с рабочей логикой">
+        <doc-info> Модальное окно выбора региона, пример с рабочей логикой </doc-info>
+
+        <doc-view>
+            <div class="offset-sm-5">
+                <div class="choose-region__tooltip-trigger">
+                    <button
+                        class="button button_plain choose-region__trigger-button choose-region__trigger-button_open"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        Trigger
+                    </button>
+                    <div class="choose-region__tooltip">
+                        <div class="choose-region__tooltip-wrapper">
+                            <p class="choose-region__tooltip-text">
+                                Ваш регион - <span class="choose-region__tooltip-region">г. Санкт-Петербург</span>?
+                            </p>
+                            <div class="choose-region__tooltip-buttons">
+                                <button
+                                    class="choose-region__tooltip-button button button_secondary"
+                                    data-action="choose-region"
+                                    type="button"
+                                >
+                                    Выбрать другой регион
+                                </button>
+                                <button class="choose-region__tooltip-button button" type="button">Да</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </doc-view>
+
+        <doc-code>
+            <div class="choose-region__tooltip-trigger">
+                <button
+                    class="button button_plain choose-region__trigger-button"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    Trigger
+                </button>
+                <div class="choose-region__tooltip">
+                    <div class="choose-region__tooltip-wrapper">
+                        <p class="choose-region__tooltip-text">
+                            Ваш регион - <span class="choose-region__tooltip-region">{{ region }}</span>?
+                        </p>
+                        <div class="choose-region__tooltip-buttons">
+                            <button
+                                class="choose-region__tooltip-button button button_secondary"
+                                data-action="choose-region"
+                                type="button"
+                            >
+                                Выбрать другой регион
+                            </button>
+                            <button class="choose-region__tooltip-button button" type="button">Да</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </doc-code>
+    </doc-tab>
+</doc-component>

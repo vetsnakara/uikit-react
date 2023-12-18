@@ -1,0 +1,93 @@
+@use "sass:math";
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$color__data: #52575C !default;
+$font-size-smaller: functions.px(12) !default;
+$font-size-small: functions.px(14) !default;
+$width__type-img: functions.px(32);
+$height__type-img: $width__type-img;
+$line-height__data: 1.333;
+
+.file-preview {
+  align-items: center;
+  display: flex;
+  margin-bottom: $gap * 1.5;
+  width: auto;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &__type-img {
+    height: $height__type-img;
+    margin-right: $gap * 1.5;
+    max-width: 100%;
+    object-fit: contain;
+    width: $width__type-img;
+
+    @media (max-width: functions.px(575)) {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    pointer-events: all;
+
+    @media (min-width: functions.px(576)) {
+      flex: 1;
+    }
+  }
+
+  &__name {
+    font-size: $font-size-small;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &:not(&_extended) &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__data {
+    color: $color__data;
+    font-size: $font-size-smaller;
+    line-height: $line-height__data;
+    margin-top: math.div($gap, 2);
+  }
+
+  &:not(&_extended) &__actions .icon {
+    height: functions.px(20);
+    min-width: functions.px(20);
+    width: functions.px(20);
+  }
+
+  &:not(&_extended) &__actions {
+    display: flex;
+  }
+
+  &__actions {
+    font-size: 0;
+  }
+
+  &:not(&_extended) &__action {
+    align-items: center;
+    display: flex;
+    margin-left: $gap * 1.5;
+  }
+
+  &_extended {
+    flex-wrap: wrap;
+  }
+
+  &_extended &__actions {
+    flex-basis: 100%;
+    margin-top: $gap;
+  }
+}

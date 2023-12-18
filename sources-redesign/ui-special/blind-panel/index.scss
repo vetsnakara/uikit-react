@@ -1,0 +1,211 @@
+@use "sass:math";
+
+@use "functions" as *;
+@use "colors" as *;
+
+$background: #FFFFFF !default;
+$width-content: px(1200) !default;
+$gap: px(10) !default;
+$shadow: 0 px(2) px(8) rgba(0, 0, 0, 0.15) !default;
+$radius: px(8) !default;
+$color: #25282B !default;
+$color__tooltip: #25282B !default;
+$background-image__button: #25282B !default;
+$max-width__tooltip: px(320) !default;
+$border__tooltip: #E8E8E8 !default;
+$border__tooltip-arrow: #E8E8E8 !default;
+$font-size-small: px(14) !default;
+
+$is-blind-theme: $colors and $colors > 1;
+
+.blind-panel:not([data-blind-mode*="blind"]) {
+  display: none;
+}
+
+.blind-panel {
+  background: $background;
+  border-bottom: px(1) solid $color;
+  border-top: px(1) solid $color;
+  box-sizing: border-box;
+  padding: $gap * 2 0;
+
+  &__wrapper {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $width-content;
+    padding-left: px(15);
+
+    padding-right: px(15);
+    width: 100%;
+
+    @media (min-width: px(576)) and (max-width: px(1240)) {
+      padding-left: px(30);
+      padding-right: px(30);
+    }
+  }
+
+  &__button &__icon {
+    $icon-size: px(36);
+    height: $icon-size;
+    margin: 0 $gap * 0.5;
+    min-width: $icon-size;
+    vertical-align: valign-middle(px(14), $icon-size);
+    width: $icon-size;
+  }
+
+  &[data-blind-mode*="-small"] [data-blind-moder="small"],
+  &[data-blind-mode*="-medium"] [data-blind-moder="medium"],
+  &[data-blind-mode*="-large"] [data-blind-moder="large"],
+  &[data-blind-mode*="-black"] [data-blind-moder="black"],
+  &[data-blind-mode*="-white"] [data-blind-moder="white"],
+  &[data-blind-mode*="-blue"] [data-blind-moder="blue"] {
+    box-shadow: 0 px(7) $background, 0 px(9) $color;
+  }
+
+  &[data-blind-mode*="-noimage"] [data-blind-moder="noimage"],
+  &[data-blind-mode*="-image"] [data-blind-moder="image"] {
+    display: none;
+  }
+
+  &__sound-switcher {
+
+    > :first-child,
+    &_sound > :nth-child(2) {
+      display: none;
+    }
+
+    &_sound > :first-child {
+      display: inline-block;
+    }
+  }
+}
+
+.blind-panel-switcher {
+  display: inline-flex;
+  margin-left: $gap * 4.7;
+  margin-right: $gap * 1.5;
+  position: relative;
+
+  @media (min-width: px(567)) {
+    margin-left: $gap * 5.9;
+  }
+
+  @media (min-width: px(991)) {
+    margin-left: auto;
+    margin-right: $gap * 2;
+  }
+
+  &__button:hover + &__tooltip {
+    display: block;
+  }
+
+  &__button {
+    background-repeat: no-repeat;
+    height: px(24);
+    width: px(24);
+
+    @if ($is-blind-theme == true) {
+      background-image: inlineSVG(
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="' +
+        $background-image__button +
+        '"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path stroke="' +
+        $background-image__button +
+        '" fill="' +
+        $background-image__button +
+        '" d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      );
+    }
+
+    @else {
+      background-image: inlineSVG(
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="' +
+        $background-image__button +
+        '" xmlns="http://www.w3.org/2000/svg"><path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path stroke="' +
+        $background +
+        '" fill="' +
+        $background-image__button +
+        '" d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      );
+    }
+  }
+
+  &__tooltip {
+    animation: blind-tooltip-show 0.25s linear, blind-tooltip-move 0.25s ease-in;
+    background: $background;
+    border: px(1) solid $border__tooltip;
+    border-radius: math.div($radius, 2);
+    bottom: px(-50);
+    box-shadow: $shadow;
+    color: $color__tooltip;
+    display: none;
+    font-size: $font-size-small;
+    max-width: $max-width__tooltip;
+    padding: px(9) px(16);
+    position: absolute;
+    right: 50%;
+    text-align: center;
+    transform: translateX(50%);
+    white-space: nowrap;
+  }
+
+  &__tooltip-arrow {
+    border: px(6) solid transparent;
+    border-bottom-color: $border__tooltip-arrow;
+    left: 50%;
+    margin-left: px(-3);
+    position: absolute;
+    top: px(-13);
+    width: 0;
+
+    &::after {
+      border: px(6) solid transparent;
+      border-bottom-color: $background;
+      border-top-width: 0;
+      content: "";
+      display: block;
+      left: px(-6);
+      position: absolute;
+      top: px(1);
+    }
+  }
+
+  &__normal-mode-label {
+    @if ($is-blind-theme == true) {
+      display: inline-block;
+    }
+
+    @else {
+      display: none;
+    }
+  }
+
+  &__blind-mode-label {
+    @if ($is-blind-theme == true) {
+      display: none;
+    }
+
+    @else {
+      display: inline-block;
+    }
+  }
+}
+
+@keyframes blind-tooltip-show {
+
+  0% {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blind-tooltip-move {
+
+  from {
+    bottom: -$gap * 7;
+  }
+}

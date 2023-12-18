@@ -1,0 +1,87 @@
+<doc-component name="Пагинация / Pagination" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=2883%3A6369">>
+	<doc-tab name="Default">
+		<doc-info>
+			<p class="content__paragraph">Элемент <code>.pagination__item</code> может быть оформлен тэгом <code>a</code> или <code>button</code> по необходимости</p>
+			<ul class="list">
+				<li class="list__item"><code>.pagination</code> - класс контейнера пагинации;</li>
+				<li class="list__item"><code>.pagination__item</code> - класс элемента пагинации;</li>
+				<li class="list__item"><code>.pagination__item_previous</code> - класс кнопки назад (предыдущий пункт);</li>
+				<li class="list__item"><code>.pagination__item_active</code> - класс активного пункта;</li>
+				<li class="list__item"><code>.pagination__kebab</code> - класс многоточия;</li>
+				<li class="list__item"><code>.pagination__item_next</code> - класс кнопки вперёд (следующий пункт).</li>
+			</ul>
+			<dl class="definitions">
+			  <div class="definitions__item">
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ item-active }}</dt>
+				  <dd class="definitions__value"> - активный пункт пагинации;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ href }}</dt>
+				  <dd class="definitions__value"> - ссылка в нотификации;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ item }}</dt>
+				  <dd class="definitions__value"> - обычный пункт пагинации.
+				  </dd>
+				</div>
+			</dl>
+		</doc-info>
+
+		<doc-view>
+			<div class="mt-1">
+				<div class="pagination">
+					<a class="pagination__item pagination__item_previous" aria-label="Предыдущая"></a>
+					<a class="pagination__item pagination__item_active">1</a>
+					<a class="pagination__item" href="#">2</a>
+					<a class="pagination__item" href="#">3</a>
+					<a class="pagination__item" href="#">4</a>
+					<a class="pagination__item" href="#">5</a>
+					<a class="pagination__kebab">...</a>
+					<a class="pagination__item" href="#">18</a>
+					<a class="pagination__item pagination__item_next" href="#" aria-label="Следующая"></a>
+				</div>
+			</div>
+			<div class="mt-1">
+				<div class="pagination">
+					<a class="pagination__item pagination__item_previous" href="#" aria-label="Предыдущая"></a>
+					<a class="pagination__item" href="#">1</a>
+					<a class="pagination__kebab">...</a>
+					<a class="pagination__item" href="#">14</a>
+					<a class="pagination__item" href="#">15</a>
+					<a class="pagination__item" href="#">16</a>
+					<a class="pagination__item" href="#">17</a>
+					<a class="pagination__item pagination__item_active" href="#">18</a>
+					<a class="pagination__item pagination__item_next" aria-label="Следующая"></a>
+				</div>
+			</div>
+			<div class="mt-1">
+				<div class="pagination">
+					<a class="pagination__item pagination__item_previous" href="#" aria-label="Предыдущая"></a>
+					<a class="pagination__item" href="#">1</a>
+					<a class="pagination__kebab">...</a>
+					<a class="pagination__item" href="#">10</a>
+					<a class="pagination__item" href="#">11</a>
+					<a class="pagination__item pagination__item_active">12</a>
+					<a class="pagination__item" href="#">13</a>
+					<a class="pagination__item" href="#">14</a>
+					<a class="pagination__kebab">...</a>
+					<a class="pagination__item" href="#">18</a>
+					<a class="pagination__item pagination__item_next" href="#" aria-label="Следующая"></a>
+				</div>
+			</div>
+		</doc-view>
+
+		<doc-code>
+			<div class="pagination">
+				<a class="pagination__item pagination__item_previous" aria-label="Предыдущая"></a>
+				<a class="pagination__item pagination__item_active">{{ item-active }}</a>
+				<a class="pagination__kebab">...</a>
+				<a class="pagination__item" href="{{ href }}">{{ item }}</a>
+				<a class="pagination__item pagination__item_next" href="{{ href }}"  aria-label="Следующая"></a>
+			</div>
+		</doc-code>
+	</doc-tab>
+</doc-component>

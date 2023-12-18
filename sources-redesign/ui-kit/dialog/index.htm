@@ -1,0 +1,88 @@
+<doc-component name="Диалог">
+
+  <doc-tab name="Default">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.dialog</code> - класс блока диалога;</li>
+        <li class="list__item"><code>.dialog_reverse</code> - модификатор для диалога наоборот;</li>
+        <li class="list__item"><code>.dialog__date</code> - класс даты диалога;</li>
+        <li class="list__item"><code>.dialog__date-separator</code> - класс даты-разделителя старых сообщений от новых;</li>
+        <li class="list__item"><code>.dialog__message</code> - класс сообщения диалога;</li>
+        <li class="list__item"><code>.dialog__message_in</code> - модификатор исходящего сообщения;</li>
+        <li class="list__item"><code>.dialog__message_out</code> - модификатор входящего сообщения;</li>
+        <li class="list__item"><code>.dialog__name</code> - класс имени отправителя;</li>
+        <li class="list__item"><code>.dialog__item</code> - класс самого сообщения.</li>
+      </ul>
+        <dl class="definitions">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ date }}</dt>
+            <dd class="definitions__value"> - дата сообщения;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ newMessDate}}</dt>
+            <dd class="definitions__value"> - дата новых сообщений с разделителем;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ name }}</dt>
+            <dd class="definitions__value"> - имя отправителя;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ content }}</dt>
+            <dd class="definitions__value"> -содержимое сообщения.
+            </dd>
+          </div>
+          </dl>
+    </doc-info>
+
+    <doc-view height="700">
+      <div class="dialog">
+        <div class="dialog__date">01.05.2021</div>
+        <div class="dialog__message dialog__message_in">
+          <div class="dialog__item">
+            <p class="content__paragraph">Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. </p>
+          </div>
+        </div>
+        <div class="dialog__message dialog__message_out">
+          <div class="dialog__name">Кирилл Синицын</div>
+          <div class="dialog__item">
+            <p class="content__paragraph">Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. </p>
+          </div>
+        </div>
+        <div class="dialog__date">
+          <div class="dialog__date-separator">01.05.2021</div>
+        </div>
+        <div class="dialog__message dialog__message_out dialog__message_gray">
+          <div class="dialog__name">Кирилл Синицын</div>
+          <div class="dialog__item">
+            <p class="content__paragraph">Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. Хотелось бы видеть на сайте больше информации в разделе N, чтобы был более активный контакт с соискателями. </p>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="dialog">
+        <div class="dialog__date">{{ date }}</div>
+        <div class="dialog__message dialog__message_in">
+          <div class="dialog__name">{{ name }}</div>
+          <div class="dialog__item">
+            {{ content }}
+          </div>
+        </div>
+        <div class="dialog__date">
+          <div class="dialog__date-separator">{{ newMessDate}}</div>
+        </div>
+        <div class="dialog__message dialog__message_out">
+          <div class="dialog__name">{{ name }}</div>
+          <div class="dialog__item">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+</doc-component>

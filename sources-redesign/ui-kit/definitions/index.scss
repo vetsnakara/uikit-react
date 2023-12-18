@@ -1,0 +1,118 @@
+@use "sass:math";
+@use "../../functions";
+
+$color__key: #52575C !default;
+$color_reverse: #52575C !default;
+$gap: functions.px(10) !default;
+
+.definitions {
+
+  &__value,
+  &__key {
+    display: inline;
+    vertical-align: top;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: $gap * 0.4;
+  }
+
+  &__key {
+    color: $color__key;
+    font-weight: 600;
+  }
+
+  &:not(&_row-table):not(&_row) &__value:before {
+    content: "\2009";
+  }
+
+  &_row-table {
+    display: table;
+    margin: 0;
+    width: 100%;
+  }
+
+  &_row-table &__item {
+    display: table-row;
+    margin: 0;
+  }
+
+  &_row-table &__item:not(:first-child) &__key,
+  &_row-table &__item:not(:first-child) &__value {
+    padding-top: functions.px(15);
+  }
+
+  &_row-table &__key {
+    max-width: functions.px(300);
+    word-break: normal;
+  }
+
+  &_fix-width-150 &__key {
+    max-width: functions.px(150);
+    width: functions.px(150);
+  }
+
+  &_fix-width-200 &__key {
+    max-width: functions.px(200);
+    width: functions.px(200);
+  }
+
+  &_fix-width-250 &__key {
+    max-width: functions.px(250);
+    width: functions.px(250);
+  }
+
+  &_fix-width-300 &__key {
+    max-width: functions.px(300);
+    width: functions.px(300);
+  }
+
+  &_row-table &__key,
+  &_row-table &__value {
+    display: table-cell;
+    margin: 0;
+  }
+
+  &_row-table &__value {
+    padding-left: functions.px(15);
+  }
+
+  @media (max-width: functions.px(575)) {
+
+    &_row-table &__item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: $gap;
+    }
+
+    &_row-table &__key {
+      margin-bottom: math.div($gap, 2);
+    }
+
+    &_row-table &__value {
+      padding-left: 0;
+    }
+  }
+
+  &_row &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_row &__key {
+    margin-bottom: math.div($gap, 2);
+  }
+
+  &_row &__item:not(:last-child) {
+    margin-bottom: $gap * 1.5;
+  }
+
+  &_reverse &__key {
+    color: $color_reverse;
+    font-weight: 400;
+  }
+
+  &_reverse &__value {
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,60 @@
+<doc-component name="Дата / Date" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/Дизайн-система?node-id=287%3A0">
+
+  <doc-tab name="Default">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.date-preview</code> - класс даты превью.</li>
+      </ul>
+      <p class="content__paragraph"><strong>datetime="YYYY-MM-DD"</strong> атрибут даты; <br>
+        <strong>{{ content }}</strong> - здесь дата выводиться текстом.
+      </p>
+    </doc-info>
+
+    <doc-view height="300">
+      <time class="date-preview" datetime="2020-05-27">
+        Дата публикации: 27.05.2020
+      </time>
+    </doc-view>
+
+    <doc-code>
+      <time class="date-preview" datetime="YYYY-MM-DD">
+        {{ content }}
+      </time>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Дата уменьшенная">
+
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.date-preview</code> - класс даты превью;</li>
+        <li class="list__item"><code>.date-preview_small</code> - класс уменьшенного превью даты.</li>
+      </ul>
+      <dl class="definitions">
+      <div class="definitions__item">
+        <dt class="definitions__key">datetime="YYYY-MM-DD"</dt>
+        <dd class="definitions__value">атрибут даты; 
+        </dd>
+      </div>
+      <div class="definitions__item">
+        <dt class="definitions__key">{{ content }}</dt>
+        <dd class="definitions__value">- здесь дата выводиться текстом.
+        </dd>
+      </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <time class="date-preview date-preview_small" datetime="2020-05-27">
+        Дата публикации: 27.05.2020
+      </time>
+    </doc-view>
+
+    <doc-code>
+      <time class="date-preview date-preview_small" datetime="YYYY-MM-DD">
+        {{ content }}
+      </time>
+    </doc-code>
+  </doc-tab>
+
+</doc-component>

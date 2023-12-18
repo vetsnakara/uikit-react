@@ -1,0 +1,38 @@
+@use "../../functions";
+
+$border: #CACCCF !default;
+$background__amount: #0E65B7 !default;
+$font-size-smaller: functions.px(12) !default;
+
+.bargraph {
+  border-bottom: functions.px(1) solid $border;
+  border-left: functions.px(1) solid $border;
+  overflow: hidden;
+
+  &__item {
+    margin: functions.px(10) 0;
+    padding-right: functions.px(35);
+  }
+
+  &__label {
+    font-size: $font-size-smaller;
+    padding: 0 functions.px(10);
+  }
+
+  &__amount {
+    align-items: center;
+    background: $background__amount;
+    border-radius: 0 functions.px(5) functions.px(5) 0;
+    display: flex;
+    height: functions.px(20);
+
+    &::after {
+      content: attr(data-amount);
+      font-size: $font-size-smaller;
+      font-weight: 700;
+      margin-left: 100%;
+      padding-left: functions.px(5);
+      white-space: nowrap;
+    }
+  }
+}

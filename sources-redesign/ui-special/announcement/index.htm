@@ -1,0 +1,46 @@
+<doc-component name="Объявление о технических работах на главной" link="">
+    <doc-tab name="Default">
+        <doc-info> Объявление о технических работах на главной </doc-info>
+
+        <doc-view>
+            <div class="announcement">
+                <div class="row">
+                    <div class="col-auto">
+                        <svg class="icon icon_s announcement__icon">
+                            <use href="uikit/icon/icons.svg#round-warning" />
+                        </svg>
+                    </div>
+                    <div class="col mb-2">
+                        <p class="announcement__text">{{ plannedWorkMessage }}</p>
+                        <p class="announcement__text">{{ plannedWorkMessage }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col announcement__links">
+                        <a href="#" class="link link_bold">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </doc-view>
+
+        <doc-code>
+            <div class="announcement">
+                <div class="row">
+                    <div class="col-auto">
+                        <svg class="icon icon_s announcement__icon">
+                            <use href="/assets/redesign-theme/uikit/icon/icons.svg#round-warning" />
+                        </svg>
+                    </div>
+                    <div class="col mb-2">
+                        <p class="announcement__text">{{ plannedWorkMessage }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col announcement__links">
+                        <a href="#" class="link link_bold">{{ plannedWorkLink }}</a>
+                    </div>
+                </div>
+            </div>
+        </doc-code>
+    </doc-tab>
+</doc-component>

@@ -1,0 +1,247 @@
+@use "sass:math";
+
+@use "functions";
+
+@use "images" as *;
+
+@use "sass:color";
+
+$gap: functions.px(10) !default;
+$background-color: #FFFFFF !default;
+$background-color__partner-logo: #FFFFFF !default;
+$first-bgimage-size: functions.px(763);
+$second-bgimage-size: functions.px(788);
+$width__button: functions.px(200);
+$background-size__partner: functions.px(170);
+$title-font-exlarge: functions.px(54) !default;
+$title-font-large: functions.px(38) !default;
+$title-font-exmedium: functions.px(34) !default;
+$title-font-medium: functions.px(28) !default;
+$title-font-small: functions.px(24);
+$box-shadow__card: functions.px(6) functions.px(38) functions.px(33) rgba(0, 0, 0, 0.07);
+
+.rbg-landing {
+  background-color: $background-color;
+  margin: $gap * -1.5 0 0;
+  padding: 0;
+
+  @media (min-width: functions.px(576)) {
+    margin: $gap * -1.5 $gap * -1.5 $gap * -7;
+  }
+
+  &__first-section {
+    padding: $gap * 4 0;
+
+    @media (min-width: functions.px(576)) {
+      background-image: url("rbg-landing/rbg_landind_bg1.svg");
+      background-position: calc(50% + #{math.div($first-bgimage-size, 3.5)}) 34%;
+      background-repeat: no-repeat;
+      background-size: auto;
+      padding: $gap * 4 $gap * 1.5;
+    }
+
+    @media (min-width: functions.px(768)) {
+      background-position: calc(50% + #{math.div($first-bgimage-size, 3.8)}) 32%;
+    }
+
+    @media (min-width: functions.px(1024)) {
+      background-position: calc(50% + #{math.div($first-bgimage-size, 1.5)}) -10%;
+    }
+  }
+
+  @media (min-width: functions.px(576)) {
+
+    &__second-section {
+      padding: 0 $gap * 1.5;
+    }
+  }
+
+  &__third-section {
+    background-image: url("rbg-landing/rbg_landind_bg2.png");
+    background-position: calc(50% - #{math.div($second-bgimage-size, 10)}) top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: $gap * 14 0 $gap * 7;
+
+    @media (min-width: functions.px(576)) {
+      background-position: calc(50% - #{math.div($second-bgimage-size, 6)}) top;
+      background-size: auto;
+      padding: $gap * 15 $gap * 1.5 $gap * 10;
+    }
+
+    @media (min-width: functions.px(768)) {
+      background-position: calc(50% - #{math.div($second-bgimage-size, 7)}) top;
+    }
+
+    @media (min-width: functions.px(1024)) {
+      background-position: calc(10% - #{math.div($second-bgimage-size, 2)}) top;
+    }
+
+    @media (min-width: functions.px(1240)) {
+      background-position: calc(50% - #{math.div($second-bgimage-size, 2)}) top;
+    }
+
+    @if (not $images) {
+      background-image: none;
+    }
+  }
+
+  &__fourth-section {
+    padding-bottom: $gap * 6;
+
+    @media (min-width: functions.px(576)) {
+      padding: 0 $gap * 1.5 $gap * 12;
+    }
+  }
+
+  &__logo {
+    margin-bottom: $gap * 7;
+  }
+
+  &__country-icon {
+    margin-top: $gap * 2;
+
+    @if (not $images) {
+      display: none;
+    }
+  }
+
+  &__wheel {
+    transform: rotate(0deg);
+    transform-box: content-box;
+    transform-origin: center;
+    transition: 0.3s;
+  }
+
+  &__country-icon:hover &__wheel {
+    transform: rotate(300deg);
+  }
+
+  &__title {
+    font-size: $title-font-exmedium;
+    font-weight: 700;
+    line-height: 1.29;
+    margin-bottom: $gap * 3;
+
+    @media (min-width: functions.px(576)) {
+      font-size: $title-font-exlarge;
+      line-height: 1.18;
+    }
+  }
+
+  &__subtitle {
+    font-size: $title-font-medium;
+    font-weight: 700;
+    line-height: 1.36;
+    margin-bottom: $gap * 3;
+
+    @media (min-width: functions.px(576)) {
+      font-size: $title-font-large;
+      line-height: 1.05;
+    }
+  }
+
+  &__blocktitle {
+    font-size: $title-font-small;
+    font-weight: 500;
+    margin-bottom: $gap * 3;
+
+    @media (min-width: functions.px(576)) {
+      font-size: $title-font-medium;
+      line-height: 1.36;
+    }
+  }
+
+  &__button {
+    width: 100%;
+
+    @media (min-width: functions.px(576)) {
+      width: $width__button;
+    }
+  }
+
+  &__block {
+    height: 50vw;
+
+    @media (min-width: functions.px(576)) {
+      height: 71.6vw;
+    }
+
+    @media (min-width: functions.px(992)) {
+      height: auto;
+    }
+  }
+
+  &__video {
+    margin-top: $gap * 7;
+
+    @media (min-width: functions.px(576)) {
+      margin-top: $gap * 13;
+    }
+  }
+
+  &__partner {
+    margin-top: functions.px(60);
+  }
+
+  &__partner-one {
+    background: url("rbg-landing/logo_bw1.png") no-repeat;
+    background-size: $background-size__partner;
+  }
+
+  &__partner-two {
+    background: url("rbg-landing/logo_bw2.png") no-repeat;
+    background-size: $background-size__partner;
+  }
+
+  &__partner-three {
+    background: url("rbg-landing/logo_bw3.png") no-repeat;
+    background-size: $background-size__partner;
+  }
+
+  &__partner-four {
+    background: url("rbg-landing/logo_bw4.png") no-repeat;
+    background-size: $background-size__partner;
+  }
+
+  &__partner-five {
+    background: url("rbg-landing/logo_bw5.png") no-repeat;
+    background-size: $background-size__partner;
+  }
+
+  &__partner-six {
+    background: url("rbg-landing/logo_bw6.png") no-repeat;
+    background-size: $background-size__partner;
+  }
+
+  &__partner-seven {
+    background: url("rbg-landing/logo_bw7.png") no-repeat;
+    background-size: $background-size__partner;
+  }
+
+  &__partner-logo {
+    background-color: $background-color__partner-logo;
+    opacity: 0;
+    transition: opacity 1s ease;
+    width: $background-size__partner;
+  }
+
+  &__partner:hover &__partner-logo {
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+
+  & .card_rbg-landing {
+    border: 0;
+    box-shadow: $box-shadow__card;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 $gap * -1.5;
+    padding-bottom: $gap * 5;
+
+    @media (min-width: functions.px(576)) {
+      margin: 0;
+    }
+  }
+}

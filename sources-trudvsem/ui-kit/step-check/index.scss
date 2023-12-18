@@ -1,0 +1,120 @@
+$color: #25282B !default;
+$color-light: #A0A4A8 !default;
+$color-disabled: #E8E8E8 !default;
+$border: #0E65B7 !default;
+$color-white: #FFFFFF !default;
+$color-resume-title: #52575C !default;
+$size: 38px !default;
+$gap: 10px !default;
+$font: 14px !default;
+
+.step-check {
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    min-height: $gap * 6.9;
+    text-decoration: none;
+
+    &:not(:last-child) {
+      margin-bottom: 6px;
+    }
+  }
+
+  &__item_disabled &__label  {
+    border-color: $color-disabled;
+    color: $color-disabled;
+    stroke: $color-disabled;
+
+    &::after {
+      background-color: $color-disabled;
+    }
+  }
+
+  &__item_disabled &__text {
+    display: none;
+  }
+
+  &__item_disabled &__check,
+  &__item_active &__check {
+    transform: rotate(-45deg)    translate(2px,-3px);
+  }
+
+  &__item:not(:last-child) &__label {
+
+    &::after {
+      content: '';
+    }
+  }
+
+  &__label {
+    width: $size;
+    height: $size;
+    margin-right: 15px;
+    flex: 0 0 auto;
+    font-size: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $border;
+    stroke: $border;
+    border: 3px solid $border;
+    box-sizing: border-box;
+
+    &::after {
+      width: 1px;
+      height: calc(100% - 40px);
+      top: 42px;
+      left: $size / 2;
+      position: absolute;
+      background-color: $border;
+      z-index: 1;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 38px;
+    font-size: $font;
+    font-weight: 500;
+  }
+
+  &__title {
+    color: $color;
+  }
+
+  &__text {
+    color: $color-light;
+  }
+
+  &__check {
+    fill: none;
+    width: 24px;
+    height: 24px;
+  }
+
+  &_fill &__item_active &__label  {
+    color: $border;
+    stroke: $border;
+    background-color: transparent;
+
+    &:after {
+      background-color: $color-disabled;
+    }
+  }
+
+  &_fill &__label {
+    margin-bottom: $gap * 1.5;
+    background-color: $border;
+    stroke: $color-white;
+    color: $color-white;
+  }
+
+  &_fill &__item_disabled &__label {
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,105 @@
+@use "sass:math";
+
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$radius: functions.px(4) !default;
+$border-bottom__item: #E8E8E8 !default;
+$border: #0E65B7 !default;
+
+.ib-text-widget {
+  border: functions.px(1) solid $border;
+  border-radius: $radius;
+  min-height: functions.px(200);
+  padding: $gap * 1.5;
+
+  &__logo {
+    display: inline-block;
+    margin-bottom: $gap * 1.5;
+  }
+
+  &__wrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 -#{$gap};
+  }
+
+  &__item {
+    box-sizing: border-box;
+    margin-bottom: $gap * 2.5;
+    min-width: functions.px(270);
+    padding: 0 $gap;
+    width: 100%;
+
+    &:not(:last-child)::after {
+      border-bottom: functions.px(1) solid $border-bottom__item;
+      content: "";
+      display: block;
+      height: 1px;
+      margin-top: $gap * 2.5;
+    }
+  }
+
+  &_two-columns &__item::after,
+  &_three-columns &__item::after {
+    display: none;
+  }
+
+  &_two-columns &__item {
+    margin-bottom: $gap * 5;
+    width: 50%;
+  }
+
+  &_three-columns &__item {
+    margin-bottom: $gap * 5;
+    width: 33.333%;
+  }
+
+  &_two-columns &__icon,
+  &_three-columns &__icon {
+    display: none;
+  }
+
+  &_two-columns &__icon_small,
+  &_three-columns &__icon_small {
+    display: inherit;
+  }
+
+  &__name {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    flex: 1 1 auto;
+    font-weight: 600;
+    height: functions.px(40);
+    -webkit-line-clamp: 2;
+    line-height: 1.25;
+    margin-bottom: $gap * 0.5;
+    overflow: hidden;
+  }
+
+  &__wrapper-in-item {
+    align-items: flex-end;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  &__salary {
+    padding: math.div($gap, 2) 0 math.div($gap, 2) 0;
+  }
+
+  &__date {
+    flex: 1 1 auto;
+  }
+
+  &__icon {
+    align-self: end;
+    flex: 0 0 functions.px(50);
+    padding-left: $gap;
+
+    &_small {
+      display: none;
+      flex: 0 0 functions.px(35);
+    }
+  }
+}

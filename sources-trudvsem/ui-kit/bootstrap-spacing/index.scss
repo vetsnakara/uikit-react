@@ -1,0 +1,64 @@
+// Margin
+@use "../bootstrap/index" as bootstrap;
+$grid-breakpoints: bootstrap.$grid-breakpoints;
+$spacers: bootstrap.$spacers;
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include bootstrap.media-breakpoint-up($breakpoint) {
+    $infix: bootstrap.breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (margin: m) {
+      @each $size, $length in $spacers {
+
+        .#{$abbrev}#{$infix}-#{$size}:not(:root) {
+          #{$prop}: $length;
+        }
+
+        .#{$abbrev}t#{$infix}-#{$size}:not(:root),
+        .#{$abbrev}y#{$infix}-#{$size}:not(:root) {
+          #{$prop}-top: $length;
+        }
+
+        .#{$abbrev}r#{$infix}-#{$size}:not(:root),
+        .#{$abbrev}x#{$infix}-#{$size}:not(:root) {
+          #{$prop}-right: $length;
+        }
+
+        .#{$abbrev}b#{$infix}-#{$size}:not(:root),
+        .#{$abbrev}y#{$infix}-#{$size}:not(:root) {
+          #{$prop}-bottom: $length;
+        }
+
+        .#{$abbrev}l#{$infix}-#{$size}:not(:root),
+        .#{$abbrev}x#{$infix}-#{$size}:not(:root) {
+          #{$prop}-left: $length;
+        }
+      }
+    }
+  }
+}
+
+// Some special margin utils
+.m-auto {
+  margin: auto;
+}
+
+.mt-auto,
+.my-auto {
+  margin-top: auto;
+}
+
+.mr-auto,
+.mx-auto {
+  margin-right: auto;
+}
+
+.mb-auto,
+.my-auto {
+  margin-bottom: auto;
+}
+
+.ml-auto,
+.mx-auto {
+  margin-left: auto;
+}

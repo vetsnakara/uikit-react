@@ -1,0 +1,18 @@
+<doc-component name="Якорь">
+  <doc-tab name="Default">
+    <doc-info>
+      <p>.anchor и id не создается отдельная нода, а вешается на уже существующую, к той к которой хотим перейти, которая в свою очередь не должна быть прямым потомком флекс контейнера</p>
+    </doc-info>
+
+    <doc-code>
+      <div class="card card_flexible">
+        <div class="card__body">
+          <h2 class="content__subtitle anchor" id="{{ id }}"></h2>
+        </div>
+      </div>
+      <div class="card">
+        <h2 class="content__subtitle anchor" id="{{ id }}"></h2>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

@@ -1,0 +1,63 @@
+$grid-gap: 10px !default;
+$background: rgb(31, 53, 136) !default;
+$text: rgb(255, 255, 255) !default;
+$text-accent: rgb(255, 66, 82) !default;
+$border-color: rgb(249, 249, 251) !default;
+
+$font-size-big: 22px !default;
+$font-size-giant: 24px !default;
+
+.blue-banner {
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: $grid-gap * 6 $grid-gap * 2;
+  background-color: $background;
+  color: $text;
+
+  &__inner {
+    border: 1px solid $border-color;
+    border-right: 0;
+    border-left: 0;
+    padding: $grid-gap * 2 $grid-gap;
+  }
+
+  &__title {
+    line-height: 1;
+    font-size: $font-size-giant;
+    margin-bottom: $grid-gap * 2;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+  }
+
+  &__value {
+    font-weight: bold;
+    margin: $grid-gap;
+    color: $text-accent;
+    font-size: $font-size-big * 3;
+  }
+
+  &__description {
+    margin: $grid-gap;
+  }
+
+  &__accent-text {
+    color: $text-accent;
+    font-size: $font-size-big
+  }
+
+  @media (max-width: 490px) {
+
+    &__counter {
+      flex-direction: column;
+    }
+
+    &__description {
+      text-align: center;
+    }
+  }
+
+}

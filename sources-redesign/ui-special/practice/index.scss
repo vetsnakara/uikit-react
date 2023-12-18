@@ -1,0 +1,45 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$background__button-student_choosen: #EDF5FC !default;
+$background__button-student: #FFFFFF !default;
+$background__button-student_disabled: #F9F9FA !default;
+
+.practice {
+
+  &_margin-small {
+    margin-right: $gap * -2;
+  }
+
+  &_margin-big {
+    margin-right: $gap * -1.5;
+  }
+
+  &__button-student {
+    align-items: center;
+    background-color: $background__button-student;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    margin: 0 $gap * -3;
+    padding: $gap * 3;
+    text-align: left;
+    width: calc(100% + $gap * 6);
+
+    &_choosen {
+      background-color: $background__button-student_choosen;
+    }
+
+    &:disabled {
+      background: $background__button-student_disabled;
+      cursor: normal;
+      pointer-events: none;
+    }
+  }
+
+  &__avatar-50 {
+    height: functions.px(50);
+    margin-right: $gap;
+    width: functions.px(50);
+  }
+}

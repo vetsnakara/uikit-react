@@ -1,0 +1,432 @@
+<doc-component name="Выбор / Select" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=77%3A3">
+
+  <doc-tab name="Обычный">
+    <doc-info>
+      <p>Для соответствия дизайну расширены набор некоторых стандартных опция bootstrap-select и добавлена одна кастомная.
+        Для ручной инициализации рекомендуется использовать функцию <code>window.initBootstrapSelect(select, options)</code>;
+      </p>
+      <p>Размеры задаются, согластно требованиям дизайн системы (https://docs.google.com/document/d/1FENi0w1ghZ_2ELTP2oHEC6WXDL77qNrdA-IACVFicL0/edit)
+        <ul>
+          <li>Минимальная ширина дропдуна, равна ширине селекта.</li>
+          <li>Максимальная - 710px.</li>
+          <li>Если укладываемся в диапазон, ширину задаёт контент</li>
+        </ul>
+      </p>
+      <ul>
+        <li><code>select</code> - jquery, node или селектор селекта</li>
+        <li><code>options</code> - дополнительные опции которые не заданны через data-атрибуты</li>
+      </ul>
+      <h3>Доп настройки (опции относящиеся к мультиселекту смотрите в соответствующем разделе):</h3>
+      <p>
+        Стандартная опция selectedTextFormat <code>(data-selected-text-format)</code> получила новые варианты настройки
+        (title - опция title или header):
+      <ul>
+        <li>title:label - заголовок и лейбл выбранного варианта</li>
+        <li>title:count - заголовок и количество выбранных вариантов имеет смысл только для мультиселекта</li>
+        <li>label:count - лейбл первого выбранного варианта и количество выбранных</li>
+      </ul>
+      <p>
+        Кастомная опция selectedDivider (data-selected-divider). В мультиселекте выбранные варианты отображаются
+        сверху это опция добавляет линию отсечку под ними.
+      </p>
+      <p>
+        По умолчанию дропдаун селекта находится в body, но возможны ситуации, когда происходит переинициализация селекта
+        и дропдаун оказывается на уровне самого селекта, что может приводить к обрезанию дропдауна. В таких случаях нужно
+        принудительно проставить атрибут data-container="body" на сам тэг select.
+      </p>
+      <p>
+        <code>data-size</code> на теге <code>select</code> регулирует колличество отображаемых пунктов в выпадающем списке
+      </p>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="select">
+            <select class="select__control" name="select">
+              <optgroup label="Тест">
+                <option value="1">Все источники</option>
+                <option value="2">Вакансии кадрового агентства</option>
+                <option value="3">Вакансия работодателя</option>
+              </optgroup>
+              <option value="4" selected>Вакансии службы занятости</option>
+              <option value="5" disabled>Menu item</option>
+              <option value="6" disabled>Menu item</option>
+            </select>
+            <span class="select__title">Обычный селект</span>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="select">
+        <select class="select__control" name="select">
+          <option>{{ ungrouped element }}</option>
+          <optgroup label="{{ group name }}">
+            <option>{{ element }}</option>
+          </optgroup>
+        </select>
+        <span class="select__title">{{ label }}</span>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="С ошибкой">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="select select_error">
+            <select class="select__control" name="select">
+              <optgroup label="Тест">
+                <option value="1">Все источники</option>
+                <option value="2">Вакансии кадрового агентства</option>
+                <option value="3">Вакансия работодателя</option>
+              </optgroup>
+              <option value="4">Вакансии службы занятости</option>
+              <option value="5">Menu item</option>
+              <option value="6">Menu item</option>
+            </select>
+            <span class="select__title">Селект с ошибкой</span>
+            <span class="select__error">Заполните поле</span>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+    </doc-code>
+  </doc-tab>
+  <doc-tab name="Обязательнй">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="select select_required">
+            <select class="select__control" name="select" required>
+              <optgroup label="Тест">
+                <option value="1">Все источники</option>
+                <option value="2">Вакансии кадрового агентства</option>
+                <option value="3">Вакансия работодателя</option>
+              </optgroup>
+              <option value="4">Вакансии службы занятости</option>
+              <option value="5">Menu item</option>
+              <option value="6">Menu item</option>
+            </select>
+            <span class="select__title">Обязательный селект</span>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+    </doc-code>
+  </doc-tab>
+  <doc-tab name="Мультиселект">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="select">
+            <select class="select__control" name="select" title="Сфера" data-selected-divider="true" data-selected-text-format="title:count" data-header="Сфера" multiple>
+              <optgroup label="Тест">
+                <option value="1">Маркетинг</option>
+                <option value="2">Продажи</option>
+                <option value="3">Управление</option>
+              </optgroup>
+              <option value="4">Политика</option>
+              <option value="5">Ассенизация</option>
+            </select>
+            <span class="select__title">Мультиселект</span>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="select">
+        <select class="select__control" name="select" title="Сфера" data-selected-divider="true" data-selected-text-format="title:count" data-header="{{label}}" multiple>
+          <option>{{ elementMulti }}</option>
+        </select>
+        <span class="select__title">{{multi}}</span>
+      </label>
+    </doc-code>
+
+    <doc-code>
+      <label class="select">
+        <select class="select__control" name="select" title="Сфера" data-selected-text-format="label:count" data-header="Сфера" multiple>
+          <option>{{ elementMulti }}</option>
+        </select>
+        <span class="select__title">{{multi}}</span>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="С поиском">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="select">
+            <select class="select__control" name="select" data-live-search="true">
+              <optgroup label="Тест">
+                <option value="1">Все источники</option>
+                <option value="2">Вакансии кадрового агентства</option>
+                <option value="3">Вакансия работодателя</option>
+              </optgroup>
+              <option value="4">Вакансии службы занятости</option>
+              <option value="5">Menu item</option>
+              <option value="6">Menu item</option>
+            </select>
+            <span class="select__title">Селект с поиском</span>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="select">
+        <select class="select__control" name="select" data-live-search="true">
+          <option>{{ ungroupedElementSearch }}</option>
+          <optgroup label="{{ group name }}">
+            <option>{{ elementSearch }}</option>
+          </optgroup>
+        </select>
+        <span class="select__title">{{ labelSearch }}</span>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Без заголовка">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="select select_closeable">
+            <select class="select__control" name="select">
+              <optgroup label="Тест">
+                <option value="1">Все источники</option>
+                <option value="2">Вакансии кадрового агентства</option>
+                <option value="3">Вакансия работодателя</option>
+              </optgroup>
+              <option value="4">Вакансии службы занятости</option>
+              <option value="5">Menu item</option>
+              <option value="6">Menu item</option>
+            </select>
+            <button class="button button_plain button_icon select__close" type="button" aria-label="Закрыть">
+              <svg class="icon button__icon select__close-icon">
+                <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+              </svg>
+            </button>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="select select_closeable">
+        <select class="select__control" name="select">
+          <option>{{ ungrouped element }}</option>
+          <optgroup label="{{ group name }}">
+            <option>{{ element }}</option>
+          </optgroup>
+        </select>
+        <button class="button button_plain button_icon select__close" type="button" aria-label="Закрыть">
+          <svg class="icon button__icon select__close-icon">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Без заголовка с ошибкой">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="select select_closeable select_closeable_error">
+            <select class="select__control" name="select">
+              <optgroup label="Тест">
+                <option value="1">Все источники</option>
+                <option value="2">Вакансии кадрового агентства</option>
+                <option value="3">Вакансия работодателя</option>
+              </optgroup>
+              <option value="4">Вакансии службы занятости</option>
+              <option value="5">Menu item</option>
+              <option value="6">Menu item</option>
+            </select>
+            <button class="button button_plain button_icon select__close" type="button" aria-label="Закрыть">
+              <svg class="icon button__icon select__close-icon">
+                <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+              </svg>
+            </button>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="select select_closeable select_closeable_error">
+        <select class="select__control" name="select">
+          <option>{{ ungrouped element }}</option>
+          <optgroup label="{{ group name }}">
+            <option>{{ element }}</option>
+          </optgroup>
+        </select>
+        <button class="button button_plain button_icon select__close" type="button" aria-label="Закрыть">
+          <svg class="icon button__icon select__close-icon">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Без оформления">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="select select_no-decor">
+            <select class="select__control" name="select">
+              <optgroup label="Тест">
+                <option value="1">Все источники</option>
+                <option value="2">Вакансии кадрового агентства</option>
+                <option value="3">Вакансия работодателя</option>
+              </optgroup>
+              <option value="4">Вакансии службы занятости</option>
+              <option value="5">Menu item</option>
+              <option value="6">Menu item</option>
+            </select>
+            <span class="select__title">Селект без декора</span>
+            <span class="select__label">Искать по:</span>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="select select_no-decor">
+        <select class="select__control" name="select">
+          <option>{{ ungrouped element }}</option>
+          <optgroup label="{{ group name }}">
+            <option>{{ element }}</option>
+          </optgroup>
+        </select>
+        <span class="select__title">{{ labelSearch }}</span>
+        <span class="select__label">{{ labelSearch }}</span>
+      </label>
+    </doc-code>
+  </doc-tab>
+  <doc-tab name="Плагин добавления значений">
+    <doc-info>
+      <p class="content__paragraph">
+        Функция добавления отсутствующего значения в список select. С помощью плагина для библиотеки bootstrap-select,
+        плагин выполнен в видел библиотеки компонента jquery. Должен быть проинициализирован после bootstrap-select.
+        У bootstrap-select обязательно должна быть включена функция liveSearch/
+      </p>
+      <pre class="code" tabindex="0">
+            <code>
+    $(Selector).addSelectPicker({
+        appendHandler: function (element, value) {
+            element.append('<option value="'+_.uniqueId('option-item-')+'">'+value+'</option>');
+        }
+    });
+            </code>
+        </pre>
+      <p class="content__paragraph">
+        Опции библиотеки:
+      <ul class="list">
+        <li class="list__item">appendHandler {function} - функция которая добавляет элемент option в селект, тут можно генерировать id нового элемента и обеспечивать синхронизацию с бекендом</li>
+        <li class="list__item">label {string} - лебл кнопки добавить</li>
+        <li class="list__item">selectAfterAppend {boolean} - параметр включающий/отключающий автовыбор нового элемента в select, по умолчанию true</li>
+      </ul>
+      </p>
+      <p class="content__paragraph">
+        Для удаления инстанса плагина, например, реинициализация bootstrap-select, надо вызвать destroy метод плагина.
+      </p>
+      <pre class="code" tabindex="0">
+            <code>
+    $(selector).data("AddBootstrapSelect").destroy();
+             </code>
+        </pre>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-5">
+          <label class="select">
+            <select id="select1" class="select__control" name="select" data-live-search="true">
+              <option value="5">Menu item 1</option>
+              <option value="6">Menu item 2</option>
+              <option value="7">Menu item 3</option>
+              <option value="8">Menu item 4</option>
+            </select>
+            <span class="select__title">Обычный селект</span>
+          </label>
+          <hr class="separator my-2">
+          <label class="select">
+            <select id="select2" class="select__control" name="select" multiple data-live-search="true">
+              <option value="5">Menu item 1</option>
+              <option value="6">Menu item 2</option>
+              <option value="7">Menu item 3</option>
+              <option value="8">Menu item 4</option>
+            </select>
+            <span class="select__title">Мультиселект</span>
+          </label>
+          <hr class="separator my-2">
+          <label class="select">
+            <select id="select3" class="select__control" name="select" multiple data-live-search="true" data-actions-box="true">
+              <option value="5">Menu item 1</option>
+              <option value="6">Menu item 2</option>
+              <option value="7">Menu item 3</option>
+              <option value="8">Menu item 4</option>
+            </select>
+            <span class="select__title">Мультиселект c экшенбаром</span>
+          </label>
+        </div>
+      </div>
+      <script>
+        (function () {
+          $("#select1").addSelectPicker();
+          $("#select2").addSelectPicker();
+          $("#select3").addSelectPicker();
+        })()
+      </script>
+    </doc-view>
+
+    <doc-code>
+      <label class="select">
+        <select class="select__control" name="select">
+          <option>{{ ungrouped element }}</option>
+          <optgroup label="{{ group name }}">
+
+            <option>{{ element }}</option>
+          </optgroup>
+        </select>
+        <span class="select__title">{{ label }}</span>
+      </label>
+      <script>
+          (function () {
+            $("{селектор}").addSelectPicker({ опции });
+          })()
+      </script>
+    </doc-code>
+  </doc-tab>
+</doc-component>

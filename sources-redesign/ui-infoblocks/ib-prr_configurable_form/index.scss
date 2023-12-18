@@ -1,0 +1,60 @@
+@use "sass:math";
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+
+$color: #014898 !default;
+$color_hover: #1E88DB !default;
+$color__input-help-text: #52575C !default;
+$font-size-smaller: functions.px(12) !default;
+
+.ib-prr_configurable_form {
+
+  .card a {
+    background: none;
+    border: none;
+    color: $color;
+    padding: 0;
+    // данные прилетают из стороннего сервиса, поэтому не можем обращаться к классу
+    text-align: left;
+    user-select: auto;
+
+    &:hover {
+      color: $color_hover;
+    }
+  }
+
+  &__input-help-text {
+    color: $color__input-help-text;
+    display: block;
+    font-size: $font-size-smaller;
+    // временно так, после согласовать подсказки под инпутами
+    grid-row: 3;
+    line-height: 1.333;
+    margin-top: $gap * 0.6;
+  }
+
+  &__definitions-single:not(:last-child) {
+    margin-bottom: $gap * 2;
+  }
+
+  // оперативные решения для обхода конфига и генератора
+
+  &__row > div:not([class*="col-"]) {
+    padding-left: $gap * 1.5;
+    padding-right: $gap * 1.5;
+  }
+
+  &__row .form__section,
+  .table .form__section {
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  &__row .form__section .form__description,
+  .table .form__section .form__description {
+    order: 2;
+    padding-left: 0;
+    padding-top: math.div($gap, 2);
+  }
+}

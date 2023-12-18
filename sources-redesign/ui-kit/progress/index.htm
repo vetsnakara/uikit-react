@@ -1,0 +1,56 @@
+<doc-component name="Прогресс / Progress">
+  <doc-tab name="Default">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.progress</code> - основной класс прогресса;</li>
+        <li class="list__item"><code>.progress_grid</code> - модификатор варианта отображения с заголовком слева;</li>
+        <li class="list__item"><code>.progress__title</code> - класс заголовка прогресса;</li>
+        <li class="list__item"><code>.progress__control</code> - класс полосы прогресса в value указывается его длина в соответствии с заполненностью. Когда заполненность становиться 100 - прогресс становится зелёным.</li>
+      </ul>
+			<dl class="definitions">
+			  <div class="definitions__item">
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ value }}</dt>
+				  <dd class="definitions__value"> - числовое значение прогресса;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ title }}</dt>
+				  <dd class="definitions__value"> - заголовок прогресса.
+				  </dd>
+				</div>
+			</dl>
+    </doc-info>
+
+    <doc-view>
+      <div style="padding-top: 10px;">
+        <div class="progress" data-value="64">
+          <p class="progress__title">Заполненность резюме</p>
+          <progress class="progress__control" max="100" value="64"></progress>
+        </div>
+        <hr class="separator my-2">
+        <div class="progress progress_grid" data-value="32">
+          <p class="progress__title">Заполненность резюме</p>
+          <progress class="progress__control" max="100" value="32"></progress>
+        </div>
+        <hr class="separator my-2">
+        <div class="progress progress_grid" data-value="100">
+          <p class="progress__title">Заполненность резюме</p>
+          <progress class="progress__control" max="100" value="100"></progress>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="progress" data-value="{{ value }}">
+        <p class="progress__title">{{ title }}</p>
+        <progress class="progress__control" max="100" value="{{ value }}"></progress>
+      </div>
+
+      <div class="progress progress_grid" data-value="{{ value }}">
+        <p class="progress__title">{{ title }}</p>
+        <progress class="progress__control" max="100" value="{{ value }}"></progress>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

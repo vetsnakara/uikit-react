@@ -1,0 +1,202 @@
+/react-uikit/sources-redesign/_functions.scss
+	01:01	error	Needless disable for "indentation"
+
+/react-uikit/sources-redesign/ui-infoblocks/ib-notification-banner-static/index.scss
+	20:2136	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-infoblocks/ib-questionnaire/index.scss
+	86:1188	error	Expected line length to be no more than 120 characters (max-line-length)
+	103:324	error	Expected line length to be no more than 120 characters (max-line-length)
+	118:257	error	Expected line length to be no more than 120 characters (max-line-length)
+	120:485	error	Expected line length to be no more than 120 characters (max-line-length)
+	136:633	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-infoblocks/ib-sorting/index.scss
+	11:191	error	Expected line length to be no more than 120 characters (max-line-length)
+	20:150	error	Expected line length to be no more than 120 characters (max-line-length)
+	75:156	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/avatar/index.scss
+	51:331	error	Expected line length to be no more than 120 characters (max-line-length)
+	53:272	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/button/index.scss
+	253:348	error	Expected line length to be no more than 120 characters (max-line-length)
+	269:407	error	Expected line length to be no more than 120 characters (max-line-length)
+	280:405	error	Expected line length to be no more than 120 characters (max-line-length)
+	293:352	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/card/index.scss
+	69:886	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/checkbox/index.scss
+	101:138	error	Expected line length to be no more than 120 characters (max-line-length)
+	111:134	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/dropdown/index.scss
+	21:191	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/image/index.scss
+	23:140	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/index.scss
+	300:121	error	Expected line length to be no more than 120 characters (max-line-length)
+	428:130	error	Expected line length to be no more than 120 characters (max-line-length)
+	583:131	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/input/index.scss
+	284:330	error	Expected line length to be no more than 120 characters (max-line-length)
+	286:122	error	Expected line length to be no more than 120 characters (max-line-length)
+	288:122	error	Expected line length to be no more than 120 characters (max-line-length)
+	303:332	error	Expected line length to be no more than 120 characters (max-line-length)
+	305:124	error	Expected line length to be no more than 120 characters (max-line-length)
+	307:124	error	Expected line length to be no more than 120 characters (max-line-length)
+	362:824	error	Expected line length to be no more than 120 characters (max-line-length)
+	384:196	error	Expected line length to be no more than 120 characters (max-line-length)
+	386:288	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/loader/index.scss
+	11:497	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/navigation/index.scss
+	40:121	error	Expected line length to be no more than 120 characters (max-line-length)
+	46:121	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/pagination/index.scss
+	76:137	error	Expected line length to be no more than 120 characters (max-line-length)
+	109:135	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/progress/index.scss
+	47:526	error	Expected line length to be no more than 120 characters (max-line-length)
+	49:134	error	Expected line length to be no more than 120 characters (max-line-length)
+	117:222	error	Expected line length to be no more than 120 characters (max-line-length)
+	139:222	error	Expected line length to be no more than 120 characters (max-line-length)
+	161:222	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/quote/index.scss
+	12:648	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/select/index.scss
+	39:185	error	Expected line length to be no more than 120 characters (max-line-length)
+	383:741	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/sidebar-menu/index.scss
+	29:124	error	Expected line length to be no more than 120 characters (max-line-length)
+	62:124	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/switch/index.scss
+	53:261	error	Expected line length to be no more than 120 characters (max-line-length)
+	82:259	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/table/index.scss
+	35:151	error	Expected line length to be no more than 120 characters (max-line-length)
+	93:159	error	Expected line length to be no more than 120 characters (max-line-length)
+	97:162	error	Expected line length to be no more than 120 characters (max-line-length)
+	116:161	error	Expected line length to be no more than 120 characters (max-line-length)
+	120:175	error	Expected line length to be no more than 120 characters (max-line-length)
+	127:161	error	Expected line length to be no more than 120 characters (max-line-length)
+	131:175	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/tabs-wrapper/index.scss
+	17:184	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/tabs/index.scss
+	39:185	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/tooltip/index.scss
+	122:311	error	Expected line length to be no more than 120 characters (max-line-length)
+	147:313	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/tree-nested/index.scss
+	33:211	error	Expected line length to be no more than 120 characters (max-line-length)
+	45:209	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/tree-structure/index.scss
+	86:216	error	Expected line length to be no more than 120 characters (max-line-length)
+	92:213	error	Expected line length to be no more than 120 characters (max-line-length)
+	101:214	error	Expected line length to be no more than 120 characters (max-line-length)
+	114:211	error	Expected line length to be no more than 120 characters (max-line-length)
+	133:406	error	Expected line length to be no more than 120 characters (max-line-length)
+	143:216	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/tree-table/index.scss
+	86:478	error	Expected line length to be no more than 120 characters (max-line-length)
+	120:615	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/tree/index.scss
+	81:214	error	Expected line length to be no more than 120 characters (max-line-length)
+	94:211	error	Expected line length to be no more than 120 characters (max-line-length)
+	103:270	error	Expected line length to be no more than 120 characters (max-line-length)
+	117:406	error	Expected line length to be no more than 120 characters (max-line-length)
+	141:216	error	Expected line length to be no more than 120 characters (max-line-length)
+	147:213	error	Expected line length to be no more than 120 characters (max-line-length)
+	155:272	error	Expected line length to be no more than 120 characters (max-line-length)
+	161:408	error	Expected line length to be no more than 120 characters (max-line-length)
+	171:187	error	Expected line length to be no more than 120 characters (max-line-length)
+	186:406	error	Expected line length to be no more than 120 characters (max-line-length)
+	197:216	error	Expected line length to be no more than 120 characters (max-line-length)
+	225:298	error	Expected line length to be no more than 120 characters (max-line-length)
+	241:294	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-kit/upload/index.scss
+	18:248	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/blind-panel/index.scss
+	110:196	error	Expected line length to be no more than 120 characters (max-line-length)
+	116:201	error	Expected line length to be no more than 120 characters (max-line-length)
+	124:209	error	Expected line length to be no more than 120 characters (max-line-length)
+	128:201	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/choose-photo/index.scss
+	32:278	error	Expected line length to be no more than 120 characters (max-line-length)
+	34:152	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/control-card/index.scss
+	14:149	error	Expected line length to be no more than 120 characters (max-line-length)
+	16:133	error	Expected line length to be no more than 120 characters (max-line-length)
+	38:149	error	Expected line length to be no more than 120 characters (max-line-length)
+	40:133	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/czn-avatar/index.scss
+	10:574	error	Expected line length to be no more than 120 characters (max-line-length)
+	12:505	error	Expected line length to be no more than 120 characters (max-line-length)
+	14:509	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/home/index.scss
+	570:312	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/index/index.scss
+	526:312	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/main-edge/index.scss
+	25:886	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/main-search-layout/index.scss
+	13:140	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/main/index.scss
+	87:924	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/map-elements/index.scss
+	131:191	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/mega-menu/index.scss
+	225:156	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/sorting-control/index.scss
+	16:191	error	Expected line length to be no more than 120 characters (max-line-length)
+	34:167	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/tag/index.scss
+	18:191	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/vacancy-sidebar/index.scss
+	51:183	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/videoprofessiogram/index.scss
+	81:412	error	Expected line length to be no more than 120 characters (max-line-length)
+
+/react-uikit/sources-redesign/ui-special/ya-share2/index.scss
+	21:712	error	Expected line length to be no more than 120 characters (max-line-length)
+	35:335	error	Expected line length to be no more than 120 characters (max-line-length)
+	42:189	error	Expected line length to be no more than 120 characters (max-line-length)

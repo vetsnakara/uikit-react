@@ -1,0 +1,591 @@
+<doc-component name="выбор фото" link="">
+  <doc-tab name="выбор фото">
+    <doc-info>
+      выбор фото
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <figure class="photo mb-3">
+          <button class="photo__button" id="#photo1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="photo__img" src="https://via.placeholder.com/160x160.jpg?text=Image" alt="фотография" width="150" height="150">
+          </button>
+          <div class="dropdown-menu dropdown-menu-left" aria-labelledby="photo1">
+            <div class="dropdown-item" data-toggle="modal" data-target="#change-photo">
+              <svg class="icon icon_middle icon_brand">
+                <use href="uikit/icon/icons.svg#camera"></use>
+              </svg>
+              <span class="dropdown-item__text content_muted">Изменить фотографию</span>
+            </div>
+            <div class="dropdown-item" data-toggle="modal" data-target="#delete-photo">
+              <svg class="icon icon_middle icon_brand">
+                <use href="uikit/icon/icons.svg#delete"></use>
+              </svg>
+              <span class="dropdown-item__text content_muted">Удалить фотографию</span>
+            </div>
+          </div>
+          <figcaption class="photo__figcaption">
+            <p class="photo__name">
+              <span>Константинопольский</span>
+              <span>Алексей</span>
+              <span>Александрович</span>
+            </p>
+            <dl class="photo__birth">
+              <dt class="photo__birth-text">Дата рождения:&nbsp;</dt>
+              <dd class="photo__birth-date">
+                <time>11.08.1966</time>
+              </dd>
+            </dl>
+            <span class="photo__gender">Женщина</span>
+          </figcaption>
+        </figure>
+        <div id="delete-photo" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+          <div class="modal__content">
+            <div class="modal__header">
+              <div class="row row_middle no-gutters">
+                <div class="col-auto mr-1">
+                  <svg class="icon icon_brand icon_middle">
+                    <use href="uikit/icon/icons.svg#question"></use>
+                  </svg>
+                </div>
+                <div class="col-auto">
+                  <h3 class="content__section-title content__section-title_small">Удалить фотографию?</h3>
+                </div>
+              </div>
+              <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal" aria-label="закрыть"></button>
+            </div>
+            <div class="modal__body" role="document">
+              <p class="content__paragraph content_muted">Вы действительно хотите удалить фотографию?</p>
+            </div>
+            <div class="modal__footer">
+              <button class="button button_secondary mr-2" type="button">Отмена</button>
+              <button class="button" type="button">Удалить</button>
+            </div>
+          </div>
+        </div>
+        <div id="change-photo" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+          <div class="modal__content">
+            <div class="modal__header">
+              <h3 class="content__section-title content__section-title_small">Загрузить фото</h3>
+              <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal" aria-label="закрыть"></button>
+            </div>
+            <div class="modal__body" role="document">
+              <div class="photo__controls">
+                <div class="photo__rotate-buttons">
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#rotation"></use>
+                    </svg>
+                  </button>
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand" style="transform: scale(-1, 1)">
+                      <use href="uikit/icon/icons.svg#rotation"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo__zoom">
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#minus"></use>
+                    </svg>
+                  </button>
+                  <div class="photo__track">
+                    <button class="photo__thumb"></button>
+                  </div>
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#plus"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button class="button button_secondary mr-2" type="button">Отмена</button>
+              <button class="button" type="button">Загрузить</button>
+            </div>
+          </div>
+        </div>
+
+        <figure class="photo">
+          <button class="photo__button" data-toggle="modal" data-target="#change-photo2">
+            <span class="photo__placeholder">Загрузить&nbsp;фото</span>
+          </button>
+          <figcaption class="photo__figcaption">
+            <p class="photo__name">
+              <span>Константинопольский</span>
+              <span>Алексей</span>
+              <span>Александрович</span>
+            </p>
+            <dl class="photo__birth">
+              <dt class="photo__birth-text">Дата рождения:&nbsp;</dt>
+              <dd class="photo__birth-date">
+                <time>11.08.1966</time>
+              </dd>
+            </dl>
+            <span class="photo__gender">Женщина</span>
+          </figcaption>
+        </figure>
+
+        <div id="delete-photo2" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+          <div class="modal__content">
+            <div class="modal__header">
+              <div class="row row_middle no-gutters">
+                <div class="col-auto mr-1">
+                  <svg class="icon icon_brand icon_middle">
+                    <use href="uikit/icon/icons.svg#question"></use>
+                  </svg>
+                </div>
+                <div class="col-auto">
+                  <h3 class="content__section-title content__section-title_small">Удалить фотографию?</h3>
+                </div>
+              </div>
+              <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal"></button>
+            </div>
+            <div class="modal__body" role="document">
+              <p class="content__paragraph content_muted">Вы действительно хотите удалить фотографию?</p>
+            </div>
+            <div class="modal__footer">
+              <button class="button button_secondary mr-2" type="button">Отмена</button>
+              <button class="button" type="button">Удалить</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="change-photo2" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+          <div class="modal__content">
+            <div class="modal__header">
+              <h3 class="content__section-title content__section-title_small">Загрузить фото</h3>
+              <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal" aria-label="закрыть"></button>
+            </div>
+            <div class="modal__body" role="document">
+              <div class="photo__controls">
+                <div class="photo__rotate-buttons">
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#rotation"></use>
+                    </svg>
+                  </button>
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand" style="transform: scale(-1, 1)">
+                      <use href="uikit/icon/icons.svg#rotation"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo__zoom">
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#minus"></use>
+                    </svg>
+                  </button>
+                  <div class="photo__track">
+                    <button class="photo__thumb"></button>
+                  </div>
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#plus"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button class="button button_secondary mr-2" type="button">Отмена</button>
+              <button class="button" type="button">Загрузить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <figure class="photo">
+        <button class="photo__button" id="{{ id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="photo__img" alt="фотография" width="150" height="150" src="">
+          <span class="photo__placeholder">Загрузить&nbsp;фото</span>
+        </button>
+        {{ dropDownMenu }}
+        <figcaption class="photo__figcaption">
+          <p class="photo__name">
+            <span>{{ surname }}</span>
+            <span>{{ name }}</span>
+            <span>{{ middleName }}</span>
+          </p>
+          <dl class="photo__birth">
+            <dt class="photo__birth-text">Дата рождения:&nbsp;</dt>
+            <dd class="photo__birth-date">
+              <time>{{ date }}</time>
+            </dd>
+          </dl>
+          <span class="photo__gender">{{ gender }}</span>
+        </figcaption>
+      </figure>
+
+      <!-- модальное окно удаление фото -->
+      <div id="{{ delPhotoId}}" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+        <div class="modal__content">
+          <div class="modal__header">
+            <div class="row row_middle no-gutters">
+              <div class="col-auto mr-1">
+                <svg class="icon icon_brand icon_middle">
+                  <use href="/assets/redesign-theme/uikit/icon/icons.svg#question"></use>
+                </svg>
+              </div>
+              <div class="col-auto">
+                <h3 class="content__section-title content__section-title_small">Удалить фотографию?</h3>
+              </div>
+            </div>
+            <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal"></button>
+          </div>
+          <div class="modal__body" role="document">
+            <p class="content__paragraph content_muted">Вы действительно хотите удалить фотографию?</p>
+          </div>
+          <div class="modal__footer">
+            <button class="button button_secondary mr-2" type="button">Отмена</button>
+            <button class="button" type="button">Удалить</button>
+          </div>
+        </div>
+      </div>
+
+      <!--    Модально окно загрузить фото-->
+      <div id="{{changePhotoId}}" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+        <div class="modal__content">
+          <div class="modal__header">
+            <h3 class="content__section-title content__section-title_small">Загрузить фото</h3>
+            <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal" aria-label="закрыть"></button>
+          </div>
+          <div class="modal__body" role="document">
+            <div class="photo__controls">
+              <div class="photo__rotate-buttons">
+                <button class="photo__edit-button">
+                  <svg class="icon icon_brand">
+                    <use href="/assets/redesign-theme/uikit/icon/icons.svg#rotation"></use>
+                  </svg>
+                </button>
+                <button class="photo__edit-button">
+                  <svg class="icon icon_brand" style="transform: scale(-1, 1)">
+                    <use href="/assets/redesign-theme/uikit/icon/icons.svg#rotation"></use>
+                  </svg>
+                </button>
+              </div>
+              <div class="photo__zoom">
+                <button class="photo__edit-button">
+                  <svg class="icon icon_brand">
+                    <use href="/assets/redesign-theme/uikit/icon/icons.svg#minus"></use>
+                  </svg>
+                </button>
+                <div class="photo__track">
+                  <button class="photo__thumb"></button>
+                </div>
+                <button class="photo__edit-button">
+                  <svg class="icon icon_brand">
+                    <use href="/assets/redesign-theme/uikit/icon/icons.svg#plus"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="modal__footer">
+            <button class="button button_secondary mr-2" type="button">Отмена</button>
+            <button class="button" type="button">Загрузить</button>
+          </div>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="выбор логотипа">
+    <doc-info>
+      Выбор логотипа
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <figure class="photo photo_logo mb-3">
+          <button class="photo__button" id="#photo1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="photo__img" src="https://via.placeholder.com/160x160.jpg?text=Image" alt="фотография" width="150" height="150">
+          </button>
+          <div class="dropdown-menu dropdown-menu-left" aria-labelledby="photo1">
+            <div class="dropdown-item" data-toggle="modal" data-target="#change-photo">
+              <svg class="icon icon_middle icon_brand">
+                <use href="uikit/icon/icons.svg#camera"></use>
+              </svg>
+              <span class="dropdown-item__text content_muted">Изменить фотографию</span>
+            </div>
+            <div class="dropdown-item" data-toggle="modal" data-target="#delete-photo">
+              <svg class="icon icon_middle icon_brand">
+                <use href="uikit/icon/icons.svg#delete"></use>
+              </svg>
+              <span class="dropdown-item__text content_muted">Удалить фотографию</span>
+            </div>
+          </div>
+          <figcaption class="photo__figcaption">
+            <p class="photo__name">
+              <span>Константинопольский</span>
+              <span>Алексей</span>
+              <span>Александрович</span>
+            </p>
+            <dl class="photo__birth">
+              <dt class="photo__birth-text">Дата рождения:&nbsp;</dt>
+              <dd class="photo__birth-date">
+                <time>11.08.1966</time>
+              </dd>
+            </dl>
+            <span class="photo__gender">Женщина</span>
+          </figcaption>
+        </figure>
+        <div id="delete-photo" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+          <div class="modal__content">
+            <div class="modal__header">
+              <div class="row row_middle no-gutters">
+                <div class="col-auto mr-1">
+                  <svg class="icon icon_brand icon_middle">
+                    <use href="uikit/icon/icons.svg#question"></use>
+                  </svg>
+                </div>
+                <div class="col-auto">
+                  <h3 class="content__section-title content__section-title_small">Удалить фотографию?</h3>
+                </div>
+              </div>
+              <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal" aria-label="закрыть"></button>
+            </div>
+            <div class="modal__body" role="document">
+              <p class="content__paragraph content_muted">Вы действительно хотите удалить фотографию?</p>
+            </div>
+            <div class="modal__footer">
+              <button class="button button_secondary mr-2" type="button">Отмена</button>
+              <button class="button" type="button">Удалить</button>
+            </div>
+          </div>
+        </div>
+        <div id="change-photo" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+          <div class="modal__content">
+            <div class="modal__header">
+              <h3 class="content__section-title content__section-title_small">Загрузить фото</h3>
+              <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal" aria-label="закрыть"></button>
+            </div>
+            <div class="modal__body" role="document">
+              <div class="photo__controls">
+                <div class="photo__rotate-buttons">
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#rotation"></use>
+                    </svg>
+                  </button>
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand" style="transform: scale(-1, 1)">
+                      <use href="uikit/icon/icons.svg#rotation"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo__zoom">
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#minus"></use>
+                    </svg>
+                  </button>
+                  <div class="photo__track">
+                    <button class="photo__thumb"></button>
+                  </div>
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#plus"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button class="button button_secondary mr-2" type="button">Отмена</button>
+              <button class="button" type="button">Загрузить</button>
+            </div>
+          </div>
+        </div>
+
+        <figure class="photo photo_logo">
+          <button class="photo__button" data-toggle="modal" data-target="#change-photo2">
+            <span class="photo__placeholder">Загрузить логотип</span>
+          </button>
+          <figcaption class="photo__figcaption">
+            <p class="photo__name">
+              <span>Константинопольский</span>
+              <span>Алексей</span>
+              <span>Александрович</span>
+            </p>
+            <dl class="photo__birth">
+              <dt class="photo__birth-text">Дата рождения:&nbsp;</dt>
+              <dd class="photo__birth-date">
+                <time>11.08.1966</time>
+              </dd>
+            </dl>
+            <span class="photo__gender">Женщина</span>
+          </figcaption>
+        </figure>
+
+        <div id="delete-photo2" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+          <div class="modal__content">
+            <div class="modal__header">
+              <div class="row row_middle no-gutters">
+                <div class="col-auto mr-1">
+                  <svg class="icon icon_brand icon_middle">
+                    <use href="uikit/icon/icons.svg#question"></use>
+                  </svg>
+                </div>
+                <div class="col-auto">
+                  <h3 class="content__section-title content__section-title_small">Удалить логотип?</h3>
+                </div>
+              </div>
+              <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal"></button>
+            </div>
+            <div class="modal__body" role="document">
+              <p class="content__paragraph content_muted">Вы действительно хотите удалить логотип?</p>
+            </div>
+            <div class="modal__footer">
+              <button class="button button_secondary mr-2" type="button">Отмена</button>
+              <button class="button" type="button">Удалить</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="change-photo2" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+          <div class="modal__content">
+            <div class="modal__header">
+              <h3 class="content__section-title content__section-title_small">Загрузить логотип</h3>
+              <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal" aria-label="закрыть"></button>
+            </div>
+            <div class="modal__body" role="document">
+              <div class="photo__controls">
+                <div class="photo__rotate-buttons">
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#rotation"></use>
+                    </svg>
+                  </button>
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand" style="transform: scale(-1, 1)">
+                      <use href="uikit/icon/icons.svg#rotation"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo__zoom">
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#minus"></use>
+                    </svg>
+                  </button>
+                  <div class="photo__track">
+                    <button class="photo__thumb"></button>
+                  </div>
+                  <button class="photo__edit-button">
+                    <svg class="icon icon_brand">
+                      <use href="uikit/icon/icons.svg#plus"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button class="button button_secondary mr-2" type="button">Отмена</button>
+              <button class="button" type="button">Загрузить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <figure class="photo photo_logo">
+        <button class="photo__button" id="{{ id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="photo__img" alt="фотография" width="150" height="150" src="">
+          <span class="photo__placeholder">Загрузить&nbsp;фото</span>
+        </button>
+        {{ dropDownMenu }}
+        <figcaption class="photo__figcaption">
+          <p class="photo__name">
+            <span>{{ surname }}</span>
+            <span>{{ name }}</span>
+            <span>{{ middleName }}</span>
+          </p>
+          <dl class="photo__birth">
+            <dt class="photo__birth-text">Дата рождения:&nbsp;</dt>
+            <dd class="photo__birth-date">
+              <time>{{ date }}</time>
+            </dd>
+          </dl>
+          <span class="photo__gender">{{ gender }}</span>
+        </figcaption>
+      </figure>
+
+      <!-- модальное окно удаление фото -->
+      <div id="{{ delPhotoId}}" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+        <div class="modal__content">
+          <div class="modal__header">
+            <div class="row row_middle no-gutters">
+              <div class="col-auto mr-1">
+                <svg class="icon icon_brand icon_middle">
+                  <use href="/assets/redesign-theme/uikit/icon/icons.svg#question"></use>
+                </svg>
+              </div>
+              <div class="col-auto">
+                <h3 class="content__section-title content__section-title_small">Удалить логотип?</h3>
+              </div>
+            </div>
+            <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal"></button>
+          </div>
+          <div class="modal__body" role="document">
+            <p class="content__paragraph content_muted">Вы действительно хотите удалить фотографию?</p>
+          </div>
+          <div class="modal__footer">
+            <button class="button button_secondary mr-2" type="button">Отмена</button>
+            <button class="button" type="button">Удалить</button>
+          </div>
+        </div>
+      </div>
+
+      <!--    Модально окно загрузить фото-->
+      <div id="{{changePhotoId}}" class="modal modal_dialog" role="dialog" aria-hidden="true" tabindex="-1">
+        <div class="modal__content">
+          <div class="modal__header">
+            <h3 class="content__section-title content__section-title_small">Загрузить логотип</h3>
+            <button class="modal__close" type="button" aria-label="Закрыть" data-dismiss="modal" aria-label="закрыть"></button>
+          </div>
+          <div class="modal__body" role="document">
+            <div class="photo__controls">
+              <div class="photo__rotate-buttons">
+                <button class="photo__edit-button">
+                  <svg class="icon icon_brand">
+                    <use href="/assets/redesign-theme/uikit/icon/icons.svg#rotation"></use>
+                  </svg>
+                </button>
+                <button class="photo__edit-button">
+                  <svg class="icon icon_brand" style="transform: scale(-1, 1)">
+                    <use href="/assets/redesign-theme/uikit/icon/icons.svg#rotation"></use>
+                  </svg>
+                </button>
+              </div>
+              <div class="photo__zoom">
+                <button class="photo__edit-button">
+                  <svg class="icon icon_brand">
+                    <use href="/assets/redesign-theme/uikit/icon/icons.svg#minus"></use>
+                  </svg>
+                </button>
+                <div class="photo__track">
+                  <button class="photo__thumb"></button>
+                </div>
+                <button class="photo__edit-button">
+                  <svg class="icon icon_brand">
+                    <use href="/assets/redesign-theme/uikit/icon/icons.svg#plus"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="modal__footer">
+            <button class="button button_secondary mr-2" type="button">Отмена</button>
+            <button class="button" type="button">Загрузить</button>
+          </div>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

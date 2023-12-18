@@ -1,0 +1,12 @@
+@use "../../functions";
+
+$content-start: functions.px(100) !default;
+
+.body {
+  margin: 0 !important; // временное решение пока госбар фиксед, т.к. этот отступ в юиките задается паддингами
+  padding-top: $content-start;
+
+  &_locked {
+    overflow: hidden;
+  }
+}

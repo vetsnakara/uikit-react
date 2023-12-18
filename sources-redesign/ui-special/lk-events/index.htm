@@ -1,0 +1,39 @@
+<doc-component name="Уведомления" link="">
+    <doc-tab name="Default">
+        <doc-info>
+            Уведомления
+        </doc-info>
+
+        <doc-view>
+            <div class="lk-events">
+                <div class="lk-events_icon">
+                    <svg class="icon">
+                        <use href="uikit/icon/icons.svg#message"></use>
+                    </svg>
+                </div>
+                <a href="#" class="lk-events_title">
+                    Отклики и приглашения
+                </a>
+                <div class="lk-events_amount counter counter_events" data-count="30">
+                    1
+                </div>
+            </div>
+        </doc-view>
+
+        <doc-code>
+            <div class="lk-events" >
+                <div class="lk-events_icon">
+                    <svg class="icon">
+                        <use href="/assets/redesign-theme/uikit/icon/icons.svg#{{ icon-name }}"></use>
+                    </svg>
+                </div>
+                <a href="{{href}}" class="lk-events_title">
+                    {{title}}
+                </a>
+                <div class="lk-events_amount counter counter_events" data-count="{{count}}">
+                    {{amount}}
+                </div>
+            </div>
+        </doc-code>
+    </doc-tab>
+</doc-component>

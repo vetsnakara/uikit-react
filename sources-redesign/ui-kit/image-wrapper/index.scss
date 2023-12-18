@@ -1,0 +1,31 @@
+@use "sass:math";
+@use "functions" as *;
+@use "images" as *;
+
+$color__alt: #25282B !default;
+$gap: px(10) !default;
+$border__alt: #A0A4A8 !default;
+
+.image-wrapper {
+  display: inline;
+
+  @supports (display: contents) {
+    /* autoprefixer: ignore next */
+    display: contents;
+  }
+
+  &__alt {
+    @if (not $images) {
+      align-self: start;
+      display: inline-block;
+      padding: $gap;
+      color: $color__alt;
+      border: 1px solid $border__alt;
+      margin: math.div($gap, 2) 0;
+    }
+
+    @else {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@use "../../functions";
+
+$background: #EDF5FC !default;
+$gap: functions.px(10) !default;
+$radius: functions.px(8) !default;
+$color__title: #014898 !default;
+$color__title-hover: #1E88DB !default;
+$font-size-big: functions.px(18) !default;
+$box-shadow-focus: 0 0 0 functions.px(3) #B4D9F3 !default;
+
+.banner-employers {
+  align-items: center;
+  background-color: $background;
+  background-image: url("banner-employers/banner-employers.svg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  border-radius: $radius;
+  display: flex;
+  min-height: $gap * 7;
+  padding: 0 $gap;
+
+  @media (min-width: functions.px(768)) {
+    padding: 0 $gap * 4;
+  }
+
+  &__image {
+    margin-right: $gap;
+
+    @media (min-width: functions.px(768)) {
+      margin-right: $gap * 3;
+    }
+  }
+
+  &__title {
+    color: $color__title;
+    font-size: $font-size-big;
+    font-weight: 600;
+    padding: $gap 0;
+    text-decoration: none;
+
+    &:hover {
+      color: $color__title-hover;
+    }
+
+    &:focus {
+      box-shadow: $box-shadow-focus;
+      outline: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      box-shadow: $box-shadow-focus;
+    }
+  }
+}

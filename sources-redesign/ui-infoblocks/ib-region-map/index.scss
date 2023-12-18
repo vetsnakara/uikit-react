@@ -1,0 +1,112 @@
+@use "sass:math";
+
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$background__legend-range-bg: #F9F9FA !default;
+$font-size-small: functions.px(14) !default;
+$radius: functions.px(8) !default;
+$background__zoom-button: #FFFFFF !default;
+$background__tooltip: #FFFFFF !default;
+$color__tooltip: #52575C !default;
+$border__tooltip: #E8E8E8 !default;
+$shadow: 0 functions.px(2) functions.px(8) rgba(0, 0, 0, 0.15) !default;
+$shadow-big: 0 functions.px(4) functions.px(16) rgba(37, 40, 43, 0.08) !default;
+$line-height__legend: 1.286;
+$max-width__tooltip: functions.px(320);
+
+.ib-region-map {
+  position: relative;
+
+  // legend
+  &__legend {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: $font-size-small;
+    line-height: $line-height__legend;
+    margin-bottom: -$gap * 1.5;
+    margin-top: $gap * 2;
+  }
+
+  &__legend-item {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    min-width: functions.px(310);
+    padding-bottom: $gap * 1.5;
+    padding-right: $gap;
+  }
+
+  &__legend-range-bg {
+    background: $background__legend-range-bg;
+    height: functions.px(28);
+    margin-right: $gap;
+    width: functions.px(28);
+  }
+
+  // controls
+  &__zoom {
+    border-radius: $radius;
+    box-shadow: $shadow-big;
+    display: flex;
+    flex-flow: column wrap;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+  }
+
+  &__zoom-button {
+    background: $background__zoom-button;
+    padding: $gap;
+  }
+
+  &__zoom-button &__zoom-icon {
+    height: functions.px(20);
+    min-width: functions.px(20);
+    width: functions.px(20);
+  }
+
+  // popup customs
+
+  &__popup-row {
+    margin-bottom: $gap * 2.5;
+  }
+
+  &__popup-subtitle {
+    margin-bottom: $gap * 0.5;
+  }
+
+  // tooltip (override default map values)
+  &__tooltip:not(:root) {
+    background: $background__tooltip;
+    border: functions.px(1) solid $border__tooltip;
+    border-radius: math.div($radius, 2);
+    box-shadow: $shadow;
+    color: $color__tooltip;
+    max-width: $max-width__tooltip;
+    padding: functions.px(9) functions.px(16);
+  }
+
+  &__tooltip-arrow:not(:root) {
+    border: functions.px(6) solid transparent;
+    border-top-color: $border__tooltip;
+    bottom: functions.px(-13);
+    left: 50%;
+    margin-left: functions.px(-3);
+    position: absolute;
+    width: 0;
+
+    &::after {
+      border: functions.px(6) solid transparent;
+      border-bottom-width: 0;
+      border-top-color: $background__tooltip;
+      bottom: functions.px(1);
+      content: "";
+      display: block;
+      left: functions.px(-6);
+      position: absolute;
+    }
+  }
+}

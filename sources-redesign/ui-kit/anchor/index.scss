@@ -1,0 +1,21 @@
+@use "../../functions";
+
+$content-start: functions.px(105) !default;
+$top-gap-from-content: functions.px(15) !default;
+$top-gap: $content-start + $top-gap-from-content;
+
+.anchor {
+
+  &[id]::before {
+    content: "";
+    display: block;
+    height: $top-gap;
+    margin-top: -$top-gap;
+    visibility: hidden;
+  }
+
+  &__bug-fix {
+    position: relative;
+    z-index: 1;
+  }
+}

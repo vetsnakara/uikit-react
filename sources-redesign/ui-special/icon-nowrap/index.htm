@@ -1,0 +1,39 @@
+<doc-component name="icon-nowrap" link="">
+  <doc-tab name="Default">
+    <doc-info>
+      <p>icon-nowrap - добавляет блоку <code>flex-wrap: nowrap</code></p>
+      <p>icon-nowrap__item - добавляет блоку <code>flex: 0 1 auto</code></p>
+      <p><a href="https://rtportal.show.pbs.bftcom.com/auth/candidate/cvs">Страница</a></p>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="row icon-nowrap">
+          <div class="col-auto icon-nowrap__item">
+            <h2 class="content__section-title">
+              Повар
+            </h2>
+          </div>
+          <div class="col-auto">
+            <svg class="icon icon_danger">
+              <use href="uikit/icon/icons.svg#hex-warning"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="card">
+        <div class="row icon-nowrap">
+          <div class="col-auto icon-nowrap__item">
+            {{ content }}
+          </div>
+          <div class="col-auto">
+            {{ icon }}
+          </div>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

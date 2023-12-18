@@ -1,0 +1,43 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$font-size-small: functions.px(14) !default;
+
+.resume-data {
+  display: flex;
+  flex-flow: wrap;
+
+  &__period {
+    box-sizing: border-box;
+    flex: 0 0 functions.px(150);
+    font-size: $font-size-small;
+    padding-right: $gap * 3;
+
+    &_icon {
+      padding-right: $gap * 6;
+      text-align: right;
+    }
+
+    @media (max-width: functions.px(576)) {
+      flex: 0 0 100%;
+      margin-bottom: $gap;
+
+      &_icon {
+        padding-right: 0;
+        text-align: left;
+      }
+    }
+
+    &-year {
+      font-weight: 500;
+    }
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+  }
+}

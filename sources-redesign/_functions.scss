@@ -1,0 +1,97 @@
+// stylelint-disable indentation
+@use "sass:math" as *;
+
+$scale: 1 !default;
+
+@function _str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      _str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+@function _URLEncode($string) {
+  $encode-map: (
+    "%": "%25",
+    '"': "'",
+    "#": "%23",
+    "<": "%3C",
+    ">": "%3E",
+    "?": "%3F",
+    "[": "%5B",
+    "\\":"%5C",
+    "]": "%5D",
+    "^": "%5E",
+    "`": "%60",
+    "{": "%7B",
+    "|": "%7C",
+    "}": "%7D",
+  );
+
+  @each $search, $replace in $encode-map {
+    $string: _str-replace($string, $search, $replace);
+  }
+
+  @return $string;
+}
+
+/// Example:
+///
+/// .selector {
+///   background-image: inlineSVG('<svg width="400" height="110"><rect width="300" height="100"/></svg>');
+/// }
+@function inlineSVG($string) {
+  @return url("data:image/svg+xml," + _URLEncode($string));
+}
+
+/// Example:
+///
+/// $size: 15px;
+///
+/// .selector {
+///   font-size: roundup($size, 2); // 16px
+///   line-height: roundup($size, 10); // 20px
+/// }
+@function roundup($x, $step: 10) {
+  $div: div($x, $step);
+
+  @if ($div > floor($div)) {
+    @return (floor($div) + 1) * $step;
+  }
+
+  @else {
+    @return floor($div) * $step;
+  }
+}
+
+/// Example:
+///
+/// .selector {
+///   font-size: px(24); // 1.5rem
+/// }
+@function px($value) {
+  @return $value * $scale * 1px;
+}
+
+@function px($value) {
+  @return $value * $scale * 1px;
+}
+
+/// Example:
+///
+/// .middle-aligned-selector  {
+///   height: $object-size;
+///   vartical-align: valign-middle($font-size, $object-size)
+/// }
+@function valign-middle($font-size, $object-size) {
+  // True calc: //iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align
+  $montserrat-box: 1.25; // approximately
+  $montserrat-baseline: 0.204; // approximately
+  $font-box: $font-size * $montserrat-box;
+
+  @return -$font-box * $montserrat-baseline + div($font-box - $object-size, 2px);
+}

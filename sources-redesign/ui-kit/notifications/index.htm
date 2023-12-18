@@ -1,0 +1,412 @@
+<doc-component name="Нотификация / Notification" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=1%3A8071">
+  <doc-tab name="Accent">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.notifications__card</code> - основной класс нотификации;</li>
+        <li class="list__item"><code>.notifications__card_accent</code> - модификатор обычной нотификации;</li>
+        <li class="list__item"><code>.notifications__card-icon</code> - иконка нотификации;</li>
+        <li class="list__item"><code>.notifications__card-close</code> - класс для закрытия нотификации.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - заголовок нотификации.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="notifications">
+        <div class="notifications__card notifications__card_accent">
+          <div class="notifications__card-icon">
+            <svg class="icon icon_in-text">
+              <use href="uikit/icon/icons.svg#question"></use>
+            </svg>
+          </div>
+          <div class="notifications__card-title">Accent</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="notifications__card notifications__card_accent">
+        <div class="notifications__card-icon">
+          <svg class="icon icon_in-text">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#question"></use>
+          </svg>
+        </div>
+        <div class="notifications__card-title">{{ title }}</div>
+        <button class="button-close notifications__card-close" type="button">
+          <svg class="button__icon icon icon_m">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </doc-code>
+  </doc-tab>
+  <doc-tab name="Внимание">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.notifications__card</code> - основной класс нотификации;</li>
+        <li class="list__item"><code>.notifications__card_warning</code> - модификатор предупреждающей нотификации;</li>
+        <li class="list__item"><code>.notifications__card-icon</code> - иконка нотификации;</li>
+        <li class="list__item"><code>.notifications__card-close</code> - класс для закрытия нотификации.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - заголовок нотификации.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="notifications">
+        <div class="notifications__card notifications__card_warning">
+          <div class="notifications__card-icon">
+            <svg class="icon icon_in-text">
+              <use href="uikit/icon/icons.svg#question"></use>
+            </svg>
+          </div>
+          <div class="notifications__card-title">Warning</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="notifications__card notifications__card_warning">
+        <div class="notifications__card-icon">
+          <svg class="icon icon_in-text">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#question"></use>
+          </svg>
+        </div>
+        <div class="notifications__card-title">{{ title }}</div>
+        <button class="button-close notifications__card-close" type="button">
+          <svg class="button__icon icon icon_m">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Проблемы">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.notifications__card</code> - основной класс нотификации;</li>
+        <li class="list__item"><code>.notifications__card_danger</code> - модификатор нотификации ошибки;</li>
+        <li class="list__item"><code>.notifications__card-icon</code> - иконка нотификации;</li>
+        <li class="list__item"><code>.notifications__card-close</code> - класс для закрытия нотификации.</li>
+      </ul>
+      <p class="content__paragraph"><strong>{{ title }}</strong> - заголовок нотификации.</p>
+    </doc-info>
+
+    <doc-view>
+      <div class="notifications">
+        <div class="notifications__card notifications__card_danger">
+          <div class="notifications__card-icon">
+            <svg class="icon icon_in-text">
+              <use href="uikit/icon/icons.svg#question"></use>
+            </svg>
+          </div>
+          <div class="notifications__card-title">Danger</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="notifications__card notifications__card_danger">
+        <div class="notifications__card-icon">
+          <svg class="icon icon_in-text">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#question"></use>
+          </svg>
+        </div>
+        <div class="notifications__card-title">{{ title }}</div>
+        <button class="button-close notifications__card-close" type="button">
+          <svg class="button__icon icon icon_m">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Успех">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.notifications__card</code> - основной класс нотификации;</li>
+        <li class="list__item"><code>.notifications__card_success</code> - модификатор нотификации успешной операции;</li>
+        <li class="list__item"><code>.notifications__card-icon</code> - иконка нотификации;</li>
+        <li class="list__item"><code>.notifications__card-close</code> - класс для закрытия нотификации.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - заголовок нотификации.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="notifications">
+        <div class="notifications__card notifications__card_success">
+          <div class="notifications__card-icon">
+            <svg class="icon icon_in-text">
+              <use href="uikit/icon/icons.svg#success"></use>
+            </svg>
+          </div>
+          <div class="notifications__card-title">Success</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="notifications__card notifications__card_success">
+          <div class="notifications__card-title">Success</div>
+          <div class="notifications__card-content">Description</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="notifications__card notifications__card_success">
+        <div class="notifications__card-icon">
+          <svg class="icon icon_in-text">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#question"></use>
+          </svg>
+        </div>
+        <div class="notifications__card-title">{{ content }}</div>
+        <button class="button-close notifications__card-close" type="button">
+          <svg class="button__icon icon icon_m">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="с кнопкой дополнительного действия">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.notifications__card</code> - основной класс нотификации;</li>
+        <li class="list__item"><code>.notifications__card-button</code> - класс кнопки дополнительного действия;</li>
+        <li class="list__item"><code>.notifications__card-icon</code> - иконка нотификации;</li>
+        <li class="list__item"><code>.notifications__card-close</code> - класс для закрытия нотификации.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - заголовок нотификации;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ buttonText }}</dt>
+            <dd class="definitions__value"> - текст кнопки дополнительного действия.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="notifications">
+        <div class="notifications__card notifications__card_warning">
+          <div class="notifications__card-icon">
+            <svg class="icon icon_in-text">
+              <use href="uikit/icon/icons.svg#question"></use>
+            </svg>
+          </div>
+          <div class="notifications__card-title">Warning</div>
+          <button class="notifications__card-button button button_plain">Upgrade</button>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="notifications__card notifications__card_warning">
+          <div class="notifications__card-icon">
+            <svg class="icon icon_in-text">
+              <use href="uikit/icon/icons.svg#question"></use>
+            </svg>
+          </div>
+          <div class="notifications__card-title">Warning</div>
+          <div class="notifications__card-content">
+            <p>Description</p>
+            <button class="notifications__card-button button button_plain">Upgrade</button>
+          </div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="notifications__card notifications__card_warning">
+        <div class="notifications__card-icon">
+          <svg class="icon icon_in-text">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#question"></use>
+          </svg>
+        </div>
+        <div class="notifications__card-title">{{ title }}</div>
+        <button class="notifications__card-button button button_plain">{{ buttonText }}</button>
+        <button class="button-close notifications__card-close" type="button">
+          <svg class="button__icon icon icon_m">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="notifications__card notifications__card_warning">
+        <div class="notifications__card-icon">
+          <svg class="icon icon_in-text">
+            <use href="uikit/icon/icons.svg#question"></use>
+          </svg>
+        </div>
+        <div class="notifications__card-title">{{ title }}</div>
+        <div class="notifications__card-content">
+          <p>{{description}}</p>
+          <button class="notifications__card-button button button_plain">{{ buttonText }}</button>
+        </div>
+        <button class="button-close notifications__card-close" type="button">
+          <svg class="button__icon icon icon_m">
+            <use href="uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="с описанием">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.notifications__card</code> - основной класс нотификации;</li>
+        <li class="list__item"><code>.notifications__card-content</code> - класс для контента нотификации;</li>
+        <li class="list__item"><code>.notifications__card-icon</code> - иконка нотификации;</li>
+        <li class="list__item"><code>.notifications__card-close</code> - класс для закрытия нотификации.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - заголовок нотификации;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ content }}</dt>
+            <dd class="definitions__value"> - контент нотификации.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="notifications">
+        <div class="notifications__card notifications__card_accent">
+          <div class="notifications__card-title">Accent</div>
+          <div class="notifications__card-content">Lorem ipsum dolor sit amet, adhuc nulla definiebas</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="notifications__card notifications__card_accent">
+        <div class="notifications__card-title">{{ title }}</div>
+        <div class="notifications__card-content">{{ content }}</div>
+        <button class="button-close notifications__card-close" type="button">
+          <svg class="button__icon icon icon_m">
+            <use href="/assets/redesign-theme/uikit/icon/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="контейнер для нотификаций">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.notifications</code> - контейнер для нотификаций;</li>
+      </ul>
+    </doc-info>
+
+    <doc-view>
+      <div class="notifications">
+        <div class="notifications__card notifications__card_accent">
+          <div class="notifications__card-title">Accent</div>
+          <div class="notifications__card-content">Lorem ipsum dolor sit amet, adhuc nulla definiebas</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="notifications__card notifications__card_accent">
+          <div class="notifications__card-title">Accent</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="notifications__card notifications__card_success">
+          <div class="notifications__card-title">Success</div>
+          <div class="notifications__card-content">Lorem ipsum dolor sit amet, adhuc nulla definiebas</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="notifications__card notifications__card_danger">
+          <div class="notifications__card-title">Danger</div>
+          <div class="notifications__card-content">Lorem ipsum dolor sit amet, adhuc nulla definiebas</div>
+          <button class="button-close notifications__card-close" type="button">
+            <svg class="button__icon icon icon_m">
+              <use href="uikit/icon/icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="notifications">
+        {{ notifications }}
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

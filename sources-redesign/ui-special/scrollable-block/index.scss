@@ -1,0 +1,9 @@
+@use "../../functions";
+
+.scrollable-block {
+
+  &__item {
+    max-height: functions.px(160);
+    overflow-y: scroll;
+  }
+}

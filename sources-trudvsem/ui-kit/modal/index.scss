@@ -1,0 +1,137 @@
+$backdrop: rgb(31, 53, 136) !default;
+$background: rgb(255, 255, 255) !default;
+$separator: rgb(235, 235, 235) !default;
+$h-padding: 25px !default;
+$v-padding: 30px !default;
+$v-min-padding: 15px !default;
+$v-diff-padding: $v-padding - $v-min-padding !default;
+$close-size: 16px !default;
+$close: rgb(52, 52, 52) !default;
+$root-of-two: 1.41421356237 !default;
+$z-index: 10004 !default;
+
+.modal {
+  // < 900px - no-max-width
+  // > 900px - max-width calc(100vw - 200px)
+  // > 1200px - max-width calc(100vw - 400px)
+  // > 1600 - max-width 1000px
+
+  bottom: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-index; // Compatibility: 1040 is .modal-backdrop
+  padding: 100px 40px 60px;
+  background: rgba($backdrop, 0.5);
+
+  &_open {
+    display: flex;
+  }
+
+  &:not(&_open) {
+    display: none;
+  }
+
+  &__header,
+  &__body,
+  &__footer {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    background-color: $background;
+    max-width: calc(100vw - (50vw - 300px));
+  }
+
+  &__header {
+    flex: 0 0 auto;
+    background: #deeaff;
+    padding: $v-min-padding #{$h-padding + $close-size} $v-min-padding $h-padding;
+    position: relative;
+    min-height: $close-size + $v-min-padding;
+    overflow: hidden;
+  }
+
+  &__body {
+    border-top: $v-min-padding solid $background;
+    border-bottom: $v-min-padding solid $background;
+    flex: 0 1 auto;
+    overflow: auto;
+
+    // Support bottom padding on scrollable elements in Firefox-like browsers
+    padding: $v-diff-padding $h-padding 0;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: $v-diff-padding;
+      flex: 0 0 $v-diff-padding;
+    }
+  }
+
+  &__footer {
+    flex: 0 0 auto;
+    padding: $v-min-padding $h-padding $v-min-padding;
+    margin-top: -$v-min-padding;
+    // box-shadow: 0 -1px 0 0 $separator-color;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+  }
+
+  &__separator {
+    border-left: none;
+    border-right: none;
+    border-top: $v-min-padding solid $background;
+    border-bottom: $v-min-padding solid $background;
+    background: $separator;
+    height: 1px;
+    margin-left: -$h-padding;
+    margin-right: -$h-padding;
+  }
+
+  &__close {
+    height: $close-size;
+    position: absolute;
+    right: $h-padding;
+    top: 50%;
+    width: $close-size;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    transform: translateY(-50%);
+
+    &::before,
+    &::after {
+      background: $close;
+      content: "";
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::before {
+      height: $close-size * $root-of-two;
+      width: 2px;
+    }
+
+    &::after {
+      height: 2px;
+      width: $close-size * $root-of-two;
+    }
+  }
+
+  @media (max-width: 576px), (max-height: 380px) {
+    padding: 0;
+    top: 50px; // Hack for gosbar
+
+    &__body {
+      flex: 1 1 auto;
+    }
+  }
+}

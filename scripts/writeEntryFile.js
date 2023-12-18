@@ -4,8 +4,7 @@ const path = require("path");
 const writeCjsEntryFile = () => {
   const name = "uikit";
   const baseLine = `module.exports = require('./${name}`;
-  const contents = `
-'use strict'
+  const contents = `'use strict'
 
 if (process.env.NODE_ENV === 'production') {
   ${baseLine}.min.js');

@@ -1,0 +1,227 @@
+<doc-component name="Вкладки / Tabs" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=165%3A0">
+  <doc-tab name="обычные">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.tabs</code> - класс блока табов;</li>
+        <li class="list__item"><code>.tabs__preview</code> - класс кнопки вызова выпадающего списка табов на мобильной версии. Туда передаётся активный таб;</li>
+        <li class="list__item"><code>.tabs__list</code> - класс списка табов;</li>
+        <li class="list__item"><code>.tabs__item</code> - класс таба из списка;</li>
+        <li class="list__item"><code>.tabs_active</code> - класс активного таба. Вешается и на сам активный таб и на его контент;</li>
+        <li class="list__item"><code>.tabs__content</code> - класс контента таба.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ titleActive }}</dt>
+            <dd class="definitions__value"> - заголовок активного таба;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ titleOther }}</dt>
+            <dd class="definitions__value"> - заголовки прочих табов;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ id-tab }}</dt>
+            <dd class="definitions__value"> - якорь для контента;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ contentActive }}</dt>
+            <dd class="definitions__value"> - контент активного таба;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ contentOther }}</dt>
+            <dd class="definitions__value"> - контент прочих табов.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="tabs">
+        <button class="tabs__preview" type="button" aria-expanded="false" role="combobox" aria-haspopup="listbox">Таб 1</button>
+        <div class="tabs__list">
+          <button class="tabs__item tabs_active" type="button" data-toggle="tab" role="tab" data-target="#tabs-content-1" aria-selected="true">Таб 1</button>
+          <button class="tabs__item" type="button" data-toggle="tab" role="tab" data-target="#tabs-content-2" aria-selected="false">Таб
+            2</button>
+        </div>
+      </div>
+      <div class="tabs__content tabs_active" id="tabs-content-1">Контент 1</div>
+      <div class="tabs__content" id="tabs-content-2">Контент 2</div>
+    </doc-view>
+
+    <doc-code>
+      <div class="tabs">
+        <button class="tabs__preview" aria-expanded="false" role="combobox" aria-haspopup="listbox">{{ titleActive }}</button>
+        <div class="tabs__list">
+          <button class="tabs__item tabs_active" type="button" data-toggle="tab" role="tab" data-target="#{{ id-tab }}" aria-selected="true">{{ titleActive }}</button>
+          <button class="tabs__item" type="button" data-toggle="tab" role="tab" data-target="#{{ id-tab }}" aria-selected="false">{{ titleOther }}</button>
+        </div>
+      </div>
+      <div class="tabs__content tabs_active" id="{{ id-tab }}">{{ contentActive }}</div>
+      <div class="tabs__content" id="{{ id-tab }}">{{ contentOther }}</div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Горизонтальные встроенные">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.tabs</code> - класс блока табов;</li>
+        <li class="list__item"><code>.tabs_in-top</code> - модификатор горизонтальных встроенных табов;</li>
+        <li class="list__item"><code>.tabs__preview</code> - класс кнопки вызова выпадающего списка табов на мобильной версии. Туда передаётся активный таб;</li>
+        <li class="list__item"><code>.tabs__list</code> - класс списка табов;</li>
+        <li class="list__item"><code>.tabs__item</code> - класс таба из списка;</li>
+        <li class="list__item"><code>.tabs_active</code> - класс активного таба. Вешается и на сам активный таб и на его контент;</li>
+        <li class="list__item"><code>.tabs__content</code> - класс контента таба.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ titleActive }}</dt>
+            <dd class="definitions__value"> - заголовок активного таба;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ titleOther }}</dt>
+            <dd class="definitions__value"> - заголовки прочих табов;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ id-tab }}</dt>
+            <dd class="definitions__value"> - якорь для контента;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ contentActive }}</dt>
+            <dd class="definitions__value"> - контент активного таба;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ contentOther }}</dt>
+            <dd class="definitions__value"> - контент прочих табов.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="card">
+        <div class="tabs tabs_in-top">
+          <button class="tabs__preview" type="button" aria-expanded="false" role="combobox" aria-haspopup="listbox">Таб 1</button>
+          <div class="tabs__list">
+            <button class="tabs__item tabs_active" type="button" data-toggle="tab" role="tab" data-target="#tabs-content-3" aria-selected="true">Таб 1</button>
+            <button class="tabs__item" type="button" data-toggle="tab" role="tab" data-target="#tabs-content-4" aria-selected="false">Таб
+              2</button>
+          </div>
+        </div>
+        <div class="tabs__content tabs_active" id="tabs-content-3">Контент 1</div>
+        <div class="tabs__content" id="tabs-content-4">Контент 2</div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="card">
+        <div class="tabs tabs_in-top">
+          <button class="tabs__preview" type="button" aria-expanded="false" role="combobox" aria-haspopup="listbox">{{ titleActive }}</button>
+          <div class="tabs__list">
+            <button class="tabs__item tabs_active" type="button" data-toggle="tab" role="tab" data-target="#{{ id-tab }}" aria-selected="true">{{ titleActive }}</button>
+            <button class="tabs__item" type="button" data-toggle="tab" role="tab" data-target="#{{ id-tab }}" aria-selected="false">{{ titleOther }}</button>
+          </div>
+        </div>
+        <div class="tabs__content tabs_active" id="{{ id-tab }}">{{ contentActive }}</div>
+        <div class="tabs__content" id="{{ id-tab }}">{{ contentOther }}</div>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Вертикальные">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.tabs</code> - класс блока табов;</li>
+        <li class="list__item"><code>.tabs_vertical</code> - модификатор вертикальных табов;</li>
+        <li class="list__item"><code>.tabs__preview</code> - класс кнопки вызова выпадающего списка табов на мобильной версии. Туда передаётся активный таб;</li>
+        <li class="list__item"><code>.tabs__list</code> - класс списка табов;</li>
+        <li class="list__item"><code>.tabs__item</code> - класс таба из списка;</li>
+        <li class="list__item"><code>.tabs_active</code> - класс активного таба. Вешается и на сам активный таб и на его контент;</li>
+        <li class="list__item"><code>.tabs__content</code> - класс контента таба;</li>
+        <li class="list__item"><code>.tabs__content_column</code> - модификатор вертикального контента.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ titleActive }}</dt>
+            <dd class="definitions__value"> - заголовок активного таба;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ titleOther }}</dt>
+            <dd class="definitions__value"> - заголовки прочих табов;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ id-tab }}</dt>
+            <dd class="definitions__value"> - якорь для контента;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ contentActive }}</dt>
+            <dd class="definitions__value"> - контент активного таба;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ contentOther }}</dt>
+            <dd class="definitions__value"> - контент прочих табов.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="main__aside-neighbour">
+          <div class="tabs__content tabs__content_column tabs_active" id="tabs-v-content-1">Контент 1</div>
+          <div class="tabs__content tabs__content_column" id="tabs-v-content-2">Контент 2</div>
+          <div class="tabs__content tabs__content_column" id="tabs-v-content-3">Контент 3</div>
+          <div class="tabs__content tabs__content_column" id="tabs-v-content-4">Контент 4</div>
+        </div>
+        <div class="main__aside">
+          <div class="main__aside-container">
+            <div class="tabs tabs_vertical">
+              <button class="tabs__preview" type="button" aria-expanded="false" role="combobox" aria-haspopup="listbox">Таб 1</button>
+              <div class="tabs__list">
+                <button class="tabs__item tabs_active" type="button" data-toggle="tab" role="tab" data-target="#tabs-v-content-1" aria-selected="true">Таб 1</button>
+                <button class="tabs__item" type="button" data-toggle="tab" role="tab" data-target="#tabs-v-content-2" aria-selected="false">Таб
+                  2</button>
+                <button class="tabs__item" type="button" data-toggle="tab" role="tab" data-target="#tabs-v-content-3" aria-selected="true">Таб 3</button>
+                <button class="tabs__item" type="button" data-toggle="tab" role="tab" data-target="#tabs-v-content-4" aria-selected="false">Таб
+                  4</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="row">
+        <div class="main__aside-neighbour">
+          <div class="tabs__content tabs__content_column tabs_active" id="{{ id-tab }}">{{ contentActive }}</div>
+          <div class="tabs__content tabs__content_column" id="{{ id-tab }}">{{ contentOther }}</div>
+        </div>
+        <div class="main__aside">
+          <div class="main__aside-container">
+            <div class="tabs tabs_vertical">
+              <button class="tabs__preview" type="button" aria-expanded="false" role="combobox" aria-haspopup="listbox">{{ titleActive }}</button>
+              <div class="tabs__list">
+                <button class="tabs__item tabs_active" type="button" data-toggle="tab" role="tab" data-target="#{{ id-tab }}" aria-selected="true">{{ titleActive }}</button>
+                <button class="tabs__item" type="button" data-toggle="tab" role="tab" data-target="#{{ id-tab }}" aria-selected="true">{{ titleOther }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

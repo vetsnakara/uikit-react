@@ -1,0 +1,87 @@
+.definitions {
+  margin: -10px 0;
+
+  &__item {
+    margin: 10px 0;
+  }
+
+  &__key {
+    font-weight: bold;
+    display: inline;
+  }
+
+  &__value {
+    display: inline;
+  }
+
+  &_column &__key,
+  &_column &__value {
+    display: block;
+  }
+
+  &_column-with-shift &__key,
+  &_column-with-shift &__value {
+    display: block;
+  }
+
+  &_column-with-shift &__value {
+    margin-left: 20px;
+  }
+
+  &_row-table-right,
+  &_row-table {
+    margin: 0;
+    display: table;
+    width: 100%;
+  }
+
+  &_row-table-right &__item,
+  &_row-table &__item {
+    display: table-row;
+    margin: 0;
+  }
+
+  &_row-table-right &__item:not(:first-child) &__key,
+  &_row-table-right &__item:not(:first-child) &__value,
+  &_row-table &__item:not(:first-child) &__key,
+  &_row-table &__item:not(:first-child) &__value {
+    padding-top: 10px;
+  }
+
+  &_row-table-right &__key,
+  &_row-table-right &__value,
+  &_row-table &__key,
+  &_row-table &__value {
+    display: table-cell;
+    margin: 0;
+
+    @media (max-width: 575px) {
+      display: block;
+      padding: 0;
+    }
+  }
+
+  &_row-table-right &__value,
+  &_row-table &__value {
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  &_row-table-right &__key {
+    text-align: right;
+  }
+
+  &_fix-width-250 &__key {
+    width: 250px;
+    max-width: 250px;
+
+    @media (max-width: 575px) {
+      width: auto;
+    }
+  }
+
+  &_fix-width-250 &__value {
+    width: auto;
+  }
+
+}

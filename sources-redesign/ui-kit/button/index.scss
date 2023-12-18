@@ -1,0 +1,309 @@
+@use "sass:color" as *;
+@use "functions" as *;
+
+$radius: px(8) !default;
+$color: #FFFFFF !default;
+$background-color: #0E65B7 !default;
+$color_secondary: #0E65B7 !default;
+$color_plain: #0E65B7 !default;
+$border_plain: #0E65B7 !default;
+$color_more: #0E65B7 !default;
+$color_destruct: #E93C3C !default;
+$border_destruct: #E93C3C !default;
+$background_destruct: #E93C3C !default;
+$disabled-color: #CACCCF !default;
+$color_bright: #FFFFFF !default;
+$color_close: #A0A4A8 !default;
+$font-size: px(14) !default;
+$box-shadow-focus: 0 0 0 px(3) #B4D9F3 !default;
+
+$button-size: px(38);
+$border-width: px(1);
+$h-padding: px(15) - $border-width;
+
+@mixin disabled() {
+  @at-root button#{&}:disabled,
+  a#{&}:not([href]),
+  a#{&}[href=""] {
+    pointer-events: none;
+    @content;
+  }
+}
+
+// Button prototype
+%button {
+  appearance: initial;
+  background-color: transparent;
+  border: $border-width solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  max-width: 100%;
+  nav-index: 1;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  pointer-events: auto;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:focus {
+    box-shadow: $box-shadow-focus;
+    outline: none;
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    box-shadow: $box-shadow-focus;
+  }
+}
+
+// Button types
+.button {
+  @extend %button;
+
+  &:not(&_icon):not(&_plain) {
+    padding-left: $h-padding;
+    padding-right: $h-padding;
+  }
+
+  &:not(&_secondary):not(&_plain) {
+    background-color: $background-color;
+    border-radius: $radius;
+    color: $color;
+    font-size: $font-size;
+    font-weight: 600;
+    height: $button-size;
+    line-height: $button-size - $border-width; // Better look (FF, Chrome)
+    min-width: $button-size;
+
+    &:hover {
+      background-color: adjust($background-color, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+    }
+
+    &:active {
+      background-color: adjust($background-color, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+    }
+
+    @include disabled {
+      background: $disabled-color;
+    }
+  }
+
+  &_secondary {
+    border-color: currentColor;
+    border-radius: $radius;
+    color: $color_secondary;
+    font-size: $font-size;
+    font-weight: 600;
+    height: $button-size;
+    line-height: $button-size - $border-width; // Better look (FF, Chrome)
+    min-width: $button-size;
+
+    &:hover {
+      border-color: adjust($border_plain, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+      color: adjust($color_secondary, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+    }
+
+    &:active {
+      border-color: adjust($border_plain, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+      color: adjust($color_secondary, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+    }
+
+    @include disabled {
+      border-color: $disabled-color;
+      color: $disabled-color;
+    }
+  }
+
+  &_plain {
+    border-color: transparent;
+    color: $color_plain;
+    font-size: $font-size;
+    font-weight: 600;
+
+    &:hover {
+      color: adjust($color_plain, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+    }
+
+    &:active {
+      color: adjust($color_plain, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+    }
+
+    @include disabled {
+      color: $disabled-color;
+    }
+  }
+}
+
+// Button modifiers
+.button {
+
+  &_wide {
+    width: 100%;
+  }
+
+  &_icontext &__icon {
+    $icon-size: px(20);
+    height: $icon-size;
+    margin-right: px(6);
+    min-width: $icon-size;
+    vertical-align: valign-middle($font-size, $icon-size);
+    width: $icon-size;
+  }
+
+  &_icontext &__icon_right {
+    margin-left: px(6);
+    margin-right: px(0);
+  }
+
+  &_icon &__icon {
+    $icon-size: px(24);
+    height: $icon-size;
+    min-width: $icon-size;
+    vertical-align: valign-middle($font-size, $icon-size);
+    width: $icon-size;
+  }
+
+  &_destruct:not(&_secondary):not(&_plain) {
+    background-color: $background_destruct;
+
+    &:hover {
+      background-color: adjust($background_destruct, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+    }
+
+    &:active {
+      background-color: adjust($background_destruct, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+    }
+
+    @include disabled {
+      background-color: $disabled-color;
+    }
+  }
+
+  &_destruct#{&}_secondary {
+    border-color: $border_destruct;
+    color: $color_destruct;
+
+    &:hover {
+      border-color: adjust($border_destruct, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+      color: adjust($color_destruct, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+    }
+
+    &:active {
+      border-color: adjust($border_destruct, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+      color: adjust($color_destruct, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+    }
+  }
+
+  &_destruct#{&}_plain {
+    color: $color_destruct;
+
+    &:hover {
+      color: adjust($color_destruct, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+    }
+
+    &:active {
+      color: adjust($color_destruct, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+    }
+  }
+}
+
+// Other button-like BLOCKS
+.button {
+
+  &-close {
+    @extend %button;
+    color: $color_close;
+
+    &:hover {
+      color: adjust($color_close, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+    }
+
+    &:active {
+      color: adjust($color_close, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+    }
+  }
+
+  &-more {
+    @extend %button;
+    border-radius: $radius;
+    color: $color_more;
+    font-size: $font-size;
+    font-weight: 600;
+
+    &::before {
+      background-image: inlineSVG(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path d="M32 0H8C3.6 0 0 3.6 0 8v24c0 4.4 3.6 8 8 8h24c4.4 0 8-3.6 8-8V8c0-4.4-3.6-8-8-8zm-5.6 21l-9.9 9c-.3.3-.6.4-1 .4s-.8-.2-1.1-.5c-.6-.6-.5-1.6.1-2.1l8.7-7.9-8.4-7.7c-.6-.6-.7-1.5-.1-2.1.6-.6 1.5-.7 2.1-.1l9.6 8.8c.3.3.5.7.5 1.1s-.2.9-.5 1.1z" fill="#{$color_more}"/></svg>'
+      );
+      background-repeat: no-repeat;
+      content: "";
+      display: inline-block;
+      height: $button-size;
+      margin-right: px(17);
+      vertical-align: valign-middle($font-size, $button-size);
+      width: $button-size;
+    }
+
+    &:hover {
+      color: adjust($color_more, $hue: -3deg, $saturation: -10%, $lightness: 10%);
+
+      &::before {
+        background-image: inlineSVG(
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path d="M32 0H8C3.6 0 0 3.6 0 8v24c0 4.4 3.6 8 8 8h24c4.4 0 8-3.6 8-8V8c0-4.4-3.6-8-8-8zm-5.6 21l-9.9 9c-.3.3-.6.4-1 .4s-.8-.2-1.1-.5c-.6-.6-.5-1.6.1-2.1l8.7-7.9-8.4-7.7c-.6-.6-.7-1.5-.1-2.1.6-.6 1.5-.7 2.1-.1l9.6 8.8c.3.3.5.7.5 1.1s-.2.9-.5 1.1z" fill="#{adjust($color_more, $hue: -3deg, $saturation: -10%, $lightness: 10%)}"/></svg>'
+        );
+        background-repeat: no-repeat;
+      }
+    }
+
+    &:active {
+      color: adjust($color_more, $hue: -3deg, $saturation: -4%, $lightness: 3%);
+
+      &::before {
+        background-image: inlineSVG(
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path d="M32 0H8C3.6 0 0 3.6 0 8v24c0 4.4 3.6 8 8 8h24c4.4 0 8-3.6 8-8V8c0-4.4-3.6-8-8-8zm-5.6 21l-9.9 9c-.3.3-.6.4-1 .4s-.8-.2-1.1-.5c-.6-.6-.5-1.6.1-2.1l8.7-7.9-8.4-7.7c-.6-.6-.7-1.5-.1-2.1.6-.6 1.5-.7 2.1-.1l9.6 8.8c.3.3.5.7.5 1.1s-.2.9-.5 1.1z" fill="#{adjust($color_more, $hue: -3deg, $saturation: -4%, $lightness: 3%)}"/></svg>'
+        );
+        background-repeat: no-repeat;
+      }
+    }
+
+    &_bright {
+      color: $color_bright;
+
+      &::before,
+      &:hover::before,
+      &:active::before {
+        background-image: inlineSVG(
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path d="M32 0H8C3.6 0 0 3.6 0 8v24c0 4.4 3.6 8 8 8h24c4.4 0 8-3.6 8-8V8c0-4.4-3.6-8-8-8zm-5.6 21l-9.9 9c-.3.3-.6.4-1 .4s-.8-.2-1.1-.5c-.6-.6-.5-1.6.1-2.1l8.7-7.9-8.4-7.7c-.6-.6-.7-1.5-.1-2.1.6-.6 1.5-.7 2.1-.1l9.6 8.8c.3.3.5.7.5 1.1s-.2.9-.5 1.1z" fill="#{$color_bright}"/></svg>'
+        );
+        background-repeat: no-repeat;
+      }
+
+      &:hover {
+        color: $color_bright;
+        opacity: 0.85;
+      }
+
+      &:active {
+        color: $color_bright;
+        opacity: 0.9;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@use "../../functions";
+
+$radius: functions.px(8) !default;
+$background: #EDF5FC !default;
+$gap: functions.px(10) !default;
+$max-width__wrapper: functions.px(820) !default;
+
+.mail-layout {
+  background: $background;
+  border-radius: $radius $radius 0;
+  padding: $gap * 3;
+
+  &__wrapper {
+    max-width: $max-width__wrapper;
+  }
+
+  &__datarow {
+    display: flex;
+
+    &-label {
+      flex: 0 0 $gap * 8;
+      padding-right: $gap * 1.5;
+    }
+
+    &-data {
+      flex: 1;
+      font-weight: 500;
+    }
+  }
+}

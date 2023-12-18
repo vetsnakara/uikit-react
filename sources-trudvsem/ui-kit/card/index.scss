@@ -1,0 +1,80 @@
+$background: rgb(255, 255, 255) !default;
+$background-grey: rgb(249, 249, 251) !default;
+$background-blue: rgb(233, 235, 244) !default;
+$background-red: rgb(254, 203, 212) !default;
+$monofont: "Courier New", "Courier", monospace !default;
+$gap: 20px !default;
+$border: rgb(235, 235, 235) !default;
+$radius: 4px !default;
+$footer: $background-grey !default;
+$code-padding-vertical: 40px !default;
+$quotes-image-size: 35px !default;
+$quotes-padding-top: 30px !default;
+$quotes-bg-position: 20px 20px !default;
+
+.card {
+  display: block;
+  padding: $gap;
+  background-color: $background;
+  // Prevent margin from elements e.g. <pre>
+  margin: 0;
+  box-sizing: border-box;
+
+  &:not(&_grey):not(&_quotes):not(&_light-blue) {
+    border: 1px solid $border;
+    border-radius: $radius;
+  }
+
+  &_fill {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  }
+
+  &__body {
+    flex: 1 0 auto;
+  }
+
+  &__footer {
+    display: block;
+    background: $footer;
+    margin: $gap #{-$gap} #{-$gap};
+    padding: $gap;
+    border-radius: inherit;
+  }
+
+  &_grey {
+    background: $background-grey;
+  }
+
+  &_light-blue {
+    background: $background-blue;
+  }
+
+  &_red {
+    background: $background-red;
+  }
+
+  &_code {
+    background: $background-blue;
+    font-family: $monofont;
+    // Fallback
+    min-height: calc(1.25em + #{$code-padding-vertical});
+    // Size calculating based on experimental Line-Height units
+    min-height: calc(1lh + #{$code-padding-vertical});
+    box-sizing: border-box;
+    resize: vertical;
+    overflow: auto;
+  }
+
+  &_quotes {
+    background: $background-grey url("card/quotes-icon.png") no-repeat $quotes-bg-position / $quotes-image-size;
+    padding-top: $quotes-padding-top + $quotes-image-size;
+
+    @media (max-width: 500px) {
+      $quotes-image-size: 20px;
+      background-size: $quotes-image-size;
+      padding-top: $quotes-padding-top + $quotes-image-size;
+    }
+  }
+}

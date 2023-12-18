@@ -1,0 +1,226 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$font-size-small: functions.px(14) !default;
+$radius: functions.px(8) !default;
+$background: #F9F9FA !default;
+$color__icon: #0E65B7 !default;
+$color: #52575C !default;
+$color__close: #52575C !default;
+$color__star: #CACCCF !default;
+$color__star_active: #0E65B7 !default;
+$border_round: #E8E8E8 !default;
+$background_round: #FFFFFF !default;
+$background_transparent: #FFFFFF !default;
+
+$background-color_success: #D5F8E3 !default;
+$color_success-icon: #1AB759 !default;
+$background-color_danger: #FFF8F8 !default;
+$color_danger-icon: #E93C3C !default;
+$background-color_error: #FFF8F8 !default;
+$background-color_warning: #FFBC1F !default;
+$color_warning-icon: #E89806 !default;
+$background-color_switchable: #EDF5FC !default;
+$background-color_switchable-checked: #69B3E7 !default;
+$color_checked: #FFFFFF !default;
+$color_error: #E93C3C !default;
+$color_warning-danger: #25282B !default;
+$box-shadow-focus: 0 0 0 functions.px(3) #B4D9F3 !default;
+
+.badge {
+  align-items: center;
+  background: $background;
+  border-radius: $radius;
+  box-sizing: border-box;
+  color: $color;
+  display: inline-flex;
+  font-size: $font-size-small;
+  font-weight: 500;
+  line-height: 1.43;
+  max-width: 100%;
+  min-height: functions.px(32);
+  padding: $gap * 0.6 $gap * 1.5;
+
+  &_max-width-250 {
+    max-width: functions.px(250);
+  }
+
+  &__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__text + &__stars {
+    margin-left: $gap;
+  }
+
+  &__wrapper {
+    margin-bottom: functions.px(-5);
+    margin-left: functions.px(-5);
+  }
+
+  &__wrapper & {
+    margin: functions.px(5);
+  }
+
+  &__button-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    margin-left: $gap;
+    padding: 0;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      box-shadow: $box-shadow-focus;
+      outline: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      box-shadow: $box-shadow-focus;
+    }
+  }
+
+  &__icon {
+    color: $color__icon;
+    height: functions.px(20);
+    margin-right: $gap;
+    min-width: functions.px(20);
+    order: -1;
+    width: functions.px(20);
+  }
+
+  &__close {
+    color: $color__close;
+    order: 2;
+  }
+
+  &_success {
+    background-color: $background-color_success;
+  }
+
+  &_success &__icon {
+    color: $color_success-icon;
+  }
+
+  &_danger {
+    background-color: $background-color_danger;
+  }
+
+  &_danger &__icon {
+    color: $color_danger-icon;
+  }
+
+  &_warning {
+    background-color: $background-color_warning;
+  }
+
+  &_warning &__icon {
+    color: $color_warning-icon;
+  }
+
+  &_round {
+    background: $background_round;
+    border: functions.px(1) solid $border_round;
+    border-radius: 50%;
+    justify-content: center;
+    max-width: initial;
+    padding: functions.px(7);
+  }
+
+  &_round &__icon {
+    margin-right: 0;
+  }
+
+  &_warning,
+  &_success,
+  &_danger {
+    color: $color_warning-danger;
+  }
+
+  // switch badge
+  &_switchable {
+    background-color: $background-color_switchable;
+
+    &:hover {
+      background-color: rgba($background-color_switchable-checked, 0.3);
+    }
+  }
+
+  input:checked + &#{&}_switchable {
+    background-color: $background-color_switchable-checked;
+    color: $color_checked;
+  }
+
+  input:checked + &#{&}_switchable &__icon {
+    color: $color_checked;
+  }
+
+  &_error {
+    background-color: $background-color_error;
+  }
+
+  &_error &__close {
+    color: $color_error;
+  }
+
+  &__star {
+    color: $color__star;
+    cursor: pointer;
+    height: functions.px(18);
+    min-width: auto;
+    width: functions.px(18);
+
+    &:not(:last-child) {
+      margin-right: functions.px(2);
+    }
+
+    &_active {
+      color: $color__star_active;
+    }
+  }
+
+  &__star-button {
+    background-color: transparent;
+    border: none;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+
+    &:focus {
+      box-shadow: $box-shadow-focus;
+      outline: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      box-shadow: $box-shadow-focus;
+    }
+  }
+
+  &__star-button:hover &__star {
+    color: $color__star_active;
+  }
+
+  &__stars {
+    display: flex;
+  }
+
+  &_transparent {
+    background-color: $background_transparent;
+    min-height: auto;
+    padding: 0;
+  }
+}

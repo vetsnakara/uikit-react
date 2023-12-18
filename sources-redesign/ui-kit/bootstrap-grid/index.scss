@@ -1,0 +1,100 @@
+@use "../../functions";
+
+$grid-gap: functions.px(10) !default;
+$grid-gutter-width: $grid-gap * 2 !default;
+
+@use "../bootstrap/index" as bootstrap with ($spacer: $grid-gap, $grid-gutter-width: $grid-gutter-width * 1.5);
+
+// Bootstrap Grid v4.0.0 (https://getbootstrap.com)
+// Copyright 2011-2018 The Bootstrap Authors
+// Copyright 2011-2018 Twitter, Inc.
+// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+
+@if bootstrap.$enable-grid-classes {
+  // Container widths
+  //
+  // Set the container width, and override it for fixed navbars in media queries.
+  // border box sizing for container
+  .container {
+    @include bootstrap.make-container();
+
+    @include bootstrap.make-container-max-widths();
+    box-sizing: border-box;
+  }
+
+  // Fluid container
+  //
+  // Utilizes the mixin meant for fixed width containers, but with 100% width for
+  // fluid, full width layouts.
+  // border box sizing for full width container
+  .container-fluid {
+    @include bootstrap.make-container();
+    box-sizing: border-box;
+  }
+
+  // Row
+  //
+  // Rows contain and clear the floats of your columns.
+  .row {
+    @include bootstrap.make-row();
+
+    &_middle {
+      align-items: center;
+    }
+
+    &_bottom {
+      align-items: flex-end;
+    }
+
+    > .col,
+    > [class^="col-"],
+    > [class*=" col-"] {
+      box-sizing: border-box;
+    }
+  }
+
+  // Remove the negative margin from default .row, then the horizontal padding
+  // from all immediate children columns (to prevent runaway style inheritance).
+  // columns border-box size
+  .no-gutters {
+    margin-left: 0;
+    margin-right: 0;
+
+    > .col,
+    > [class^="col-"],
+    > [class*=" col-"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .no-narrow {
+
+    > .row {
+      margin: 0;
+
+      > .col,
+      > [class^="col-"],
+      > [class*=" col-"] {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  // Columns
+  //
+  // Common styles for small and large grid columns
+  @include bootstrap.make-grid-columns();
+
+  // Убирает дефолтные отступы на мобильных устройствах у визуально различимых блоках в cms
+  @for $i from 1 through 12 {
+    .main:not(.main_index-template) > .row > .col-md-#{$i},
+    .ib-container > .row > .col-md-#{$i} {
+      @media (max-width: functions.px(575)) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}

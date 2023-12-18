@@ -1,0 +1,92 @@
+<doc-component name="Баннер">
+  <doc-tab name="Default">
+    <doc-info>
+      <p class="content__paragraph">Если изображений несколько, их можно вставить друг за другом.</p>
+      <ul class="list">
+        <li class="list__item"><code>.banner</code> - класс блока баннера;</li>
+        <li class="list__item"><code>.banner__container</code> - класс контейнера содержимого баннера;</li>
+        <li class="list__item"><code>.banner__text</code> - класс текста баннера;</li>
+        <li class="list__item"><code>.banner__image</code> - класс изображения баннера.</li>
+      </ul>
+      <p class="content__paragraph"><strong>{{ img }}</strong> - урл изображения баннера;<br>
+        <strong>{{ href }}</strong> -ссылка в кнопке баннера;<br>
+        <strong>{{ text }}</strong> - текст кнопки баннера.</p>
+    </doc-info>
+
+    <doc-view>
+      <div class="banner">
+        <div class="banner__container">
+          <img src="https://via.placeholder.com/720x350?text=banner1" class="banner__image" alt="" width="720" height="350">
+          <img src="https://via.placeholder.com/720x350?text=banner2" class="banner__image" alt="" width="720" height="350">
+          <img src="https://via.placeholder.com/720x350?text=banner3" class="banner__image" alt="" width="720" height="350">
+          <div class="banner__text">
+            <div class="content__subtitle">Пройдите подготовку по мировым стандартам Ворлдскиллс для профессионального долголетия</div>
+            <p class="content__paragraph">Список рабочих мест на портале «Работа в России» включает и вакансии центра занятости. Более 365 000 вакансий на сайте – это предложения о работе от центров занятости населения. При этом важным преимуществом публикации подобных вакансий непосредственно на самом портале является то, что соискатель получает возможность просмотреть абсолютно весь спектр свежих вакансий центра занятости, не выходя из дома.</p>
+            <a class="button-more button-more_bright" href="javascript:void(0)">Узнать больше</a>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="banner">
+        <div class="banner__container">
+          <img src="{{ img }}"  class="banner__image" alt="" width="720" height="350">
+          <div class="banner__text">
+            <a class="button-more button-more_bright" href="{{ href }}">{{ text }}</a>
+          </div>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+  <doc-tab name="Баннер картинка слева">
+    <doc-info>
+      <p class="content__paragraph">Если изображений несколько, их можно вставить друг за другом.</p>
+      <ul class="list">
+        <li class="list__item"><code>.banner</code> - класс блока баннера;</li>
+        <li class="list__item"><code>.banner_short</code> - класс тонкого баннера с картинкой слева;</li>
+        <li class="list__item"><code>.banner__container</code> - класс контейнера содержимого баннера;</li>
+        <li class="list__item"><code>.banner__text</code> - класс текста баннера;</li>
+        <li class="list__item"><code>.banner__image</code> - класс изображения баннера.</li>
+      </ul>
+        <dl class="definitions">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ img }}</dt>
+            <dd class="definitions__value"> - урл изображения баннера;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ href }}</dt>
+            <dd class="definitions__value"> -ссылка в кнопке баннера;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ text }}</dt>
+            <dd class="definitions__value"> - текст кнопки баннера.
+            </dd>
+          </div>
+          </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="banner banner_short">
+        <div class="banner__container">
+          <img src="https://redesign.rtportal.show.pbs.bftcom.com/information/resources/upload/security/banner-security.svg" class="banner__image" alt="">
+          <div class="banner__text">
+            <p class="content__paragraph mb-1"><strong>Помогите нам сделать сайт лучше для Вас!</strong></p>
+            <p class="content__paragraph">При получении любых подозрительных писем, сообщите нам на адрес электронной почты support_portal@rostrud.ru</p>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="banner banner_short">
+        <div class="banner__container">
+          <img src="{{ img }}" class="banner__image" alt="">
+          <div class="banner__text">{{ text }}</div>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

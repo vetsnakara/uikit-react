@@ -1,0 +1,182 @@
+//sources-redesign/ui-infoblocks/ib-region-map/index.scss
+
+@use "sass:map";
+
+@use "../../functions";
+
+$gap: functions.px(5) !default;
+$radius: functions.px(4) !default;
+$border: #E8E8E8 !default;
+$background: #FFFFFF !default;
+$text: #52575C !default;
+$font: functions.px(14) !default;
+$shadow-color: #25282B !default;
+$helper: #0E65B7 !default;
+$helper-active: #014898 !default;
+$shadow-params: 0 functions.px(2) functions.px(8) rgba($shadow-color, 0.15) !default;
+
+$border-size: functions.px(1);
+$max-width: functions.px(320);
+$arrow-size: functions.px(6);
+
+$z-index: 10005 !default;
+$themes: () !default;
+
+[data-tooltip-toggle] {
+  cursor: pointer;
+  nav-index: 1;
+  user-select: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.tooltip {
+  animation: tooltip-show 0.25s linear, tooltip-move 0.25s ease-out;
+  box-sizing: border-box;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: $z-index;
+
+  &__arrow {
+    bottom: initial !important;
+    box-sizing: border-box;
+    left: initial !important;
+    position: absolute;
+    right: initial !important;
+    top: initial !important;
+  }
+
+  @each $theme in $themes {
+    $scroll-offset: functions.px(22);
+    $local-padding: $gap * 3;
+    $local-max-width: map.get($theme, "max-width") or $max-width;
+    $local-border-size: map.get($theme, "border-size") or $border-size;
+
+    &_theme-#{map.get($theme, "name")} {
+      background: map.get($theme, "background") or $background;
+      border: $local-border-size solid;
+      border-color: map.get($theme, "border") or $border;
+      border-radius: map.get($theme, "radius") or $radius;
+      box-shadow: map.get($theme, "shadow-params") or $shadow-params;
+      color: map.get($theme, "text") or $text;
+      font-size: map.get($theme, "font") or $font;
+      max-width: $local-max-width;
+      padding: $local-padding;
+    }
+
+    @media (max-width: #{$local-max-width + $scroll-offset * 2}) {
+      max-width: calc(100% - #{$scroll-offset * 2});
+    }
+
+    &_theme-#{map.get($theme, "name")} &__arrow {
+      border: solid transparent;
+      border-top-color: map.get($theme, "border") or $border;
+      border-width: map.get($theme, "arrow-size") or $arrow-size;
+      border-bottom-width: 0;
+      top: -$local-border-size;
+      width: 0;
+
+      &::after {
+        border: (map.get($theme, "arrow-size") or $arrow-size) solid transparent;
+        border-bottom-width: 0;
+        border-top-color: map.get($theme, "background") or $background;
+        bottom: $local-border-size;
+        content: "";
+        display: block;
+        left: -1 * (map.get($theme, "arrow-size") or $arrow-size);
+        position: absolute;
+      }
+    }
+
+    &[x-placement="top"] &__arrow {
+      left: 50% !important;
+      top: 100% !important;
+      transform: translateX(-1 * (map.get($theme, "arrow-size") or $arrow-size));
+    }
+
+    &[x-placement="bottom"] &__arrow {
+      bottom: 100% !important;
+      left: 50% !important;
+      transform: translateX(-1 * (map.get($theme, "arrow-size") or $arrow-size)) rotate(180deg);
+    }
+
+    &[x-placement="right"] &__arrow {
+      right: 100% !important;
+      top: 50% !important;
+      transform: translate(2px, -0.5 * (map.get($theme, "arrow-size") or $arrow-size)) rotate(90deg);
+    }
+
+    &[x-placement="left"] &__arrow {
+      left: 100% !important;
+      top: 50% !important;
+      transform: translate(-2px, -0.5 * (map.get($theme, "arrow-size") or $arrow-size)) rotate(270deg);
+    }
+  }
+}
+
+.tooltip__handler {
+  background-image: functions.inlineSVG(
+    '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 14.6666C11.6819 14.6666 14.6667 11.6819 14.6667 7.99998C14.6667 4.31808 11.6819 1.33331 8 1.33331C4.3181 1.33331 1.33334 4.31808 1.33334 7.99998C1.33334 11.6819 4.3181 14.6666 8 14.6666Z" stroke="' +
+    $helper +
+    '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10.6667V8" stroke="' +
+    $helper +
+    '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 5.33331H8.00667" stroke="' +
+    $helper + '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  );
+  background-size: 100%;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  height: functions.px(16);
+  min-width: functions.px(16);
+  transform: translateY(functions.px(-1));
+  vertical-align: middle;
+  width: functions.px(16);
+
+  &_in-text {
+    line-height: 1.25em;
+    line-height: 1lh !important;
+    vertical-align: middle;
+  }
+
+  &.tooltip_active {
+    background-image: functions.inlineSVG(
+      '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 14.6666C11.6819 14.6666 14.6667 11.6819 14.6667 7.99998C14.6667 4.31808 11.6819 1.33331 8 1.33331C4.3181 1.33331 1.33334 4.31808 1.33334 7.99998C1.33334 11.6819 4.3181 14.6666 8 14.6666Z" stroke="' +
+      $helper-active +
+      '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10.6667V8" stroke="' +
+      $helper-active +
+      '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 5.33331H8.00667" stroke="' +
+      $helper-active + '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    );
+  }
+
+  &:not(:first-child) {
+    margin-left: $gap;
+  }
+}
+
+@keyframes tooltip-show {
+
+  0% {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tooltip-move {
+
+  0% {
+    top: -$gap * 2;
+  }
+
+  100% {
+    top: 0;
+  }
+}

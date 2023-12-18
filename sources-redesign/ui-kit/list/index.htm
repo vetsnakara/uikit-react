@@ -1,0 +1,241 @@
+<doc-component name="Список">
+  <doc-tab name="Default">
+
+    <doc-info>
+      <p>Ненумерованный и вложенный ненумерованный</p>
+    </doc-info>
+
+    <doc-view>
+      <ul class="list">
+        <li class="list__item">элемент списка</li>
+        <li class="list__item">элемент списка</li>
+      </ul>
+
+      <ul class="list">
+        <li class="list__item">элемент списка
+          <ul class="list">
+            <li class="list__item">элемент списка</li>
+            <li class="list__item">элемент списка</li>
+          </ul>
+        </li>
+        <li class="list__item">элемент списка</li>
+      </ul>
+    </doc-view>
+
+    <doc-code>
+      <ul class="list">
+        <li class="list__item">{{ text }}</li>
+      </ul>
+
+      <ul class="list">
+        <li class="list__item">{{ text }}
+          <ul class="list">
+            <li class="list__item">{{ text }}</li>
+          </ul>
+        </li>
+      </ul>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Нумерованный 1. 2. 3.">
+    <doc-info>
+      <p>Цифровой и вложенный цифровой</p>
+    </doc-info>
+
+    <doc-view>
+      <ol class="list list_ordered">
+        <li class="list__item">элемент списка</li>
+        <li class="list__item">элемент списка</li>
+      </ol>
+
+      <ol class="list list_ordered">
+        <li class="list__item">элемент списка
+          <ol class="list list_ordered">
+            <li class="list__item">элемент списка</li>
+            <li class="list__item">элемент списка
+
+              <ol class="list list_ordered">
+                <li class="list__item">элемент списка</li>
+                <li class="list__item">элемент списка</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li class="list__item">элемент списка</li>
+      </ol>
+    </doc-view>
+
+    <doc-code>
+      <ol class="list list_ordered">
+        <li class="list__item">{{ text }}</li>
+      </ol>
+
+      <ol class="list list_ordered">
+        <li class="list__item">
+          {{ text }}
+          <ol class="list list_ordered">
+            <li class="list__item">{{ text }}</li>
+          </ol>
+        </li>
+      </ol>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="Нумерованный 1) 2) 3)">
+    <doc-info>
+      <p>Цифровой со скобкой и вложенный цифровой со скобкой</p>
+    </doc-info>
+
+    <doc-view>
+      <ol class="list list_ordered-bracket">
+        <li class="list__item">элемент списка</li>
+        <li class="list__item">элемент списка</li>
+      </ol>
+
+      <ol class="list list_ordered">
+        <li class="list__item">элемент списка
+          <ol class="list list_ordered-bracket">
+            <li class="list__item">элемент списка</li>
+            <li class="list__item">элемент списка</li>
+          </ol>
+        </li>
+        <li class="list__item">элемент списка</li>
+      </ol>
+    </doc-view>
+
+    <doc-code>
+      <ol class="list list_ordered-bracket">
+        <li class="list__item">{{ text }}</li>
+      </ol>
+
+      <ol class="list list_ordered">
+        <li class="list__item">
+          {{ text }}
+          <ol class="list list_ordered-bracket">
+            <li class="list__item">{{ text }}</li>
+          </ol>
+        </li>
+      </ol>
+    </doc-code>
+  </doc-tab>
+  <doc-tab name="Нумерованный а, b, c">
+    <doc-info>
+      <div class="mb-2">
+        <p class="mb-2">Буквенный и вложенный буквенный</p>
+        <p>Атрибут value используется в элементе списка, если нужно начать список не с буквы "а"</p>
+        <p class="mb-2">Значение value соответсвует номеру буквы в алфавите (Ё пропущена)</p>
+      </div>
+      <table bordercolor="grey" border="1">
+        <tr>
+          <th>А</th>
+          <th>Б</th>
+          <th>В</th>
+          <th>Г</th>
+          <th>Д</th>
+          <th>Е</th>
+          <th>Ж</th>
+          <th>З</th>
+          <th>И</th>
+          <th>Й</th>
+          <th>К</th>
+          <th>Л</th>
+          <th>М</th>
+          <th>Н</th>
+          <th>О</th>
+          <th>П</th>
+          <th>Р</th>
+          <th>С</th>
+          <th>Т</th>
+          <th>У</th>
+          <th>Ф</th>
+          <th>Х</th>
+          <th>Ц</th>
+          <th>Ч</th>
+          <th>Ш</th>
+          <th>Щ</th>
+          <th>Ъ</th>
+          <th>Ы</th>
+          <th>Ь</th>
+          <th>Э</th>
+          <th>Ю</th>
+          <th>Я</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+          <td>11</td>
+          <td>12</td>
+          <td>13</td>
+          <td>14</td>
+          <td>15</td>
+          <td>16</td>
+          <td>17</td>
+          <td>18</td>
+          <td>19</td>
+          <td>20</td>
+          <td>21</td>
+          <td>22</td>
+          <td>23</td>
+          <td>24</td>
+          <td>25</td>
+          <td>26</td>
+          <td>27</td>
+          <td>28</td>
+          <td>29</td>
+          <td>30</td>
+          <td>31</td>
+          <td>32</td>
+        </tr>
+      </table>
+    </doc-info>
+
+    <doc-view>
+      <ul class="list list_ordered-letter">
+        <li class="list__item" value="2">элемент списка</li>
+        <li class="list__item" value="3">элемент списка</li>
+      </ul>
+
+      <hr class="separator">
+
+      <ul class="list">
+        <li class="list__item">элемент списка
+          <ul class="list list_ordered-letter">
+            <li class="list__item" value="5">элемент списка</li>
+            <li class="list__item" value="6">элемент списка</li>
+          </ul>
+        </li>
+        <li class="list__item">элемент списка</li>
+      </ul>
+
+      <ol class="list list_ordered" start="5">
+        <li class="list__item">элемент списка
+          <ul class="list list_ordered list_ordered-letter">
+            <li class="list__item" value="5">элемент списка</li>
+            <li class="list__item" value="10">элемент списка</li>
+          </ul>
+        </li>
+        <li class="list__item">элемент списка</li>
+      </ol>
+
+    </doc-view>
+
+    <doc-code>
+      <ul class="list">
+        <li class="list__item">{{ text }}
+          <ul class="list list_ordered-letter">
+            <li class="list__item" value="15">{{ text }}</li>
+          </ul>
+        </li>
+      </ul>
+    </doc-code>
+  </doc-tab>
+
+</doc-component>

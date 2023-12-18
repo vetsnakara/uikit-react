@@ -1,0 +1,93 @@
+@use "sass:color";
+
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$color: #52575C !default;
+$color__list-active: #014898 !default;
+$progress-color: #0E65B7 !default;
+$background-color__list-active: #EDF5FC !default;
+$border-color__preview: #1E88DB !default;
+$color__preview: #1E88DB !default;
+$arrow-color__preview: #1E88DB !default;
+$background-color-active-item-element: #0E65B7 !default;
+
+@mixin arrow-color($color) {
+  background-image: functions.inlineSVG(
+    '<svg width="10" height="5" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 5L5 0L10 5H0Z" fill="' +#{$color}+
+    '"/></svg>'
+  );
+}
+
+.tabs-wrapper {
+
+  &:not(.tabs-wrapper_open) &__list {
+    display: none;
+  }
+
+  &__preview {
+    appearance: none;
+    background: none;
+    border: none;
+    display: none;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    &:after {
+      content: "";
+      height: functions.px(5);
+      position: absolute;
+      right: $gap * 1.4;
+      top: 50%;
+      width: functions.px(10);
+
+      @include arrow-color($progress-color);
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $border-color__preview;
+      color: $color__preview;
+      outline: none;
+
+      &:after {
+        @include arrow-color($arrow-color__preview);
+      }
+    }
+  }
+
+  .tabs__item {
+    @media (min-width: functions.px(767)) {
+      overflow: visible;
+
+      &::after {
+        background-color: $background-color-active-item-element;
+        border-radius: 0 functions.px(2) functions.px(2) 0;
+        content: "";
+        height: 0;
+        left: -$gap * 3;
+        position: absolute;
+        top: 0;
+        transition: height 0.15s ease-in;
+        width: functions.px(3);
+      }
+    }
+  }
+
+  // Не по БЭМу из-за ограничений bootstrap
+  &__list .tabs__item.tabs_active {
+    background-color: $background-color__list-active;
+    pointer-events: none;
+
+    @media (min-width: functions.px(767)) {
+      background-color: transparent;
+      color: $color__list-active;
+      position: relative;
+
+      &::after {
+        height: 100%;
+      }
+    }
+  }
+}

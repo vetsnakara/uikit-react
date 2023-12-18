@@ -6,10 +6,16 @@
   "main": "dist/index.js",
   "types": "types.d.ts",
   "scripts": {
+    "prod": "cross-env PRRENV=production gulp production",
+    "prod2": "grunt prod",
     "build:prod": "cross-env NODE_ENV=production webpack",
     "build:dev": "cross-env NODE_ENV=development webpack",
-    "build:all": "npm-run-all --parallel build:prod build:dev",
+    "build:assets": "npm-run-all prod2 move-assets",
+    "build:all": "npm-run-all clear --parallel build:prod build:dev build:assets",
+    "clear": "rimraf ./dist",
     "write-entry-file": "node ./scripts/writeEntryFile",
+    "move-assets": "node ./scripts/moveAssets",
+    "styletest": "node autotest.js",
     "prepare": "npm-run-all build:all write-entry-file"
   },
   "keywords": [],
@@ -20,10 +26,49 @@
     "@babel/preset-react": "7.23.3",
     "@types/prop-types": "^15.7.11",
     "@types/react": "^18.2.45",
+    "autoprefixer": "9.8.6",
     "babel-loader": "9.1.3",
     "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
+    "grunt": "1.5.3",
+    "grunt-babel": "8.0.0",
+    "grunt-contrib-concat": "2.1.0",
+    "grunt-contrib-connect": "3.0.0",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-cssmin": "4.0.0",
+    "grunt-contrib-uglify": "5.2.2",
+    "grunt-contrib-watch": "1.1.0",
+    "grunt-exec": "3.0.0",
+    "grunt-postcss": "0.9.0",
+    "grunt-sass": "3.1.0",
+    "grunt-stylelint": "0.18.0",
+    "grunt-svgmin": "6.0.1",
+    "grunt-svgstore": "2.0.0",
+    "gulp": "4.0.2",
+    "gulp-autoprefixer": "8.0.0",
+    "gulp-babel": "8.0.0",
+    "gulp-clean-css": "4.3.0",
+    "gulp-concat": "2.6.1",
+    "gulp-connect": "5.7.0",
+    "gulp-dart-sass": "1.0.2",
+    "gulp-if": "3.0.0",
+    "gulp-rename": "2.0.0",
+    "gulp-sourcemaps": "3.0.0",
+    "gulp-svgmin": "4.0.0",
+    "gulp-svgo": "2.2.1",
+    "gulp-svgstore": "9.0.0",
+    "gulp-terser": "2.1.0",
     "npm-run-all": "^4.1.5",
+    "open": "7.4.2",
+    "postcss": "8.4.16",
+    "postcss-scss": "4.0.4",
+    "rimraf": "^5.0.5",
+    "sass": "1.53.0",
+    "sass-embedded": "1.53.0",
+    "stylelint": "14.12.0",
+    "stylelint-config-standard-scss": "5.0.0",
+    "stylelint-order": "5.0.0",
+    "time-grunt": "2.0.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "5.89.0",
@@ -33,5 +78,85 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "IE 11",
+    "Firefox >= 71",
+    "Chrome >= 78",
+    "Edge >= 76",
+    "Safari >= 13",
+    "Opera >= 64",
+    "> 2%"
+  ],
+  "stylelint": {
+    "plugins": [
+      "stylelint-scss",
+      "stylelint-order"
+    ],
+    "customSyntax": "postcss-scss",
+    "rules": {
+      "order/properties-alphabetical-order": true,
+      "font-family-name-quotes": "always-unless-keyword",
+      "font-weight-notation": "numeric",
+      "function-url-quotes": "always",
+      "value-list-comma-newline-before": "never-multi-line",
+      "declaration-block-semicolon-newline-before": "never-multi-line",
+      "block-closing-brace-space-after": "always-single-line",
+      "selector-attribute-quotes": "always",
+      "rule-empty-line-before": [
+        "always-multi-line",
+        {
+          "ignore": [
+            "after-comment"
+          ]
+        }
+      ],
+      "media-feature-colon-space-after": "always",
+      "media-feature-colon-space-before": "never",
+      "media-feature-name-case": "lower",
+      "media-feature-parentheses-space-inside": "never",
+      "media-feature-range-operator-space-after": "always",
+      "media-feature-range-operator-space-before": "always",
+      "media-query-list-comma-newline-after": "always-multi-line",
+      "media-query-list-comma-newline-before": "never-multi-line",
+      "media-query-list-comma-space-after": "always-single-line",
+      "media-query-list-comma-space-before": "never",
+      "at-rule-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "first-nested"
+          ],
+          "ignore": [
+            "after-comment",
+            "blockless-after-same-name-blockless"
+          ]
+        }
+      ],
+      "at-rule-name-case": "lower",
+      "at-rule-name-space-after": "always-single-line",
+      "at-rule-semicolon-newline-after": "always",
+      "at-rule-semicolon-space-before": "never",
+      "comment-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "first-nested"
+          ],
+          "ignore": [
+            "stylelint-commands"
+          ]
+        }
+      ],
+      "comment-whitespace-inside": "always",
+      "indentation": 2,
+      "linebreaks": "unix",
+      "max-empty-lines": 1,
+      "max-line-length": 120,
+      "no-eol-whitespace": true,
+      "no-missing-end-of-source-newline": true,
+      "no-empty-first-line": true,
+      "color-hex-case": "upper"
+    }
   }
 }

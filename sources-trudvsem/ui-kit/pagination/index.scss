@@ -1,0 +1,69 @@
+$text: rgb(255, 68, 82) !default;
+$text-active: rgb(255, 255, 255) !default;
+$text-disabled: rgb(235, 235, 235) !default;
+$back-active: rgb(255, 68, 82) !default;
+
+$gap: 5px !default;
+$radius: 4px !default;
+$height: 30px !default;
+$font: "AA-BebasNeue", sans-serif !default;
+
+.pagination {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  flex-flow: row wrap;
+
+  &__item {
+    box-sizing: border-box;
+    height: $height;
+    color: $text;
+    line-height: $height - 2px;
+    border: 1px solid;
+    white-space: nowrap;
+    flex: 0 0 35px;
+    margin: $gap;
+    padding: 0;
+    text-align: center;
+    border-radius: $radius;
+    font-family: $font;
+    text-transform: uppercase;
+    font-size: 18px;  // Mimic to old PP and Legacy
+    text-decoration: none;
+    cursor: pointer;
+
+    @media (max-width: 770px) {
+      border: none;
+      border-radius: 0;
+      flex: 1 1 auto;
+      margin: 0;
+    }
+
+    &_active {
+      box-shadow: inset 0 0 0 $height $back-active;
+      color: $text-active;
+    }
+
+    &_next,
+    &_previous {
+      width: auto;
+      padding: 0 13px; // Mimic to old PP and Legacy
+
+      @media (max-width: 770px) {
+        display: none;
+      }
+    }
+
+    &_disabled {
+      color: $text-disabled;
+    }
+
+    &_active,
+    &_disabled {
+      cursor: default;
+    }
+  }
+}

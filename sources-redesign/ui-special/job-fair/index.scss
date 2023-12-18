@@ -1,0 +1,471 @@
+@use "functions";
+@use "images" as *;
+
+$gap: functions.px(10);
+
+$font-size__menu-item: functions.px(13);
+$font-size__menu-item-mobile: functions.px(12);
+$font-size__info: functions.px(19);
+$font-size__info-mobile: functions.px(13);
+$font-size__title: functions.px(48);
+$font-size__title-mobile: functions.px(36);
+$font-size__subtitle: functions.px(38);
+$font-size__subtitle-mobile: functions.px(26);
+$font-size__subtitle_small: functions.px(24);
+$font-size__paragraph: functions.px(21);
+$font-size__reasons-text: functions.px(21);
+$font-size__reasons-text-mobile: functions.px(16);
+$font-size__links-text: functions.px(22);
+
+$background-color__menu: #093EA6;
+$background__banner: #FFF;
+$background__form: #FFF;
+$background__button: #E5481D;
+$background__button_brand: #093EA6;
+$background__program: #F9F9FA;
+$background__patners: #F9F9FA;
+$background__translation: #FFF;
+
+$color_brand: #0033A0;
+$color_accent: #E5481D;
+$color__menu-item: #FFF;
+$color__reasons: #FFF;
+$color__footer: #FFF;
+$color__footer-link: #FFF;
+$color__table_accent: #0E65B7;
+$color__links-text: #25282B;
+$color__support: #FFF;
+
+$border-color__table: #E8E8E8;
+$border-color__links-decor: #B4D9F3;
+
+.job-fair {
+
+  min-width: functions.px(375);
+
+  &_accent-color {
+    color: $color_accent;
+  }
+
+  &_brand-color {
+    color:  $color_brand;
+  }
+
+  &__nav {
+    background: $background-color__menu;
+  }
+
+  &__menu {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    margin: 0;
+    padding: $gap * 1.5 0;
+    text-transform: uppercase;
+  }
+
+  &__menu-item {
+    color: $color__menu-item;
+    display: block;
+    font-size: $font-size__menu-item-mobile;
+    margin-right: $gap;
+    text-decoration: none;
+    white-space: nowrap;
+
+    @media (min-width: functions.px(576)){
+      font-size: $font-size__menu-item;
+    }
+  }
+
+  &__title {
+    color: $color_brand;
+    font-size: $font-size__title-mobile;
+    line-height: 1.1;
+    margin-bottom: functions.px(30);
+
+    @media (min-width: functions.px(576)){
+      font-size: $font-size__title;
+    }
+
+    @media (min-width: functions.px(992)){
+      margin-bottom: functions.px(40);
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size__subtitle-mobile;
+    font-weight: 700;
+    line-height: 1.1;
+
+    @media (min-width: functions.px(576)) {
+      font-size: $font-size__subtitle;
+    }
+  }
+
+  &__subtitle_small {
+    font-size: $font-size__subtitle_small;
+    line-height: 1.1;
+  }
+
+  &__paragraph {
+    font-size: $font-size__paragraph;
+  }
+
+  &__image {
+    border-radius: 0;
+  }
+
+  &__banner {
+    background: $background__banner;
+    box-sizing: border-box;
+    text-align: left;
+
+    @media (min-width: functions.px(576)) {
+      text-align: center;
+    }
+
+    @media (min-width: functions.px(992)) {
+      text-align: left;
+    }
+  }
+
+  &__banner_decor {
+    background: url("job-fair/bg-1.png") no-repeat center bottom;
+    background-size: functions.px(367) auto;
+    min-height: functions.px(380);
+
+    @media (min-width: functions.px(992)) {
+      background-position: right bottom;
+      background-size: contain;
+      min-height: functions.px(360);
+    }
+  }
+
+  &__banner-mintrud {
+    max-width: functions.px(40);
+
+    @media (min-width: functions.px(992)) {
+      max-width: 100%;
+    }
+  }
+
+  &__banner-rostrud {
+    max-width: functions.px(65);
+
+    @media (min-width: functions.px(992)) {
+      max-width: 100%;
+    }
+  }
+
+  &__banner-prr {
+    max-width: functions.px(62);
+
+    @media (min-width: functions.px(992)) {
+      max-width: 100%;
+    }
+  }
+
+  &__banner-projects {
+    border-radius: 0;
+    max-width: functions.px(62);
+
+    @media (min-width: functions.px(992)) {
+      max-width: 100%;
+    }
+  }
+
+  &__info {
+    font-size: $font-size__info_mobile;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: left;
+    text-transform: uppercase;
+
+    @media (min-width: functions.px(992)) {
+      font-size: $font-size__info;
+    }
+  }
+
+  &__button:not(.button_secondary):not(.button_plain) {
+    background-color: $background__button;
+    font-weight: 700;
+    height: functions.px(56);
+    line-height: functions.px(56);
+    padding-left: $gap * 3.4;
+    padding-right: $gap * 3.4;
+
+  }
+
+  &__button_banner:not(.button_secondary):not(.button_plain) {
+    display: none;
+
+    @media (min-width: functions.px(576)) {
+      display: inline-block;
+    }
+  }
+
+  &__button_banner-mobile:not(.button_secondary):not(.button_plain) {
+    bottom: functions.px(30);
+    display: block;
+    left: functions.px(30);
+    position: absolute;
+    right: functions.px(30);
+    width: auto;
+
+    @media (min-width: functions.px(576)) {
+      display: none;
+    }
+  }
+
+  &__button:not(.button_secondary):not(.button_plain):hover {
+    background-color: $background__button;
+  }
+
+  &__button_brand:not(.button_secondary):not(.button_plain) {
+    background-color: $background__button_brand;
+  }
+
+  &__button_brand:not(.button_secondary):not(.button_plain):hover {
+    background-color: $background__button_brand;
+  }
+
+  &__translation {
+    background: $background__translation;
+    padding: $gap * 7 0;
+  }
+
+  &__reasons {
+    background: linear-gradient(249.44deg, #1B4E9B 45.16%, #1D386A 75.8%);
+    box-sizing: border-box;
+    color: $color__reasons;
+    min-height: functions.px(500);
+    padding: $gap * 5 0;
+    text-align: left;
+
+    @media (min-width: functions.px(992)) {
+      background: url("job-fair/decor.png") no-repeat right top, linear-gradient(249.44deg, #1B4E9B 45.16%, #1D386A 75.8%);
+      background-size: contain;
+      padding: $gap * 10 0 $gap * 10.8 0;
+      text-align: center;
+    }
+  }
+
+  &__reasons-number {
+    border-radius: 0;
+    height: functions.px(45);
+    width: auto;
+
+    @media (min-width: functions.px(992)) {
+      height: auto;
+    }
+  }
+
+  &__reasons-text {
+    font-size: $font-size__reasons-text-mobile;
+    line-height: 1.1;
+    margin-top: 0;
+    word-break: normal;
+
+    @media (min-width: functions.px(992)) {
+      font-size: $font-size__reasons-text;
+      margin-top: $gap * 3.5;
+    }
+  }
+
+  &__form {
+    background: $background__form;
+    box-sizing: border-box;
+    padding: $gap * 5 0;
+
+    @media (min-width: functions.px(992)) {
+      padding: $gap * 10;
+    }
+  }
+
+  &__form-button {
+    width: 100%;
+
+    @media (min-width: functions.px(768)) {
+      width: auto;
+    }
+  }
+
+  &__program {
+    background: $background__program;
+    padding: $gap * 5 0;
+
+    @media (min-width: functions.px(992)) {
+      padding: $gap * 10 0 $gap * 5 0;
+    }
+  }
+
+  &__program_address {
+    max-width: 100%;
+  }
+
+  &__table {
+    border-bottom: functions.px(1) solid $border-color__table;
+    border-collapse: collapse;
+    border-top: functions.px(1) solid $border-color__table;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: functions.px(40);
+    width: 100%;
+
+    @media (min-width: functions.px(992)) {
+      display: table;
+      margin-bottom: functions.px(60);
+    }
+  }
+
+  &__table-item {
+    display: block;
+
+    @media (min-width: functions.px(992)) {
+      display: table-row;
+    }
+  }
+
+  &__table-cell {
+    box-sizing: border-box;
+    display: block;
+    padding: $gap 0;
+    vertical-align: top;
+
+    @media (min-width: functions.px(992)) {
+      display: table-cell;
+      padding: $gap * 1.7 0 $gap * 3 0;
+    }
+  }
+
+  &__table_accent {
+    color: $color__table_accent;
+  }
+
+  &__table-cell_first {
+    width: 100%;
+
+    @media (min-width: functions.px(992)) {
+      width: functions.px(250);
+    }
+  }
+
+  &__table-cell_middle {
+    width: 100%;
+
+    @media (min-width: functions.px(992)) {
+      width: auto;
+    }
+  }
+
+  &__table-cell_last {
+    padding-left: 0;
+    width: 100%;
+
+    @media (min-width: functions.px(992)) {
+      padding-left: functions.px(60);
+      width: functions.px(230);
+    }
+  }
+
+  &__partners {
+    background: $background__patners;
+    padding: $gap * 5 0; /* 0 0 $gap * 5 0 если сверху есть блок программ */
+    position: relative;
+    text-align: center;
+
+    @media (min-width: functions.px(992)) {
+      padding: $gap * 10 0 $gap * 11 0; /* $gap * 5 0 $gap * 11 0 если сверху есть блок программ */
+    }
+  }
+
+  &__partners_decor {
+    position: relative;
+  }
+
+  &__partners_decor::after {
+    background: url("job-fair/decor-3.png") no-repeat right top;
+    content: "";
+    display: none;
+    height: functions.px(109);
+    position: absolute;
+    right: functions.px(50);
+    top: functions.px(-35);
+    width: functions.px(105);
+
+    @media (min-width: functions.px(576)) {
+      display: block;
+    }
+  }
+
+  &__footer {
+    background: linear-gradient(249.44deg, #1B4E9B 45.16%, #1D386A 75.8%);
+    box-sizing: border-box;
+    color: $color__footer;
+    min-height: functions.px(280);
+    padding: $gap * 5 0 $gap * 1 0;
+    text-align: center;
+
+    @media (min-width: functions.px(992)) {
+      background: url("job-fair/decor.png") no-repeat right top, linear-gradient(249.44deg, #1B4E9B 45.16%, #1D386A 75.8%);
+      background-size: contain;
+      padding: $gap * 10 0 $gap * 10.8 0;
+      text-align: center;
+    }
+  }
+
+  &__footer-subtitle {
+    font-weight: 600;
+  }
+
+  &__footer-link {
+    color: $color__footer-link;
+    display: inline-block;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  &__footer-link_decor {
+    text-decoration: underline;
+  }
+
+  &__links-item {
+    box-sizing: border-box;
+    display: inline-block;
+    line-height: 1;
+    padding: functions.px(19);
+    text-decoration: none;
+  }
+
+  &__links {
+    padding-bottom: functions.px(50);
+    text-align: center;
+  }
+
+  &__links-decor {
+    border: functions.px(1) solid $border-color__links-decor;
+    box-sizing: border-box;
+  }
+
+  &__links-item:hover {
+    border: functions.px(19) solid $border-color__links-decor;
+    padding: functions.px(0);
+  }
+
+  &__links-text {
+    box-sizing: border-box;
+    color: $color__links-text;
+    font-size: $font-size__links-text;
+    font-weight: 600;
+    padding: functions.px(30) functions.px(10);
+    text-align: center;
+  }
+
+  &__support {
+    background: linear-gradient(249.44deg,#1B4E9B 45.16%,#1D386A 75.8%);
+    color: $color__support;
+    padding: $gap * 10 0;
+    text-align: center;
+  }
+
+}

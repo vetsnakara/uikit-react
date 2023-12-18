@@ -1,0 +1,54 @@
+@use "../../functions";
+
+$background-image: #FFFFFF !default;
+$color__author-text: #52575C !default;
+$gap: functions.px(10) !default;
+$max-width: functions.px(770);
+$font-size-big: functions.px(18) !default;
+
+.quote {
+  background-image: functions.inlineSVG(
+    '<svg width="76" height="53" stroke="' + $background-image +
+    '" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34.06 11.45c0-5.528-4.533-9.95-9.95-9.95H11.95C6.422 1.5 2 6.033 2 11.45v12.16c0 5.528 4.533 9.95 9.95 9.95h5.97l-4.533 11.166c-.553 1.547.11 3.095 1.547 3.758l5.75 2.322c1.436.553 3.095-.11 3.647-1.548l8.513-20.894c.774-1.437 1.216-2.985 1.216-4.754V11.45z" stroke-width="3"/><path d="M73.748 11.45c0-5.528-4.533-9.95-9.95-9.95h-12.16c-5.528 0-9.95 4.533-9.95 9.95v12.16c0 5.528 4.533 9.95 9.95 9.95h6.08l-4.533 11.166c-.552 1.547.11 3.095 1.548 3.758l5.749 2.322c1.437.553 3.095-.11 3.648-1.548l8.512-20.894c.774-1.437 1.217-2.985 1.217-4.754V11.45h-.111z" stroke-width="3"/></svg>'
+  );
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: $max-width;
+  padding-left: $gap * 10;
+
+  &__text {
+    font-size: $font-size-big;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
+
+    &:not(:last-of-type) {
+      margin-bottom: $gap * 2;
+    }
+  }
+
+  &__img {
+    border-radius: 50%;
+  }
+
+  &__footer {
+    display: flex;
+    margin-top: $gap * 1.5;
+  }
+
+  &__img + &__caption {
+    margin-left: $gap * 4;
+  }
+
+  &__author {
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  &__author-text {
+    color: $color__author-text;
+    margin: $gap * 0.5 0 0;
+  }
+}

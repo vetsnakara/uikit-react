@@ -1,0 +1,101 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$background__item_active: #EDF5FC !default;
+$box-shadow__cell_active: #69B3E7 !default;
+
+.vacation-table {
+  line-height: 1.285;
+
+  &__item:not(:root):hover,
+  &__item_active:not(:root:root) {
+    background: $background__item_active;
+  }
+
+  &__title {
+    @media (min-width: functions.px(767)) {
+      padding: $gap $gap * 1.5;
+    }
+
+    //custom columns widths
+    &_structure {
+      width: functions.px(275);
+    }
+
+    &_position {
+      width: functions.px(200);
+    }
+
+    &_employee-surname {
+      width: functions.px(200);
+    }
+
+    &_employee-name {
+      width: functions.px(200);
+    }
+
+    &_employee-patronymic {
+      width: functions.px(200);
+    }
+
+    &_personnel-number {
+      width: functions.px(169);
+    }
+
+    &_days-of-vacation {
+      width: functions.px(228);
+    }
+
+    &_planned-start {
+      width: functions.px(148);
+    }
+
+    &_fact-start {
+      width: functions.px(172);
+    }
+
+    &_document {
+      width: functions.px(228);
+    }
+
+    &_intended-vacation {
+      width: functions.px(208);
+    }
+
+    &_reason-for-transfer {
+      width: functions.px(217);
+    }
+  }
+
+  &__cell {
+
+    &_active {
+      box-shadow: inset 0 0 0 functions.px(1) $box-shadow__cell_active;
+    }
+
+    &_editable {
+      position: relative;
+    }
+
+    @media (min-width: functions.px(767)) {
+      padding: $gap * 1.5;
+    }
+  }
+
+  &__input {
+    bottom: functions.px(1);
+    display: block;
+    left: functions.px(1);
+    position: absolute;
+    right: functions.px(1);
+    top: functions.px(1);
+  }
+
+  &__input-control {
+    border: none;
+    border-radius: 0;
+    height: 100%;
+    max-width: none;
+    width: 100%;
+  }
+}

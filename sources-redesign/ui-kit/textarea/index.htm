@@ -1,0 +1,87 @@
+<doc-component name="Многострочное текстовое поле / Textarea" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=2890%3A11">
+  <doc-tab name="обычное">
+    <doc-info>
+      <p>Обязательно указывание аттрибута <code>rows="3"</code></p>
+      <ul class="list">
+        <li class="list__item"><code>.textarea</code> - класс блока для textarea;</li>
+        <li class="list__item"><code>.textarea_error</code> - модификатор блока textarea с ошибкой;</li>
+        <li class="list__item"><code>.textarea__control</code> - класс textarea без редактора;</li>
+        <li class="list__item"><code>.textarea__title</code> - заголовок textarea;</li>
+        <li class="list__item"><code>.textarea__error</code> - класс ошибки.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - заголовок textarea.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-5">
+          <label class="textarea">
+            <textarea class="textarea__control" name="textarea" rows="3" placeholder="placeholder"></textarea>
+            <span class="textarea__title">
+              Обычный
+            </span>
+          </label>
+          <hr class="separator my-2">
+          <label class="textarea">
+            <textarea class="textarea__control" name="textarea" rows="3" required></textarea>
+            <span class="textarea__title">
+              Обязательный
+            </span>
+          </label>
+          <hr class="separator my-2">
+          <label class="textarea">
+            <textarea class="textarea__control" name="textarea" rows="3" readonly>Только для чтения</textarea>
+            <span class="textarea__title">
+              Только для чтения
+            </span>
+          </label>
+          <hr class="separator my-2">
+          <label class="textarea">
+            <textarea class="textarea__control" name="textarea" rows="3" disabled></textarea>
+            <span class="textarea__title">
+              Выключенный
+            </span>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="textarea">
+        <textarea class="textarea__control" name="{{ name }}" rows="3"></textarea>
+        <span class="textarea__title">{{ title }}</span>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="с ошибкой">
+    <doc-info></doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="col-lg-5">
+          <label class="textarea textarea_error">
+            <textarea class="textarea__control" name="textarea" rows="3"></textarea>
+            <span class="textarea__title">С ошибкой</span>
+            <span class="textarea__error">Обязательное поле для заполнения</span>
+          </label>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <label class="textarea textarea_error">
+        <textarea class="textarea__control" name="{{ name }}" rows="3"></textarea>
+        <span class="textarea__title">{{ title }}</span>
+        <span class="textarea__error">{{ error }}</span>
+      </label>
+    </doc-code>
+  </doc-tab>
+</doc-component>

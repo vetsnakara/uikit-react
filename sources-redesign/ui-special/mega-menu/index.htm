@@ -1,0 +1,300 @@
+<doc-component name="Мега меню" link="">
+  <doc-tab name="Default">
+    <doc-info>
+      Мега меню
+    </doc-info>
+
+    <doc-view>
+      <div class="mega-menu">
+        <div class="mega-menu__wrapper">
+          <nav class="mega-menu__nav">
+            <ul class="mega-menu__menu">
+              <li>
+                <button class="mega-menu__toggle" type="button">Все сервисы</button>
+              </li>
+              <li>
+                <a class="mega-menu__link" href="/vacancy/search">Поиск работы</a>
+              </li>
+              <li>
+                <button class="mega-menu__dropdown-toggle" id="megaMenuDropdown1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  Вакансии компании
+                </button>
+                <ul class="dropdown-menu dropdown-menu-left mega-menu__dropdown-menu" aria-labelledby="megaMenuDropdown1">
+                  <li class="mega-menu__dropdown-item">
+                    <a class="mega-menu__dropdown-link" href="/vacancies">Управление вакансиями</a>
+                  </li>
+                  <li class="mega-menu__dropdown-item">
+                    <a class="mega-menu__dropdown-link" href="/vacancies/new">Добавить вакансию</a>
+                  </li>
+                  <li class="mega-menu__dropdown-item">
+                    <a class="mega-menu__dropdown-link" href="/tests">Тесты для вакансий</a>
+                  </li>
+                  <li class="mega-menu__dropdown-item">
+                    <a class="mega-menu__dropdown-link" href="/opendata/widgets">Виджеты для импорта вакансий на сайт</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="mega-menu__link" href="/responses">Отклики и приглашения</a>
+              </li>
+              <li>
+                <button class="mega-menu__dropdown-toggle" id="megaMenuDropdown2" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  Компания
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right mega-menu__dropdown-menu" aria-labelledby="megaMenuDropdown2">
+                  <li class="mega-menu__dropdown-item">
+                    <a class="mega-menu__dropdown-link" href="/company">Данные компании</a>
+                  </li>
+                  <li class="mega-menu__dropdown-item">
+                    <a class="mega-menu__dropdown-link" href="/company/managers">Менеджеры</a>
+                  </li>
+                  <li class="mega-menu__dropdown-item">
+                    <a class="mega-menu__dropdown-link" href="/company/courses">Учебные курсы компании</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="mega-menu__content">
+            <div data-simplebar class="mega-menu__scroll-wrapper">
+              <div class="mega-menu__content-wrapper">
+                <button class="mega-menu__close button button_close" type="button">
+                  <svg class="icon">
+                    <use href="uikit/icon/icons.svg#close"></use>
+                  </svg>
+                </button>
+                <ul class="mega-menu__list">
+                  <li class="mega-menu__list-item">
+                    <span class="mega-menu__list-title">Работа с переездом</span>
+                    <ul class="mega-menu__submenu">
+                      <li class="mega-menu__submenu-item">
+                        <a href="#" class="mega-menu__submenu-link">Работа с переездом по России</a>
+                      </li>
+                      <li class="mega-menu__submenu-item">
+                        <a href="#" class="mega-menu__submenu-link">Работа без границ</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="mega-menu__list-item">
+                    <span class="mega-menu__list-title">Аналитика</span>
+                    <ul class="mega-menu__submenu">
+                      <li class="mega-menu__submenu-item">
+                        <a href="#" class="mega-menu__submenu-link">Мониторинг трудоустройства выпускников</a>
+                      </li>
+                      <li class="mega-menu__submenu-item">
+                        <a href="#" class="mega-menu__submenu-link">Рейтинг регионов</a>
+                      </li>
+                      <li class="mega-menu__submenu-item">
+                        <a href="#" class="mega-menu__submenu-link">Справочник востребованных профессий</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="mega-menu__list-item">
+                    <a href="#" class="mega-menu__list-link">Меры безопасности</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <ul class="mega-menu__user-menu">
+            <li class="mega-menu__user-item">
+              <a href="/vacancy/search" class="mega-menu__user-link">Поиск работы</a>
+            </li>
+            <li class="mega-menu__user-item mega-menu__user-item_spoiler">
+              <a class="mega-menu__spoiler spoiler__control spoiler_closed" data-target="#user-menu1" aria-expanded="false">
+                <svg class="icon mega-menu__spoiler-icon">
+                  <use href="uikit/icon/icons.svg#prev"></use>
+                </svg>
+                <span class="mega-menu__spoiler-text">Мои резюме</span>
+              </a>
+              <ul class="mega-menu__user-submenu spoiler" id="user-menu1">
+                <li class="mega-menu__user-subitem">
+                  <a class="mega-menu__user-sublink" href="/settings">Пункт 1</a>
+                </li>
+                <li class="mega-menu__user-subitem">
+                  <a class="mega-menu__user-sublink" href="/settings">Пункт 2</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="mega-menu__user-menu">
+            <li class="mega-menu__user-item">
+              <a href="/vacancy/search" class="mega-menu__user-link">Учебные курсы</a>
+            </li>
+            <li class="mega-menu__user-item mega-menu__user-item_spoiler">
+              <a class="mega-menu__spoiler spoiler__control spoiler_closed" data-target="#user-menu2" aria-expanded="false">
+                <svg class="icon mega-menu__spoiler-icon">
+                  <use href="uikit/icon/icons.svg#prev"></use>
+                </svg>
+                <span class="mega-menu__spoiler-text">Работа с переездом</span>
+              </a>
+              <ul class="mega-menu__user-submenu spoiler" id="user-menu2">
+                <li class="mega-menu__user-subitem">
+                  <a class="mega-menu__user-sublink" href="/settings">Работа с переездом по России</a>
+                </li>
+                <li class="mega-menu__user-subitem">
+                  <a class="mega-menu__user-sublink" href="/settings">Работа без границ</a>
+                </li>
+              </ul>
+            </li>
+            <li class="mega-menu__user-item">
+              <a href="/vacancy/search" class="mega-menu__user-link">Социальная сеть Skillsnet</a>
+            </li>
+            <li class="mega-menu__user-item">
+              <a href="/vacancy/search" class="mega-menu__user-link">Стажировка и практика</a>
+            </li>
+            <li class="mega-menu__user-item">
+              <a href="/vacancy/search" class="mega-menu__user-link">Жалобы и сообщения</a>
+            </li>
+          </ul>
+          <div class="choose-region__tooltip-trigger mega-menu__choose-region">
+            <button class="button button_plain choose-region__trigger-button" type="button" aria-haspopup="true" aria-expanded="false">
+              г. Санкт-Петербург
+            </button>
+            <div class="choose-region__tooltip">
+              <div class="choose-region__tooltip-wrapper">
+                <p class="choose-region__tooltip-text">Ваш регион -
+                  <span class="choose-region__tooltip-region">г. Санкт-Петербург</span>
+                  ?
+                </p>
+                <div class="choose-region__tooltip-buttons">
+                  <button class="choose-region__tooltip-button button button_secondary" data-action="choose-region"
+                          type="button">Выбрать другой регион
+                  </button>
+                  <button class="choose-region__tooltip-button button" type="button">Да</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mega-menu__user-interface">
+            <div class="mega-menu__user-buttons">
+              <ul class="mega-menu__user-menu mega-menu__user-menu_favourite">
+                <li class="mega-menu__user-item">
+                  <a href="/favorites-autosearch" class="mega-menu__user-link">
+                    <svg class="icon">
+                      <use href="uikit/icon/icons.svg#heart"></use>
+                    </svg>
+                    <span>Версия для слабовидящих</span>
+                  </a>
+                </li>
+                <li class="mega-menu__user-item">
+                  <a href="/favorites-autosearch" class="mega-menu__user-link">
+                    <svg class="icon">
+                      <use href="uikit/icon/icons.svg#heart"></use>
+                    </svg>
+                    <span>Избранное</span>
+                  </a>
+                </li>
+              </ul>
+
+              <button class="mega-menu__user-button mega-menu__user-button_user" type="button" id="megaMenuDropdownUser" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                <svg class="icon">
+                  <use href="uikit/icon/icons.svg#user"></use>
+                </svg>
+              </button>
+              <ul class="mega-menu__user-menu mega-menu__user-menu_user">
+                <li class="mega-menu__user-item mega-menu__user-item_spoiler">
+                  <a class="mega-menu__spoiler mega-menu__spoiler_user spoiler__control spoiler_closed" data-target="#user-menu" aria-expanded="false">
+                    <svg class="icon mega-menu__spoiler-icon">
+                      <use href="uikit/icon/icons.svg#prev"></use>
+                    </svg>
+                    <span class="mega-menu__spoiler-text">Петров Василий Георгиевич</span>
+                  </a>
+                  <div class="mega-menu__user-container spoiler" id="user-menu">
+                    <p class="mega-menu__user-company">Отдельный батальон полиции Межрайонного отдела вневедомственной охраны</p>
+                    <a class="mega-menu__user-sublink mega-menu__user-sublink_settings" href="/settings">Настройки</a>
+                    <button class="button button_plain mega-menu__user-quit">Выйти</button>
+                  </div>
+                </li>
+              </ul>
+              <div class="dropdown-menu dropdown-menu-left mega-menu__dropdown-menu"
+                   aria-labelledby="megaMenuDropdownUser">
+                <div class="mega-menu__dropdown-item mega-menu__dropdown-item_user">
+                  <p class="mega-menu__dropdown-user">
+                    <span class="mega-menu__user-title">Менеджер</span>
+                    <span class="mega-menu__user-name">Петров Василий Георгиевич</span>
+                  </p>
+                  <p class="mega-menu__dropdown-user">
+                    <span class="mega-menu__user-title">Компания</span>
+                    <span class="mega-menu__user-text">Отдельный батальон полиции Межрайонного отдела вневедомственной охраны
+                  </span>
+                  </p>
+                </div>
+                <div class="mega-menu__dropdown-item">
+                  <a class="mega-menu__dropdown-link" href="/settings">Настройки</a>
+                </div>
+                <div class="mega-menu__dropdown-item">
+                  <a class="mega-menu__dropdown-link" href="https://test-portal.trudvsem.ru/auth/logout">
+                    <div class="button button_plain button_icontext">
+                      <svg class="icon button__icon mega-menu__quit-icon">
+                        <use href="uikit/icon/icons.svg#logout"></use>
+                      </svg>
+                      <span class="icon_middle">Выйти</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="mega-menu__user-menu mega-menu__user-menu_enter">
+                <a class="mega-menu__user-button button_icontext button button_plain" href="/auth/login/candidate">
+                  <svg class="icon button__icon">
+                    <use href="uikit/icon/icons.svg#login"></use>
+                  </svg>
+                  <span class="mega-menu__user-handler">Войти</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <header class="header">
+        <div class="header__wrapper">
+          <p></p>
+          <form class="search-content header__search" action="/vacancy/search" data-name="search-content" method="get">
+            <label class="input search-content__input">
+              <input class="search-content__input-control input__control" type="search" name="title">
+              <!--            <button class="button button_close search-content__close-button" type="button">-->
+              <!--              <svg class="icon search-content__close-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+              <!--                <path d="M15 5L5 15" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>-->
+              <!--                <path d="M5 5L15 15" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>-->
+              <!--              </svg>-->
+              <!--            </button>-->
+            </label>
+            <label class="search-content__select select">
+              <select class="select__control" name="titleType">
+                <option value="VACANCY_NAME" selected>по названию вакансии</option>
+                <option value="VACANCY_DESCRIPTION">по описанию вакансии</option>
+                <option value="COMPANY_NAME">по названию компании</option>
+              </select>
+            </label>
+            <button class="search-content__button" type="submit">
+              Найти
+            </button>
+          </form>
+          <div class="search-content__mobile-container">
+            <button class="search-content__mobile-button" type="button" data-name="search-button">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M20.9999 21L16.6499 16.65" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <button class="search-content__burger burger" type="button" data-name="burger-button">
+            <span class="burger__box">
+              <span class="burger__inner"></span>
+            </span>
+            </button>
+          </div>
+        </div>
+      </header>
+    </doc-view>
+
+    <doc-code>
+
+    </doc-code>
+  </doc-tab>
+</doc-component>

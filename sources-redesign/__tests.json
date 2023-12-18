@@ -1,0 +1,5 @@
+{
+  "sources-redesign/ui-kit/tree-table/index.scss": [
+    "Переменная [$color__collapse-control] объявлена, но не используется"
+  ]
+}

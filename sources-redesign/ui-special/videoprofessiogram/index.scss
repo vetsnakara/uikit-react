@@ -1,0 +1,115 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$small-breakpoint: functions.px(576);
+$medium-breakpoint: functions.px(768);
+$box-shadow-focus: 0 0 0 functions.px(3) #B4D9F3 !default;
+$color__button-title_hover: #014898 !default;
+
+.videoprofessiogram {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0;
+  margin-bottom: $gap * 3;
+  width: 100%;
+
+  @media (max-width: $medium-breakpoint - 1) {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  @media (max-width: $small-breakpoint - 1) {
+    flex-direction: column;
+  }
+
+  &:nth-child(2n + 1) {
+    margin-right: functions.px(10);
+  }
+
+  &__button,
+  &__button-title {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    font: inherit;
+    padding: 0;
+    position: relative;
+    text-align: left;
+
+    &:focus {
+      box-shadow: $box-shadow-focus;
+      outline: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      box-shadow: $box-shadow-focus;
+    }
+  }
+
+  &__button {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: $gap * 2;
+    overflow: hidden;
+    position: relative;
+    width: 50%;
+
+    @media (max-width: $small-breakpoint - 1) {
+      height: auto;
+      margin-bottom: $gap;
+      margin-right: 0;
+      width: 100%;
+    }
+  }
+
+  &__button-title {
+    margin-bottom: functions.px(6);
+
+    &:hover {
+      color: $color__button-title_hover;
+    }
+  }
+
+  &__icon {
+    background-image: functions.inlineSVG(
+      "<svg width='35' height='35' fill='none' xmlns='http://www.w3.org/2000/svg'> <circle cx='17.5' cy='17.5' r='17.5' fill='#000' fill-opacity='.34'/><circle cx='17.5' cy='17.5' r='15.5' stroke='#E3F2FA' stroke-width='4'/><path fill-rule='evenodd' clip-rule='evenodd' d='M23.623 17.437l-10.17-6.12a.18.18 0 00-.274.153l-.007 12.23c0 .141.153.228.273.155l10.178-6.11a.18.18 0 000-.308z' fill='#E3F2FA'/></svg> "
+    );
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: functions.px(35);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: functions.px(35);
+  }
+
+  &__image {
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  &__figcaption {
+    width: 50%;
+
+    @media (max-width: $medium-breakpoint - 1) {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: $gap;
+  }
+
+  &__modal-content {
+    margin: 0;
+  }
+}

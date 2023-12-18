@@ -1,0 +1,170 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$border__label-before: #A0A4A8 !default;
+$border-color-hover: #1E88DB !default;
+$border-color-focus: #0E65B7 !default;
+$border-color-disabled: #CACCCF !default;
+$background-image-disabled: #CACCCF !default;
+$color__label: #52575C !default;
+$background__label: #FFFFFF !default;
+$background-image__label: #0E65B7 !default;
+$color__error: #E93C3C !default;
+$border-color_error: #E93C3C !default;
+$font-size-smaller: functions.px(12) !default;
+$font-size-small: functions.px(14) !default;
+$font-size-section-title-small: functions.px(18) !default;
+$line-height__label-title: 1.33;
+$line-height__label-text: 1.33;
+$letter-spacing__label-text: functions.px(0.2);
+$input-width: functions.px(18);
+$box-shadow-focus: 0 0 0 functions.px(3) #B4D9F3 !default;
+$input-height: $input-width;
+
+.radio {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto auto;
+
+  input {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  &__label {
+    box-sizing: border-box;
+    color: $color__label;
+    cursor: pointer;
+
+    // Fix IE //
+    display: block;
+    font-size: $font-size-small;
+    font-weight: 500;
+    grid-row: 2;
+    line-height: 1.286;
+    padding-left: $input-width + $gap;
+
+    position: relative;
+    user-select: none;
+
+    &:before {
+      background-color: $background__label;
+      background-image: functions.inlineSVG(
+        "<svg width='8' height='8' fill='" + $background-image__label +
+        "' xmlns='http://www.w3.org/2000/svg'><circle cx='4' cy='4' r='2' /></svg>"
+      );
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 0 0;
+      border: functions.px(1) solid $border__label-before;
+      border-radius: 50%;
+      box-sizing: border-box;
+      content: "";
+      height: $input-height;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transition: border-color 0.2s linear;
+      width: $input-width;
+    }
+
+    &-title {
+      font-size: $font-size-section-title-small;
+      font-weight: 500;
+      line-height: $line-height__label-title;
+      margin-bottom: functions.px(5);
+    }
+
+    &-text {
+      font-size: $font-size-smaller;
+      font-weight: 400;
+      letter-spacing: $letter-spacing__label-text;
+      line-height: $line-height__label-text;
+    }
+  }
+
+  &:hover input:not(:checked):not(:disabled) + &__label:before {
+    border-color: $border-color-hover;
+  }
+
+  input:checked + &__label:before {
+    background-size: 100% 100%;
+    border-color: $border-color-focus;
+    transition: background-size 0.2s ease-in;
+  }
+
+  &_error &__label::before,
+  &_error input:checked + &__label:before {
+    border-color: $border-color_error;
+  }
+
+  input:disabled + &__label:before {
+    background-image: functions.inlineSVG(
+      "<svg width='8' height='8' fill='" + $background-image-disabled +
+      "' xmlns='http://www.w3.org/2000/svg'><circle cx='4' cy='4' r='2' /></svg>"
+    );
+    border-color: $border-color-disabled;
+  }
+
+  input:not(:disabled):focus + &__label:before {
+    box-shadow: $box-shadow-focus;
+  }
+
+  input:not(:disabled):focus:not(:focus-visible) + &__label:before {
+    box-shadow: none;
+  }
+
+  input:not(:disabled):focus-visible + &__label:before {
+    box-shadow: $box-shadow-focus;
+  }
+
+  &__title {
+    // Fix IE //
+    display: block;
+
+    font-weight: 600;
+    grid-row: 1;
+    margin-bottom: $gap * 1.5;
+  }
+
+  &__error {
+    animation: radio-error-show 0.2s linear, radio-error-move 0.2s ease-out;
+    color: $color__error;
+    display: block;
+    font-size: $font-size-smaller;
+    grid-row: 3;
+    line-height: 1.333;
+    margin-top: $gap * 0.6;
+  }
+
+  &_label-title {
+
+    .radio__label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .radio__label::before {
+      top: functions.px(3);
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: $gap * 1.5;
+  }
+
+  @keyframes radio-error-show {
+
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes radio-error-move {
+
+    from {
+      transform: translateY(-$gap * 0.6);
+    }
+  }
+}

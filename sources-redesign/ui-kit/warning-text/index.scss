@@ -1,0 +1,15 @@
+@use "../../functions";
+
+$color_danger: #FFFFFF !default;
+$background_danger: #E93C3C !default;
+
+.warning-text {
+  border-radius: functions.px(2);
+  display: inline-block;
+  padding: 0 functions.px(2);
+
+  &_danger {
+    background-color: $background_danger;
+    color: $color_danger;
+  }
+}

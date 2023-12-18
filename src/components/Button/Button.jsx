@@ -6,7 +6,7 @@ export const Button = (props) => {
 
   return (
     <div>
-      {title && <h1>{title}</h1>}
+      {title ? <h1>{title}</h1> : "No title"}
       <button {...restProps}>{children}</button>
     </div>
   );

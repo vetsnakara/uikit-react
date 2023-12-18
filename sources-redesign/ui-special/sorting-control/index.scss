@@ -1,0 +1,109 @@
+@use "sass:math";
+
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$font-size-small: functions.px(14) !default;
+$color__text: #52575C !default;
+$color-arrow: #014898 !default;
+$color__text_show: #014898 !default;
+$color-hover: #1E88DB !default;
+$color__button_hover: #1E88DB !default;
+$box-shadow-focus: 0 0 0 functions.px(3) #B4D9F3 !default;
+
+@mixin arrow-color($color-arrow) {
+  background-image: functions.inlineSVG(
+    '<svg width="10" height="5" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 5L5 0L10 5H0Z" fill="' + #{$color-arrow}+
+    '"/></svg>'
+  );
+}
+
+.sorting-control {
+  position: relative;
+
+  &_desc &__icon {
+    transform: scale(1);
+  }
+
+  &_asc &__icon {
+    transform: scale(1, -1);
+  }
+
+  &__icon {
+    background-image: functions.inlineSVG(
+      '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19"><path d="M14 9.495H4M19.997 4.747h-16M8.003 14.242l-4 .002" stroke="' + #{$color-arrow}+
+      '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    );
+    background-position: center;
+    background-repeat: no-repeat;
+    height: $gap * 2.4;
+    margin-right: math.div($gap, 2);
+    width: $gap * 2.4;
+  }
+
+  &__button {
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row wrap;
+    outline: 0;
+    padding: 0 $gap * 1.5 0 0;
+    position: relative;
+
+    &::after {
+      content: "";
+      height: math.div($gap, 2);
+      position: absolute;
+      right: 0;
+      top: $gap;
+      transform: rotate(180deg);
+      width: $gap;
+
+      @include arrow-color($color-arrow);
+    }
+
+    &[aria-expanded="true"]::after {
+      transform: rotate(0);
+    }
+
+    &:hover::after {
+      @include arrow-color($color-hover);
+    }
+
+    &:focus {
+      box-shadow: $box-shadow-focus;
+      outline: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      box-shadow: $box-shadow-focus;
+    }
+  }
+
+  &__text {
+    color: $color__text;
+    font-size: $font-size-small;
+    font-weight: 500;
+    line-height: $gap * 2.4;
+  }
+
+  // emulate select hovers //
+
+  &__button:hover &__text {
+    color: $color__button_hover;
+  }
+
+  &.show &__text {
+    color: $color__text_show;
+  }
+
+  &.show &__button::after {
+    @include arrow-color($color-arrow);
+  }
+}

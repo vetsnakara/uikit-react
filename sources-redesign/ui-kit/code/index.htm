@@ -1,0 +1,26 @@
+<doc-component name="Код / Code" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/Дизайн-система?node-id=5014%3A0">
+
+  <doc-tab name="Default">
+    <doc-info>
+      <p class="content__paragraph">Не забывайте вкладывать code в <strong>pre.code</strong>. Сам контент вместо <strong>{{ code }}</strong>.</p>
+    </doc-info>
+      <doc-view height="300">
+          <pre class="code" tabindex="0">
+              <code class="code__container">{
+  “status”: “200”,
+  “request”: { “api”: “v1” },
+  “meta”: { “total”: “368431” },
+  “results”: {
+      *тело ответа*
+  }
+}</code>
+</pre>
+      </doc-view>
+
+      <doc-code>
+          <pre class="code" tabindex="0"><code class="code__container">{{ code }}</code></pre>
+      </doc-code>
+
+  </doc-tab>
+
+</doc-component>

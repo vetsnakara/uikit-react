@@ -1,0 +1,174 @@
+<doc-component name="Боковое меню / Sidebar menu" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=3278%3A51">
+  <doc-tab name="Default">
+    <doc-info>
+      <p class="content__paragraph"><code>.main__aside</code> стандартное решение для страниц с боковым блоком, даже если там нет навигации. Для страниц такого типа надо использовать его, а не бутстраповскую сетку.</p>
+      <ul class="list">
+        <li class="list__item"><code>.navigation</code> - основной класс навигации;</li>
+        <li class="list__item"><code>.navigation__preview</code> - ссылка для мобильной версии на выпадающий список меню, скрыта на десктопе;</li>
+        <li class="list__item"><code>.navigation__list</code> - список ссылок навигации;</li>
+        <li class="list__item"><code>.navigation__item</code> - ссылка навигации.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ #anchor }}</dt>
+            <dd class="definitions__value"> - id для навигации по странице;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ content }}</dt>
+            <dd class="definitions__value"> - содержимое основного блока;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - заголовок якорной ссылки.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="main__aside-neighbour">
+          <div class="card">
+            <a class="navigation__target" id="chapter-1"></a>
+            <div style="height: 60vh;">1</div>
+            <a class="navigation__target" id="chapter-2"></a>
+            <div style="height: 60vh;">2</div>
+            <a class="navigation__target" id="chapter-3"></a>
+            <div style="height: 110vh;">3</div>
+          </div>
+        </div>
+        <div class="main__aside">
+          <div class="main__aside-container">
+            <nav class="navigation navigation_open">
+              <button class="navigation__preview" aria-expanded="false" role="combobox" aria-haspopup="listbox">View 1</button>
+              <div class="navigation__list">
+                <a href="#chapter-1" class="navigation__item navigation__item_active">View 1</a>
+                <a href="#chapter-2" class="navigation__item">View 2</a>
+                <a href="#chapter-3" class="navigation__item">View 3</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="main__aside-neighbour">
+        <a class="navigation__target" id="{{ anchor }}"></a>
+        {{ content }}
+      </div>
+      <div class="main__aside">
+        <div class="main__aside-container">
+          <nav class="navigation navigation_open">
+            <button class="navigation__preview" aria-expanded="false" role="combobox" aria-haspopup="listbox">{{ title }}</button>
+            <div class="navigation__list">
+              <a href="{{ #anchor }}" class="navigation__item navigation__item_active">{{ title }}</a>
+              <a href="{{ #anchor }}" class="navigation__item">{{ title }}</a>
+              <a href="{{ #anchor }}" class="navigation__item">{{ title }}</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="С прогрессом">
+    <doc-info>
+      <p class="content__paragraph"><code>.main__aside</code> стандартное решение для страниц с боковым блоком, даже если там нет навигации. Для страниц такого типа надо использовать его, а не бутстраповскую сетку.</p>
+      <ul class="list">
+        <li class="list__item"><code>.navigation</code> - основной класс навигации;</li>
+        <li class="list__item"><code>.navigation_progress</code> - модификатор навигации с прогрессом;</li>
+        <li class="list__item"><code>.navigation__preview</code> - ссылка для мобильной версии на выпадающий список меню, скрыта на десктопе;</li>
+        <li class="list__item"><code>.navigation__list</code> - список ссылок навигации;</li>
+        <li class="list__item"><code>.navigation__item</code> - ссылка навигации.</li>
+      </ul>
+      <dl class="definitions">
+        <div class="definitions__item">
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ #anchor }}</dt>
+            <dd class="definitions__value"> - id для навигации по странице;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ content }}</dt>
+            <dd class="definitions__value"> - содержимое основного блока;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ progress }}</dt>
+            <dd class="definitions__value"> - числовое процентное значение пункта;
+            </dd>
+          </div>
+          <div class="definitions__item">
+            <dt class="definitions__key">{{ title }}</dt>
+            <dd class="definitions__value"> - заголовок якорной ссылки.
+            </dd>
+          </div>
+      </dl>
+    </doc-info>
+
+    <doc-view>
+      <div class="row">
+        <div class="main__aside-neighbour">
+          <div class="card">
+            <a class="navigation__target" id="chapter-1"></a>
+            <div style="height: 60vh;">1</div>
+            <a class="navigation__target" id="chapter-2"></a>
+            <div style="height: 60vh;">2</div>
+            <a class="navigation__target" id="chapter-3"></a>
+            <div style="height: 110vh;">3</div>
+          </div>
+        </div>
+        <div class="main__aside">
+          <div class="main__aside-container">
+            <nav class="navigation navigation_progress">
+
+              <div class="navigation__progress progress" data-value="64">
+                <div class="progress__title">Заполненность резюме</div>
+                <progress class="progress__control" max="100" value="64"></progress>
+              </div>
+
+              <button class="navigation__preview" aria-expanded="true" role="combobox" aria-haspopup="listbox" data-progress="0">
+                View 1
+              </button>
+
+              <div class="navigation__list">
+                <a href="#chapter-1" class="navigation__item navigation__item_active" data-progress="0">View 1</a>
+                <a href="#chapter-2" class="navigation__item" data-progress="50">View 2</a>
+                <a href="#chapter-3" class="navigation__item" data-progress="100">View 3</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </doc-view>
+
+    <doc-code>
+      <div class="main__aside-neighbour">
+        <a class="navigation__target" id="{{ #anchor }}"></a>
+        {{ content }}
+        <a class="navigation__target" id="{{ #anchor }}"></a>
+        {{ content }}
+        <a class="navigation__target" id="{{ #anchor }}"></a>
+        {{ content }}
+      </div>
+      <div class="main__aside">
+        <div class="main__aside-container">
+          <nav class="navigation navigation_progress navigation_open">
+            <button class="navigation__preview" aria-expanded="true" role="combobox" aria-haspopup="listbox" data-progress="{{ progress }}">
+              {{ title }}
+            </button>
+            <div class="navigation__list">
+              <a href="{{ #anchor }}" class="navigation__item navigation__item_active" data-progress="{{ progress }}">{{ title }}</a>
+              <a href="{{ #anchor }}" class="navigation__item" data-progress="{{ progress }}">{{ title }}</a>
+              <a href="{{ #anchor }}" class="navigation__item" data-progress="{{ progress }}">{{ title }}</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </doc-code>
+  </doc-tab>
+</doc-component>

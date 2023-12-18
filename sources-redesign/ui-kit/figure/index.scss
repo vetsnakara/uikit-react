@@ -1,0 +1,24 @@
+@use "../../functions";
+
+$gap: functions.px(10) !default;
+$color__figcaption: #52575C !default;
+$font-size-small: functions.px(14) !default;
+
+.figure {
+  display: table;
+  margin: 0;
+  width: 100%;
+
+  & &__content {
+    margin: 0;
+  }
+
+  &__figcaption {
+    caption-side: bottom;
+    color: $color__figcaption;
+    display: table-caption;
+    font-size: $font-size-small;
+    line-height: 1.286;
+    margin-top: $gap * 1.5;
+  }
+}

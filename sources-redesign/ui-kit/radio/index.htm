@@ -1,0 +1,142 @@
+<doc-component name="Радио-кнопка / Radio-button" link="https://www.figma.com/file/iIeFx5elsgflHSv5hUD3BM/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0?node-id=77%3A1">
+
+  <doc-tab name="Обычное">
+    <doc-info>
+      <ul class="list">
+        <li class="list__item"><code>.radio</code> - класс радио;</li>
+        <li class="list__item"><code>.radio__label</code> - класс текста радио;</li>
+        <li class="list__item"><code>.radio__title</code> - класс заголовка радио или группы радио;</li>
+        <li class="list__item"><code>.radio__error</code> - класс ошибки радио;</li>
+        <li class="list__item"><code>.radio_error</code> - модификатор блоку radio для вывода ошибки.</li>
+        <li class="list__item"><code>.radio_label-title</code> - модификатор блоку label, содержащим заголовок;</li>
+        <li class="list__item"><code>.radio__label-title</code> - класс заголовка label;</li>
+        <li class="list__item"><code>.radio__label-text</code> - класс текста label.</li>
+      </ul>
+			<dl class="definitions">
+			  <div class="definitions__item">
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ name }}</dt>
+				  <dd class="definitions__value"> - техническое имя радио-кнопки;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ value }}</dt>
+				  <dd class="definitions__value"> - value;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ text }}</dt>
+				  <dd class="definitions__value"> - текст в радио-кнопке;
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ title }}</dt>
+				  <dd class="definitions__value"> - заголовок радио или группы радио-кнопок.
+				  </dd>
+				</div>
+				<div class="definitions__item">
+				  <dt class="definitions__key">{{ label-title }}</dt>
+				  <dd class="definitions__value"> - заголовок в label.
+				  </dd>
+				</div>
+			</dl>
+    </doc-info>
+
+    <doc-view>
+      <label class="radio">
+        <input type="radio" name="radioGroup" checked value="1" />
+        <span class="radio__label">Радио</span>
+        <span class="radio__title">Радио с заголовком</span>
+      </label>
+      <hr class="separator my-2">
+      <div class="form__section">
+        <fieldset class="form__fieldset">
+          <legend class="form__title">Группа радио</legend>
+          <label class="radio">
+            <input type="radio" name="radioGroup1" checked />
+            <span class="radio__label">Радио</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="radioGroup1" />
+            <span class="radio__label">Радио</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="radioGroup1" />
+            <span class="radio__label">Радио</span>
+          </label>
+        </fieldset>
+      </div>
+      <hr class="separator my-2">
+      <label class="radio">
+        <input type="radio" name="radioGroup" checked value="1" />
+        <span class="radio__label">Радио без заголовка</span>
+      </label>
+
+      <hr class="separator my-2">
+      <label class="radio">
+        <input type="radio" name="radioGroup2" disabled checked value="3" />
+        <span class="radio__label">Радио чекнутый заблокированный</span>
+      </label>
+      <hr class="separator my-2">
+      <label class="radio">
+        <input type="radio" name="radioGroup2" disabled value="4" />
+        <span class="radio__label">Радио нечекнутый заблокированный</span>
+      </label>
+    </doc-view>
+
+    <doc-code>
+      <label class="radio">
+        <input type="radio" name="{{ name }}" value="{{ value }}" />
+        <span class="radio__label">{{ text }}</span>
+        <span class="radio__title">{{ title }}</span>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="С ошибкой">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <label class="radio radio_error">
+        <input type="radio" name="radioGroup" value="2" />
+        <span class="radio__label">Радио с ошибкой</span>
+        <span class="radio__error">Выберите этот вариант</span>
+      </label>
+    </doc-view>
+
+    <doc-code>
+      <label class="radio radio_error">
+        <input type="radio" name="{{ name }}" value="{{ value }}" />
+        <span class="radio__label">{{ text }}</span>
+        <span class="radio__title">{{ title }}</span>
+        <span class="radio__error">{{ error }}</span>
+      </label>
+    </doc-code>
+  </doc-tab>
+
+  <doc-tab name="С заголовоком в лейбле">
+    <doc-info>
+    </doc-info>
+
+    <doc-view>
+      <label class="radio radio_label-title">
+        <input type="radio" name="radioGroup" value="2" />
+        <span class="radio__label">
+          <span class="radio__label-title">Заголовок</span>
+          <span class="radio__label-text">Поясняющий текст раскрывающий содержание заголовка</span>
+        </span>
+      </label>
+    </doc-view>
+
+    <doc-code>
+      <label class="radio radio_label-title">
+        <input type="radio" name="{{ name }}" value="{{ value }}" />
+        <span class="radio__label">
+          <span class="radio__label-title">{{ label-title }}</span>
+          <span class="radio__label-text">{{ text }}</span>
+        </span>
+      </label>
+    </doc-code>
+  </doc-tab>
+</doc-component>

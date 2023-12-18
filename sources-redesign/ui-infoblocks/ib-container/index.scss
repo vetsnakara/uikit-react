@@ -1,0 +1,8 @@
+@use "../../functions";
+
+.ib-container > .row {
+  @media (max-width: functions.px(575)) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

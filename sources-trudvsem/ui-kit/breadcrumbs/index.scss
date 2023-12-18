@@ -1,0 +1,56 @@
+$gap: 10px !default;
+$text: rgb(31, 53, 136) !default;
+$text-hover: rgb(255, 66, 82) !default;
+$text-active: rgb(52, 52, 52) !default;
+$arrow: rgb(31, 53, 136) !default;
+
+%breadcrumb {
+  line-height: 28px;
+  font-weight: 300;
+  flex: 0 1 auto;
+  color: $text;
+  text-decoration: none;
+
+  & + & {
+    padding-left: $gap;
+  }
+}
+
+%arrow {
+  width: 0.5em;
+  height: 0.5em;
+  box-sizing: border-box;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  content: "";
+  display: inline-block;
+}
+
+.breadcrumbs {
+  display: flex;
+  margin-bottom: $gap * 2;
+  flex-flow: row wrap;
+
+  &__item {
+    @extend %breadcrumb;
+
+    &_active {
+      @extend %breadcrumb;
+      color: $text-active;
+      pointer-events: none;
+    }
+
+    &:hover,
+    &:focus {
+      color: $text-hover;
+    }
+
+    &::after,
+    &:hover::after {
+      @extend %arrow; // TODO: fix extend
+      margin-left: $gap;
+      transform: rotate(135deg);
+      color: $arrow;
+    }
+  }
+}

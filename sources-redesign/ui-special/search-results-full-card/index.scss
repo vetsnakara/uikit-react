@@ -1,0 +1,269 @@
+@use "sass:math";
+
+@use "../../functions";
+
+$background: #FFFFFF !default;
+$border: #CCCCCC !default;
+$radius: functions.px(4) !default;
+$gap: functions.px(10) !default;
+$height__back-to: functions.px(50);
+$gosbar-height: functions.px(0) !default;
+$mega-menu-height: functions.px(50);
+$font-size: functions.px(16) !default;
+$line-height__title: 1.5;
+$font-size-section-title: functions.px(20) !default;
+$line-height__title_adaptive: 1.4;
+$color__extra-info: #52575C !default;
+$max-height: functions.px(700);
+$font-size-small: functions.px(14) !default;
+$search-md-width: functions.px(991);
+$search-sm-width: functions.px(768);
+$search-xs-width: functions.px(576);
+$size__internships: functions.px(43);
+$background__internships: #F9F9FA !default;
+$color__internships: #0E65B7 !default;
+$static-header-height: functions.px(145);
+
+.search-results-full-card {
+  background: $background;
+  border: functions.px(1) solid $border;
+  border-radius: $radius;
+  box-sizing: border-box;
+  display: block;
+  max-height: $max-height;
+  overflow: auto;
+  padding: 0 $gap * 3 0 $gap * 3;
+
+  &__link-title {
+    font-weight: 500;
+    margin-bottom: $gap;
+  }
+
+  &__title-section:not(:first-child) {
+    margin-top: $gap * 2.5;
+  }
+
+  &__header {
+    box-sizing: border-box;
+    padding-top: $gap * 2.5;
+  }
+
+  &__content {
+    padding-bottom: $gap * 3; // bottom padding not working on card because vertical scroll
+  }
+
+  @media (min-width: $search-xs-width) {
+
+    &__header_scrollable + &__content {
+      margin-top: $static-header-height;
+    }
+  }
+
+  &__separator {
+    margin-left: -$gap * 3;
+    width: calc(100% + #{$gap * 6});
+  }
+
+  &__tabs {
+    margin-left: -$gap * 3;
+    margin-right: -$gap * 3;
+    margin-top: -$gap;
+    padding-left: $gap * 3;
+    padding-right: $gap * 3;
+  }
+
+  &__title {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    margin-bottom: $gap * 1.5; // override default last-child style
+    max-height: functions.px(56);
+    min-height: functions.px(28);
+    overflow: hidden;
+
+    &_one-line-height {
+      min-height: auto;
+    }
+  }
+
+  @media (min-width: $search-xs-width) {
+
+    &__back-to,
+    &__title-mobile,
+    &__respond-mobile,
+      // small scrollable header
+    &__header_scrollable &__full-content,
+    &__header_scrollable &__salary,
+    &__header_scrollable &__additional-actions,
+    &__header_scrollable &__internships-block,
+    &__action-mobile,
+    &__practice-mobile {
+      display: none;
+    }
+  }
+
+  &__extra-info {
+    color: $color__extra-info;
+  }
+
+  &__header_scrollable {
+    background: $background;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    position: static;
+
+    @media (min-width: $search-xs-width) {
+      left: $gap * 3;
+      margin: 0 -#{$gap * 3};
+      padding: $gap * 2.5 $gap * 3 0 $gap * 3;
+      position: absolute;
+      top: functions.px(1);
+      width: 100%;
+      z-index: 2;
+    }
+
+    @media (min-width: $search-md-width) {
+      left: $gap * 5.1;
+      width: calc(100% - #{$gap * 2.2});
+    }
+  }
+
+  // show dublicate header in sticky header
+  &__header_scrollable &__title-mobile {
+    -webkit-box-orient: vertical;
+    display: none;
+    -webkit-line-clamp: 3;
+    margin-top: 0;
+    max-height: functions.px(84);
+    min-height: functions.px(56);
+    overflow: hidden;
+
+    @media (min-width: $search-xs-width) {
+      display: block;
+      display: -webkit-box;
+    }
+  }
+
+  &__header_scrollable &__practice-mobile {
+    display: block;
+  }
+
+  &__internships {
+    align-items: center;
+    background: $background__internships;
+    border-radius: $radius;
+    box-sizing: border-box;
+    color: $color__internships;
+    display: inline-flex;
+    height: $size__internships;
+    line-height: $size__internships;
+    padding: math.div($gap, 2);
+    vertical-align: middle;
+    width: $size__internships;
+  }
+
+  @media (max-width: $search-md-width) {
+    border: none;
+    border-radius: 0;
+    height: 100%;
+    max-height: none;
+    padding-top: $gap * 5; // gap for always visible on mobile back-button
+
+    &__header_scrollable {
+      top: $gosbar-height;
+    }
+
+    &__back-to {
+      background: $background;
+      border-bottom: functions.px(1) solid $border;
+      box-sizing: border-box;
+      display: block;
+      height: $height__back-to;
+      left: 0;
+      line-height: $height__back-to;
+      padding: 0 $gap * 3;
+      position: fixed;
+      right: 0;
+      top: $gosbar-height + $mega-menu-height;
+      z-index: 2;
+    }
+  }
+
+  @media (max-width: $search-sm-width) {
+
+    &__title {
+      font-size: $font-size-section-title;
+      line-height: $line-height__title_adaptive;
+    }
+
+    &__title-section {
+      font-size: $font-size;
+    }
+  }
+
+  @media (max-width: $search-xs-width) {
+    font-size: $font-size-small;
+    padding-bottom: $gap * 7;
+    padding-left: $gap * 1.5;
+    padding-right: $gap * 1.5;
+
+    &__vacancy-banner {
+      margin-left: -$gap * 1.5;
+      margin-right: -$gap * 1.5;
+      padding-left: $gap * 1.5;
+      padding-right: $gap * 1.5;
+    }
+
+    &__title {
+      font-size: $font-size;
+      line-height: $line-height__title;
+    }
+
+    &__content {
+      padding-bottom: $gap * 7; // big indent for fix bottom button respond
+    }
+
+    &__back-to {
+      padding: 0 $gap * 1.5;
+    }
+
+    &__header_scrollable &__full-content {
+      display: flex;
+    }
+
+    &__header_scrollable &__salary,
+    &__header_scrollable &__additional-actions,
+    &__action-mobile {
+      display: block;
+    }
+
+    &__respond,
+    &__action {
+      display: none;
+    }
+
+    &__respond-mobile {
+      bottom: $gap * 1.5;
+      display: flex;
+      justify-content: center;
+      left: $gap * 1.5;
+      position: fixed;
+      right: $gap * 1.5;
+      text-align: center;
+      width: calc(100% - #{$gap * 3});
+    }
+
+    &__tabs {
+      background: $background;
+      margin-left: -$gap * 1.5;
+      margin-right: -$gap * 1.5;
+      padding-left: $gap * 1.5;
+      padding-right: $gap * 1.5;
+    }
+
+    &__separator {
+      margin-left: -$gap * 1.5;
+      width: calc(100% + #{$gap * 3});
+    }
+  }
+}
