@@ -11,7 +11,7 @@
     "build:prod": "cross-env NODE_ENV=production webpack",
     "build:dev": "cross-env NODE_ENV=development webpack",
     "build:assets": "npm run prod2",
-    "build:all": "npm-run-all clear --parallel build:prod build:dev build:assets",
+    "build:all": "npm-run-all clear --parallel build:prod build:dev build:assets write-entry-file",
     "clear": "rimraf ./dist",
     "write-entry-file": "node ./scripts/writeEntryFile",
     "check-assets-dir": "node ./scripts/checkAssetsDir",
