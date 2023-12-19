@@ -8,7 +8,7 @@ SRC_PATH="src/ sources-default/ sources-redesign/ sources-trudvsem"
 DIST_PATH="./lib ./assets"
 
 SCRIPT_NAME=$(basename -- "$0");
-CHANGED=`git diff --exit-code --cached HEAD $SRC_PATH`
+CHANGED=`git diff --cached HEAD $SRC_PATH`
 
 # STYLES
 tb=$(tput bold)
@@ -23,12 +23,8 @@ c7=$(tput setaf 7) # white
 
 if [ -z "$CHANGED" ]; then
     printf "${SCRIPT_NAME}:\n\t${c2}No changes to $SRC_PATH${c0}\n\tSkipping production build process.\n\n"
-    exit 0
 else
     # there are changes
     printf "${SCRIPT_NAME}:\n\t${c1}Changes detected in ${SRC_PATH}${c0}\n\tBuilding distribution files in ${DIST_PATH}\n\tAdding files to the current commit.${c0}\n\n"
     npm run build:all && git add ${DIST_PATH} && exit
 fi
-npm run build:all
-
-git add ./lib ./assets
