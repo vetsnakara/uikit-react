@@ -81,7 +81,7 @@ $background-button-datepicker: $brand-dark-back,
 $background-image_search: $base-light-text,
 $stroke-arrow-calendar: $neutral-dark-line,
 $border__capcha: $neutral-dark-back,
-  $background__capcha: $neutral-light-back,
+$background__capcha: $neutral-light-back,
   $color__capcha: $neutral-dark-text,
   $font-size__capcha: $bfont-I,
   $selected-datepicker: $brand-dark-back );
@@ -117,7 +117,7 @@ $dropdown-menu-status-color: $neutral-dark-text,
 $line-divider: $neutral-light-line,
 $font-size-small: $font-size-small,
 $font-size-smaller: $font-size-smaller,
-  $shadow: $shadow,
+$shadow: $shadow,
   $placeholder-color: $neutral-light-text );
 
 @use "collapse" with ($gap: $gap,
