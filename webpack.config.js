@@ -27,7 +27,7 @@ module.exports = () => {
     },
 
     output: {
-      path: path.resolve(__dirname, "./dist"),
+      path: path.resolve(__dirname, "./lib"),
       filename: bundleName,
       libraryTarget: "umd",
     },
@@ -67,6 +67,11 @@ module.exports = () => {
     },
 
     // plugins: [new CleanWebpackPlugin()],
+
+    externals: {
+      react: "React",
+      "react-dom": "ReactDOM",
+    },
   };
 
   return config;
