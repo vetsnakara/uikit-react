@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 `;
 
-  const distDir = path.join(__dirname, "../dist/");
+  const distDir = path.join(__dirname, "../lib/");
 
   const filePath = path.join(distDir, "index.js");
   if (!fs.existsSync(distDir)) {
