@@ -84,7 +84,7 @@ $border__capcha: $neutral-dark-back,
 $background__capcha: $neutral-light-back,
 $color__capcha: $neutral-dark-text,
 $font-size__capcha: $bfont-I,
-  $selected-datepicker: $brand-dark-back );
+$selected-datepicker: $brand-dark-back );
 
 @use "select" with ($border: $brand-dark-back,
 $color: $brand-dark-text,
