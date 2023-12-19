@@ -23,7 +23,7 @@ module.exports = () => {
     entry: "./src/index.js",
 
     resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      extensions: [".js", ".jsx", ".ts", ".tsx"], //? ts
     },
 
     output: {
@@ -37,9 +37,10 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx|ts|tsx)$/,
+          test: /\.(js|jsx|ts|tsx)$/, //? ts
           exclude: /node_modules/,
           use: [
+            // todo: mv to babel.json
             {
               loader: "babel-loader",
               options: {

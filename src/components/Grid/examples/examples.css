@@ -1,0 +1,25 @@
+/* stylelint-disable */
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+:root {
+    --red: 255, 0, 0;
+    --green: 0, 255, 0;
+    --blue: 0, 0, 255;
+}
+
+[class^="container-examples"] [class*="container"] {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: rgba(var(--red), 0.15);
+}
+
+[class*="col-"] {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: rgba(var(--green), 0.15);
+    border: 1px solid rgba(var(--green), 0.3);
+}

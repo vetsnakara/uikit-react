@@ -195,10 +195,10 @@
     $caret-color: $brand-light-text,
     $background: $base-light-back,
     $border__select-focus: hsl(hue($brand-dark-back), 75%, 65%),
-        $border-color__input-control-hover: $brand-light-text,
-        $border-color__dropdown-toggl-hover: $brand-light-text,
-        $font-size-smaller: $font-size-smaller
-    );
+    $border-color__input-control-hover: $brand-light-text,
+    $border-color__dropdown-toggl-hover: $brand-light-text,
+    $font-size-smaller: $font-size-smaller
+  );
 
 @use "block-mobile" with
   ($gap: $gap, $box-shadow-focus: $box-shadow-focus, $font-size-title: $font-size-section-title-big);
@@ -479,21 +479,21 @@
     $gap: $gap,
     $box-shadow-focus: $box-shadow-focus,
     $content-start: $content-start,
-        $border-color__user-interface: $neutral-dark-back,
-        $color__user-text: $base-dark-text,
-        $color__dropdown: $base-dark-text,
-        $color__ser-title: $neutral-light-text,
-        $color__user-name: $neutral-dark-text,
-        $background-color__user-menu_user: $neutral-light-back,
-        $background-color__choose-region: $neutral-light-back,
-        $background-color__boolean-counter: $negative-dark-back,
-        $color__user-link: $brand-dark-back,
-        $color__user-company: $neutral-dark-text,
-        $color__spoiler-icon: $base-dark-text,
-        $color__user-sublink: $base-dark-text,
-        $border-bottom__user-menu: $neutral-light-line,
-        $shadow: $shadow,
-        $background__user-count_after: $brand3-dark-back,
+    $border-color__user-interface: $neutral-dark-back,
+    $color__user-text: $base-dark-text,
+    $color__dropdown: $base-dark-text,
+    $color__ser-title: $neutral-light-text,
+    $color__user-name: $neutral-dark-text,
+    $background-color__user-menu_user: $neutral-light-back,
+    $background-color__choose-region: $neutral-light-back,
+    $background-color__boolean-counter: $negative-dark-back,
+    $color__user-link: $brand-dark-back,
+    $color__user-company: $neutral-dark-text,
+    $color__spoiler-icon: $base-dark-text,
+    $color__user-sublink: $base-dark-text,
+    $border-bottom__user-menu: $neutral-light-line,
+    $shadow: $shadow,
+    $background__user-count_after: $brand3-dark-back,
         $radius: $radius,
         $font-size-small: $font-size-small,
         $font-size-smaller: $font-size-smaller
@@ -571,9 +571,9 @@
     $font-size-big: $bfont-I,
     $font-size-medium: $font-size-big,
     $font-size-small: $font-size,
-        $background: $base-light-back,
-        $line-color: $base-light-back
-    );
+    $background: $base-light-back,
+    $line-color: $base-light-back
+  );
 
 @use "gosbar" with ($gosbar-height: $gosbar-height, $z-index-gosbar: $gosbar-index);
 
@@ -681,21 +681,21 @@
     $background__owl-dot: $base-light-back,
     $background__list-item: $base-light-back,
     $background__card_blue: $brand2-dark-back,
-        $background__search-button: $brand3-dark-back,
-        $background__banner: $brand2-dark-back,
-        $border__search-control: $brand2-dark-back,
-        $border__search-control-focus: $brand-dark-line,
-        $box-shadow__card: $brand2-dark-back,
-        $box-shadow__search: $brand-dark-back,
-        $gap: $gap,
-        $radius: $radius,
-        $box-shadow-focus: $box-shadow-focus,
-        $font-size-big: $bfont-I,
-        $font-size-subtitle: $font-size-subtitle,
-        $font-size-small: $font-size-small,
-        $font-size: $font-size,
-        $font-size-section-subtitle: $font-size-section-subtitle
-    );
+    $background__search-button: $brand3-dark-back,
+    $background__banner: $brand2-dark-back,
+    $border__search-control: $brand2-dark-back,
+    $border__search-control-focus: $brand-dark-line,
+    $box-shadow__card: $brand2-dark-back,
+    $box-shadow__search: $brand-dark-back,
+    $gap: $gap,
+    $radius: $radius,
+    $box-shadow-focus: $box-shadow-focus,
+    $font-size-big: $bfont-I,
+    $font-size-subtitle: $font-size-subtitle,
+    $font-size-small: $font-size-small,
+    $font-size: $font-size,
+    $font-size-section-subtitle: $font-size-section-subtitle
+  );
 
 @use "table-schedule" with
   (
