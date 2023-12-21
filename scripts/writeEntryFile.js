@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const writeCjsEntryFile = () => {
-  const name = "uikit";
+  const name = "react-uikit";
   const baseLine = `module.exports = require('./${name}`;
   const contents = `'use strict'
 

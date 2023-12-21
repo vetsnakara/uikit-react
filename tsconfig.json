@@ -1,8 +1,8 @@
 {
+  "include": ["src/**/*"],
   "compilerOptions": {
-    "allowJs": true,
-    "jsx": "react-jsx",
-    "isolatedModules": true
-  },
-  "include": ["src/**/*"]
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "lib/types"
+  }
 }
