@@ -6,7 +6,7 @@ import { Button, ButtonVariant } from "../Button";
 import { DateInput } from "./DateInput";
 
 export default {
-  title: "uikit/DateInput",
+  title: "inputs/DateInput",
   decorators: [maxWidth(500)],
 };
 
@@ -27,19 +27,26 @@ export const Required = () => <DateInput title="Title" required />;
 // export const Readonly = () => <DateInput value="10.10.1984" readOnly />;
 
 export const Mask = () => (
-  <DateInput
-    maskOptions={{
-      // todo: make this mask as default
-      mask: "99.99.9999",
-    }}
-  />
+  <VStack gap={1}>
+    <DateInput
+      maskOptions={{
+        mask: "99.99.9999",
+      }}
+    />
+    <DateInput
+      datepickerOptions={{ range: true }}
+      maskOptions={{
+        mask: "99.99.9999 - 99.99.9999",
+      }}
+    />
+  </VStack>
 );
 
 export const Range = () => (
   <DateInput
     datepickerOptions={{
       range: true,
-      multipleDatesSeparator: " - ",
+      multipleDatesSeparator: " - ", // is by default
     }}
   />
 );

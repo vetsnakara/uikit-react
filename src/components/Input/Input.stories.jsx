@@ -6,7 +6,7 @@ import { Input } from "./Input";
 import { composeRef } from "../../hooks/useElementRef";
 
 export default {
-  title: "uikit/Input",
+  title: "inputs/Input",
   decorators: [maxWidth(500)],
 };
 

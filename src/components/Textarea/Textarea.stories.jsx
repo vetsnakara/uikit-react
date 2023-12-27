@@ -2,7 +2,7 @@ import { maxWidth } from "../../../.storybook/decorators";
 import { Textarea } from "./Textarea";
 
 export default {
-  title: "uikit/Textarea",
+  title: "inputs/Textarea",
   decorators: [maxWidth(500)],
 };
 

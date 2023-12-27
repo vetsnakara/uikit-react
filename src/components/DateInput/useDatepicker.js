@@ -1,176 +1,213 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
+import { useFormControlRef } from "../../hooks";
 
-import { useElementRef } from "../../hooks/useElementRef";
-import { useCallback } from "react";
+// const DEFAULT_DATE_VALUE = "";
+// const DEFAULT_DATE_RANGE = [];
 
 const DEFAULT_DATE_FORMMAT = "DD.MM.YYYY";
 const DEFAULT_MULTIPLE_DATES_SEPARATOR = " - ";
 const DATE_SELECT_EVENT = "DATE_SELECT_EVENT";
 
 const defaultOptions = {
-    autoClose: true,
-    multipleDatesSeparator: DEFAULT_MULTIPLE_DATES_SEPARATOR,
+  autoClose: true,
+  keyboardNav: false,
+  multipleDatesSeparator: DEFAULT_MULTIPLE_DATES_SEPARATOR,
 };
 
+// todo: update plugin to use silent option?
 // todo: check different time formats
 // todo: process minMaxDate (can input date < minDate by hand!)
 // todo: в неконтр. варианте сделать так, чтобы через ref в range mode отдавался массив дат-строк
 // todo: return focus to input after setting date by hand input
 
+//! sort dates array on return outside (can be [1985, 1984] when type by hand in reverse order and plugin changes order by himself)
+
 export const useDatepicker = (
-    extRef,
-    {
-        value,
-        defaultValue,
-        name,
-        onChange,
-        onBlur,
-        datepickerOptions: options = defaultOptions,
-        format = DEFAULT_DATE_FORMMAT,
-    }
+  extRef,
+  {
+    value,
+    defaultValue,
+    name,
+    onChange,
+    onBlur,
+    datepickerOptions: options = defaultOptions,
+    format = DEFAULT_DATE_FORMMAT,
+  }
 ) => {
-    const context = useRef();
-    const ref = useRef({});
+  const context = useRef();
 
-    // todo: useCallback ???
-    const callbackRef = (refParams) => {
-        const { el } = refParams ?? {};
+  // note: Input passes to callback ref object { el, setValue, ...}, not DOM input element
+  const { ref, callbackRef } = useFormControlRef(extRef, ({ el }) => ({
+    el,
+    getValue: () => {
+      const parsedDateValue = getDateValueFromString(el.value);
+      const { dateValue } = getValidatedDate(parsedDateValue);
+      return dateValue;
+    },
+    setValue: setDate,
+  }));
 
-        ref.current = el
-            ? {
-                  el,
-                  getValue: () => el.value, //! should return date / [date1, date2]/null, see onChange
-                  setValue: setDate,
-              }
-            : null;
+  useEffect(() => {
+    const $el = $(ref.current.el);
 
-        if (!extRef) return;
-        if (typeof extRef === "function") extRef(ref.current);
-        else extRef.current = ref.current;
+    $el.datepicker({
+      ...defaultOptions,
+      ...options,
+      onSelect: (value) => {
+        if (context.silent) return;
+        const dateSelectEvent = { target: { name }, type: DATE_SELECT_EVENT };
+        handleChange(value, dateSelectEvent);
+      },
+      onHide(inst /* not used */, isFinished) {
+        if (isFinished) return;
+        onBlur?.({ target: { name } });
+      },
+    });
+
+    // set date from input value if it exists
+    const val = $el.val();
+    if (val) setDate(val, { parse: true });
+
+    return () => {
+      $el.data("datepicker").destroy();
     };
+  }, [JSON.stringify(options), onChange]);
 
-    useEffect(() => {
-        const $el = $(ref.current.el);
+  // for controlled input
+  useEffect(() => {
+    const dateValue = value || defaultValue; // todo?: don't use default value here
+    if (!dateValue) return;
 
-        $el.datepicker({
-            ...defaultOptions,
-            ...options,
-            onSelect: (value) => {
-                if (context.silent) return; // todo: update dp to use silent option?
-                const dateSelectEvent = { target: { name }, type: DATE_SELECT_EVENT };
-                handleChange(value, dateSelectEvent);
-            },
-            onHide(inst, isFinished) {
-                if (isFinished) return;
-                onBlur?.({ target: { name } });
-            },
-        });
+    setDate(dateValue);
 
-        return () => {
-            const dp = $el.data("datepicker");
-            dp.destroy();
-        };
-    }, [options, onChange]);
+    if (context.openOnInit) {
+      context.openOnInit = false;
 
-    useEffect(() => {
-        const dateValue = value || defaultValue; // todo?: don't use default value here
+      const dp = $(ref.current.el).data("datepicker");
+      dp.show();
+    }
+  }, [value]);
 
-        if (!dateValue) return;
+  // set date on value change
+  // !!! handleChange gets (value, event) because is passed to <Input/> component (not to primitive <input/>)
+  const handleChange = useCallback((value, event) => {
+    const date = setDate(value, { parse: true });
 
-        setDate(dateValue);
+    onChange?.(date, event);
 
-        if (context.openOnInit) {
-            context.openOnInit = false;
+    // if event - date is changed by hand (typing in input)
+    if (event.type !== DATE_SELECT_EVENT) {
+      const dp = $(ref.current.el).data("datepicker");
+      dp.show(); // for uncontrolled component - open calendar
+      context.openOnInit = true; // for controlled component - open calendar on next render
+    }
+  }, []); // todo: deps?
 
-            const dp = $(ref.current.el).data("datepicker");
-            dp.show();
-        }
-    }, [value]);
+  /**
+   * Parse to [d1, d2]
+   * @param {*} value
+   * @returns
+   */
+  const getDateValueFromString = (value) => {
+    // todo: optimize get separator
+    const separator =
+      options?.multipleDatesSeparator || DEFAULT_MULTIPLE_DATES_SEPARATOR;
 
-    // set date on value change
-    // !!! handleChange gets (value, event) because is passed to <Input/> component (not to primitive <input/>)
-    const handleChange = useCallback((value, event) => {
-        const dateValue = Boolean(options?.range)
-            ? value.split(
-                  // todo: optimize get separator
-                  options?.multipleDatesSeparator || DEFAULT_MULTIPLE_DATES_SEPARATOR
-              )
-            : value;
+    return Boolean(options?.range)
+      ? value.split(separator).filter(Boolean)
+      : value;
+  };
 
-        const date = setDate(dateValue);
+  const getValidatedDate = (value) => {
+    const isRange = Array.isArray(value);
 
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //! "" and [] are valid date(s) value
-        // if (date) onChange?.(date, event);
-        onChange?.(date, event);
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return isRange
+      ? getValidatedDateRange(value)
+      : getValidatedDateSingle(value);
+  };
 
-        // if event - date is changed by hand (typing in input)
-        if (event.type !== DATE_SELECT_EVENT) {
-            const dp = $(ref.current.el).data("datepicker");
-            dp.show(); // for uncontrolled component - open calendar
-            context.openOnInit = true; // for controlled component - open calendar on next render
-        }
-    }, []); // todo: deps?
+  const getValidatedDateSingle = (value) => {
+    if (value === "")
+      return {
+        isValid: true,
+        dateValue: value,
+        dateObj: null,
+      };
 
-    const setDate = (value) => {
-        if (!value) selectDate();
-
-        const isRange = Array.isArray(value);
-
-        if (isRange) {
-            const [valueBegin, valueEnd] = value;
-
-            const mDateBegin = moment(valueBegin, format, true);
-            const mDateEnd = moment(valueEnd, format, true);
-
-            const isDateBeginValid = mDateBegin.isValid();
-            const isDateEndValid = mDateEnd.isValid();
-            const isValid = isDateBeginValid && isDateEndValid;
-
-            if (isValid) {
-                selectDate([mDateBegin.toDate(), mDateEnd.toDate()]);
-                return [valueBegin, valueEnd];
-            }
-        } else {
-            const mDate = moment(value, format, true);
-            const isValid = mDate.isValid();
-            if (isValid) {
-                selectDate(mDate.toDate());
-                return mDate.format(format);
-            }
-        }
-
-        return null; // todo: need?
-
-        /**
-         * todo
-         * @param {*} date
-         */
-        function selectDate(date) {
-            const dp = $(ref.current.el).data("datepicker");
-
-            context.silent = true;
-            dp.clear();
-            if (date) dp.selectDate(date);
-            context.silent = false;
-
-            // update date in calendar dropdown
-            // dp.setViewDate(date.toDate()) in new version
-            if (Array.isArray(date)) {
-                const [firstDate, secondDate] = date;
-                const isSame = moment(firstDate).isSame(moment(secondDate));
-                const isBefore = moment(firstDate).isBefore(moment(secondDate));
-                const isSameOrBefore = isSame || isBefore;
-                dp.date = isSameOrBefore ? firstDate : secondDate;
-            } else {
-                dp.date = date;
-            }
-        }
-    };
+    const mDate = moment(value, format, true);
+    const isValid = mDate.isValid();
 
     return {
-        callbackRef,
-        handleChange,
+      isValid,
+      dateValue: isValid ? value : null,
+      dateObj: isValid ? mDate.toDate() : null,
     };
+  };
+
+  const getValidatedDateRange = (value) => {
+    if (value.length === 0)
+      return {
+        isValid: true,
+        dateValue: [],
+        dateObj: [],
+      };
+
+    const [valueBegin, valueEnd] = value;
+
+    const mDateBegin = moment(valueBegin, format, true);
+    const mDateEnd = moment(valueEnd, format, true);
+
+    const isDateBeginValid = mDateBegin.isValid();
+    const isDateEndValid = mDateEnd.isValid();
+    const isValid = isDateBeginValid && isDateEndValid;
+
+    return {
+      isValid,
+      dateValue: isValid ? [valueBegin, valueEnd] : null,
+      dateObj: isValid ? [mDateBegin.toDate(), mDateEnd.toDate()] : null,
+    };
+  };
+
+  const setDate = (value, { parse = false } = {}) => {
+    //? call selectDate two times ??? (see below)
+    if (!value) selectDate(); // reset date
+
+    if (parse) value = getDateValueFromString(value);
+
+    const { isValid, dateValue, dateObj } = getValidatedDate(value);
+
+    if (isValid) selectDate(dateObj);
+
+    return dateValue;
+
+    /**
+     * todo
+     * @param {*} date
+     */
+    function selectDate(date) {
+      const dp = $(ref.current.el).data("datepicker");
+
+      context.silent = true;
+      dp.clear();
+      if (date) dp.selectDate(date);
+      context.silent = false;
+
+      // update date in calendar dropdown
+      // note: dp.setViewDate(date.toDate()) in new version();
+      if (Array.isArray(date)) {
+        const [firstDate, secondDate] = date;
+        const isSame = moment(firstDate).isSame(moment(secondDate));
+        const isBefore = moment(firstDate).isBefore(moment(secondDate));
+        const isSameOrBefore = isSame || isBefore;
+        dp.date = isSameOrBefore ? firstDate : secondDate;
+      } else {
+        dp.date = date;
+      }
+    }
+  };
+
+  return {
+    callbackRef,
+    handleChange,
+  };
 };

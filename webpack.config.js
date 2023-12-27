@@ -44,23 +44,7 @@ module.exports = () => {
         {
           test: /\.(js|jsx|ts|tsx)$/, //? ts
           exclude: /node_modules/,
-          use: [
-            // todo: mv to babel.json
-            {
-              loader: "babel-loader",
-              options: {
-                presets: [
-                  "@babel/env",
-                  [
-                    "@babel/react",
-                    {
-                      runtime: "automatic",
-                    },
-                  ],
-                ],
-              },
-            },
-          ],
+          use: "babel-loader",
         },
       ],
     },

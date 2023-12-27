@@ -1,16 +1,8 @@
 import path from "path";
 
-const STORYBOOK_PATH_KEY = "STORYBOOK_PATH";
-const storyPath = process.env[STORYBOOK_PATH_KEY];
-
-// STORYBOOK_PATH=path_relative_to_src npm run storybook
-
-const stories = ["../src", storyPath, "**/*.stories.@(js|jsx)"]
-  .filter(Boolean)
-  .join("/");
-
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-  stories: [stories],
+  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: ["@storybook/addon-essentials"],
   framework: {
     name: "@storybook/react-webpack5",

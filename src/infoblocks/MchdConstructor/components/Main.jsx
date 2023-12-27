@@ -27,17 +27,17 @@ import {
 // todo: render form only when all default values are set
 
 const schema = {
-  noNumber: yup.boolean().required(),
-  extensionNumber: yup.string().required("Поле обязательно для заполнения"),
-  attorneyDateBegin: yup.string().required("Поле обязательно для заполнения"),
-  attorneyDateEnd: yup.string().required("Поле обязательно для заполнения"),
-  principalType: yup.string().required("Поле обязательно для заполнения"),
-  region: yup.string().required("Поле обязательно для заполнения"),
-  regionMultiple: yup
-    .array()
-    .of(yup.string())
-    .min(1, "Поле обязательно для заполнения"),
-  checkboxArr: yup.array().of(yup.string()).min(1),
+  // noNumber: yup.boolean().required(),
+  // extensionNumber: yup.string().required("Поле обязательно для заполнения"),
+  // attorneyDateBegin: yup.string().required("Поле обязательно для заполнения"),
+  // attorneyDateEnd: yup.string().required("Поле обязательно для заполнения"),
+  // principalType: yup.string().required("Поле обязательно для заполнения"),
+  // region: yup.string().required("Поле обязательно для заполнения"),
+  // regionMultiple: yup
+  //   .array()
+  //   .of(yup.string())
+  //   .min(1, "Поле обязательно для заполнения"),
+  // checkboxArr: yup.array().of(yup.string()).min(1),
 };
 
 export const Main = () => {
@@ -129,12 +129,12 @@ export const Main = () => {
               <DateInput
                 {...register("attorneyDateEnd")}
                 title="Дата окончания доверенности"
-                placeholder="Выберите дату"
+                // placeholder="Выберите дату"
                 required
-                maskOptions={{
-                  // todo: memo (set as default)
-                  mask: "99.99.9999",
-                }}
+                // maskOptions={{
+                //   // todo: memo (set as default)
+                //   mask: "99.99.9999",
+                // }}
               />
             </Col>
           </Row>

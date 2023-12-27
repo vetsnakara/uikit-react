@@ -2,7 +2,7 @@ import { maxWidth } from "../../../.storybook/decorators";
 import { FileList, getId } from "./FileList";
 
 export default {
-  title: "uikit/FileList",
+  title: "inputs/FileList",
   decorators: [maxWidth(500)],
 };
 

@@ -5,7 +5,7 @@ import ReactSelect from "react-select";
 import ReactDatePicker from "react-datepicker";
 
 export default {
-  title: "uikit/Select",
+  title: "inputs/Select",
   decorators: [maxWidth(500)],
 };
 

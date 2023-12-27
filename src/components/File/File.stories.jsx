@@ -3,7 +3,7 @@ import { FilePreview } from "./FilePreview";
 import { File as FileUpload } from "./File";
 
 export default {
-  title: "uikit/File",
+  title: "inputs/File",
   decorators: [maxWidth(500)],
 };
 
