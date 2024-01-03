@@ -1,8 +1,7 @@
 {
   "name": "react-uikit",
-  "license": "MIT",
   "version": "1.0.0",
-  "description": "",
+  "description": "React based UIKit with PRR styles",
   "main": "lib/react-uikit.js",
   "types": "lib/types/types.d.ts",
   "scripts": {
@@ -23,8 +22,17 @@
     "storybook": "npm-run-all check-assets-dir storybook:dev",
     "prepare": "husky install"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vetsnakara/react-uikit.git"
+  },
+  "keywords": [
+    "react",
+    "uikit"
+  ],
+  "author": "BFT",
+  "license": "MIT",
+  "homepage": "https://github.com/vetsnakara/react-uikit#readme",
   "devDependencies": {
     "@babel/core": "7.23.6",
     "@babel/plugin-proposal-class-properties": "7.18.6",
