@@ -58,129 +58,143 @@ export default {
 // reset to defaultValues
 // clear form (if no defaultValues are set)
 
-const BaseForm = ({ register, handleSubmit, reset, clear, getData }) => (
-  <Form
-    onSubmit={handleSubmit((data) => console.log("submit:", data))}
-    noValidate
-  >
-    <GroupContainer className="mb-1">
-      {/* todo: enabled if isValid and !loading */}
-      <Button type="submit">Сохранить</Button>
-      {/* todo: enabled if hasChanges/hasFieldsChange ? */}
-      <Button variant={ButtonVariant.Secondary} onClick={reset}>
-        Сбросить
-      </Button>
-      <Button variant={ButtonVariant.Secondary} onClick={clear}>
-        Очистить
-      </Button>
-      <Button
-        variant={ButtonVariant.Secondary}
-        onClick={() => console.log(getData())}
-      >
-        Значения
-      </Button>
-    </GroupContainer>
+// todo: форма с распределенными контроломаи
 
-    {/* Сведения о доверенности */}
-    <VStack gap={2} className="mb-2">
-      <Card>
-        <Form.Section>
-          <Form.Title>Одиночный чекбокс</Form.Title>
-          <Checkbox {...register("checkbox")} label="чекбокс" />
-        </Form.Section>
+const BaseForm = ({
+  register,
+  handleSubmit,
+  reset,
+  clear,
+  getData,
+  formState, //! значения нужно брать через "." formState.isValid (чтобы работал proxy)
+}) => {
+  console.log("formState.isValid", formState.isValid);
 
-        <Form.Section>
-          <Form.Title>Текстовое поле</Form.Title>
-          <Input {...register("text")} placeholder="Введите текст" />
-        </Form.Section>
+  return (
+    <Form
+      onSubmit={handleSubmit((data) => console.log("submit:", data))}
+      noValidate
+    >
+      <GroupContainer className="mb-1">
+        <Button disabled={!formState.isValid} type="submit">
+          Сохранить
+        </Button>
+        {/* todo: enabled if hasChanges/hasFieldsChange ? */}
+        <Button variant={ButtonVariant.Secondary} onClick={reset}>
+          Сбросить
+        </Button>
+        <Button variant={ButtonVariant.Secondary} onClick={clear}>
+          Очистить
+        </Button>
+        <Button
+          variant={ButtonVariant.Secondary}
+          onClick={() => console.log(getData())}
+        >
+          Значения
+        </Button>
+      </GroupContainer>
 
-        <Form.Section>
-          <Form.Title>Многострочное текстовое поле</Form.Title>
-          <Textarea {...register("textarea")} placeholder="Введите текст" />
-        </Form.Section>
+      {/* Сведения о доверенности */}
+      <VStack gap={2} className="mb-2">
+        <Card>
+          <Form.Section>
+            <Form.Title>Одиночный чекбокс</Form.Title>
+            <Checkbox {...register("checkbox")} label="чекбокс" />
+          </Form.Section>
 
-        <Form.Section>
-          <Form.Title>Дата</Form.Title>
-          <DateInput
-            {...register("date")}
-            placeholder="Выберите дату"
-            maskOptions={{
-              mask: "99.99.9999", // default
-            }}
-          />
-        </Form.Section>
+          <Form.Section>
+            <Form.Title>Текстовое поле</Form.Title>
+            <Input {...register("text")} placeholder="Введите текст" />
+          </Form.Section>
 
-        <Form.Section>
-          <Form.Title>Диапазон дат</Form.Title>
-          <DateInput
-            {...register("dateRange")}
-            placeholder="Выберите даты"
-            datepickerOptions={{ range: true }}
-            maskOptions={{
-              mask: "99.99.9999 - 99.99.9999", // default
-            }}
-          />
-        </Form.Section>
+          <Form.Section>
+            <Form.Title>Многострочное текстовое поле</Form.Title>
+            <Textarea {...register("textarea")} placeholder="Введите текст" />
+          </Form.Section>
 
-        <Form.Section>
-          <Form.Title>Радио-кнопки</Form.Title>
-          {/* todo: case of vertical stack of checkbox (without wrapper div element) */}
-          <Radio.Group {...register("radio")}>
-            <Radio label="One" value="1" />
-            <Radio label="Two" value="2" />
-            <Radio label="Three" value="3" />
-          </Radio.Group>
-        </Form.Section>
+          <Form.Section>
+            <Form.Title>Дата</Form.Title>
+            <DateInput
+              {...register("date")}
+              placeholder="Выберите дату"
+              maskOptions={{
+                mask: "99.99.9999", // default
+              }}
+            />
+          </Form.Section>
 
-        <Form.Section>
-          <Form.Title>Селект с одиночным выбором</Form.Title>
-          <Select
-            {...register("select")}
-            placeholder="Выберите"
-            items={[
-              { value: "1", label: "One" },
-              { value: "2", label: "Two" },
-              { value: "3", label: "Three" },
-            ]}
-          />
-        </Form.Section>
+          <Form.Section>
+            <Form.Title>Диапазон дат</Form.Title>
+            <DateInput
+              {...register("dateRange")}
+              placeholder="Выберите даты"
+              datepickerOptions={{ range: true }}
+              maskOptions={{
+                mask: "99.99.9999 - 99.99.9999", // default
+              }}
+            />
+          </Form.Section>
 
-        <Form.Section>
-          <Form.Title>Селект с мультивыбором</Form.Title>
-          <Select
-            {...register("selectMultiple")}
-            items={[
-              { value: "1", label: "One" },
-              { value: "2", label: "Two" },
-              { value: "3", label: "Three" },
-            ]}
-            selectpickerOptions={{
-              liveSearch: true,
-            }}
-            multiple
-          />
-        </Form.Section>
+          <Form.Section>
+            <Form.Title>Радио-кнопки</Form.Title>
+            {/* todo: case of vertical stack of checkbox (without wrapper div element) */}
+            <Radio.Group {...register("radio")}>
+              <Radio label="One" value="1" />
+              <Radio label="Two" value="2" />
+              <Radio label="Three" value="3" />
+            </Radio.Group>
+          </Form.Section>
 
-        <Form.Section>
-          <Form.Title>Группа чекбоксов</Form.Title>
-          <Checkbox.Group {...register("checkboxGroup")}>
-            <Checkbox label="One" value="1" />
-            <Checkbox label="Two" value="2" />
-            <Checkbox label="Three" value="3" />
-          </Checkbox.Group>
-        </Form.Section>
+          <Form.Section>
+            <Form.Title>Селект с одиночным выбором</Form.Title>
+            <Select
+              {...register("select")}
+              placeholder="Выберите"
+              items={[
+                { value: "1", label: "One" },
+                { value: "2", label: "Two" },
+                { value: "3", label: "Three" },
+              ]}
+            />
+          </Form.Section>
 
-        <Form.Section>
-          <File
-            {...register("file")}
-            title="Загрузка файла"
-            description="Допустимый размер 15 Мб"
-          />
-        </Form.Section>
-      </Card>
-    </VStack>
-  </Form>
-);
+          <Form.Section>
+            <Form.Title>Селект с мультивыбором</Form.Title>
+            <Select
+              {...register("selectMultiple")}
+              items={[
+                { value: "1", label: "One" },
+                { value: "2", label: "Two" },
+                { value: "3", label: "Three" },
+              ]}
+              selectpickerOptions={{
+                liveSearch: true,
+              }}
+              multiple
+            />
+          </Form.Section>
+
+          <Form.Section>
+            <Form.Title>Группа чекбоксов</Form.Title>
+            <Checkbox.Group {...register("checkboxGroup")}>
+              <Checkbox label="One" value="1" />
+              <Checkbox label="Two" value="2" />
+              <Checkbox label="Three" value="3" />
+            </Checkbox.Group>
+          </Form.Section>
+
+          <Form.Section>
+            <File
+              {...register("file")}
+              title="Загрузка файла"
+              description="Допустимый размер 15 Мб"
+            />
+          </Form.Section>
+        </Card>
+      </VStack>
+    </Form>
+  );
+};
 
 const Layout = ({ children, aside }) => (
   <Container>
@@ -334,6 +348,19 @@ export const DefaultValues = () => {
 export const DefaultValuesValidation = () => {
   const formProps = useForm({
     defaultValues,
+    schema,
+  });
+
+  return (
+    <Layout aside={"state"}>
+      <BaseForm {...formProps} />
+    </Layout>
+  );
+};
+
+export const IsValid = () => {
+  const formProps = useForm({
+    // defaultValues,
     schema,
   });
 

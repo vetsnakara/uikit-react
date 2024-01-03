@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import * as yup from "yup";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { useProxyState } from "../useProxyState";
 
 // todo: schema should be optional
 // todo: useCallbacks
@@ -61,9 +62,13 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
   // todo: formState should be proxied
   // todo: case of error not readed ???
   // todo: set default values to watched fields
-  const [formState, setFormState] = useState({
-    // isValid: ...,
-    // submited: ...,
+  const {
+    state: formState,
+    proxyState: proxyFormState,
+    updateState: updateFormState,
+  } = useProxyState({
+    isValid: true, // todo!: calculate initially (use func argument) do it silently (don't show error messages before submit button is clicked)
+    isSubmitted: false,
     // dirty: ...,
     //? errors: ...
   });
@@ -144,6 +149,7 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
 
     // todo: разобраться с лишним рендером
     // todo: "1" -> "" -> "1" -> "11" (render here)
+    // todo: remove error field if no error case
     setErrors((prevErrors) => {
       const currErrorMessage = prevErrors[name] || "";
       const shouldUpdateError = errorMessage !== currErrorMessage;
@@ -155,6 +161,9 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
           }
         : prevErrors;
     });
+
+    const isValid = !hasErrors({ ...errors, [name]: errorMessage });
+    updateFormState("isValid", isValid);
   };
 
   // исключить лишние рендеры при валидации
@@ -231,7 +240,8 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
       onChange,
       // onBlur,
       // todo: если нет схемы валидации, то и ошибку не передавать
-      error: errors[name],
+      // todo: use shouldExposeError
+      error: errors[name], // todo: отдавать ошибку, если isSubmitted: true или isValid: isUsed
     };
 
     return registerProps;
@@ -240,7 +250,6 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
   // useCallback???
   // todo: unify validation full object and separate field
   // todo: optimize renders (not always rerender is necessary)
-
   const handleSubmit = (submitHandler) => async (e) => {
     e.preventDefault();
 
@@ -266,8 +275,21 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
     // todo: don't set errors if errors didn't change
     setErrors(errors);
 
-    const isValid = Object.keys(errors).length === 0;
+    const isValid = !hasErrors(errors);
     if (isValid) submitHandler(data);
+
+    updateFormState("isSubmitted", true);
+  };
+
+  // todo: to utils
+  const hasErrors = (errors) => {
+    console.log("errors", errors);
+    if (!errors) return false;
+
+    const hasKeys = Object.keys(errors).length > 0;
+    if (!hasKeys) return false;
+
+    return Object.values(errors).filter(Boolean).length > 0;
   };
 
   /**
@@ -307,7 +329,7 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
     // unregister,
     watch,
     handleSubmit,
-    formState, //! proxy: codesandbox
+    formState: proxyFormState,
     // getFormStateWithoutRedner,
     reset,
     clear,
