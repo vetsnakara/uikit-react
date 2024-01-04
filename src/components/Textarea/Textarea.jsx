@@ -19,7 +19,7 @@ const Textarea = memo(
       }));
 
       useEffect(() => {
-        const $textarea = $(ref.current);
+        const $textarea = $(ref.current.el);
 
         if (wysiwyg) window.initWYSIWYG($textarea);
 
