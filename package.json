@@ -1,5 +1,5 @@
 {
-  "name": "react-uikit",
+  "name": "@vetsnakara/-uikit",
   "version": "1.0.0",
   "description": "React based UIKit with PRR styles",
   "main": "lib/react-uikit.js",
