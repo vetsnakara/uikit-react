@@ -18,7 +18,7 @@
     "move-bundle": "node ./scripts/moveBundleToAssets",
     "styletest": "node autotest.js",
     "storybook:dev": "storybook dev -p 3000",
-    "stotybook:build": "storybook build",
+    "storybook:build": "storybook build",
     "storybook": "npm-run-all check-assets-dir storybook:dev",
     "prepare": "husky install"
   },
