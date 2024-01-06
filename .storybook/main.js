@@ -29,9 +29,9 @@ const config = {
       return rule;
     });
 
-    if (process.env.NODE_ENV === "production") {
-      config.output.publicPath = "/react-uikit";
-    }
+    // if (process.env.NODE_ENV === "production") {
+    //   config.output.publicPath = "/react-uikit";
+    // }
 
     return config;
   },
