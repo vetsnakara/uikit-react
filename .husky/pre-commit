@@ -8,7 +8,9 @@
 npx lint-staged
 
 # BUILD
+# todo: do build more elegant
 #! https://makerkit.dev/snippets/staged-git-files-nodejs
+
 SRC_PATH="src/ sources-default/ sources-redesign/ sources-trudvsem"
 DIST_PATH="./lib ./assets"
 
