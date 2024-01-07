@@ -1,10 +1,13 @@
 import React from "react";
-import * as PropTypes from "prop-types";
+
 import { Mchd } from "../Mchd";
-import { getData } from "./data";
-import { WithData, WithInfoblockLayout } from "./decorators";
+
 import { LegalEntityPrincipalType, PrincipalType, UserRole, Status } from "../constants";
+
 import { Provider } from "../context";
+
+import { getData } from "./data";
+import { WithInfoblockLayout } from "./decorators";
 
 // todo: remove SB paddings
 

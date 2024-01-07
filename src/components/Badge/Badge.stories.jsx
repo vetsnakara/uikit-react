@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { VStack } from "../Stack";
+
 import { Badge, BadgeMaxWidth250, BadgeVariant } from "./Badge";
 
 export default {

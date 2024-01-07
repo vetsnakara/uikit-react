@@ -2,8 +2,8 @@ import { useState, useRef, useMemo, forwardRef, useEffect } from "react";
 
 import { maxWidth } from "../../../.storybook/decorators";
 import { Button, ButtonVariant } from "../Button";
+
 import { Input } from "./Input";
-import { composeRef } from "../../hooks/useElementRef";
 
 export default {
     title: "inputs/Input",

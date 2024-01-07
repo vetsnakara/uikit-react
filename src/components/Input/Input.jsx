@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, memo, useRef, useCallback } from "react";
+import { forwardRef, useEffect, memo } from "react";
 import * as PropTypes from "prop-types";
 import cn from "classnames";
 
@@ -14,10 +14,6 @@ import { useFormControlRef } from "../../hooks";
 // todo: use constants for input type: text, search, date
 // todo: update dp to use silent option (is needed here?)
 // todo: hook useInputmask
-
-const Props = {
-    title: PropTypes.string,
-};
 
 /**
  * @type {React.FC<PropTypes.InferProps<typeof Props>>}

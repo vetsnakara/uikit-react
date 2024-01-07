@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { Portal } from "../Portal";
+
 import { Notification } from "./Notification";
 
 // todo: title icon
@@ -23,7 +24,7 @@ const Type = {
 const fn = {};
 
 const show = (data, { type = Type.Accent } = {}) => {
-    const { addItem, removeItem } = fn;
+    const { addItem /* removeItem */ } = fn;
 
     const id = new Date().getTime();
     const item = { id, title: id, type };
@@ -41,7 +42,7 @@ export const notification = {
     warning: (data) => show(data, { type: Type.Warning }),
 };
 
-export const NotificationContainer = ({ autoClose = true, element }) => {
+export const NotificationContainer = ({ /* autoClose = true */ element }) => {
     const [items, setItems] = useState([]);
 
     const addItem = useCallback((item) => {

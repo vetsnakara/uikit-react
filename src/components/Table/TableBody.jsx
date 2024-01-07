@@ -24,6 +24,7 @@ function renderCell(col, item) {
 }
 
 function get(obj, path) {
+    // eslint-disable-next-line
     for (var i = 0, path = path.split("."), len = path.length; i < len; i++) {
         obj = obj[path[i]];
     }

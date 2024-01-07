@@ -3,6 +3,7 @@ import { memo, forwardRef, useContext } from "react";
 import cn from "classnames";
 
 import { useFormControlRef } from "../../hooks";
+
 import { CheckboxGroupContext } from "./context";
 import { CheckboxGroup } from "./CheckboxGroup";
 

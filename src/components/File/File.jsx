@@ -1,8 +1,9 @@
 import { useState, useRef, memo, forwardRef } from "react";
 
+import { useFormControlRef } from "../../hooks";
+
 import { FilePreview } from "./FilePreview";
 import { FileAction } from "./constants";
-import { useFormControlRef } from "../../hooks";
 
 // todo: select multiple files
 

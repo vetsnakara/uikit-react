@@ -1,8 +1,6 @@
 import { Children, cloneElement } from "react";
-import cn from "classnames";
 
 // todo: настроить отображение классов css-модулей во вкладек Elements при использовании SB и в production
-import cls from "./styles.module.css";
 
 export const VStack = ({ gap = 0, children, ...props }) => {
     const childrenWithGap = Children.map(children, (child, index) => {

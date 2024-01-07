@@ -1,4 +1,5 @@
 import { maxWidth } from "../../../.storybook/decorators";
+
 import { Separator } from "./Separator";
 
 export default {

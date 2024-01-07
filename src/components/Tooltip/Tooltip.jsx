@@ -5,7 +5,7 @@ import cn from "classnames";
 // todo: programmatic call
 // todo: html in tooltip
 
-const TooltipPlacement = {};
+// const TooltipPlacement = {};
 
 export const Tooltip = memo(
     ({ className, tooltip, placement = "auto", options = {}, toggle, theme, handler, ...props }) => {

@@ -1,4 +1,4 @@
-import { useRef, forwardRef, useEffect } from "react";
+import { useEffect } from "react";
 
 export const MainWithStickySidebar = ({ children }) => {
     useEffect(() => {

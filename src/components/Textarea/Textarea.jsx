@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, memo } from "react";
+import { forwardRef, useEffect, memo } from "react";
 import cn from "classnames";
 
 import { useFormControlRef } from "../../hooks";

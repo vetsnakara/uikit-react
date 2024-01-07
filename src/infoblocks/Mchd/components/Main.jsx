@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Subtitle, Paragraph, Separator } from "@uikit/components";
 
-import { Section } from "./Section";
 import { useAppState } from "../context";
+
+import { Section } from "./Section";
 
 export const Main = () => {
     const { sections } = useAppState();

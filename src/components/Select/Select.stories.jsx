@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, Component } from "react";
-import { maxWidth } from "../../../.storybook/decorators";
 
 import ReactSelect from "react-select";
-import ReactDatePicker from "react-datepicker";
+
+import { maxWidth } from "../../../.storybook/decorators";
 
 export default {
     title: "inputs/Select",

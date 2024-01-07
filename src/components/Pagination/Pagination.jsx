@@ -45,8 +45,8 @@ export const Pagination = memo(
         delta,
         arrows = true,
         // todo
-        prevButtonText = "Назад",
-        nextButtonText = "Вперёд",
+        // prevButtonText = "Назад",
+        // nextButtonText = "Вперёд",
         onPageChange,
         className,
     }) => {

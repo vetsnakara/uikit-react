@@ -1,6 +1,4 @@
-import { useMemo, useRef } from "react";
 import * as yup from "yup";
-import { maxWidth } from "../../../.storybook/decorators";
 
 // todo: ??? зачем подгружать бандлы react, react-dom, react-uikit, если не странице не используется рекат ???
 // todo: intellisent for @uikit/comopnents (hooks)
@@ -35,6 +33,8 @@ import {
 
 //! need types
 import { useForm } from "@uikit/hooks";
+
+import { maxWidth } from "../../../.storybook/decorators";
 
 export default {
     title: "form/Form",

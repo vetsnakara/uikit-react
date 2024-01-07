@@ -1,5 +1,6 @@
 import { VStack } from "../Stack";
 import { Subtitle } from "../Text";
+
 import { Definitions } from "./Definitions";
 
 export default {

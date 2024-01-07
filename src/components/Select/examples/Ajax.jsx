@@ -1,6 +1,7 @@
 import { rest } from "msw";
 
 import { Select } from "../Select";
+
 import { options } from "./data";
 
 const AJAX_SELECT_SERCH_PATH = "ajaxSelectSearchPath";

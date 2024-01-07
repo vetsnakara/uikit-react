@@ -10,8 +10,6 @@ export const Card = ({ children, className, theme, ...props }) => {
     );
 };
 
-const CardFooter = ({ className, theme, ...props }) => (
-    <div className={cn("card__footer-interface", className)} {...props} />
-);
+const CardFooter = ({ className, ...props }) => <div className={cn("card__footer-interface", className)} {...props} />;
 
 Card.Footer = CardFooter;

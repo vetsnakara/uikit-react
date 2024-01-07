@@ -2,7 +2,7 @@ import { useState, useMemo, useRef } from "react";
 
 import { maxWidth } from "../../../.storybook/decorators";
 import { VStack } from "../Stack";
-import { Button, ButtonVariant } from "../Button";
+
 import { DateInput } from "./DateInput";
 
 export default {

@@ -1,5 +1,4 @@
-import { useMemo } from "react";
-import * as yup from "yup"; //??? need install yup ???
+//??? need install yup ???
 
 import { useForm } from "@uikit/hooks";
 
@@ -41,7 +40,7 @@ const schema = {
 };
 
 export const Main = () => {
-    const { register, reset, handleSubmit, formState, proxyFormState, watch } = useForm({
+    const { register, reset, handleSubmit } = useForm({
         schema,
         defaultValues: {
             // extensionNumber: "abc",
@@ -56,14 +55,14 @@ export const Main = () => {
     });
 
     // todo: memo other options
-    const selectItems = useMemo(
-        () => [
-            { value: "1", label: "One" },
-            { value: "2", label: "Two" },
-            { value: "3", label: "Three" },
-        ],
-        []
-    );
+    // const selectItems = useMemo(
+    //     () => [
+    //         { value: "1", label: "One" },
+    //         { value: "2", label: "Two" },
+    //         { value: "3", label: "Three" },
+    //     ],
+    //     []
+    // );
 
     // const noNumber = watch("noNumber");
     // const noNumber = false;
@@ -179,6 +178,7 @@ export const Main = () => {
         </Form>
     );
 
+    // eslint-disable-next-line
     return (
         <Form onSubmit={handleSubmit((data) => console.log("data", data))} noValidate>
             <GroupContainer>

@@ -1,13 +1,9 @@
 import { useState, useRef } from "react";
 
-import { VStack } from "../../Stack";
 import { Button, ButtonVariant } from "../../Button";
-import { Checkbox } from "../../Checkbox";
-import { Radio } from "../../Radio";
-import { Input } from "../../Input";
-import { Row, Col } from "../../Grid";
-import { Separator } from "../../Separator";
 import { Select } from "../Select";
+import { VStack } from "../../Stack";
+
 import { options } from "./data";
 
 export const Default = () => <Select {...options} />;

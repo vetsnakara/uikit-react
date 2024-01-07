@@ -1,5 +1,6 @@
-import { GroupContainer } from "./GroupContainer";
 import { Button } from "../Button";
+
+import { GroupContainer } from "./GroupContainer";
 
 export default {
     title: "uikit/GroupContainer",

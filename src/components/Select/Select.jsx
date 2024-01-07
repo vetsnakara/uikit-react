@@ -1,8 +1,9 @@
-import { memo, forwardRef, useEffect, useRef, useCallback } from "react";
+import { memo, forwardRef, useEffect } from "react";
 import cn from "classnames";
 
-import { SelectEvent, selectpickerEventHandlers } from "./constants";
 import { useFormControlRef } from "../../hooks";
+
+import { SelectEvent, selectpickerEventHandlers } from "./constants";
 
 const defaultSelectpickerOptions = {};
 const defaultItems = [];

@@ -44,8 +44,8 @@ export const TableHeader = memo(({ columns, sortColumn, onSort }) => {
 // Functions
 // .........................................
 
-function renderSortIcon({ column, sortColumn }) {
-    if (!column.path || column.path !== sortColumn.path) return null;
-    const classes = `fa fa-sort-${sortColumn.direction}`;
-    return <i className={classes} />;
-}
+// function renderSortIcon({ column, sortColumn }) {
+//     if (!column.path || column.path !== sortColumn.path) return null;
+//     const classes = `fa fa-sort-${sortColumn.direction}`;
+//     return <i className={classes} />;
+// }

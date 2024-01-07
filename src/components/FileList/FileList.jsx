@@ -1,6 +1,6 @@
 import { useState, memo } from "react";
 
-import { FilePreview, File } from "../File";
+import { File } from "../File";
 
 export const getId = () => Math.ceil(1e10 * Math.random()).toString();
 

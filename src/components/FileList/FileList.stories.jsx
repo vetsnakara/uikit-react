@@ -1,4 +1,5 @@
 import { maxWidth } from "../../../.storybook/decorators";
+
 import { FileList, getId } from "./FileList";
 
 export default {
@@ -14,7 +15,7 @@ const file = {
 const getFiles = (count) =>
     Array(count)
         .fill(null)
-        .map((id) => ({ id: getId(), ...file }));
+        .map(() => ({ id: getId(), ...file }));
 
 const args = {
     title: "Вложения",

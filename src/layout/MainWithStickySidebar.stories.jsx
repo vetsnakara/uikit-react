@@ -19,8 +19,8 @@ export const Base = () => {
                 <Layout>
                     <Layout.Main>
                         <VStack gap={2}>
-                            {[...Array(5).keys()].map(() => (
-                                <Card>
+                            {[...Array(5).keys()].map((index) => (
+                                <Card key={index}>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus tenetur nostrum
                                     asperiores enim amet nesciunt labore beatae nam ullam corporis qui, et possimus odit
                                     saepe vitae odio earum magnam, aliquam error corrupti quae suscipit sequi ut?

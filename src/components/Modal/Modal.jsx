@@ -20,10 +20,10 @@ export const ModalVariant = {
     Dialog: "dialog",
 };
 
-const ModalType = {
-    Alert: "alert",
-    Confirm: "confirm",
-};
+// const ModalType = {
+//     Alert: "alert",
+//     Confirm: "confirm",
+// };
 
 const ModalEvent = {
     Hide: "hide.bs.modal",

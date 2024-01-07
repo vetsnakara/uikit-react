@@ -1,5 +1,6 @@
 import { maxWidth } from "../../../.storybook/decorators";
 import { VStack } from "../Stack";
+
 import { Card } from "./Card";
 
 export default {

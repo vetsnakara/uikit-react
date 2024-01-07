@@ -1,7 +1,8 @@
 import React, { memo, forwardRef } from "react";
 
-import { RadioGroupContext } from "./context";
 import { useFormControlRef } from "../../hooks";
+
+import { RadioGroupContext } from "./context";
 
 // todo: optimize renders for controlled variant
 // todo: show error (if any) on last Radio only

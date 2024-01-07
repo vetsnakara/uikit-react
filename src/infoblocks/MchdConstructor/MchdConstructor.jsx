@@ -4,15 +4,12 @@ import { MainWithStickySidebar as Layout } from "@uikit/layout/MainWithStickySid
 import { Title, Row } from "@uikit/components";
 
 import { Main } from "./components/Main";
-import { Sidebar } from "./components/Sidebar";
-import { useAppState } from "./context";
 import { SignModal, RemoveModal, RevokeModal } from "./components/modals";
-import { initNavigation } from "./navigation";
 
 // todo: icon are not visible now
 
 export const MchdConstructor = () => {
-    const { extensionNumber } = useAppState();
+    // const { extensionNumber } = useAppState();
 
     useEffect(() => {
         // todo: create own hook???
