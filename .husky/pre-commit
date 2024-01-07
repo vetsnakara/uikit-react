@@ -4,6 +4,10 @@
 
 . "$(dirname -- "$0")/_/husky.sh"
 
+# LINT / FORMAT
+npm run lint-staged
+
+# BUILD
 SRC_PATH="src/ sources-default/ sources-redesign/ sources-trudvsem"
 DIST_PATH="./lib ./assets"
 

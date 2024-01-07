@@ -42,297 +42,292 @@ import { useProxyState } from "../useProxyState";
 const isUndefined = (value) => value === undefined;
 
 export const useForm = ({ defaultValues = {}, schema } = {}) => {
-  console.log("⚡ useForm: render");
+    console.log("⚡ useForm: render");
 
-  const refStore = useRef({});
+    const refStore = useRef({});
 
-  // const registerOrder = [];
+    // const registerOrder = [];
 
-  const [values, setValues] = useState({});
-  const [errors, setErrors] = useState({});
+    const [values, setValues] = useState({});
+    const [errors, setErrors] = useState({});
 
-  const _names = useMemo(
-    () => ({
-      watch: new Set(),
-      watchAll: false,
-    }),
-    []
-  );
-
-  // todo: formState should be proxied
-  // todo: case of error not readed ???
-  // todo: set default values to watched fields
-  const {
-    state: formState,
-    proxyState: proxyFormState,
-    updateState: updateFormState,
-  } = useProxyState({
-    isValid: true, // todo!: calculate initially (use func argument) do it silently (don't show error messages before submit button is clicked)
-    isSubmitted: false,
-    // dirty: ...,
-    //? errors: ...
-  });
-
-  useEffect(() => {
-    setDefaultValues({ init: true });
-  }, []);
-
-  const setDefaultValues = ({ init = false } = {}) => {
-    for (const name of Object.keys(refStore.current)) {
-      // note: defaultValue = defaultValues[name] || innerDefaultValue
-      const { setValue, defaultValue } = refStore.current[name];
-
-      const hasExternalDefaultValue = !isUndefined(defaultValues[name]);
-      const shouldSetDefaultValue = !init || (init && hasExternalDefaultValue);
-
-      // todo: don't set default value if current value didn't change
-
-      if (shouldSetDefaultValue) setValue(defaultValue);
-    }
-  };
-
-  const resetValues = () => {
-    for (const name of Object.keys(refStore.current)) {
-      const { setValue } = refStore.current[name];
-      setValue();
-    }
-  };
-
-  const resetErrors = () => setErrors({});
-
-  const getData = () =>
-    Object.entries(refStore.current).reduce(
-      (acc, [name, { getValue }]) => ({
-        ...acc,
-        [name]: getValue(),
-      }),
-      {}
-    );
-  [];
-
-  const getSchema = () =>
-    Object.entries(refStore.current).reduce(
-      (acc, [name, { schema }]) => ({
-        ...acc,
-        [name]: schema,
-      }),
-      {}
+    const _names = useMemo(
+        () => ({
+            watch: new Set(),
+            watchAll: false,
+        }),
+        []
     );
 
-  // todo: extract as util
-  const validate = (data, schema) =>
-    yup.object(schema).validate(data, { abortEarly: true });
-
-  const validateField = async (name, { shouldUpdateValue = false } = {}) => {
-    const { getValue, schema } = refStore.current[name];
-    const value = getValue();
-
-    let errorMessage = "";
-
-    try {
-      if (schema) {
-        const valueObj = { [name]: value };
-        const schemaObj = { [name]: schema };
-
-        await validate(valueObj, schemaObj);
-      }
-    } catch ({ message }) {
-      errorMessage = message;
-    }
-
-    if (shouldUpdateValue) {
-      setValues((values) => ({
-        ...values,
-        [name]: value,
-      }));
-    }
-
-    // todo: разобраться с лишним рендером
-    // todo: "1" -> "" -> "1" -> "11" (render here)
-    // todo: remove error field if no error case
-    setErrors((prevErrors) => {
-      const currErrorMessage = prevErrors[name] || "";
-      const shouldUpdateError = errorMessage !== currErrorMessage;
-
-      return shouldUpdateError
-        ? {
-            ...prevErrors,
-            [name]: errorMessage,
-          }
-        : prevErrors;
-    });
-
-    const isValid = !hasErrors({ ...errors, [name]: errorMessage });
-    updateFormState("isValid", isValid);
-  };
-
-  // исключить лишние рендеры при валидации
-  // unregister field при демонтировании компонента
-  // проверить, что схема настривается автоматически
-  const onChange = useCallback(async (value, event) => {
+    // todo: formState should be proxied
+    // todo: case of error not readed ???
+    // todo: set default values to watched fields
     const {
-      target: { name },
-    } = event;
-
-    const shouldUpdateValue = _names.watchAll || _names.watch.has(name);
-    validateField(name, { shouldUpdateValue });
-  }, []);
-
-  const onBlur = useCallback(({ target: { name } }) => {
-    //! validate triggers redundant render
-    // validateField(name);
-  }, []);
-
-  // todo: reset should work for no defaultValues case (reset to clear form)
-  // todo: clear form method is needed to (and clear single field)
-  // todo: reset/clear/clearError for single field
-  const reset = useCallback(() => {
-    setDefaultValues();
-    resetErrors();
-  }, []);
-
-  const clear = useCallback(() => {
-    resetValues();
-    resetErrors();
-  }, []);
-
-  // use stable callback for every name
-  // иначе проискодит двойной вызов ref callback (null (1) => node (2))
-  // todo: use refStore
-  //?! is needed el in ref object
-  const getCallbackRef = (name) => (ref) => {
-    // unregister
-    if (!ref) {
-      delete refStore.current[name];
-      return;
-    }
-
-    // register
-    const externalDefaultValue = defaultValues[name];
-    const innerDefaultValue = ref.getValue();
-
-    // note: defaultValue can be null
-    const hasExternalDefaultValue = !isUndefined(externalDefaultValue);
-
-    Object.assign(refStore.current[name], ref, {
-      schema: schema?.[name] ?? null,
-      defaultValue: hasExternalDefaultValue
-        ? externalDefaultValue
-        : innerDefaultValue,
+        // state: formState,
+        proxyState: proxyFormState,
+        updateState: updateFormState,
+    } = useProxyState({
+        isValid: true, // todo!: calculate initially (use func argument) do it silently (don't show error messages before submit button is clicked)
+        isSubmitted: false,
+        // dirty: ...,
+        //? errors: ...
     });
-  };
 
-  const register = (name) => {
-    // todo: refactor
-    // todo: use deep set
-    // note: обеспечиваем стабильность сслки на callbackRef
-    if (!refStore.current[name]) refStore.current[name] = {}; //! DRY
-    if (!refStore.current[name].refCallback) {
-      refStore.current[name].refCallback = getCallbackRef(name);
-    }
+    useEffect(() => {
+        setDefaultValues({ init: true });
+    }, []);
 
-    // set names to watch
-    if (_names.watchAll) _names.watch.add(name);
+    const setDefaultValues = ({ init = false } = {}) => {
+        for (const name of Object.keys(refStore.current)) {
+            // note: defaultValue = defaultValues[name] || innerDefaultValue
+            const { setValue, defaultValue } = refStore.current[name];
 
-    const registerProps = {
-      name,
-      ref: refStore.current[name].refCallback,
-      onChange,
-      // onBlur,
-      // todo: если нет схемы валидации, то и ошибку не передавать
-      // todo: use shouldExposeError
-      error: errors[name], // todo: отдавать ошибку, если isSubmitted: true или isValid: isUsed
+            const hasExternalDefaultValue = !isUndefined(defaultValues[name]);
+            const shouldSetDefaultValue = !init || (init && hasExternalDefaultValue);
+
+            // todo: don't set default value if current value didn't change
+
+            if (shouldSetDefaultValue) setValue(defaultValue);
+        }
     };
 
-    return registerProps;
-  };
+    const resetValues = () => {
+        for (const name of Object.keys(refStore.current)) {
+            const { setValue } = refStore.current[name];
+            setValue();
+        }
+    };
 
-  // useCallback???
-  // todo: unify validation full object and separate field
-  // todo: optimize renders (not always rerender is necessary)
-  const handleSubmit = (submitHandler) => async (e) => {
-    e.preventDefault();
+    const resetErrors = () => setErrors({});
 
-    const data = getData();
-    const schema = getSchema();
+    const getData = () =>
+        Object.entries(refStore.current).reduce(
+            (acc, [name, { getValue }]) => ({
+                ...acc,
+                [name]: getValue(),
+            }),
+            {}
+        );
+    [];
 
-    // todo: move to utils (and others)
-    // Run validation for each field with abortEarly: true
-    // https://github.com/jquense/yup/issues/569
-    const promises = Object.keys(refStore.current).map((name) => {
-      const fieldData = { [name]: data[name] };
-      const fieldSchema = { [name]: schema[name] };
-      return validate(fieldData, fieldSchema);
-    });
+    const getSchema = () =>
+        Object.entries(refStore.current).reduce(
+            (acc, [name, { schema }]) => ({
+                ...acc,
+                [name]: schema,
+            }),
+            {}
+        );
 
-    const result = await Promise.allSettled(promises);
+    // todo: extract as util
+    const validate = (data, schema) => yup.object(schema).validate(data, { abortEarly: true });
 
-    const errors = result
-      .filter(({ status }) => status === "rejected")
-      .map(({ reason }) => reason)
-      .reduce((acc, { path, message }) => ({ ...acc, [path]: message }), {});
+    const validateField = async (name, { shouldUpdateValue = false } = {}) => {
+        const { getValue, schema } = refStore.current[name];
+        const value = getValue();
 
-    // todo: don't set errors if errors didn't change
-    setErrors(errors);
+        let errorMessage = "";
 
-    const isValid = !hasErrors(errors);
-    if (isValid) submitHandler(data);
+        try {
+            if (schema) {
+                const valueObj = { [name]: value };
+                const schemaObj = { [name]: schema };
 
-    updateFormState("isSubmitted", true);
-  };
+                await validate(valueObj, schemaObj);
+            }
+        } catch ({ message }) {
+            errorMessage = message;
+        }
 
-  // todo: to utils
-  const hasErrors = (errors) => {
-    console.log("errors", errors);
-    if (!errors) return false;
+        if (shouldUpdateValue) {
+            setValues((values) => ({
+                ...values,
+                [name]: value,
+            }));
+        }
 
-    const hasKeys = Object.keys(errors).length > 0;
-    if (!hasKeys) return false;
+        // todo: разобраться с лишним рендером
+        // todo: "1" -> "" -> "1" -> "11" (render here)
+        // todo: remove error field if no error case
+        setErrors((prevErrors) => {
+            const currErrorMessage = prevErrors[name] || "";
+            const shouldUpdateError = errorMessage !== currErrorMessage;
 
-    return Object.values(errors).filter(Boolean).length > 0;
-  };
+            return shouldUpdateError
+                ? {
+                      ...prevErrors,
+                      [name]: errorMessage,
+                  }
+                : prevErrors;
+        });
 
-  /**
-   * @param {string|string[]|undefined} name
-   * @returns
-   * ! name can be callback function (call on field change, return unsub)
-   */
-  const watch = (name) => {
-    const watchAll = !name;
-    if (!name) _names.watchAll = watchAll;
+        const isValid = !hasErrors({ ...errors, [name]: errorMessage });
+        updateFormState("isValid", isValid);
+    };
 
-    let namesArr = [];
-    if (!watchAll) namesArr = Array.isArray(name) ? name : [name];
-    namesArr.forEach((name) => _names.watch.add(name));
+    // исключить лишние рендеры при валидации
+    // unregister field при демонтировании компонента
+    // проверить, что схема настривается автоматически
+    const onChange = useCallback(async (value, event) => {
+        const {
+            target: { name },
+        } = event;
 
-    const res = [..._names.watch].reduce(
-      (acc, name) => {
-        const value = !isUndefined(values[name])
-          ? values[name]
-          : refStore.current?.[name]?.getValue();
+        const shouldUpdateValue = _names.watchAll || _names.watch.has(name);
+        validateField(name, { shouldUpdateValue });
+    }, []);
 
-        return {
-          ...acc,
-          ...(!isUndefined(value) && {
-            [name]: value,
-          }),
+    // const onBlur = useCallback(({ target: { name } }) => {
+    //     //! validate triggers redundant render
+    //     // validateField(name);
+    // }, []);
+
+    // todo: reset should work for no defaultValues case (reset to clear form)
+    // todo: clear form method is needed to (and clear single field)
+    // todo: reset/clear/clearError for single field
+    const reset = useCallback(() => {
+        setDefaultValues();
+        resetErrors();
+    }, []);
+
+    const clear = useCallback(() => {
+        resetValues();
+        resetErrors();
+    }, []);
+
+    // use stable callback for every name
+    // иначе проискодит двойной вызов ref callback (null (1) => node (2))
+    // todo: use refStore
+    //?! is needed el in ref object
+    const getCallbackRef = (name) => (ref) => {
+        // unregister
+        if (!ref) {
+            delete refStore.current[name];
+            return;
+        }
+
+        // register
+        const externalDefaultValue = defaultValues[name];
+        const innerDefaultValue = ref.getValue();
+
+        // note: defaultValue can be null
+        const hasExternalDefaultValue = !isUndefined(externalDefaultValue);
+
+        Object.assign(refStore.current[name], ref, {
+            schema: schema?.[name] ?? null,
+            defaultValue: hasExternalDefaultValue ? externalDefaultValue : innerDefaultValue,
+        });
+    };
+
+    const register = (name) => {
+        // todo: refactor
+        // todo: use deep set
+        // note: обеспечиваем стабильность сслки на callbackRef
+        if (!refStore.current[name]) refStore.current[name] = {}; //! DRY
+        if (!refStore.current[name].refCallback) {
+            refStore.current[name].refCallback = getCallbackRef(name);
+        }
+
+        // set names to watch
+        if (_names.watchAll) _names.watch.add(name);
+
+        const registerProps = {
+            name,
+            ref: refStore.current[name].refCallback,
+            onChange,
+            // onBlur,
+            // todo: если нет схемы валидации, то и ошибку не передавать
+            // todo: use shouldExposeError
+            error: errors[name], // todo: отдавать ошибку, если isSubmitted: true или isValid: isUsed
         };
-      },
-      watchAll ? defaultValues : _.pick(defaultValues, namesArr)
-    );
 
-    return typeof name === "string" ? res[name] : res;
-  };
+        return registerProps;
+    };
 
-  return {
-    register,
-    // unregister,
-    watch,
-    handleSubmit,
-    formState: proxyFormState,
-    // getFormStateWithoutRedner,
-    reset,
-    clear,
-    getData,
-  };
+    // useCallback???
+    // todo: unify validation full object and separate field
+    // todo: optimize renders (not always rerender is necessary)
+    const handleSubmit = (submitHandler) => async (e) => {
+        e.preventDefault();
+
+        const data = getData();
+        const schema = getSchema();
+
+        // todo: move to utils (and others)
+        // Run validation for each field with abortEarly: true
+        // https://github.com/jquense/yup/issues/569
+        const promises = Object.keys(refStore.current).map((name) => {
+            const fieldData = { [name]: data[name] };
+            const fieldSchema = { [name]: schema[name] };
+            return validate(fieldData, fieldSchema);
+        });
+
+        const result = await Promise.allSettled(promises);
+
+        const errors = result
+            .filter(({ status }) => status === "rejected")
+            .map(({ reason }) => reason)
+            .reduce((acc, { path, message }) => ({ ...acc, [path]: message }), {});
+
+        // todo: don't set errors if errors didn't change
+        setErrors(errors);
+
+        const isValid = !hasErrors(errors);
+        if (isValid) submitHandler(data);
+
+        updateFormState("isSubmitted", true);
+    };
+
+    // todo: to utils
+    const hasErrors = (errors) => {
+        console.log("errors", errors);
+        if (!errors) return false;
+
+        const hasKeys = Object.keys(errors).length > 0;
+        if (!hasKeys) return false;
+
+        return Object.values(errors).filter(Boolean).length > 0;
+    };
+
+    /**
+     * @param {string|string[]|undefined} name
+     * @returns
+     * ! name can be callback function (call on field change, return unsub)
+     */
+    const watch = (name) => {
+        const watchAll = !name;
+        if (!name) _names.watchAll = watchAll;
+
+        let namesArr = [];
+        if (!watchAll) namesArr = Array.isArray(name) ? name : [name];
+        namesArr.forEach((name) => _names.watch.add(name));
+
+        const res = [..._names.watch].reduce(
+            (acc, name) => {
+                const value = !isUndefined(values[name]) ? values[name] : refStore.current?.[name]?.getValue();
+
+                return {
+                    ...acc,
+                    ...(!isUndefined(value) && {
+                        [name]: value,
+                    }),
+                };
+            },
+            watchAll ? defaultValues : _.pick(defaultValues, namesArr)
+        );
+
+        return typeof name === "string" ? res[name] : res;
+    };
+
+    return {
+        register,
+        // unregister,
+        watch,
+        handleSubmit,
+        formState: proxyFormState,
+        // getFormStateWithoutRedner,
+        reset,
+        clear,
+        getData,
+    };
 };

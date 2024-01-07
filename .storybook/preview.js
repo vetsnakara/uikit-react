@@ -2,14 +2,11 @@ import { initialize, mswLoader } from "msw-storybook-addon";
 
 const mswOptions = {
   serviceWorker: {
-    url: "mockServiceWorker.js", // relative path
-    // process.env.NODE_ENV === "production"
-    //   ? "mockServiceWorker.js" // relative path
-    //   : "/mockServiceWorker.js",
+    // ! use relative path to service worker (to work properly in gh-pages)
+    // https://github.com/mswjs/msw-storybook-addon/issues/77#issuecomment-1315667130
+    url: "mockServiceWorker.js",
   },
 };
-
-// console.log("mswOptions", mswOptions);
 
 initialize(mswOptions);
 

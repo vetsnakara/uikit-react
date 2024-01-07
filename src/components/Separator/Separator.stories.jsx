@@ -2,8 +2,8 @@ import { maxWidth } from "../../../.storybook/decorators";
 import { Separator } from "./Separator";
 
 export default {
-  title: "uikit/Separator",
-  decorators: [maxWidth(500)],
+    title: "uikit/Separator",
+    decorators: [maxWidth(500)],
 };
 
 export const Default = () => <Separator />;

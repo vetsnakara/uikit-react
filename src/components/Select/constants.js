@@ -9,7 +9,7 @@ export const SelectEvent = {
     CHANGED: "changed.bs.select",
 };
 
-export const selectpickerEventHandlers = Object.keys(SelectEvent).map(name => {
+export const selectpickerEventHandlers = Object.keys(SelectEvent).map((name) => {
     const lcName = name.toLowerCase();
     return "on" + lcName[0].toUpperCase() + lcName.slice(1);
-})
+});

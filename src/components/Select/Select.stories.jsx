@@ -5,8 +5,8 @@ import ReactSelect from "react-select";
 import ReactDatePicker from "react-datepicker";
 
 export default {
-  title: "inputs/Select",
-  decorators: [maxWidth(500)],
+    title: "inputs/Select",
+    decorators: [maxWidth(500)],
 };
 
 // todo: опция ВСЕ для обычного селекта (и мультиселекта?)
@@ -22,108 +22,97 @@ export default {
 // todo: test progammaticaly change value (+ multiple), disable/enable, chnage add/remove options - need to refresh
 
 export {
-  Default,
-  NoItems,
-  Title,
-  Error,
-  Disabled,
-  Required,
-  Multiple,
-  Placeholder,
-  Closeable,
-  CloseableWithError,
-  NoDecor,
-  Uncontrolled,
-  Controlled,
-  Events,
+    Default,
+    NoItems,
+    Title,
+    Error,
+    Disabled,
+    Required,
+    Multiple,
+    Placeholder,
+    Closeable,
+    CloseableWithError,
+    NoDecor,
+    Uncontrolled,
+    Controlled,
+    Events,
 } from "./examples/Basic";
 
-export {
-  Subtext,
-  StyleOptions,
-  Divider,
-  Groups,
-  CustomContent,
-  DisabledOptions,
-} from "./examples/Options";
+export { Subtext, StyleOptions, Divider, Groups, CustomContent, DisabledOptions } from "./examples/Options";
 
 export {
-  Width,
-  Container,
-  Dropup,
-  Header,
-  Size,
-  MaxOptions,
-  LiveSearch,
-  LiveSearchStyle,
-  ActionsBox,
-  AddItems,
-  SelectedTextFormat,
-  NoneSelectedText,
-  CountSelectedText,
-  MultipleSeparator,
+    Width,
+    Container,
+    Dropup,
+    Header,
+    Size,
+    MaxOptions,
+    LiveSearch,
+    LiveSearchStyle,
+    ActionsBox,
+    AddItems,
+    SelectedTextFormat,
+    NoneSelectedText,
+    CountSelectedText,
+    MultipleSeparator,
 } from "./examples/Selectpicker";
 
 export { Ajax } from "./examples/Ajax";
 
 const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
 ];
 
 export const ReactSelectStory = () => {
-  const ref = useRef(null);
+    const ref = useRef(null);
 
-  const [value, setValue] = useState();
+    const [value, setValue] = useState();
 
-  // useEffect(() => {
-  //     console.log("ref", ref);
-  // }, []);
+    // useEffect(() => {
+    //     console.log("ref", ref);
+    // }, []);
 
-  // todo: try react datepicker too
+    // todo: try react datepicker too
 
-  return (
-    <>
-      <div>value: {JSON.stringify(value)}</div>
-      <ReactSelect
-        isMulti
-        ref={console.log}
-        options={options}
-        onChange={(value) => console.log("value", value)}
-      />
-      <button onClick={() => setValue(ref.current.getValue())}>
-        get value
-      </button>
-      <button onClick={() => ref.current.setValue(options.slice(1))}>
-        set value
-      </button>
+    return (
+        <>
+            <div>value: {JSON.stringify(value)}</div>
+            <ReactSelect
+                isMulti
+                ref={console.log}
+                options={options}
+                onChange={(value) => console.log("value", value)}
+            />
+            <button onClick={() => setValue(ref.current.getValue())}>get value</button>
+            <button onClick={() => ref.current.setValue(options.slice(1))}>set value</button>
 
-      <br />
-      <br />
-      <br />
+            <br />
+            <br />
+            <br />
 
-      {/* <ReactDatePicker ref={dateRef} /> */}
-    </>
-  );
+            {/* <ReactDatePicker ref={dateRef} /> */}
+        </>
+    );
 };
 
 class ClassComponent extends Component {
-  getValue() {}
+    getValue() {}
 
-  setValue() {}
+    setValue() {}
 
-  render() {
-    return <div>Hi</div>;
-  }
+    render() {
+        return <div>Hi</div>;
+    }
 }
 
 export const ClassComponentStory = () => {
-  const ref = useRef(null);
+    const ref = useRef(null);
 
-  useEffect(() => {
-    console.log("ClassComponent:ref", ref);
-  });
+    useEffect(() => {
+        console.log("ClassComponent:ref", ref);
+    });
 
-  return <ClassComponent ref={ref} />;
+    return <ClassComponent ref={ref} />;
 };

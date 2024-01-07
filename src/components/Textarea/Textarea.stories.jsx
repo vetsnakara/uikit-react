@@ -2,16 +2,16 @@ import { maxWidth } from "../../../.storybook/decorators";
 import { Textarea } from "./Textarea";
 
 export default {
-  title: "inputs/Textarea",
-  decorators: [maxWidth(500)],
+    title: "inputs/Textarea",
+    decorators: [maxWidth(500)],
 };
 
 // todo: controlled / uncontrolled
 // todo: add mock onChange
 
 const options = {
-  value: "123",
-  title: "Textarea title",
+    value: "123",
+    title: "Textarea title",
 };
 
 export const Default = () => <Textarea {...options} />;

@@ -1,3 +1,5 @@
+import { ReactDOM } from "react-dom";
+
 import { Mchd } from "./Mchd";
 import { Provider } from "./context";
 

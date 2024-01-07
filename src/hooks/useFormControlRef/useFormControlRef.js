@@ -7,18 +7,18 @@ import { useRef, useCallback } from "react";
  * @returns
  */
 export function useFormControlRef(extRef, getRefProps) {
-  const ref = useRef({});
+    const ref = useRef({});
 
-  /**
-   * @param {import("react").DOMElement | Object} refParam
-   */
-  const callbackRef = useCallback((refParam) => {
-    ref.current = refParam ? getRefProps(refParam) : null;
+    /**
+     * @param {import("react").DOMElement | Object} refParam
+     */
+    const callbackRef = useCallback((refParam) => {
+        ref.current = refParam ? getRefProps(refParam) : null;
 
-    if (!extRef) return;
-    if (typeof extRef === "function") extRef(ref.current);
-    else extRef.current = ref.current;
-  }, []);
+        if (!extRef) return;
+        if (typeof extRef === "function") extRef(ref.current);
+        else extRef.current = ref.current;
+    }, []);
 
-  return { ref, callbackRef };
+    return { ref, callbackRef };
 }
