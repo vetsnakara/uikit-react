@@ -9,7 +9,7 @@ export const Row = forwardRef((props, ref) => {
     const colClasses = [];
 
     widths.forEach((colWidth, i) => {
-        let colSize = props[colWidth];
+        const colSize = props[colWidth];
 
         delete otherProps[colWidth];
 

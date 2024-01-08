@@ -8,15 +8,21 @@ module.exports = {
         moment: true,
         _: true,
     },
+    parser: "@typescript-eslint/parser",
     extends: [
         "eslint:recommended",
         "plugin:react/recommended",
+        // "plugin:react-hooks/recommended", // todo: fix
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
     ],
-    parser: "@typescript-eslint/parser",
-    plugins: ["react", "@typescript-eslint", "import", "unused-imports"],
+    plugins: ["react", "react-hooks", "@typescript-eslint", "import", "unused-imports"],
     rules: {
+        // "no-console": "error", // todo: fix (don't use for SB files)
+        "prefer-const": "error",
+        // "max-len": ["error", { code: 120 }], // todo: fix
+        // indent: ["error", 4], // todo: fix
+
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
         "react/display-name": "off",
@@ -25,15 +31,7 @@ module.exports = {
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
-        "unused-imports/no-unused-vars": [
-            "error",
-            {
-                vars: "all",
-                varsIgnorePattern: "^_",
-                args: "after-used",
-                argsIgnorePattern: "^_",
-            },
-        ],
+        "unused-imports/no-unused-vars": "error",
 
         "import/order": [
             "error",

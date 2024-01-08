@@ -18,7 +18,7 @@ const getColumnClasses = (attributes, widths = colWidths) => {
     const colClasses = [];
 
     widths.forEach((colWidth, i) => {
-        let columnProp = modifiedAttributes[colWidth];
+        const columnProp = modifiedAttributes[colWidth];
 
         delete modifiedAttributes[colWidth];
 
@@ -53,7 +53,7 @@ const getColumnClasses = (attributes, widths = colWidths) => {
 
 // todo: rm cssModule
 export const Col = ({ className, cssModule, widths = colWidths, tag: Tag = "div", ...attributes }) => {
-    let { modifiedAttributes, colClasses } = getColumnClasses(attributes, cssModule, widths);
+    const { modifiedAttributes, colClasses } = getColumnClasses(attributes, cssModule, widths);
 
     if (!colClasses.length) {
         colClasses.push("col");
