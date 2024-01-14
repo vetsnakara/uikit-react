@@ -30,11 +30,12 @@ const tests = {
     //     e.add(path, `Значения [${thinlessPixelsDeclare.join(', ')}] объявлены без использования функции px(), либо указана ненужная ед. измерения`);
     //   }
     // },
-    checkPixelsRecalculations: function (e, path, file, args) {
+    checkPixelsRecalculations: function (e, path, file) {
+        // eslint-disable-next-line no-useless-escape
         const pixelsDeclare = file.match(/[\-\.\d]+px/g);
         if (!pixelsDeclare) return;
 
-        pixelsDeclare.forEach(function (px) {
+        pixelsDeclare.forEach(function () {
             const pxIndex = pixelsDeclare.findIndex((px) => px.includes(`(${px}`));
             if (pxIndex < 0) return;
             pixelsDeclare.splice(pxIndex, 1);
@@ -47,7 +48,7 @@ const tests = {
             e.add(path, `Значения [${thinlessPixelsDeclare.join(", ")}] объявлены без использования функции px()`);
         }
     },
-    checkUnusedVariables: function (e, path, file, args) {
+    checkUnusedVariables: function (e, path, file) {
         const variablesNames = file.match(/\$[\w-]+/g);
         const variablesNamesDoubles = [
             "$hue",
@@ -112,7 +113,7 @@ async function parseIndex(indexFile, type) {
         const modulePath = `sources-redesign/ui-${type}/${moduleName}/index.scss`;
         const moduleFile = await readFileAsync($PATH.resolve(__dirname, modulePath));
 
-        for (test in tests) {
+        for (const test in tests) {
             tests[test](errors, modulePath, moduleFile, moduleArgs);
         }
     }
@@ -123,7 +124,7 @@ async function parseIndex(indexFile, type) {
 async function run() {
     const types = ["infoblocks", "kit", "special"];
     const errors = {};
-    for (type of types) {
+    for (const type of types) {
         const indexFile = await readFileAsync(__dirname + `/sources-redesign/ui-${type}/index.scss`);
         const typeErrors = await parseIndex(indexFile, type);
         Object.assign(errors, typeErrors);

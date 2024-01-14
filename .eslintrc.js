@@ -12,7 +12,7 @@ module.exports = {
     extends: [
         "eslint:recommended",
         "plugin:react/recommended",
-        // "plugin:react-hooks/recommended", // todo: fix
+        // "plugin:react-hooks/recommended", // todo: fix deps errors
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
     ],
@@ -32,6 +32,8 @@ module.exports = {
         "@typescript-eslint/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": "error",
+
+        "@typescript-eslint/no-var-requires": "off",
 
         "import/order": [
             "error",

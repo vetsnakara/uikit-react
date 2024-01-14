@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as PropTypes from "prop-types";
-import { forwardRef, useEffect } from "react";
+import { forwardRef } from "react";
 
 // todo: Button as link
 // todo: use Button.Variant
@@ -31,46 +31,38 @@ const ButtonPropTypes = {
  *     type?: string
  * } & import('react').HTMLAttributes<HTMLButtonElement>} props
  */
-export const Button = forwardRef(
-    ({ variant, theme, wide, icon, type = "button", className, children, ...buttonProps }, ref) => {
-        console.log("useEffect", useEffect);
+function Button({ variant, theme, wide, icon, type = "button", className, children, ...buttonProps }, ref) {
+    const classNames = cn(
+        "button",
+        {
+            [`button_${variant}`]: variant,
+            [`button_${theme}`]: theme,
+            button_wide: wide,
+            button_icontext: icon && children,
+            button_icon: icon && !children,
+        },
+        className
+    );
 
-        useEffect(() => {
-            console.log("--- effect");
-        }, []);
+    return (
+        <button ref={ref} className={classNames} type={type} {...buttonProps}>
+            {icon && (
+                <svg className="icon button__icon">
+                    <use href={`uikit/icon/icons.svg#${icon}`}></use>
+                </svg>
+            )}
+            {children}
+        </button>
+    );
+}
 
-        const classNames = cn(
-            "button",
-            {
-                [`button_${variant}`]: variant,
-                [`button_${theme}`]: theme,
-                button_wide: wide,
-                button_icontext: icon && children,
-                button_icon: icon && !children,
-            },
-            className
-        );
+Button.Variant = ButtonVariant;
 
-        return (
-            <button ref={ref} className={classNames} type={type} {...buttonProps}>
-                {icon && (
-                    <svg className="icon button__icon">
-                        <use href={`uikit/icon/icons.svg#${icon}`}></use>
-                    </svg>
-                )}
-                {children}
-            </button>
-        );
-    }
-);
+const _Button = forwardRef(Button);
 
-// Button.Variant = ButtonVariant;
+Object.assign(_Button, {
+    displayName: "Button",
+    propTypes: ButtonPropTypes,
+});
 
-// const _Button = forwardRef(Button);
-
-// Object.assign(_Button, {
-//     displayName: "Button",
-//     propTypes: ButtonPropTypes,
-// });
-
-// export { _Button as Button };
+export { _Button as Button };

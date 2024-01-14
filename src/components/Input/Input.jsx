@@ -1,9 +1,11 @@
 import cn from "classnames";
-import { forwardRef, memo, useEffect, useRef } from "react";
+import { forwardRef, memo, useEffect } from "react";
 
 //! будет тащиться в каждый бандл
 //! подумать о динамически подгружаемых либах и динамически подгружаемых компонентах
 import Inputmask from "inputmask"; // todo: check version with existing
+
+import { useFormControlRef } from "../../hooks";
 
 // todo: useInputMask hook
 // todo: useDateinput hook
@@ -43,17 +45,14 @@ function Input(
     },
     extRef
 ) {
-    // todo!: вернуть назад
-    // const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
-    //     el,
-    //     getValue: () => el.value,
-    //     setValue: (value = "") => {
-    //         el.value = value;
-    //     },
-    //     //! setError?
-    // }));
-
-    const ref = useRef(null);
+    const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
+        el,
+        getValue: () => el.value,
+        setValue: (value = "") => {
+            el.value = value;
+        },
+        //! setError?
+    }));
 
     useEffect(() => {
         //! don't work React onChange witn jquery inputmask
@@ -93,8 +92,7 @@ function Input(
     return (
         <label className={labelClassNames}>
             <input
-                // ref={callbackRef}
-                ref={(el) => (ref.current = el)}
+                ref={callbackRef}
                 type={type}
                 value={value}
                 defaultValue={defaultValue}
