@@ -1,1 +1,1828 @@
-function _typeof(n){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(n){return typeof n}:function(n){return n&&"function"==typeof Symbol&&n.constructor===Symbol&&n!==Symbol.prototype?"symbol":typeof n})(n)}!function(n,t){var r,e;"object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define("underscore",t):(r=n._,e=t(),(n._=e).noConflict=function(){return n._=r,e})}(this,function(){var n="object"==("undefined"==typeof self?"undefined":_typeof(self))&&self.self===self&&self||"object"==("undefined"==typeof global?"undefined":_typeof(global))&&global.global===global&&global||Function("return this")()||{},e=Array.prototype,i=Object.prototype,q="undefined"!=typeof Symbol?Symbol.prototype:null,D=e.push,a=e.slice,s=i.toString,W=i.hasOwnProperty,z=Array.isArray,P=Object.keys,K=Object.create,L=n.isNaN,V=n.isFinite,t=function(){};function h(n){return n instanceof h?n:this instanceof h?void(this._wrapped=n):new h(n)}h.VERSION="1.10.2";function v(u,o,n){if(void 0===o)return u;switch(null==n?3:n){case 1:return function(n){return u.call(o,n)};case 3:return function(n,t,r){return u.call(o,n,t,r)};case 4:return function(n,t,r,e){return u.call(o,n,t,r,e)}}return function(){return u.apply(o,arguments)}}function C(n,t,r){return null==n?rt:R(n)?v(n,t,r):(T(n)&&!I(n)?F:et)(n)}function u(n,t){return C(n,t,1/0)}function l(n,t,r){return h.iteratee!==u?h.iteratee(n,t):C(n,t,r)}function c(u,o){return o=null==o?u.length-1:+o,function(){for(var n=Math.max(arguments.length-o,0),t=Array(n),r=0;r<n;r++)t[r]=arguments[r+o];switch(o){case 0:return u.call(this,t);case 1:return u.call(this,arguments[0],t);case 2:return u.call(this,arguments[0],arguments[1],t)}for(var e=Array(o+1),r=0;r<o;r++)e[r]=arguments[r];return e[o]=t,u.apply(this,e)}}function J(n){if(!T(n))return{};if(K)return K(n);t.prototype=n;n=new t;return t.prototype=null,n}function U(t){return function(n){return null==n?void 0:n[t]}}function y(n,t){return null!=n&&W.call(n,t)}function f(n,t){for(var r=t.length,e=0;e<r;e++){if(null==n)return;n=n[t[e]]}return r?n:void 0}h.iteratee=u;var $=Math.pow(2,53)-1,p=U("length");function d(n){n=p(n);return"number"==typeof n&&0<=n&&n<=$}function g(n,t,r){if(t=v(t,r),d(n))for(u=0,o=n.length;u<o;u++)t(n[u],u,n);else for(var e=O(n),u=0,o=e.length;u<o;u++)t(n[e[u]],e[u],n);return n}function m(n,t,r){t=l(t,r);for(var e=!d(n)&&O(n),u=(e||n).length,o=Array(u),i=0;i<u;i++){var f=e?e[i]:i;o[i]=t(n[f],f,n)}return o}function G(s){return function(n,t,r,e){var u=3<=arguments.length,o=n,i=v(t,e,4),f=r,a=!d(o)&&O(o),c=(a||o).length,l=0<s?0:c-1;for(u||(f=o[a?a[l]:l],l+=s);0<=l&&l<c;l+=s){var p=a?a[l]:l;f=i(f,o[p],p,o)}return f}}var r=G(1),H=G(-1);function o(n,t,r){t=(d(n)?dn:Dn)(n,t,r);if(void 0!==t&&-1!==t)return n[t]}function b(n,e,t){var u=[];return e=l(e,t),g(n,function(n,t,r){e(n,t,r)&&u.push(n)}),u}function Q(n,t,r){t=l(t,r);for(var e=!d(n)&&O(n),u=(e||n).length,o=0;o<u;o++){var i=e?e[o]:o;if(!t(n[i],i,n))return!1}return!0}function X(n,t,r){t=l(t,r);for(var e=!d(n)&&O(n),u=(e||n).length,o=0;o<u;o++){var i=e?e[o]:o;if(t(n[i],i,n))return!0}return!1}function _(n,t,r,e){return d(n)||(n=E(n)),0<=_n(n,t,r="number"==typeof r&&!e?r:0)}var Y=c(function(n,r,e){var u,o;return R(r)?o=r:I(r)&&(u=r.slice(0,-1),r=r[r.length-1]),m(n,function(n){var t=o;if(!t){if(null==(n=u&&u.length?f(n,u):n))return;t=n[r]}return null==t?t:t.apply(n,e)})});function j(n,t){return m(n,et(t))}function Z(n,e,t){var r,u,o=-1/0,i=-1/0;if(null==e||"number"==typeof e&&"object"!=_typeof(n[0])&&null!=n)for(var f=0,a=(n=d(n)?n:E(n)).length;f<a;f++)null!=(r=n[f])&&o<r&&(o=r);else e=l(e,t),g(n,function(n,t,r){u=e(n,t,r),(i<u||u===-1/0&&o===-1/0)&&(o=n,i=u)});return o}function nn(n,t,r){if(null==t||r)return(n=d(n)?n:E(n))[ut(n.length-1)];for(var e=(d(n)?Ln:E)(n),r=p(e),u=(t=Math.max(Math.min(t,r),0),r-1),o=0;o<t;o++){var i=ut(o,u),f=e[o];e[o]=e[i],e[i]=f}return e.slice(0,t)}function S(o,t){return function(r,e,n){var u=t?[[],[]]:{};return e=l(e,n),g(r,function(n,t){t=e(n,t,r);o(u,n,t)}),u}}var tn=S(function(n,t,r){y(n,r)?n[r].push(t):n[r]=[t]}),rn=S(function(n,t,r){n[r]=t}),en=S(function(n,t,r){y(n,r)?n[r]++:n[r]=1}),un=/[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;var on=S(function(n,t,r){n[r?0:1].push(t)},!0);function fn(n,t,r){return null==n||n.length<1?null==t?void 0:[]:null==t||r?n[0]:an(n,n.length-t)}function an(n,t,r){return a.call(n,0,Math.max(0,n.length-(null==t||r?1:t)))}function x(n,t,r){return a.call(n,null==t||r?1:t)}function w(n,t,r,e){for(var u=(e=e||[]).length,o=0,i=p(n);o<i;o++){var f=n[o];if(d(f)&&(I(f)||B(f)))if(t)for(var a=0,c=f.length;a<c;)e[u++]=f[a++];else w(f,t,r,e),u=e.length;else r||(e[u++]=f)}return e}var cn=c(function(n,t){return sn(n,t)});function ln(n,t,r,e){tt(t)||(e=r,r=t,t=!1),null!=r&&(r=l(r,e));for(var u=[],o=[],i=0,f=p(n);i<f;i++){var a=n[i],c=r?r(a,i,n):a;t&&!r?(i&&o===c||u.push(a),o=c):r?_(o,c)||(o.push(c),u.push(a)):_(u,a)||u.push(a)}return u}var pn=c(function(n){return ln(w(n,!0,!0))});var sn=c(function(n,t){return t=w(t,!0,!0),b(n,function(n){return!_(t,n)})});function hn(n){for(var t=n&&Z(n,p).length||0,r=Array(t),e=0;e<t;e++)r[e]=j(n,e);return r}var vn=c(hn);function yn(o){return function(n,t,r){t=l(t,r);for(var e=p(n),u=0<o?0:e-1;0<=u&&u<e;u+=o)if(t(n[u],u,n))return u;return-1}}var dn=yn(1),gn=yn(-1);function mn(n,t,r,e){for(var u=(r=l(r,e,1))(t),o=0,i=p(n);o<i;){var f=Math.floor((o+i)/2);r(n[f])<u?o=f+1:i=f}return o}function bn(o,i,f){return function(n,t,r){var e=0,u=p(n);if("number"==typeof r)0<o?e=0<=r?r:Math.max(r+u,e):u=0<=r?Math.min(r+1,u):r+u+1;else if(f&&r&&u)return n[r=f(n,t)]===t?r:-1;if(t!=t)return 0<=(r=i(a.call(n,e,u),nt))?r+e:-1;for(r=0<o?e:u-1;0<=r&&r<u;r+=o)if(n[r]===t)return r;return-1}}var _n=bn(1,dn,mn),jn=bn(-1,gn);function Sn(n,t,r,e,u){return e instanceof t?(e=J(n.prototype),T(t=n.apply(e,u))?t:e):n.apply(r,u)}var xn=c(function(t,r,e){var u;if(R(t))return u=c(function(n){return Sn(t,u,r,this,e.concat(n))});throw new TypeError("Bind must be called on a function")}),A=c(function(o,i){var f=A.placeholder;return function n(){for(var t=0,r=i.length,e=Array(r),u=0;u<r;u++)e[u]=i[u]===f?arguments[t++]:i[u];for(;t<arguments.length;)e.push(arguments[t++]);return Sn(o,n,this,this,e)}}),wn=(A.placeholder=h,c(function(n,t){var r=(t=w(t,!1,!1)).length;if(r<1)throw new Error("bindAll must be passed function names");for(;r--;){var e=t[r];n[e]=xn(n[e],n)}}));var An=c(function(n,t,r){return setTimeout(function(){return n.apply(null,r)},t)}),On=A(An,h,1);function Mn(n){return function(){return!n.apply(this,arguments)}}function En(n,t){var r;return function(){return 0<--n&&(r=t.apply(this,arguments)),n<=1&&(t=null),r}}var Nn=A(En,2),kn=!{toString:null}.propertyIsEnumerable("toString"),In=["valueOf","isPrototypeOf","toString","propertyIsEnumerable","hasOwnProperty","toLocaleString"];function Tn(n,t){var r=In.length,e=n.constructor,u=R(e)&&e.prototype||i,o="constructor";for(y(n,o)&&!_(t,o)&&t.push(o);r--;)(o=In[r])in n&&n[o]!==u[o]&&!_(t,o)&&t.push(o)}function O(n){if(!T(n))return[];if(P)return P(n);var t,r=[];for(t in n)y(n,t)&&r.push(t);return kn&&Tn(n,r),r}function M(n){if(!T(n))return[];var t,r=[];for(t in n)r.push(t);return kn&&Tn(n,r),r}function E(n){for(var t=O(n),r=t.length,e=Array(r),u=0;u<r;u++)e[u]=n[t[u]];return e}function Bn(n){for(var t={},r=O(n),e=0,u=r.length;e<u;e++)t[n[r[e]]]=r[e];return t}function Rn(n){var t,r=[];for(t in n)R(n[t])&&r.push(t);return r.sort()}function Fn(a,c){return function(n){var t=arguments.length;if(c&&(n=Object(n)),!(t<2||null==n))for(var r=1;r<t;r++)for(var e=arguments[r],u=a(e),o=u.length,i=0;i<o;i++){var f=u[i];c&&void 0!==n[f]||(n[f]=e[f])}return n}}var qn=Fn(M),N=Fn(O);function Dn(n,t,r){t=l(t,r);for(var e,u=O(n),o=0,i=u.length;o<i;o++)if(t(n[e=u[o]],e,n))return e}function Wn(n,t,r){return t in r}var zn=c(function(n,t){var r={},e=t[0];if(null!=n){R(e)?(1<t.length&&(e=v(e,t[1])),t=M(n)):(e=Wn,t=w(t,!1,!1),n=Object(n));for(var u=0,o=t.length;u<o;u++){var i=t[u],f=n[i];e(f,i,n)&&(r[i]=f)}}return r}),Pn=c(function(n,r){var t,e=r[0];return R(e)?(e=Mn(e),1<r.length&&(t=r[1])):(r=m(w(r,!1,!1),String),e=function(n,t){return!_(r,t)}),zn(n,e,t)}),Kn=Fn(M,!0);function Ln(n){return T(n)?I(n)?n.slice():qn({},n):n}function Vn(n,t){var r=O(t),e=r.length;if(null==n)return!e;for(var u=Object(n),o=0;o<e;o++){var i=r[o];if(t[i]!==u[i]||!(i in u))return!1}return!0}function Cn(n,t,r,e){if(n===t)return 0!==n||1/n==1/t;if(null==n||null==t)return!1;if(n!=n)return t!=t;var u=_typeof(n);if("function"!==u&&"object"!==u&&"object"!=_typeof(t))return!1;var o=n,i=t,f=r,a=e,u=(o instanceof h&&(o=o._wrapped),i instanceof h&&(i=i._wrapped),s.call(o));if(u!==s.call(i))return!1;switch(u){case"[object RegExp]":case"[object String]":return""+o==""+i;case"[object Number]":return+o!=+o?+i!=+i:0==+o?1/+o==1/i:+o==+i;case"[object Date]":case"[object Boolean]":return+o==+i;case"[object Symbol]":return q.valueOf.call(o)===q.valueOf.call(i)}if(!(u="[object Array]"===u)){if("object"!=_typeof(o)||"object"!=_typeof(i))return!1;n=o.constructor,t=i.constructor;if(n!==t&&!(R(n)&&n instanceof n&&R(t)&&t instanceof t)&&"constructor"in o&&"constructor"in i)return!1}a=a||[];for(var c=(f=f||[]).length;c--;)if(f[c]===o)return a[c]===i;if(f.push(o),a.push(i),u){if((c=o.length)!==i.length)return!1;for(;c--;)if(!Cn(o[c],i[c],f,a))return!1}else{var l,p=O(o);if(c=p.length,O(i).length!==c)return!1;for(;c--;)if(l=p[c],!y(i,l)||!Cn(o[l],i[l],f,a))return!1}return f.pop(),a.pop(),!0}function k(t){return function(n){return s.call(n)==="[object "+t+"]"}}var I=z||k("Array");function T(n){var t=_typeof(n);return"function"===t||"object"===t&&!!n}var B=k("Arguments"),R=k("Function"),Jn=k("String"),Un=k("Number"),z=k("Date"),$n=k("RegExp"),Gn=k("Error"),Hn=k("Symbol"),Qn=k("Map"),Xn=k("WeakMap"),Yn=k("Set"),Zn=k("WeakSet"),n=(!function(){B(arguments)||(B=function(n){return y(n,"callee")})}(),n.document&&n.document.childNodes);function nt(n){return Un(n)&&L(n)}function tt(n){return!0===n||!1===n||"[object Boolean]"===s.call(n)}function rt(n){return n}function et(t){return I(t)?function(n){return f(n,t)}:U(t)}function F(t){return t=N({},t),function(n){return Vn(n,t)}}function ut(n,t){return null==t&&(t=n,n=0),n+Math.floor(Math.random()*(t-n+1))}"function"!=typeof/./&&"object"!=("undefined"==typeof Int8Array?"undefined":_typeof(Int8Array))&&"function"!=typeof n&&(R=function(n){return"function"==typeof n||!1});var ot=Date.now||function(){return(new Date).getTime()},n={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"},it=Bn(n);function ft(t){function r(n){return t[n]}var n="(?:"+O(t).join("|")+")",e=RegExp(n),u=RegExp(n,"g");return function(n){return e.test(n=null==n?"":""+n)?n.replace(u,r):n}}n=ft(n),it=ft(it);var at=0;function ct(n){return"\\"+st[n]}var lt=h.templateSettings={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g,escape:/<%-([\s\S]+?)%>/g},pt=/(.)^/,st={"'":"'","\\":"\\","\r":"r","\n":"n","\u2028":"u2028","\u2029":"u2029"},ht=/\\|'|\r|\n|\u2028|\u2029/g;function vt(n,t){return n._chain?h(t).chain():t}function yt(r){return g(Rn(r),function(n){var t=h[n]=r[n];h.prototype[n]=function(){var n=[this._wrapped];return D.apply(n,arguments),vt(this,t.apply(h,n))}}),h}g(["pop","push","reverse","shift","sort","splice","unshift"],function(t){var r=e[t];h.prototype[t]=function(){var n=this._wrapped;return r.apply(n,arguments),"shift"!==t&&"splice"!==t||0!==n.length||delete n[0],vt(this,n)}}),g(["concat","join","slice"],function(n){var t=e[n];h.prototype[n]=function(){return vt(this,t.apply(this._wrapped,arguments))}}),h.prototype.valueOf=h.prototype.toJSON=h.prototype.value=function(){return this._wrapped},h.prototype.toString=function(){return String(this._wrapped)};r=yt({default:h,VERSION:"1.10.2",iteratee:u,restArguments:c,each:g,forEach:g,map:m,collect:m,reduce:r,foldl:r,inject:r,reduceRight:H,foldr:H,find:o,detect:o,filter:b,select:b,reject:function(n,t,r){return b(n,Mn(l(t)),r)},every:Q,all:Q,some:X,any:X,contains:_,includes:_,include:_,invoke:Y,pluck:j,where:function(n,t){return b(n,F(t))},findWhere:function(n,t){return o(n,F(t))},max:Z,min:function(n,e,t){var r,u,o=1/0,i=1/0;if(null==e||"number"==typeof e&&"object"!=_typeof(n[0])&&null!=n)for(var f=0,a=(n=d(n)?n:E(n)).length;f<a;f++)null!=(r=n[f])&&r<o&&(o=r);else e=l(e,t),g(n,function(n,t,r){((u=e(n,t,r))<i||u===1/0&&o===1/0)&&(o=n,i=u)});return o},shuffle:function(n){return nn(n,1/0)},sample:nn,sortBy:function(n,e,t){var u=0;return e=l(e,t),j(m(n,function(n,t,r){return{value:n,index:u++,criteria:e(n,t,r)}}).sort(function(n,t){var r=n.criteria,e=t.criteria;if(r!==e){if(e<r||void 0===r)return 1;if(r<e||void 0===e)return-1}return n.index-t.index}),"value")},groupBy:tn,indexBy:rn,countBy:en,toArray:function(n){return n?I(n)?a.call(n):Jn(n)?n.match(un):d(n)?m(n,rt):E(n):[]},size:function(n){return null==n?0:(d(n)?n:O(n)).length},partition:on,first:fn,head:fn,take:fn,initial:an,last:function(n,t,r){return null==n||n.length<1?null==t?void 0:[]:null==t||r?n[n.length-1]:x(n,Math.max(0,n.length-t))},rest:x,tail:x,drop:x,compact:function(n){return b(n,Boolean)},flatten:function(n,t){return w(n,t,!1)},without:cn,uniq:ln,unique:ln,union:pn,intersection:function(n){for(var t=[],r=arguments.length,e=0,u=p(n);e<u;e++){var o=n[e];if(!_(t,o)){for(var i=1;i<r&&_(arguments[i],o);i++);i===r&&t.push(o)}}return t},difference:sn,unzip:hn,zip:vn,object:function(n,t){for(var r={},e=0,u=p(n);e<u;e++)t?r[n[e]]=t[e]:r[n[e][0]]=n[e][1];return r},findIndex:dn,findLastIndex:gn,sortedIndex:mn,indexOf:_n,lastIndexOf:jn,range:function(n,t,r){null==t&&(t=n||0,n=0),r=r||(t<n?-1:1);for(var e=Math.max(Math.ceil((t-n)/r),0),u=Array(e),o=0;o<e;o++,n+=r)u[o]=n;return u},chunk:function(n,t){if(null==t||t<1)return[];for(var r=[],e=0,u=n.length;e<u;)r.push(a.call(n,e,e+=t));return r},bind:xn,partial:A,bindAll:wn,memoize:function(e,u){function o(n){var t=o.cache,r=""+(u?u.apply(this,arguments):n);return y(t,r)||(t[r]=e.apply(this,arguments)),t[r]}return o.cache={},o},delay:An,defer:On,throttle:function(r,e,u){function o(){l=!1===u.leading?0:ot(),i=null,c=r.apply(f,a),i||(f=a=null)}function n(){var n=ot(),t=(l||!1!==u.leading||(l=n),e-(n-l));return f=this,a=arguments,t<=0||e<t?(i&&(clearTimeout(i),i=null),l=n,c=r.apply(f,a),i||(f=a=null)):i||!1===u.trailing||(i=setTimeout(o,t)),c}var i,f,a,c,l=0;return u=u||{},n.cancel=function(){clearTimeout(i),l=0,i=f=a=null},n},debounce:function(r,e,u){function o(n,t){i=null,t&&(f=r.apply(n,t))}var i,f,n=c(function(n){var t;return i&&clearTimeout(i),u?(t=!i,i=setTimeout(o,e),t&&(f=r.apply(this,n))):i=An(o,e,this,n),f});return n.cancel=function(){clearTimeout(i),i=null},n},wrap:function(n,t){return A(t,n)},negate:Mn,compose:function(){var r=arguments,e=r.length-1;return function(){for(var n=e,t=r[e].apply(this,arguments);n--;)t=r[n].call(this,t);return t}},after:function(n,t){return function(){if(--n<1)return t.apply(this,arguments)}},before:En,once:Nn,keys:O,allKeys:M,values:E,mapObject:function(n,t,r){t=l(t,r);for(var e=O(n),u=e.length,o={},i=0;i<u;i++){var f=e[i];o[f]=t(n[f],f,n)}return o},pairs:function(n){for(var t=O(n),r=t.length,e=Array(r),u=0;u<r;u++)e[u]=[t[u],n[t[u]]];return e},invert:Bn,functions:Rn,methods:Rn,extend:qn,extendOwn:N,assign:N,findKey:Dn,pick:zn,omit:Pn,defaults:Kn,create:function(n,t){return n=J(n),t&&N(n,t),n},clone:Ln,tap:function(n,t){return t(n),n},isMatch:Vn,isEqual:function(n,t){return Cn(n,t)},isEmpty:function(n){return null==n||(d(n)&&(I(n)||Jn(n)||B(n))?0===n.length:0===O(n).length)},isElement:function(n){return!(!n||1!==n.nodeType)},isArray:I,isObject:T,isArguments:B,isFunction:R,isString:Jn,isNumber:Un,isDate:z,isRegExp:$n,isError:Gn,isSymbol:Hn,isMap:Qn,isWeakMap:Xn,isSet:Yn,isWeakSet:Zn,isFinite:function(n){return!Hn(n)&&V(n)&&!L(parseFloat(n))},isNaN:nt,isBoolean:tt,isNull:function(n){return null===n},isUndefined:function(n){return void 0===n},has:function(n,t){if(!I(t))return y(n,t);for(var r=t.length,e=0;e<r;e++){var u=t[e];if(null==n||!W.call(n,u))return!1;n=n[u]}return!!r},identity:rt,constant:function(n){return function(){return n}},noop:function(){},property:et,propertyOf:function(t){return null==t?function(){}:function(n){return I(n)?f(t,n):t[n]}},matcher:F,matches:F,times:function(n,t,r){var e=Array(Math.max(0,n));t=v(t,r,1);for(var u=0;u<n;u++)e[u]=t(u);return e},random:ut,now:ot,escape:n,unescape:it,result:function(n,t,r){var e=(t=I(t)?t:[t]).length;if(!e)return R(r)?r.call(n):r;for(var u=0;u<e;u++){var o=null==n?void 0:n[t[u]];void 0===o&&(o=r,u=e),n=R(o)?o.call(n):o}return n},uniqueId:function(n){var t=++at+"";return n?n+t:t},templateSettings:lt,template:function(o,n,t){n=Kn({},n=!n&&t?t:n,h.templateSettings);var r,t=RegExp([(n.escape||pt).source,(n.interpolate||pt).source,(n.evaluate||pt).source].join("|")+"|$","g"),i=0,f="__p+='";o.replace(t,function(n,t,r,e,u){return f+=o.slice(i,u).replace(ht,ct),i=u+n.length,t?f+="'+\n((__t=("+t+"))==null?'':_.escape(__t))+\n'":r?f+="'+\n((__t=("+r+"))==null?'':__t)+\n'":e&&(f+="';\n"+e+"\n__p+='"),n}),f+="';\n",f="var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};\n"+(f=n.variable?f:"with(obj||{}){\n"+f+"}\n")+"return __p;\n";try{r=new Function(n.variable||"obj","_",f)}catch(n){throw n.source=f,n}function e(n){return r.call(this,n,h)}return t=n.variable||"obj",e.source="function("+t+"){\n"+f+"}",e},chain:function(n){return(n=h(n))._chain=!0,n},mixin:yt});return r._=r});
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define('underscore', factory) :
+    (function() {
+        var current = global._;
+        var exports = factory();
+        global._ = exports;
+        exports.noConflict = function() { global._ = current; return exports; };
+    })();
+  }(this, (function () {
+  
+    //     Underscore.js 1.10.2
+    //     https://underscorejs.org
+    //     (c) 2009-2020 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+    //     Underscore may be freely distributed under the MIT license.
+  
+    // Baseline setup
+    // --------------
+  
+    // Establish the root object, `window` (`self`) in the browser, `global`
+    // on the server, or `this` in some virtual machines. We use `self`
+    // instead of `window` for `WebWorker` support.
+    var root = typeof self == 'object' && self.self === self && self ||
+              typeof global == 'object' && global.global === global && global ||
+              Function('return this')() ||
+              {};
+  
+    // Save bytes in the minified (but not gzipped) version:
+    var ArrayProto = Array.prototype, ObjProto = Object.prototype;
+    var SymbolProto = typeof Symbol !== 'undefined' ? Symbol.prototype : null;
+  
+    // Create quick reference variables for speed access to core prototypes.
+    var push = ArrayProto.push,
+        slice = ArrayProto.slice,
+        toString = ObjProto.toString,
+        hasOwnProperty = ObjProto.hasOwnProperty;
+  
+    // All **ECMAScript 5** native function implementations that we hope to use
+    // are declared here.
+    var nativeIsArray = Array.isArray,
+        nativeKeys = Object.keys,
+        nativeCreate = Object.create;
+  
+    // Create references to these builtin functions because we override them.
+    var _isNaN = root.isNaN,
+        _isFinite = root.isFinite;
+  
+    // Naked function reference for surrogate-prototype-swapping.
+    var Ctor = function(){};
+  
+    // The Underscore object. All exported functions below are added to it in the
+    // modules/index-all.js using the mixin function.
+    function _(obj) {
+      if (obj instanceof _) return obj;
+      if (!(this instanceof _)) return new _(obj);
+      this._wrapped = obj;
+    }
+  
+    // Current version.
+    var VERSION = _.VERSION = '1.10.2';
+  
+    // Internal function that returns an efficient (for current engines) version
+    // of the passed-in callback, to be repeatedly applied in other Underscore
+    // functions.
+    function optimizeCb(func, context, argCount) {
+      if (context === void 0) return func;
+      switch (argCount == null ? 3 : argCount) {
+        case 1: return function(value) {
+          return func.call(context, value);
+        };
+        // The 2-argument case is omitted because we’re not using it.
+        case 3: return function(value, index, collection) {
+          return func.call(context, value, index, collection);
+        };
+        case 4: return function(accumulator, value, index, collection) {
+          return func.call(context, accumulator, value, index, collection);
+        };
+      }
+      return function() {
+        return func.apply(context, arguments);
+      };
+    }
+  
+    // An internal function to generate callbacks that can be applied to each
+    // element in a collection, returning the desired result — either `identity`,
+    // an arbitrary callback, a property matcher, or a property accessor.
+    function baseIteratee(value, context, argCount) {
+      if (value == null) return identity;
+      if (isFunction(value)) return optimizeCb(value, context, argCount);
+      if (isObject(value) && !isArray(value)) return matcher(value);
+      return property(value);
+    }
+  
+    // External wrapper for our callback generator. Users may customize
+    // `_.iteratee` if they want additional predicate/iteratee shorthand styles.
+    // This abstraction hides the internal-only argCount argument.
+    _.iteratee = iteratee;
+    function iteratee(value, context) {
+      return baseIteratee(value, context, Infinity);
+    }
+  
+    // The function we actually call internally. It invokes _.iteratee if
+    // overridden, otherwise baseIteratee.
+    function cb(value, context, argCount) {
+      if (_.iteratee !== iteratee) return _.iteratee(value, context);
+      return baseIteratee(value, context, argCount);
+    }
+  
+    // Some functions take a variable number of arguments, or a few expected
+    // arguments at the beginning and then a variable number of values to operate
+    // on. This helper accumulates all remaining arguments past the function’s
+    // argument length (or an explicit `startIndex`), into an array that becomes
+    // the last argument. Similar to ES6’s "rest parameter".
+    function restArguments(func, startIndex) {
+      startIndex = startIndex == null ? func.length - 1 : +startIndex;
+      return function() {
+        var length = Math.max(arguments.length - startIndex, 0),
+            rest = Array(length),
+            index = 0;
+        for (; index < length; index++) {
+          rest[index] = arguments[index + startIndex];
+        }
+        switch (startIndex) {
+          case 0: return func.call(this, rest);
+          case 1: return func.call(this, arguments[0], rest);
+          case 2: return func.call(this, arguments[0], arguments[1], rest);
+        }
+        var args = Array(startIndex + 1);
+        for (index = 0; index < startIndex; index++) {
+          args[index] = arguments[index];
+        }
+        args[startIndex] = rest;
+        return func.apply(this, args);
+      };
+    }
+  
+    // An internal function for creating a new object that inherits from another.
+    function baseCreate(prototype) {
+      if (!isObject(prototype)) return {};
+      if (nativeCreate) return nativeCreate(prototype);
+      Ctor.prototype = prototype;
+      var result = new Ctor;
+      Ctor.prototype = null;
+      return result;
+    }
+  
+    function shallowProperty(key) {
+      return function(obj) {
+        return obj == null ? void 0 : obj[key];
+      };
+    }
+  
+    function _has(obj, path) {
+      return obj != null && hasOwnProperty.call(obj, path);
+    }
+  
+    function deepGet(obj, path) {
+      var length = path.length;
+      for (var i = 0; i < length; i++) {
+        if (obj == null) return void 0;
+        obj = obj[path[i]];
+      }
+      return length ? obj : void 0;
+    }
+  
+    // Helper for collection methods to determine whether a collection
+    // should be iterated as an array or as an object.
+    // Related: https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength
+    // Avoids a very nasty iOS 8 JIT bug on ARM-64. #2094
+    var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+    var getLength = shallowProperty('length');
+    function isArrayLike(collection) {
+      var length = getLength(collection);
+      return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
+    }
+  
+    // Collection Functions
+    // --------------------
+  
+    // The cornerstone, an `each` implementation, aka `forEach`.
+    // Handles raw objects in addition to array-likes. Treats all
+    // sparse array-likes as if they were dense.
+    function each(obj, iteratee, context) {
+      iteratee = optimizeCb(iteratee, context);
+      var i, length;
+      if (isArrayLike(obj)) {
+        for (i = 0, length = obj.length; i < length; i++) {
+          iteratee(obj[i], i, obj);
+        }
+      } else {
+        var _keys = keys(obj);
+        for (i = 0, length = _keys.length; i < length; i++) {
+          iteratee(obj[_keys[i]], _keys[i], obj);
+        }
+      }
+      return obj;
+    }
+  
+    // Return the results of applying the iteratee to each element.
+    function map(obj, iteratee, context) {
+      iteratee = cb(iteratee, context);
+      var _keys = !isArrayLike(obj) && keys(obj),
+          length = (_keys || obj).length,
+          results = Array(length);
+      for (var index = 0; index < length; index++) {
+        var currentKey = _keys ? _keys[index] : index;
+        results[index] = iteratee(obj[currentKey], currentKey, obj);
+      }
+      return results;
+    }
+  
+    // Create a reducing function iterating left or right.
+    function createReduce(dir) {
+      // Wrap code that reassigns argument variables in a separate function than
+      // the one that accesses `arguments.length` to avoid a perf hit. (#1991)
+      var reducer = function(obj, iteratee, memo, initial) {
+        var _keys = !isArrayLike(obj) && keys(obj),
+            length = (_keys || obj).length,
+            index = dir > 0 ? 0 : length - 1;
+        if (!initial) {
+          memo = obj[_keys ? _keys[index] : index];
+          index += dir;
+        }
+        for (; index >= 0 && index < length; index += dir) {
+          var currentKey = _keys ? _keys[index] : index;
+          memo = iteratee(memo, obj[currentKey], currentKey, obj);
+        }
+        return memo;
+      };
+  
+      return function(obj, iteratee, memo, context) {
+        var initial = arguments.length >= 3;
+        return reducer(obj, optimizeCb(iteratee, context, 4), memo, initial);
+      };
+    }
+  
+    // **Reduce** builds up a single result from a list of values, aka `inject`,
+    // or `foldl`.
+    var reduce = createReduce(1);
+  
+    // The right-associative version of reduce, also known as `foldr`.
+    var reduceRight = createReduce(-1);
+  
+    // Return the first value which passes a truth test.
+    function find(obj, predicate, context) {
+      var keyFinder = isArrayLike(obj) ? findIndex : findKey;
+      var key = keyFinder(obj, predicate, context);
+      if (key !== void 0 && key !== -1) return obj[key];
+    }
+  
+    // Return all the elements that pass a truth test.
+    function filter(obj, predicate, context) {
+      var results = [];
+      predicate = cb(predicate, context);
+      each(obj, function(value, index, list) {
+        if (predicate(value, index, list)) results.push(value);
+      });
+      return results;
+    }
+  
+    // Return all the elements for which a truth test fails.
+    function reject(obj, predicate, context) {
+      return filter(obj, negate(cb(predicate)), context);
+    }
+  
+    // Determine whether all of the elements match a truth test.
+    function every(obj, predicate, context) {
+      predicate = cb(predicate, context);
+      var _keys = !isArrayLike(obj) && keys(obj),
+          length = (_keys || obj).length;
+      for (var index = 0; index < length; index++) {
+        var currentKey = _keys ? _keys[index] : index;
+        if (!predicate(obj[currentKey], currentKey, obj)) return false;
+      }
+      return true;
+    }
+  
+    // Determine if at least one element in the object matches a truth test.
+    function some(obj, predicate, context) {
+      predicate = cb(predicate, context);
+      var _keys = !isArrayLike(obj) && keys(obj),
+          length = (_keys || obj).length;
+      for (var index = 0; index < length; index++) {
+        var currentKey = _keys ? _keys[index] : index;
+        if (predicate(obj[currentKey], currentKey, obj)) return true;
+      }
+      return false;
+    }
+  
+    // Determine if the array or object contains a given item (using `===`).
+    function contains(obj, item, fromIndex, guard) {
+      if (!isArrayLike(obj)) obj = values(obj);
+      if (typeof fromIndex != 'number' || guard) fromIndex = 0;
+      return indexOf(obj, item, fromIndex) >= 0;
+    }
+  
+    // Invoke a method (with arguments) on every item in a collection.
+    var invoke = restArguments(function(obj, path, args) {
+      var contextPath, func;
+      if (isFunction(path)) {
+        func = path;
+      } else if (isArray(path)) {
+        contextPath = path.slice(0, -1);
+        path = path[path.length - 1];
+      }
+      return map(obj, function(context) {
+        var method = func;
+        if (!method) {
+          if (contextPath && contextPath.length) {
+            context = deepGet(context, contextPath);
+          }
+          if (context == null) return void 0;
+          method = context[path];
+        }
+        return method == null ? method : method.apply(context, args);
+      });
+    });
+  
+    // Convenience version of a common use case of `map`: fetching a property.
+    function pluck(obj, key) {
+      return map(obj, property(key));
+    }
+  
+    // Convenience version of a common use case of `filter`: selecting only objects
+    // containing specific `key:value` pairs.
+    function where(obj, attrs) {
+      return filter(obj, matcher(attrs));
+    }
+  
+    // Convenience version of a common use case of `find`: getting the first object
+    // containing specific `key:value` pairs.
+    function findWhere(obj, attrs) {
+      return find(obj, matcher(attrs));
+    }
+  
+    // Return the maximum element (or element-based computation).
+    function max(obj, iteratee, context) {
+      var result = -Infinity, lastComputed = -Infinity,
+          value, computed;
+      if (iteratee == null || typeof iteratee == 'number' && typeof obj[0] != 'object' && obj != null) {
+        obj = isArrayLike(obj) ? obj : values(obj);
+        for (var i = 0, length = obj.length; i < length; i++) {
+          value = obj[i];
+          if (value != null && value > result) {
+            result = value;
+          }
+        }
+      } else {
+        iteratee = cb(iteratee, context);
+        each(obj, function(v, index, list) {
+          computed = iteratee(v, index, list);
+          if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
+            result = v;
+            lastComputed = computed;
+          }
+        });
+      }
+      return result;
+    }
+  
+    // Return the minimum element (or element-based computation).
+    function min(obj, iteratee, context) {
+      var result = Infinity, lastComputed = Infinity,
+          value, computed;
+      if (iteratee == null || typeof iteratee == 'number' && typeof obj[0] != 'object' && obj != null) {
+        obj = isArrayLike(obj) ? obj : values(obj);
+        for (var i = 0, length = obj.length; i < length; i++) {
+          value = obj[i];
+          if (value != null && value < result) {
+            result = value;
+          }
+        }
+      } else {
+        iteratee = cb(iteratee, context);
+        each(obj, function(v, index, list) {
+          computed = iteratee(v, index, list);
+          if (computed < lastComputed || computed === Infinity && result === Infinity) {
+            result = v;
+            lastComputed = computed;
+          }
+        });
+      }
+      return result;
+    }
+  
+    // Shuffle a collection.
+    function shuffle(obj) {
+      return sample(obj, Infinity);
+    }
+  
+    // Sample **n** random values from a collection using the modern version of the
+    // [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+    // If **n** is not specified, returns a single random element.
+    // The internal `guard` argument allows it to work with `map`.
+    function sample(obj, n, guard) {
+      if (n == null || guard) {
+        if (!isArrayLike(obj)) obj = values(obj);
+        return obj[random(obj.length - 1)];
+      }
+      var sample = isArrayLike(obj) ? clone(obj) : values(obj);
+      var length = getLength(sample);
+      n = Math.max(Math.min(n, length), 0);
+      var last = length - 1;
+      for (var index = 0; index < n; index++) {
+        var rand = random(index, last);
+        var temp = sample[index];
+        sample[index] = sample[rand];
+        sample[rand] = temp;
+      }
+      return sample.slice(0, n);
+    }
+  
+    // Sort the object's values by a criterion produced by an iteratee.
+    function sortBy(obj, iteratee, context) {
+      var index = 0;
+      iteratee = cb(iteratee, context);
+      return pluck(map(obj, function(value, key, list) {
+        return {
+          value: value,
+          index: index++,
+          criteria: iteratee(value, key, list)
+        };
+      }).sort(function(left, right) {
+        var a = left.criteria;
+        var b = right.criteria;
+        if (a !== b) {
+          if (a > b || a === void 0) return 1;
+          if (a < b || b === void 0) return -1;
+        }
+        return left.index - right.index;
+      }), 'value');
+    }
+  
+    // An internal function used for aggregate "group by" operations.
+    function group(behavior, partition) {
+      return function(obj, iteratee, context) {
+        var result = partition ? [[], []] : {};
+        iteratee = cb(iteratee, context);
+        each(obj, function(value, index) {
+          var key = iteratee(value, index, obj);
+          behavior(result, value, key);
+        });
+        return result;
+      };
+    }
+  
+    // Groups the object's values by a criterion. Pass either a string attribute
+    // to group by, or a function that returns the criterion.
+    var groupBy = group(function(result, value, key) {
+      if (_has(result, key)) result[key].push(value); else result[key] = [value];
+    });
+  
+    // Indexes the object's values by a criterion, similar to `groupBy`, but for
+    // when you know that your index values will be unique.
+    var indexBy = group(function(result, value, key) {
+      result[key] = value;
+    });
+  
+    // Counts instances of an object that group by a certain criterion. Pass
+    // either a string attribute to count by, or a function that returns the
+    // criterion.
+    var countBy = group(function(result, value, key) {
+      if (_has(result, key)) result[key]++; else result[key] = 1;
+    });
+  
+    var reStrSymbol = /[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;
+    // Safely create a real, live array from anything iterable.
+    function toArray(obj) {
+      if (!obj) return [];
+      if (isArray(obj)) return slice.call(obj);
+      if (isString(obj)) {
+        // Keep surrogate pair characters together
+        return obj.match(reStrSymbol);
+      }
+      if (isArrayLike(obj)) return map(obj, identity);
+      return values(obj);
+    }
+  
+    // Return the number of elements in an object.
+    function size(obj) {
+      if (obj == null) return 0;
+      return isArrayLike(obj) ? obj.length : keys(obj).length;
+    }
+  
+    // Split a collection into two arrays: one whose elements all satisfy the given
+    // predicate, and one whose elements all do not satisfy the predicate.
+    var partition = group(function(result, value, pass) {
+      result[pass ? 0 : 1].push(value);
+    }, true);
+  
+    // Array Functions
+    // ---------------
+  
+    // Get the first element of an array. Passing **n** will return the first N
+    // values in the array. The **guard** check allows it to work with `map`.
+    function first(array, n, guard) {
+      if (array == null || array.length < 1) return n == null ? void 0 : [];
+      if (n == null || guard) return array[0];
+      return initial(array, array.length - n);
+    }
+  
+    // Returns everything but the last entry of the array. Especially useful on
+    // the arguments object. Passing **n** will return all the values in
+    // the array, excluding the last N.
+    function initial(array, n, guard) {
+      return slice.call(array, 0, Math.max(0, array.length - (n == null || guard ? 1 : n)));
+    }
+  
+    // Get the last element of an array. Passing **n** will return the last N
+    // values in the array.
+    function last(array, n, guard) {
+      if (array == null || array.length < 1) return n == null ? void 0 : [];
+      if (n == null || guard) return array[array.length - 1];
+      return rest(array, Math.max(0, array.length - n));
+    }
+  
+    // Returns everything but the first entry of the array. Especially useful on
+    // the arguments object. Passing an **n** will return the rest N values in the
+    // array.
+    function rest(array, n, guard) {
+      return slice.call(array, n == null || guard ? 1 : n);
+    }
+  
+    // Trim out all falsy values from an array.
+    function compact(array) {
+      return filter(array, Boolean);
+    }
+  
+    // Internal implementation of a recursive `flatten` function.
+    function _flatten(input, shallow, strict, output) {
+      output = output || [];
+      var idx = output.length;
+      for (var i = 0, length = getLength(input); i < length; i++) {
+        var value = input[i];
+        if (isArrayLike(value) && (isArray(value) || isArguments(value))) {
+          // Flatten current level of array or arguments object.
+          if (shallow) {
+            var j = 0, len = value.length;
+            while (j < len) output[idx++] = value[j++];
+          } else {
+            _flatten(value, shallow, strict, output);
+            idx = output.length;
+          }
+        } else if (!strict) {
+          output[idx++] = value;
+        }
+      }
+      return output;
+    }
+  
+    // Flatten out an array, either recursively (by default), or just one level.
+    function flatten(array, shallow) {
+      return _flatten(array, shallow, false);
+    }
+  
+    // Return a version of the array that does not contain the specified value(s).
+    var without = restArguments(function(array, otherArrays) {
+      return difference(array, otherArrays);
+    });
+  
+    // Produce a duplicate-free version of the array. If the array has already
+    // been sorted, you have the option of using a faster algorithm.
+    // The faster algorithm will not work with an iteratee if the iteratee
+    // is not a one-to-one function, so providing an iteratee will disable
+    // the faster algorithm.
+    function uniq(array, isSorted, iteratee, context) {
+      if (!isBoolean(isSorted)) {
+        context = iteratee;
+        iteratee = isSorted;
+        isSorted = false;
+      }
+      if (iteratee != null) iteratee = cb(iteratee, context);
+      var result = [];
+      var seen = [];
+      for (var i = 0, length = getLength(array); i < length; i++) {
+        var value = array[i],
+            computed = iteratee ? iteratee(value, i, array) : value;
+        if (isSorted && !iteratee) {
+          if (!i || seen !== computed) result.push(value);
+          seen = computed;
+        } else if (iteratee) {
+          if (!contains(seen, computed)) {
+            seen.push(computed);
+            result.push(value);
+          }
+        } else if (!contains(result, value)) {
+          result.push(value);
+        }
+      }
+      return result;
+    }
+  
+    // Produce an array that contains the union: each distinct element from all of
+    // the passed-in arrays.
+    var union = restArguments(function(arrays) {
+      return uniq(_flatten(arrays, true, true));
+    });
+  
+    // Produce an array that contains every item shared between all the
+    // passed-in arrays.
+    function intersection(array) {
+      var result = [];
+      var argsLength = arguments.length;
+      for (var i = 0, length = getLength(array); i < length; i++) {
+        var item = array[i];
+        if (contains(result, item)) continue;
+        var j;
+        for (j = 1; j < argsLength; j++) {
+          if (!contains(arguments[j], item)) break;
+        }
+        if (j === argsLength) result.push(item);
+      }
+      return result;
+    }
+  
+    // Take the difference between one array and a number of other arrays.
+    // Only the elements present in just the first array will remain.
+    var difference = restArguments(function(array, rest) {
+      rest = _flatten(rest, true, true);
+      return filter(array, function(value){
+        return !contains(rest, value);
+      });
+    });
+  
+    // Complement of zip. Unzip accepts an array of arrays and groups
+    // each array's elements on shared indices.
+    function unzip(array) {
+      var length = array && max(array, getLength).length || 0;
+      var result = Array(length);
+  
+      for (var index = 0; index < length; index++) {
+        result[index] = pluck(array, index);
+      }
+      return result;
+    }
+  
+    // Zip together multiple lists into a single array -- elements that share
+    // an index go together.
+    var zip = restArguments(unzip);
+  
+    // Converts lists into objects. Pass either a single array of `[key, value]`
+    // pairs, or two parallel arrays of the same length -- one of keys, and one of
+    // the corresponding values. Passing by pairs is the reverse of pairs.
+    function object(list, values) {
+      var result = {};
+      for (var i = 0, length = getLength(list); i < length; i++) {
+        if (values) {
+          result[list[i]] = values[i];
+        } else {
+          result[list[i][0]] = list[i][1];
+        }
+      }
+      return result;
+    }
+  
+    // Generator function to create the findIndex and findLastIndex functions.
+    function createPredicateIndexFinder(dir) {
+      return function(array, predicate, context) {
+        predicate = cb(predicate, context);
+        var length = getLength(array);
+        var index = dir > 0 ? 0 : length - 1;
+        for (; index >= 0 && index < length; index += dir) {
+          if (predicate(array[index], index, array)) return index;
+        }
+        return -1;
+      };
+    }
+  
+    // Returns the first index on an array-like that passes a predicate test.
+    var findIndex = createPredicateIndexFinder(1);
+    var findLastIndex = createPredicateIndexFinder(-1);
+  
+    // Use a comparator function to figure out the smallest index at which
+    // an object should be inserted so as to maintain order. Uses binary search.
+    function sortedIndex(array, obj, iteratee, context) {
+      iteratee = cb(iteratee, context, 1);
+      var value = iteratee(obj);
+      var low = 0, high = getLength(array);
+      while (low < high) {
+        var mid = Math.floor((low + high) / 2);
+        if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
+      }
+      return low;
+    }
+  
+    // Generator function to create the indexOf and lastIndexOf functions.
+    function createIndexFinder(dir, predicateFind, sortedIndex) {
+      return function(array, item, idx) {
+        var i = 0, length = getLength(array);
+        if (typeof idx == 'number') {
+          if (dir > 0) {
+            i = idx >= 0 ? idx : Math.max(idx + length, i);
+          } else {
+            length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+          }
+        } else if (sortedIndex && idx && length) {
+          idx = sortedIndex(array, item);
+          return array[idx] === item ? idx : -1;
+        }
+        if (item !== item) {
+          idx = predicateFind(slice.call(array, i, length), isNaN);
+          return idx >= 0 ? idx + i : -1;
+        }
+        for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
+          if (array[idx] === item) return idx;
+        }
+        return -1;
+      };
+    }
+  
+    // Return the position of the first occurrence of an item in an array,
+    // or -1 if the item is not included in the array.
+    // If the array is large and already in sort order, pass `true`
+    // for **isSorted** to use binary search.
+    var indexOf = createIndexFinder(1, findIndex, sortedIndex);
+    var lastIndexOf = createIndexFinder(-1, findLastIndex);
+  
+    // Generate an integer Array containing an arithmetic progression. A port of
+    // the native Python `range()` function. See
+    // [the Python documentation](https://docs.python.org/library/functions.html#range).
+    function range(start, stop, step) {
+      if (stop == null) {
+        stop = start || 0;
+        start = 0;
+      }
+      if (!step) {
+        step = stop < start ? -1 : 1;
+      }
+  
+      var length = Math.max(Math.ceil((stop - start) / step), 0);
+      var range = Array(length);
+  
+      for (var idx = 0; idx < length; idx++, start += step) {
+        range[idx] = start;
+      }
+  
+      return range;
+    }
+  
+    // Chunk a single array into multiple arrays, each containing `count` or fewer
+    // items.
+    function chunk(array, count) {
+      if (count == null || count < 1) return [];
+      var result = [];
+      var i = 0, length = array.length;
+      while (i < length) {
+        result.push(slice.call(array, i, i += count));
+      }
+      return result;
+    }
+  
+    // Function (ahem) Functions
+    // ------------------
+  
+    // Determines whether to execute a function as a constructor
+    // or a normal function with the provided arguments.
+    function executeBound(sourceFunc, boundFunc, context, callingContext, args) {
+      if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
+      var self = baseCreate(sourceFunc.prototype);
+      var result = sourceFunc.apply(self, args);
+      if (isObject(result)) return result;
+      return self;
+    }
+  
+    // Create a function bound to a given object (assigning `this`, and arguments,
+    // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
+    // available.
+    var bind = restArguments(function(func, context, args) {
+      if (!isFunction(func)) throw new TypeError('Bind must be called on a function');
+      var bound = restArguments(function(callArgs) {
+        return executeBound(func, bound, context, this, args.concat(callArgs));
+      });
+      return bound;
+    });
+  
+    // Partially apply a function by creating a version that has had some of its
+    // arguments pre-filled, without changing its dynamic `this` context. _ acts
+    // as a placeholder by default, allowing any combination of arguments to be
+    // pre-filled. Set `partial.placeholder` for a custom placeholder argument.
+    var partial = restArguments(function(func, boundArgs) {
+      var placeholder = partial.placeholder;
+      var bound = function() {
+        var position = 0, length = boundArgs.length;
+        var args = Array(length);
+        for (var i = 0; i < length; i++) {
+          args[i] = boundArgs[i] === placeholder ? arguments[position++] : boundArgs[i];
+        }
+        while (position < arguments.length) args.push(arguments[position++]);
+        return executeBound(func, bound, this, this, args);
+      };
+      return bound;
+    });
+  
+    partial.placeholder = _;
+  
+    // Bind a number of an object's methods to that object. Remaining arguments
+    // are the method names to be bound. Useful for ensuring that all callbacks
+    // defined on an object belong to it.
+    var bindAll = restArguments(function(obj, _keys) {
+      _keys = _flatten(_keys, false, false);
+      var index = _keys.length;
+      if (index < 1) throw new Error('bindAll must be passed function names');
+      while (index--) {
+        var key = _keys[index];
+        obj[key] = bind(obj[key], obj);
+      }
+    });
+  
+    // Memoize an expensive function by storing its results.
+    function memoize(func, hasher) {
+      var memoize = function(key) {
+        var cache = memoize.cache;
+        var address = '' + (hasher ? hasher.apply(this, arguments) : key);
+        if (!_has(cache, address)) cache[address] = func.apply(this, arguments);
+        return cache[address];
+      };
+      memoize.cache = {};
+      return memoize;
+    }
+  
+    // Delays a function for the given number of milliseconds, and then calls
+    // it with the arguments supplied.
+    var delay = restArguments(function(func, wait, args) {
+      return setTimeout(function() {
+        return func.apply(null, args);
+      }, wait);
+    });
+  
+    // Defers a function, scheduling it to run after the current call stack has
+    // cleared.
+    var defer = partial(delay, _, 1);
+  
+    // Returns a function, that, when invoked, will only be triggered at most once
+    // during a given window of time. Normally, the throttled function will run
+    // as much as it can, without ever going more than once per `wait` duration;
+    // but if you'd like to disable the execution on the leading edge, pass
+    // `{leading: false}`. To disable execution on the trailing edge, ditto.
+    function throttle(func, wait, options) {
+      var timeout, context, args, result;
+      var previous = 0;
+      if (!options) options = {};
+  
+      var later = function() {
+        previous = options.leading === false ? 0 : now();
+        timeout = null;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      };
+  
+      var throttled = function() {
+        var _now = now();
+        if (!previous && options.leading === false) previous = _now;
+        var remaining = wait - (_now - previous);
+        context = this;
+        args = arguments;
+        if (remaining <= 0 || remaining > wait) {
+          if (timeout) {
+            clearTimeout(timeout);
+            timeout = null;
+          }
+          previous = _now;
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        } else if (!timeout && options.trailing !== false) {
+          timeout = setTimeout(later, remaining);
+        }
+        return result;
+      };
+  
+      throttled.cancel = function() {
+        clearTimeout(timeout);
+        previous = 0;
+        timeout = context = args = null;
+      };
+  
+      return throttled;
+    }
+  
+    // Returns a function, that, as long as it continues to be invoked, will not
+    // be triggered. The function will be called after it stops being called for
+    // N milliseconds. If `immediate` is passed, trigger the function on the
+    // leading edge, instead of the trailing.
+    function debounce(func, wait, immediate) {
+      var timeout, result;
+  
+      var later = function(context, args) {
+        timeout = null;
+        if (args) result = func.apply(context, args);
+      };
+  
+      var debounced = restArguments(function(args) {
+        if (timeout) clearTimeout(timeout);
+        if (immediate) {
+          var callNow = !timeout;
+          timeout = setTimeout(later, wait);
+          if (callNow) result = func.apply(this, args);
+        } else {
+          timeout = delay(later, wait, this, args);
+        }
+  
+        return result;
+      });
+  
+      debounced.cancel = function() {
+        clearTimeout(timeout);
+        timeout = null;
+      };
+  
+      return debounced;
+    }
+  
+    // Returns the first function passed as an argument to the second,
+    // allowing you to adjust arguments, run code before and after, and
+    // conditionally execute the original function.
+    function wrap(func, wrapper) {
+      return partial(wrapper, func);
+    }
+  
+    // Returns a negated version of the passed-in predicate.
+    function negate(predicate) {
+      return function() {
+        return !predicate.apply(this, arguments);
+      };
+    }
+  
+    // Returns a function that is the composition of a list of functions, each
+    // consuming the return value of the function that follows.
+    function compose() {
+      var args = arguments;
+      var start = args.length - 1;
+      return function() {
+        var i = start;
+        var result = args[start].apply(this, arguments);
+        while (i--) result = args[i].call(this, result);
+        return result;
+      };
+    }
+  
+    // Returns a function that will only be executed on and after the Nth call.
+    function after(times, func) {
+      return function() {
+        if (--times < 1) {
+          return func.apply(this, arguments);
+        }
+      };
+    }
+  
+    // Returns a function that will only be executed up to (but not including) the Nth call.
+    function before(times, func) {
+      var memo;
+      return function() {
+        if (--times > 0) {
+          memo = func.apply(this, arguments);
+        }
+        if (times <= 1) func = null;
+        return memo;
+      };
+    }
+  
+    // Returns a function that will be executed at most one time, no matter how
+    // often you call it. Useful for lazy initialization.
+    var once = partial(before, 2);
+  
+    // Object Functions
+    // ----------------
+  
+    // Keys in IE < 9 that won't be iterated by `for key in ...` and thus missed.
+    var hasEnumBug = !{toString: null}.propertyIsEnumerable('toString');
+    var nonEnumerableProps = ['valueOf', 'isPrototypeOf', 'toString',
+      'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
+  
+    function collectNonEnumProps(obj, _keys) {
+      var nonEnumIdx = nonEnumerableProps.length;
+      var constructor = obj.constructor;
+      var proto = isFunction(constructor) && constructor.prototype || ObjProto;
+  
+      // Constructor is a special case.
+      var prop = 'constructor';
+      if (_has(obj, prop) && !contains(_keys, prop)) _keys.push(prop);
+  
+      while (nonEnumIdx--) {
+        prop = nonEnumerableProps[nonEnumIdx];
+        if (prop in obj && obj[prop] !== proto[prop] && !contains(_keys, prop)) {
+          _keys.push(prop);
+        }
+      }
+    }
+  
+    // Retrieve the names of an object's own properties.
+    // Delegates to **ECMAScript 5**'s native `Object.keys`.
+    function keys(obj) {
+      if (!isObject(obj)) return [];
+      if (nativeKeys) return nativeKeys(obj);
+      var _keys = [];
+      for (var key in obj) if (_has(obj, key)) _keys.push(key);
+      // Ahem, IE < 9.
+      if (hasEnumBug) collectNonEnumProps(obj, _keys);
+      return _keys;
+    }
+  
+    // Retrieve all the property names of an object.
+    function allKeys(obj) {
+      if (!isObject(obj)) return [];
+      var _keys = [];
+      for (var key in obj) _keys.push(key);
+      // Ahem, IE < 9.
+      if (hasEnumBug) collectNonEnumProps(obj, _keys);
+      return _keys;
+    }
+  
+    // Retrieve the values of an object's properties.
+    function values(obj) {
+      var _keys = keys(obj);
+      var length = _keys.length;
+      var values = Array(length);
+      for (var i = 0; i < length; i++) {
+        values[i] = obj[_keys[i]];
+      }
+      return values;
+    }
+  
+    // Returns the results of applying the iteratee to each element of the object.
+    // In contrast to map it returns an object.
+    function mapObject(obj, iteratee, context) {
+      iteratee = cb(iteratee, context);
+      var _keys = keys(obj),
+          length = _keys.length,
+          results = {};
+      for (var index = 0; index < length; index++) {
+        var currentKey = _keys[index];
+        results[currentKey] = iteratee(obj[currentKey], currentKey, obj);
+      }
+      return results;
+    }
+  
+    // Convert an object into a list of `[key, value]` pairs.
+    // The opposite of object.
+    function pairs(obj) {
+      var _keys = keys(obj);
+      var length = _keys.length;
+      var pairs = Array(length);
+      for (var i = 0; i < length; i++) {
+        pairs[i] = [_keys[i], obj[_keys[i]]];
+      }
+      return pairs;
+    }
+  
+    // Invert the keys and values of an object. The values must be serializable.
+    function invert(obj) {
+      var result = {};
+      var _keys = keys(obj);
+      for (var i = 0, length = _keys.length; i < length; i++) {
+        result[obj[_keys[i]]] = _keys[i];
+      }
+      return result;
+    }
+  
+    // Return a sorted list of the function names available on the object.
+    function functions(obj) {
+      var names = [];
+      for (var key in obj) {
+        if (isFunction(obj[key])) names.push(key);
+      }
+      return names.sort();
+    }
+  
+    // An internal function for creating assigner functions.
+    function createAssigner(keysFunc, defaults) {
+      return function(obj) {
+        var length = arguments.length;
+        if (defaults) obj = Object(obj);
+        if (length < 2 || obj == null) return obj;
+        for (var index = 1; index < length; index++) {
+          var source = arguments[index],
+              _keys = keysFunc(source),
+              l = _keys.length;
+          for (var i = 0; i < l; i++) {
+            var key = _keys[i];
+            if (!defaults || obj[key] === void 0) obj[key] = source[key];
+          }
+        }
+        return obj;
+      };
+    }
+  
+    // Extend a given object with all the properties in passed-in object(s).
+    var extend = createAssigner(allKeys);
+  
+    // Assigns a given object with all the own properties in the passed-in object(s).
+    // (https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+    var extendOwn = createAssigner(keys);
+  
+    // Returns the first key on an object that passes a predicate test.
+    function findKey(obj, predicate, context) {
+      predicate = cb(predicate, context);
+      var _keys = keys(obj), key;
+      for (var i = 0, length = _keys.length; i < length; i++) {
+        key = _keys[i];
+        if (predicate(obj[key], key, obj)) return key;
+      }
+    }
+  
+    // Internal pick helper function to determine if `obj` has key `key`.
+    function keyInObj(value, key, obj) {
+      return key in obj;
+    }
+  
+    // Return a copy of the object only containing the whitelisted properties.
+    var pick = restArguments(function(obj, _keys) {
+      var result = {}, iteratee = _keys[0];
+      if (obj == null) return result;
+      if (isFunction(iteratee)) {
+        if (_keys.length > 1) iteratee = optimizeCb(iteratee, _keys[1]);
+        _keys = allKeys(obj);
+      } else {
+        iteratee = keyInObj;
+        _keys = _flatten(_keys, false, false);
+        obj = Object(obj);
+      }
+      for (var i = 0, length = _keys.length; i < length; i++) {
+        var key = _keys[i];
+        var value = obj[key];
+        if (iteratee(value, key, obj)) result[key] = value;
+      }
+      return result;
+    });
+  
+    // Return a copy of the object without the blacklisted properties.
+    var omit = restArguments(function(obj, _keys) {
+      var iteratee = _keys[0], context;
+      if (isFunction(iteratee)) {
+        iteratee = negate(iteratee);
+        if (_keys.length > 1) context = _keys[1];
+      } else {
+        _keys = map(_flatten(_keys, false, false), String);
+        iteratee = function(value, key) {
+          return !contains(_keys, key);
+        };
+      }
+      return pick(obj, iteratee, context);
+    });
+  
+    // Fill in a given object with default properties.
+    var defaults = createAssigner(allKeys, true);
+  
+    // Creates an object that inherits from the given prototype object.
+    // If additional properties are provided then they will be added to the
+    // created object.
+    function create(prototype, props) {
+      var result = baseCreate(prototype);
+      if (props) extendOwn(result, props);
+      return result;
+    }
+  
+    // Create a (shallow-cloned) duplicate of an object.
+    function clone(obj) {
+      if (!isObject(obj)) return obj;
+      return isArray(obj) ? obj.slice() : extend({}, obj);
+    }
+  
+    // Invokes interceptor with the obj, and then returns obj.
+    // The primary purpose of this method is to "tap into" a method chain, in
+    // order to perform operations on intermediate results within the chain.
+    function tap(obj, interceptor) {
+      interceptor(obj);
+      return obj;
+    }
+  
+    // Returns whether an object has a given set of `key:value` pairs.
+    function isMatch(object, attrs) {
+      var _keys = keys(attrs), length = _keys.length;
+      if (object == null) return !length;
+      var obj = Object(object);
+      for (var i = 0; i < length; i++) {
+        var key = _keys[i];
+        if (attrs[key] !== obj[key] || !(key in obj)) return false;
+      }
+      return true;
+    }
+  
+  
+    // Internal recursive comparison function for `isEqual`.
+    function eq(a, b, aStack, bStack) {
+      // Identical objects are equal. `0 === -0`, but they aren't identical.
+      // See the [Harmony `egal` proposal](https://wiki.ecmascript.org/doku.php?id=harmony:egal).
+      if (a === b) return a !== 0 || 1 / a === 1 / b;
+      // `null` or `undefined` only equal to itself (strict comparison).
+      if (a == null || b == null) return false;
+      // `NaN`s are equivalent, but non-reflexive.
+      if (a !== a) return b !== b;
+      // Exhaust primitive checks
+      var type = typeof a;
+      if (type !== 'function' && type !== 'object' && typeof b != 'object') return false;
+      return deepEq(a, b, aStack, bStack);
+    }
+  
+    // Internal recursive comparison function for `isEqual`.
+    function deepEq(a, b, aStack, bStack) {
+      // Unwrap any wrapped objects.
+      if (a instanceof _) a = a._wrapped;
+      if (b instanceof _) b = b._wrapped;
+      // Compare `[[Class]]` names.
+      var className = toString.call(a);
+      if (className !== toString.call(b)) return false;
+      switch (className) {
+        // Strings, numbers, regular expressions, dates, and booleans are compared by value.
+        case '[object RegExp]':
+        // RegExps are coerced to strings for comparison (Note: '' + /a/i === '/a/i')
+        case '[object String]':
+          // Primitives and their corresponding object wrappers are equivalent; thus, `"5"` is
+          // equivalent to `new String("5")`.
+          return '' + a === '' + b;
+        case '[object Number]':
+          // `NaN`s are equivalent, but non-reflexive.
+          // Object(NaN) is equivalent to NaN.
+          if (+a !== +a) return +b !== +b;
+          // An `egal` comparison is performed for other numeric values.
+          return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+        case '[object Date]':
+        case '[object Boolean]':
+          // Coerce dates and booleans to numeric primitive values. Dates are compared by their
+          // millisecond representations. Note that invalid dates with millisecond representations
+          // of `NaN` are not equivalent.
+          return +a === +b;
+        case '[object Symbol]':
+          return SymbolProto.valueOf.call(a) === SymbolProto.valueOf.call(b);
+      }
+  
+      var areArrays = className === '[object Array]';
+      if (!areArrays) {
+        if (typeof a != 'object' || typeof b != 'object') return false;
+  
+        // Objects with different constructors are not equivalent, but `Object`s or `Array`s
+        // from different frames are.
+        var aCtor = a.constructor, bCtor = b.constructor;
+        if (aCtor !== bCtor && !(isFunction(aCtor) && aCtor instanceof aCtor &&
+                                 isFunction(bCtor) && bCtor instanceof bCtor)
+                            && ('constructor' in a && 'constructor' in b)) {
+          return false;
+        }
+      }
+      // Assume equality for cyclic structures. The algorithm for detecting cyclic
+      // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
+  
+      // Initializing stack of traversed objects.
+      // It's done here since we only need them for objects and arrays comparison.
+      aStack = aStack || [];
+      bStack = bStack || [];
+      var length = aStack.length;
+      while (length--) {
+        // Linear search. Performance is inversely proportional to the number of
+        // unique nested structures.
+        if (aStack[length] === a) return bStack[length] === b;
+      }
+  
+      // Add the first object to the stack of traversed objects.
+      aStack.push(a);
+      bStack.push(b);
+  
+      // Recursively compare objects and arrays.
+      if (areArrays) {
+        // Compare array lengths to determine if a deep comparison is necessary.
+        length = a.length;
+        if (length !== b.length) return false;
+        // Deep compare the contents, ignoring non-numeric properties.
+        while (length--) {
+          if (!eq(a[length], b[length], aStack, bStack)) return false;
+        }
+      } else {
+        // Deep compare objects.
+        var _keys = keys(a), key;
+        length = _keys.length;
+        // Ensure that both objects contain the same number of properties before comparing deep equality.
+        if (keys(b).length !== length) return false;
+        while (length--) {
+          // Deep compare each member
+          key = _keys[length];
+          if (!(_has(b, key) && eq(a[key], b[key], aStack, bStack))) return false;
+        }
+      }
+      // Remove the first object from the stack of traversed objects.
+      aStack.pop();
+      bStack.pop();
+      return true;
+    }
+  
+    // Perform a deep comparison to check if two objects are equal.
+    function isEqual(a, b) {
+      return eq(a, b);
+    }
+  
+    // Is a given array, string, or object empty?
+    // An "empty" object has no enumerable own-properties.
+    function isEmpty(obj) {
+      if (obj == null) return true;
+      if (isArrayLike(obj) && (isArray(obj) || isString(obj) || isArguments(obj))) return obj.length === 0;
+      return keys(obj).length === 0;
+    }
+  
+    // Is a given value a DOM element?
+    function isElement(obj) {
+      return !!(obj && obj.nodeType === 1);
+    }
+  
+    // Internal function for creating a toString-based type tester.
+    function tagTester(name) {
+      return function(obj) {
+        return toString.call(obj) === '[object ' + name + ']';
+      };
+    }
+  
+    // Is a given value an array?
+    // Delegates to ECMA5's native Array.isArray
+    var isArray = nativeIsArray || tagTester('Array');
+  
+    // Is a given variable an object?
+    function isObject(obj) {
+      var type = typeof obj;
+      return type === 'function' || type === 'object' && !!obj;
+    }
+  
+    // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp, isError, isMap, isWeakMap, isSet, isWeakSet.
+    var isArguments = tagTester('Arguments');
+    var isFunction = tagTester('Function');
+    var isString = tagTester('String');
+    var isNumber = tagTester('Number');
+    var isDate = tagTester('Date');
+    var isRegExp = tagTester('RegExp');
+    var isError = tagTester('Error');
+    var isSymbol = tagTester('Symbol');
+    var isMap = tagTester('Map');
+    var isWeakMap = tagTester('WeakMap');
+    var isSet = tagTester('Set');
+    var isWeakSet = tagTester('WeakSet');
+  
+    // Define a fallback version of the method in browsers (ahem, IE < 9), where
+    // there isn't any inspectable "Arguments" type.
+    (function() {
+      if (!isArguments(arguments)) {
+        isArguments = function(obj) {
+          return _has(obj, 'callee');
+        };
+      }
+    }());
+  
+    // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
+    // IE 11 (#1621), Safari 8 (#1929), and PhantomJS (#2236).
+    var nodelist = root.document && root.document.childNodes;
+    if (typeof /./ != 'function' && typeof Int8Array != 'object' && typeof nodelist != 'function') {
+      isFunction = function(obj) {
+        return typeof obj == 'function' || false;
+      };
+    }
+  
+    // Is a given object a finite number?
+    function isFinite(obj) {
+      return !isSymbol(obj) && _isFinite(obj) && !_isNaN(parseFloat(obj));
+    }
+  
+    // Is the given value `NaN`?
+    function isNaN(obj) {
+      return isNumber(obj) && _isNaN(obj);
+    }
+  
+    // Is a given value a boolean?
+    function isBoolean(obj) {
+      return obj === true || obj === false || toString.call(obj) === '[object Boolean]';
+    }
+  
+    // Is a given value equal to null?
+    function isNull(obj) {
+      return obj === null;
+    }
+  
+    // Is a given variable undefined?
+    function isUndefined(obj) {
+      return obj === void 0;
+    }
+  
+    // Shortcut function for checking if an object has a given property directly
+    // on itself (in other words, not on a prototype).
+    function has(obj, path) {
+      if (!isArray(path)) {
+        return _has(obj, path);
+      }
+      var length = path.length;
+      for (var i = 0; i < length; i++) {
+        var key = path[i];
+        if (obj == null || !hasOwnProperty.call(obj, key)) {
+          return false;
+        }
+        obj = obj[key];
+      }
+      return !!length;
+    }
+  
+    // Utility Functions
+    // -----------------
+  
+    // Keep the identity function around for default iteratees.
+    function identity(value) {
+      return value;
+    }
+  
+    // Predicate-generating functions. Often useful outside of Underscore.
+    function constant(value) {
+      return function() {
+        return value;
+      };
+    }
+  
+    function noop(){}
+  
+    // Creates a function that, when passed an object, will traverse that object’s
+    // properties down the given `path`, specified as an array of keys or indexes.
+    function property(path) {
+      if (!isArray(path)) {
+        return shallowProperty(path);
+      }
+      return function(obj) {
+        return deepGet(obj, path);
+      };
+    }
+  
+    // Generates a function for a given object that returns a given property.
+    function propertyOf(obj) {
+      if (obj == null) {
+        return function(){};
+      }
+      return function(path) {
+        return !isArray(path) ? obj[path] : deepGet(obj, path);
+      };
+    }
+  
+    // Returns a predicate for checking whether an object has a given set of
+    // `key:value` pairs.
+    function matcher(attrs) {
+      attrs = extendOwn({}, attrs);
+      return function(obj) {
+        return isMatch(obj, attrs);
+      };
+    }
+  
+    // Run a function **n** times.
+    function times(n, iteratee, context) {
+      var accum = Array(Math.max(0, n));
+      iteratee = optimizeCb(iteratee, context, 1);
+      for (var i = 0; i < n; i++) accum[i] = iteratee(i);
+      return accum;
+    }
+  
+    // Return a random integer between min and max (inclusive).
+    function random(min, max) {
+      if (max == null) {
+        max = min;
+        min = 0;
+      }
+      return min + Math.floor(Math.random() * (max - min + 1));
+    }
+  
+    // A (possibly faster) way to get the current timestamp as an integer.
+    var now = Date.now || function() {
+      return new Date().getTime();
+    };
+  
+    // List of HTML entities for escaping.
+    var escapeMap = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      '`': '&#x60;'
+    };
+    var unescapeMap = invert(escapeMap);
+  
+    // Functions for escaping and unescaping strings to/from HTML interpolation.
+    function createEscaper(map) {
+      var escaper = function(match) {
+        return map[match];
+      };
+      // Regexes for identifying a key that needs to be escaped.
+      var source = '(?:' + keys(map).join('|') + ')';
+      var testRegexp = RegExp(source);
+      var replaceRegexp = RegExp(source, 'g');
+      return function(string) {
+        string = string == null ? '' : '' + string;
+        return testRegexp.test(string) ? string.replace(replaceRegexp, escaper) : string;
+      };
+    }
+    var escape = createEscaper(escapeMap);
+    var unescape = createEscaper(unescapeMap);
+  
+    // Traverses the children of `obj` along `path`. If a child is a function, it
+    // is invoked with its parent as context. Returns the value of the final
+    // child, or `fallback` if any child is undefined.
+    function result(obj, path, fallback) {
+      if (!isArray(path)) path = [path];
+      var length = path.length;
+      if (!length) {
+        return isFunction(fallback) ? fallback.call(obj) : fallback;
+      }
+      for (var i = 0; i < length; i++) {
+        var prop = obj == null ? void 0 : obj[path[i]];
+        if (prop === void 0) {
+          prop = fallback;
+          i = length; // Ensure we don't continue iterating.
+        }
+        obj = isFunction(prop) ? prop.call(obj) : prop;
+      }
+      return obj;
+    }
+  
+    // Generate a unique integer id (unique within the entire client session).
+    // Useful for temporary DOM ids.
+    var idCounter = 0;
+    function uniqueId(prefix) {
+      var id = ++idCounter + '';
+      return prefix ? prefix + id : id;
+    }
+  
+    // By default, Underscore uses ERB-style template delimiters, change the
+    // following template settings to use alternative delimiters.
+    var templateSettings = _.templateSettings = {
+      evaluate: /<%([\s\S]+?)%>/g,
+      interpolate: /<%=([\s\S]+?)%>/g,
+      escape: /<%-([\s\S]+?)%>/g
+    };
+  
+    // When customizing `templateSettings`, if you don't want to define an
+    // interpolation, evaluation or escaping regex, we need one that is
+    // guaranteed not to match.
+    var noMatch = /(.)^/;
+  
+    // Certain characters need to be escaped so that they can be put into a
+    // string literal.
+    var escapes = {
+      "'": "'",
+      '\\': '\\',
+      '\r': 'r',
+      '\n': 'n',
+      '\u2028': 'u2028',
+      '\u2029': 'u2029'
+    };
+  
+    var escapeRegExp = /\\|'|\r|\n|\u2028|\u2029/g;
+  
+    var escapeChar = function(match) {
+      return '\\' + escapes[match];
+    };
+  
+    // JavaScript micro-templating, similar to John Resig's implementation.
+    // Underscore templating handles arbitrary delimiters, preserves whitespace,
+    // and correctly escapes quotes within interpolated code.
+    // NB: `oldSettings` only exists for backwards compatibility.
+    function template(text, settings, oldSettings) {
+      if (!settings && oldSettings) settings = oldSettings;
+      settings = defaults({}, settings, _.templateSettings);
+  
+      // Combine delimiters into one regular expression via alternation.
+      var matcher = RegExp([
+        (settings.escape || noMatch).source,
+        (settings.interpolate || noMatch).source,
+        (settings.evaluate || noMatch).source
+      ].join('|') + '|$', 'g');
+  
+      // Compile the template source, escaping string literals appropriately.
+      var index = 0;
+      var source = "__p+='";
+      text.replace(matcher, function(match, escape, interpolate, evaluate, offset) {
+        source += text.slice(index, offset).replace(escapeRegExp, escapeChar);
+        index = offset + match.length;
+  
+        if (escape) {
+          source += "'+\n((__t=(" + escape + "))==null?'':_.escape(__t))+\n'";
+        } else if (interpolate) {
+          source += "'+\n((__t=(" + interpolate + "))==null?'':__t)+\n'";
+        } else if (evaluate) {
+          source += "';\n" + evaluate + "\n__p+='";
+        }
+  
+        // Adobe VMs need the match returned to produce the correct offset.
+        return match;
+      });
+      source += "';\n";
+  
+      // If a variable is not specified, place data values in local scope.
+      if (!settings.variable) source = 'with(obj||{}){\n' + source + '}\n';
+  
+      source = "var __t,__p='',__j=Array.prototype.join," +
+        "print=function(){__p+=__j.call(arguments,'');};\n" +
+        source + 'return __p;\n';
+  
+      var render;
+      try {
+        render = new Function(settings.variable || 'obj', '_', source);
+      } catch (e) {
+        e.source = source;
+        throw e;
+      }
+  
+      var template = function(data) {
+        return render.call(this, data, _);
+      };
+  
+      // Provide the compiled source as a convenience for precompilation.
+      var argument = settings.variable || 'obj';
+      template.source = 'function(' + argument + '){\n' + source + '}';
+  
+      return template;
+    }
+  
+    // Add a "chain" function. Start chaining a wrapped Underscore object.
+    function chain(obj) {
+      var instance = _(obj);
+      instance._chain = true;
+      return instance;
+    }
+  
+    // OOP
+    // ---------------
+    // If Underscore is called as a function, it returns a wrapped object that
+    // can be used OO-style. This wrapper holds altered versions of all the
+    // underscore functions. Wrapped objects may be chained.
+  
+    // Helper function to continue chaining intermediate results.
+    function chainResult(instance, obj) {
+      return instance._chain ? _(obj).chain() : obj;
+    }
+  
+    // Add your own custom functions to the Underscore object.
+    function mixin(obj) {
+      each(functions(obj), function(name) {
+        var func = _[name] = obj[name];
+        _.prototype[name] = function() {
+          var args = [this._wrapped];
+          push.apply(args, arguments);
+          return chainResult(this, func.apply(_, args));
+        };
+      });
+      return _;
+    }
+  
+    // Add all mutator Array functions to the wrapper.
+    each(['pop', 'push', 'reverse', 'shift', 'sort', 'splice', 'unshift'], function(name) {
+      var method = ArrayProto[name];
+      _.prototype[name] = function() {
+        var obj = this._wrapped;
+        method.apply(obj, arguments);
+        if ((name === 'shift' || name === 'splice') && obj.length === 0) delete obj[0];
+        return chainResult(this, obj);
+      };
+    });
+  
+    // Add all accessor Array functions to the wrapper.
+    each(['concat', 'join', 'slice'], function(name) {
+      var method = ArrayProto[name];
+      _.prototype[name] = function() {
+        return chainResult(this, method.apply(this._wrapped, arguments));
+      };
+    });
+  
+    // Extracts the result from a wrapped and chained object.
+    _.prototype.value = function() {
+      return this._wrapped;
+    };
+  
+    // Provide unwrapping proxy for some methods used in engine operations
+    // such as arithmetic and JSON stringification.
+    _.prototype.valueOf = _.prototype.toJSON = _.prototype.value;
+  
+    _.prototype.toString = function() {
+      return String(this._wrapped);
+    };
+  
+    var allExports = ({
+      'default': _,
+      VERSION: VERSION,
+      iteratee: iteratee,
+      restArguments: restArguments,
+      each: each,
+      forEach: each,
+      map: map,
+      collect: map,
+      reduce: reduce,
+      foldl: reduce,
+      inject: reduce,
+      reduceRight: reduceRight,
+      foldr: reduceRight,
+      find: find,
+      detect: find,
+      filter: filter,
+      select: filter,
+      reject: reject,
+      every: every,
+      all: every,
+      some: some,
+      any: some,
+      contains: contains,
+      includes: contains,
+      include: contains,
+      invoke: invoke,
+      pluck: pluck,
+      where: where,
+      findWhere: findWhere,
+      max: max,
+      min: min,
+      shuffle: shuffle,
+      sample: sample,
+      sortBy: sortBy,
+      groupBy: groupBy,
+      indexBy: indexBy,
+      countBy: countBy,
+      toArray: toArray,
+      size: size,
+      partition: partition,
+      first: first,
+      head: first,
+      take: first,
+      initial: initial,
+      last: last,
+      rest: rest,
+      tail: rest,
+      drop: rest,
+      compact: compact,
+      flatten: flatten,
+      without: without,
+      uniq: uniq,
+      unique: uniq,
+      union: union,
+      intersection: intersection,
+      difference: difference,
+      unzip: unzip,
+      zip: zip,
+      object: object,
+      findIndex: findIndex,
+      findLastIndex: findLastIndex,
+      sortedIndex: sortedIndex,
+      indexOf: indexOf,
+      lastIndexOf: lastIndexOf,
+      range: range,
+      chunk: chunk,
+      bind: bind,
+      partial: partial,
+      bindAll: bindAll,
+      memoize: memoize,
+      delay: delay,
+      defer: defer,
+      throttle: throttle,
+      debounce: debounce,
+      wrap: wrap,
+      negate: negate,
+      compose: compose,
+      after: after,
+      before: before,
+      once: once,
+      keys: keys,
+      allKeys: allKeys,
+      values: values,
+      mapObject: mapObject,
+      pairs: pairs,
+      invert: invert,
+      functions: functions,
+      methods: functions,
+      extend: extend,
+      extendOwn: extendOwn,
+      assign: extendOwn,
+      findKey: findKey,
+      pick: pick,
+      omit: omit,
+      defaults: defaults,
+      create: create,
+      clone: clone,
+      tap: tap,
+      isMatch: isMatch,
+      isEqual: isEqual,
+      isEmpty: isEmpty,
+      isElement: isElement,
+      isArray: isArray,
+      isObject: isObject,
+      isArguments: isArguments,
+      isFunction: isFunction,
+      isString: isString,
+      isNumber: isNumber,
+      isDate: isDate,
+      isRegExp: isRegExp,
+      isError: isError,
+      isSymbol: isSymbol,
+      isMap: isMap,
+      isWeakMap: isWeakMap,
+      isSet: isSet,
+      isWeakSet: isWeakSet,
+      isFinite: isFinite,
+      isNaN: isNaN,
+      isBoolean: isBoolean,
+      isNull: isNull,
+      isUndefined: isUndefined,
+      has: has,
+      identity: identity,
+      constant: constant,
+      noop: noop,
+      property: property,
+      propertyOf: propertyOf,
+      matcher: matcher,
+      matches: matcher,
+      times: times,
+      random: random,
+      now: now,
+      escape: escape,
+      unescape: unescape,
+      result: result,
+      uniqueId: uniqueId,
+      templateSettings: templateSettings,
+      template: template,
+      chain: chain,
+      mixin: mixin
+    });
+  
+    // Add all of the Underscore functions to the wrapper object.
+    var _$1 = mixin(allExports);
+    // Legacy Node.js API
+    _$1._ = _$1;
+  
+    return _$1;
+  
+  })));
+  //# sourceMappingURL=underscore.js.map
+  
