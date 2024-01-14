@@ -1,33 +1,19 @@
-import { ButtonHTMLAttributes, ReactNode, forwardRef } from "react";
-type ButtonVariant = "secondary" | "plain";
-type ButtonSize = "m" | "l" | "xl";
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    className?: string;
-    /**
-     * Тема кнопки
-     */
-    variant?: ButtonVariant;
-    /**
-     * Размер кнопки в соответствии с дизайн-системой
-     */
-    size?: ButtonSize;
-    /**
-     * Флаг, делающий кнопку квадратной
-     */
-    square?: boolean;
-    /**
-     * Флаг, делающий кнопку недоступной
-     */
-    disabled?: boolean;
-    /**
-     * Увеличивает кнопку на всю свободную ширину
-     */
-    fullwidth?: boolean;
-    /**
-     *
-     */
-    children: ReactNode;
+export namespace ButtonVariant {
+    let Secondary: string;
+    let Plain: string;
 }
-export type ButtonType = ReturnType<typeof forwardRef<HTMLButtonElement, ButtonProps>>;
-declare const Button: ButtonType;
-export default Button;
+export namespace ButtonTheme {
+    let Destruct: string;
+}
+/**
+ * Button
+ *
+ * @param {{
+ *     variant?: "secondary" | "plain",
+ *     theme?: string,
+ *     wide?: boolean,
+ *     icon?: string,
+ *     type?: string
+ * } & import('react').HTMLAttributes<HTMLButtonElement>} props
+ */
+export const Button: import("react").ForwardRefExoticComponent<import("react").RefAttributes<any>>;

@@ -1,4 +1,5 @@
 const path = require("path");
+
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
@@ -6,75 +7,75 @@ const TerserPlugin = require("terser-webpack-plugin");
 // npm run devjs -- --env names=name1,name2,...
 
 const Mode = {
-  Development: "development",
-  Production: "production",
+    Development: "development",
+    Production: "production",
 };
 
 const mode = process.env.NODE_ENV;
 const isProduction = mode === Mode.Production;
 
 module.exports = () => {
-  console.log(`Running webpack in ${mode} mode.`);
+    console.log(`Running webpack in ${mode} mode.`);
 
-  const config = {
-    mode,
+    const config = {
+        mode,
 
-    entry: "./src/index.js",
+        entry: "./src/index.js",
 
-    resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx"], //? ts
-    },
-
-    output: {
-      path: path.resolve(__dirname, "./lib"),
-      filename: isProduction ? "react-uikit.min.js" : "react-uikit.js",
-      library: "ReactUikit",
-      libraryTarget: "umd",
-    },
-
-    devtool: isProduction ? false : "inline-source-map",
-
-    module: {
-      rules: [
-        // todo: rm ???
-        {
-          test: /\.css$/i,
-          use: ["style-loader", "css-loader"],
+        resolve: {
+            extensions: [".js", ".jsx", ".ts", ".tsx"], //? ts
         },
-        {
-          test: /\.(js|jsx|ts|tsx)$/, //? ts
-          exclude: /node_modules/,
-          use: "babel-loader",
+
+        output: {
+            path: path.resolve(__dirname, "./lib"),
+            filename: isProduction ? "react-uikit.min.js" : "react-uikit.js",
+            library: "ReactUikit",
+            libraryTarget: "umd",
         },
-      ],
-    },
 
-    // plugins: [new CleanWebpackPlugin()],
+        devtool: isProduction ? false : "inline-source-map",
 
-    externals: {
-      react: {
-        root: "React",
-        commonjs2: "react",
-        commonjs: "react",
-        amd: "react",
-      },
-      "react-dom": {
-        root: "ReactDOM",
-        commonjs2: "react-dom",
-        commonjs: "react-dom",
-        amd: "react-dom",
-      },
-    },
+        module: {
+            rules: [
+                // todo: rm ???
+                {
+                    test: /\.css$/i,
+                    use: ["style-loader", "css-loader"],
+                },
+                {
+                    test: /\.(js|jsx|ts|tsx)$/, //? ts
+                    exclude: /node_modules/,
+                    use: "babel-loader",
+                },
+            ],
+        },
 
-    // to NOT generate license file
-    optimization: {
-      minimizer: [
-        new TerserPlugin({
-          extractComments: false,
-        }),
-      ],
-    },
-  };
+        // plugins: [new CleanWebpackPlugin()],
 
-  return config;
+        externals: {
+            react: {
+                root: "React",
+                commonjs2: "react",
+                commonjs: "react",
+                amd: "react",
+            },
+            "react-dom": {
+                root: "ReactDOM",
+                commonjs2: "react-dom",
+                commonjs: "react-dom",
+                amd: "react-dom",
+            },
+        },
+
+        // to NOT generate license file
+        optimization: {
+            minimizer: [
+                new TerserPlugin({
+                    extractComments: false,
+                }),
+            ],
+        },
+    };
+
+    return config;
 };

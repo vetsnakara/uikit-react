@@ -1,8 +1,3 @@
-// ...
-// ...
-// ...
-// ...
-
 export * from "./Avatar";
 export * from "./Badge";
 export * from "./Box";
@@ -30,8 +25,8 @@ export * from "./Separator";
 export * from "./Status";
 // todo: use variant with modifying children classes with mb-x
 // export * from "./Stack";
-export * from "./VStack";
 export * from "./Table";
 export * from "./Text";
 export * from "./Textarea";
 export * from "./Tooltip";
+export * from "./VStack";

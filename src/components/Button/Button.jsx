@@ -1,9 +1,12 @@
-import { forwardRef } from "react";
 import cn from "classnames";
+import * as PropTypes from "prop-types";
+import { forwardRef, useEffect } from "react";
 
 // todo: Button as link
-
 // todo: use Button.Variant
+// todo: change order of memo and forwardRef ???
+// todo: create helper for generate new component (cli, snippet)
+
 export const ButtonVariant = {
     Secondary: "secondary",
     Plain: "plain",
@@ -13,16 +16,29 @@ export const ButtonTheme = {
     Destruct: "desctuct",
 };
 
-// todo: change order of memo and forwardRef ???
-// todo: create helper for generate new component (cli, snippet)
+const ButtonPropTypes = {
+    theme: PropTypes.string.isRequired,
+};
+
 /**
  * Button
  *
- * @type {import("./Button").ButtonType}
- * @return {React.ReactElement}
+ * @param {{
+ *     variant?: "secondary" | "plain",
+ *     theme?: string,
+ *     wide?: boolean,
+ *     icon?: string,
+ *     type?: string
+ * } & import('react').HTMLAttributes<HTMLButtonElement>} props
  */
 export const Button = forwardRef(
-    ({ variant, theme, wide, icon, type = "button", className, children, ...props }, ref) => {
+    ({ variant, theme, wide, icon, type = "button", className, children, ...buttonProps }, ref) => {
+        console.log("useEffect", useEffect);
+
+        useEffect(() => {
+            console.log("--- effect");
+        }, []);
+
         const classNames = cn(
             "button",
             {
@@ -36,7 +52,7 @@ export const Button = forwardRef(
         );
 
         return (
-            <button ref={ref} className={classNames} type={type} {...props}>
+            <button ref={ref} className={classNames} type={type} {...buttonProps}>
                 {icon && (
                     <svg className="icon button__icon">
                         <use href={`uikit/icon/icons.svg#${icon}`}></use>
@@ -48,4 +64,13 @@ export const Button = forwardRef(
     }
 );
 
-Button.Variant = ButtonVariant;
+// Button.Variant = ButtonVariant;
+
+// const _Button = forwardRef(Button);
+
+// Object.assign(_Button, {
+//     displayName: "Button",
+//     propTypes: ButtonPropTypes,
+// });
+
+// export { _Button as Button };

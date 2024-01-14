@@ -1,32 +1,10 @@
-import { ButtonHTMLAttributes, ReactNode, forwardRef } from "react";
-type ButtonVariant = "secondary" | "plain";
-type ButtonSize = "m" | "l" | "xl";
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export { _Input as Input };
+declare const _Input: import("react").MemoExoticComponent<import("react").ForwardRefExoticComponent<{
+    title?: string;
+    error?: string;
+    maskOptions?: Record<"string", any>;
+    onChange?: () => {};
     className?: string;
-    /**
-     * Тема кнопки
-     */
-    variant?: ButtonVariant;
-    /**
-     * Размер кнопки в соответствии с дизайн-системой
-     */
-    size?: ButtonSize;
-    /**
-     * Флаг, делающий кнопку квадратной
-     */
-    square?: boolean;
-    /**
-     * Флаг, делающий кнопку недоступной
-     */
-    disabled?: boolean;
-    /**
-     * Увеличивает кнопку на всю свободную ширину
-     */
-    fullwidth?: boolean;
-    /**
-     *
-     */
-    children: ReactNode;
-}
-export type Input = ReturnType<typeof forwardRef<HTMLButtonElement, ButtonProps>>;
-export {};
+    value?: "string";
+    defaultValue?: string;
+} & import("react").HTMLAttributes<HTMLInputElement> & import("react").RefAttributes<any>>>;
