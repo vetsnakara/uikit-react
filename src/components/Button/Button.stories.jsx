@@ -7,6 +7,7 @@ import { Button } from "./Button";
 
 export default {
     title: "uikit/Button",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 

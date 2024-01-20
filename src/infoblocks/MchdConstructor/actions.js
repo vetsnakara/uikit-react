@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 
-import { AppAction, Status } from "./constants";
+import * as api from "./api";
+import { AppAction, Status } from "./constatns/constants";
 import { useAppDispatch } from "./context";
 import { useUIState } from "./uiContext";
-import * as api from "./api";
 
 export const setStatus = (status) => ({
     type: AppAction.SET_STATUS,

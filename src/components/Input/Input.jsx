@@ -25,7 +25,7 @@ import { useFormControlRef } from "../../hooks";
  *    className?: string
  *    value?: "string"
  *    defaultValue?: string
- * } & import('react').HTMLAttributes<HTMLInputElement>} props
+ * } & import('react').InputHTMLAttributes<HTMLInputElement>} props
  */
 // ??? why no `placeholder` attribute ???
 function Input(

@@ -3,19 +3,20 @@
 
 export default {
     title: "uikit/Grid",
+    tags: ["autodocs"],
 };
 
 export { ContainerExamples } from "./examples/Container";
 
 export {
+    AllBreakpoints,
     Basic,
     EqualWidth,
-    SetOneColumnWidth,
-    VariableWidthContent,
-    AllBreakpoints,
-    StackedToHorizontal,
     MixAndMatch,
     Nesting,
+    SetOneColumnWidth,
+    StackedToHorizontal,
+    VariableWidthContent,
 } from "./examples/Grid";
 
-export { Reordering, Offsetting } from "./examples/Col";
+export { Offsetting, Reordering } from "./examples/Col";

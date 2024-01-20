@@ -4,6 +4,7 @@ import { Radio } from "./Radio";
 
 export default {
     title: "inputs/Radio",
+    tags: ["autodocs"],
 };
 
 // todo: controlled and uncontrolled

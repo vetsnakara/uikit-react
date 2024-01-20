@@ -1,5 +1,5 @@
+import { useCallback, useMemo, useRef, useState } from "react";
 import * as yup from "yup";
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 
 import { useProxyState } from "../useProxyState";
 
@@ -43,8 +43,6 @@ import { useProxyState } from "../useProxyState";
 const isUndefined = (value) => value === undefined;
 
 export const useForm = ({ defaultValues = {}, schema } = {}) => {
-    console.log("⚡ useForm: render");
-
     const refStore = useRef({});
 
     // const registerOrder = [];
@@ -74,28 +72,34 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
         //? errors: ...
     });
 
-    useEffect(() => {
-        setDefaultValues({ init: true });
-    }, []);
+    // useEffect(() => {
+    //     setDefaultValues({ init: true });
+    // }, []);
 
-    const setDefaultValues = ({ init = false } = {}) => {
+    // todo: don't use setDefaultValues on init
+    // todo: don't set default value if current value didn't change
+    const setDefaultValues = () => {
         for (const name of Object.keys(refStore.current)) {
-            // note: defaultValue = defaultValues[name] || innerDefaultValue
-            const { setValue, defaultValue } = refStore.current[name];
+            const { mounted, defaultValue, setValue } = refStore.current[name];
 
-            const hasExternalDefaultValue = !isUndefined(defaultValues[name]);
-            const shouldSetDefaultValue = !init || (init && hasExternalDefaultValue);
+            // const hasExternalDefaultValue = !isUndefined(defaultValues[name]);
+            const shouldSetValue = mounted && !isUndefined(defaultValue);
+            if (shouldSetValue) setValue(defaultValue);
 
-            // todo: don't set default value if current value didn't change
-
-            if (shouldSetDefaultValue) setValue(defaultValue);
+            const watched = _names.watch.has(name);
+            if (watched) {
+                setValues((values) => ({
+                    ...values,
+                    [name]: defaultValue,
+                }));
+            }
         }
     };
 
     const resetValues = () => {
         for (const name of Object.keys(refStore.current)) {
-            const { setValue } = refStore.current[name];
-            setValue();
+            const { setValue, mounted } = refStore.current[name];
+            if (mounted) setValue();
         }
     };
 
@@ -174,6 +178,8 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
             target: { name },
         } = event;
 
+        console.log("useForm:onChange", name);
+
         const shouldUpdateValue = _names.watchAll || _names.watch.has(name);
         validateField(name, { shouldUpdateValue });
     }, []);
@@ -200,10 +206,24 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
     // иначе проискодит двойной вызов ref callback (null (1) => node (2))
     // todo: use refStore
     //?! is needed el in ref object
+    // info: callback ref is called with NOT null when dom element is accessible (before mount or after? - check it)
+    // info: callback ref is called witn null before unmount (element exists during the call)
     const getCallbackRef = (name) => (ref) => {
+        // if (name === "attorneyDateBegin") {
+        //     console.log("--- callbackRef", name);
+        // }
+
         // unregister
         if (!ref) {
-            delete refStore.current[name];
+            // todo: удалять если установлен флаг shouldUnregister
+            // delete refStore.current[name];
+
+            // save current value to restore after mount
+            // todo?: can we do in onUnmount ? (скорее всего нет, т.к. элемента уже нет - проверить)
+            const { getValue } = refStore.current[name];
+            refStore.current[name].currentValue = getValue();
+            refStore.current[name].mounted = false;
+
             return;
         }
 
@@ -216,14 +236,33 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
 
         Object.assign(refStore.current[name], ref, {
             schema: schema?.[name] ?? null,
+            // ? is needed: move to set default values ?
             defaultValue: hasExternalDefaultValue ? externalDefaultValue : innerDefaultValue,
+            mounted: true,
         });
+
+        // todo: реализовать setMountFn (setUnmount? use for unregister?) in all components
+        // todo: проверить установку и сброс дефолтных значений по кнопке
+
+        ref.setOnMount?.(() => {
+            // console.log(name, "mounted");
+            // todo: set value here (current or default)?
+            const { defaultValue, currentValue } = refStore.current[name];
+            refStore.current[name].setValue(_.isUndefined(currentValue) ? defaultValue : currentValue);
+        });
+
+        // todo: проверить очередность срабатывания useEffect во внешних и вложенных компонентах (по идее, вначале должны срабатывать во вложенных)
     };
 
+    // todo!
+    // проверить последовательность вызовов useEffect (+clean function) and ref callbaak during mount/unmount pahses
+
+    // info: вызывается во время рендера
     const register = (name) => {
         // todo: refactor
         // todo: use deep set
         // note: обеспечиваем стабильность сслки на callbackRef
+        // todo: стабилизировать ссылку по-другому, через useEvent
         if (!refStore.current[name]) refStore.current[name] = {}; //! DRY
         if (!refStore.current[name].refCallback) {
             refStore.current[name].refCallback = getCallbackRef(name);
@@ -281,7 +320,6 @@ export const useForm = ({ defaultValues = {}, schema } = {}) => {
 
     // todo: to utils
     const hasErrors = (errors) => {
-        console.log("errors", errors);
         if (!errors) return false;
 
         const hasKeys = Object.keys(errors).length > 0;

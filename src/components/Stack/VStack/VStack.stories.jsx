@@ -4,6 +4,7 @@ import { VStack } from "./VStack";
 
 export default {
     title: "uikit/Stack/VStack",
+    tags: ["autodocs"],
 };
 
 // todo: nested (for HStack too)

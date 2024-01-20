@@ -6,6 +6,7 @@ import { NotificationContainer, notification } from "./NotificationContainer";
 
 export default {
     title: "uikit/Notification",
+    tags: ["autodocs"],
 };
 
 // todo: не вижно иконки закрытия

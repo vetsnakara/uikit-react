@@ -1,9 +1,11 @@
+import { Button, Dropdown } from "@uikit/components";
 import { useCallback } from "react";
-import { Dropdown, Button } from "@uikit/components";
 
+console.log("Button", Button);
+
+import { AppAction } from "../constants";
 import { useAppState } from "../context";
 import { useUIState } from "../uiContext";
-import { AppAction } from "../constants";
 
 /* !!! can be placed in any place  */
 export const ActionDropdown = () => {

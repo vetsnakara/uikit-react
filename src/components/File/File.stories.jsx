@@ -1,10 +1,11 @@
 import { maxWidth } from "../../../.storybook/decorators";
 
-import { FilePreview } from "./FilePreview";
 import { File as FileUpload } from "./File";
+import { FilePreview } from "./FilePreview";
 
 export default {
     title: "inputs/File",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 

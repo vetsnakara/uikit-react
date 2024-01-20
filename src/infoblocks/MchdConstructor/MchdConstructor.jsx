@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
+import { Row, Title } from "@uikit/components";
 import { MainWithStickySidebar as Layout } from "@uikit/layout/MainWithStickySidebar";
-import { Title, Row } from "@uikit/components";
 
 import { Main } from "./components/Main";
-import { SignModal, RemoveModal, RevokeModal } from "./components/modals";
+import { RemoveModal, RevokeModal, SignModal } from "./components/modals";
 
 // todo: icon are not visible now
 
@@ -24,7 +24,7 @@ export const MchdConstructor = () => {
             <Row>
                 <Layout>
                     <Layout.Main>
-                        <Main />
+                        <Main /> {/* rename ro MchdForm */}
                     </Layout.Main>
                     <Layout.Aside>
                         {/* <Sidebar /> */}

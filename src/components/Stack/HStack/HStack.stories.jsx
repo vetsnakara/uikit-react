@@ -4,6 +4,7 @@ import { HStack } from "./HStack";
 
 export default {
     title: "uikit/Stack/HStack",
+    tags: ["autodocs"],
 };
 
 export const GapOne = ({ gap = 1 }) => {

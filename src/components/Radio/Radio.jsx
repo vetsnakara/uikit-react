@@ -1,5 +1,5 @@
-import React, { memo, useContext, useRef, forwardRef } from "react";
 import cn from "classnames";
+import { forwardRef, memo, useContext, useRef } from "react";
 
 import { composeRef } from "../../hooks/useElementRef";
 

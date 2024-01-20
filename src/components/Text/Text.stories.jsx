@@ -1,7 +1,8 @@
-import { TextColor, TextSize, Title, Subtitle, SectionTitle, SectionSubtitle, Paragraph, Span } from "./Text";
+import { Paragraph, SectionSubtitle, SectionTitle, Span, Subtitle, TextColor, TextSize, Title } from "./Text";
 
 export default {
     title: "uikit/Text",
+    tags: ["autodocs"],
 };
 
 export const Default = () => (

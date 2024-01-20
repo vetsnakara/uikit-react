@@ -2,6 +2,7 @@ import { Avatar, AvatarSize } from "./Avatar";
 
 export default {
     title: "uikit/Avatar",
+    tags: ["autodocs"],
 };
 
 const options = {

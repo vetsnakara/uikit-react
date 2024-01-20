@@ -5,6 +5,7 @@ import { Table } from "./Table";
 
 export default {
     title: "uikit/Table",
+    tags: ["autodocs"],
 };
 
 export const Default = () => (

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, Component } from "react";
+import { Component, useEffect, useRef, useState } from "react";
 
 import ReactSelect from "react-select";
 
@@ -6,6 +6,7 @@ import { maxWidth } from "../../../.storybook/decorators";
 
 export default {
     title: "inputs/Select",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 
@@ -22,39 +23,39 @@ export default {
 // todo: test progammaticaly change value (+ multiple), disable/enable, chnage add/remove options - need to refresh
 
 export {
-    Default,
-    NoItems,
-    Title,
-    Error,
-    Disabled,
-    Required,
-    Multiple,
-    Placeholder,
     Closeable,
     CloseableWithError,
-    NoDecor,
-    Uncontrolled,
     Controlled,
+    Default,
+    Disabled,
+    Error,
     Events,
+    Multiple,
+    NoDecor,
+    NoItems,
+    Placeholder,
+    Required,
+    Title,
+    Uncontrolled,
 } from "./examples/Basic";
 
-export { Subtext, StyleOptions, Divider, Groups, CustomContent, DisabledOptions } from "./examples/Options";
+export { CustomContent, DisabledOptions, Divider, Groups, StyleOptions, Subtext } from "./examples/Options";
 
 export {
-    Width,
-    Container,
-    Dropup,
-    Header,
-    Size,
-    MaxOptions,
-    LiveSearch,
-    LiveSearchStyle,
     ActionsBox,
     AddItems,
-    SelectedTextFormat,
-    NoneSelectedText,
+    Container,
     CountSelectedText,
+    Dropup,
+    Header,
+    LiveSearch,
+    LiveSearchStyle,
+    MaxOptions,
     MultipleSeparator,
+    NoneSelectedText,
+    SelectedTextFormat,
+    Size,
+    Width,
 } from "./examples/Selectpicker";
 
 export { Ajax } from "./examples/Ajax";

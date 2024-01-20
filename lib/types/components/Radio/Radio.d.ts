@@ -1,2 +1,1 @@
-export const Radio: React.MemoExoticComponent<React.ForwardRefExoticComponent<React.RefAttributes<any>>>;
-import React from "react";
+export const Radio: import("react").MemoExoticComponent<import("react").ForwardRefExoticComponent<import("react").RefAttributes<any>>>;

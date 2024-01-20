@@ -5,6 +5,7 @@ import { Card } from "./Card";
 
 export default {
     title: "uikit/Card",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 

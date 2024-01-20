@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 import { Button, ButtonVariant } from "../Button";
 
@@ -7,6 +7,7 @@ import { DropdownItemType } from "./DropdownItem";
 
 export default {
     title: "uikit/Dropdown",
+    tags: ["autodocs"],
 };
 
 // todo: в виде кнопки с иконкой

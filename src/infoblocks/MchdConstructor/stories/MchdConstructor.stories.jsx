@@ -2,7 +2,7 @@ import React from "react";
 
 import { MchdConstructor } from "../MchdConstructor";
 
-import { LegalEntityPrincipalType, PrincipalType, UserRole, Status } from "../constants";
+import { LegalEntityPrincipalType, PrincipalType, Status, UserRole } from "../constatns/constants";
 
 import { Provider } from "../context";
 

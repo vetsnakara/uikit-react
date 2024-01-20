@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, forwardRef, useEffect } from "react";
+import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 
 import { maxWidth } from "../../../.storybook/decorators";
 import { Button, ButtonVariant } from "../Button";
@@ -7,6 +7,7 @@ import { Input } from "./Input";
 
 export default {
     title: "inputs/Input",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 

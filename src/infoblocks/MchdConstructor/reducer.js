@@ -1,5 +1,5 @@
+import { AppAction } from "./constatns/constants";
 import { setSidebarState } from "./context";
-import { AppAction } from "./constants";
 
 export const reducer = (state, { type, payload }) => {
     switch (type) {

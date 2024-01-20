@@ -4,6 +4,7 @@ import { Badge, BadgeMaxWidth250, BadgeVariant } from "./Badge";
 
 export default {
     title: "uikit/Badge",
+    tags: ["autodocs"],
 };
 
 export const Default = () => (

@@ -4,6 +4,7 @@ import { Pagination } from "./Pagination";
 
 export default {
     title: "uikit/Pagination",
+    tags: ["autodocs"],
 };
 
 export const Default = () => {

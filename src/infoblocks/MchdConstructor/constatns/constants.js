@@ -1,4 +1,4 @@
-import { StatusType } from "../../components/Status";
+import { StatusType } from "../../../components/Status";
 
 export const Status = {
     Draft: "DRAFT",

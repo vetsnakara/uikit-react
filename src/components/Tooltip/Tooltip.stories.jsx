@@ -4,6 +4,7 @@ import { Tooltip } from "./Tooltip";
 
 export default {
     title: "uikit/Tooltip",
+    tags: ["autodocs"],
     parameters: {
         layout: "centered",
     },

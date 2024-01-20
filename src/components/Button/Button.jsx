@@ -1,5 +1,4 @@
 import cn from "classnames";
-import * as PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 // todo: Button as link
@@ -17,7 +16,7 @@ export const ButtonTheme = {
 };
 
 const ButtonPropTypes = {
-    theme: PropTypes.string.isRequired,
+    // theme: PropTypes.string.isRequired,
 };
 
 /**
@@ -29,7 +28,7 @@ const ButtonPropTypes = {
  *     wide?: boolean,
  *     icon?: string,
  *     type?: string
- * } & import('react').HTMLAttributes<HTMLButtonElement>} props
+ * } & import('react').ButtonHTMLAttributes<HTMLButtonElement>} props
  */
 function Button({ variant, theme, wide, icon, type = "button", className, children, ...buttonProps }, ref) {
     const classNames = cn(
@@ -56,13 +55,12 @@ function Button({ variant, theme, wide, icon, type = "button", className, childr
     );
 }
 
-Button.Variant = ButtonVariant;
-
 const _Button = forwardRef(Button);
 
 Object.assign(_Button, {
     displayName: "Button",
     propTypes: ButtonPropTypes,
+    Variant: ButtonVariant, // todo: rm
 });
 
 export { _Button as Button };

@@ -4,6 +4,7 @@ import { Textarea } from "./Textarea";
 
 export default {
     title: "inputs/Textarea",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 

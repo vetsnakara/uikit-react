@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { VStack } from "../VStack";
 
@@ -6,6 +6,7 @@ import { Checkbox } from "./Checkbox";
 
 export default {
     title: "inputs/Checkbox",
+    tags: ["autodocs"],
 };
 
 export const Default = () => <Checkbox label="Default" />;

@@ -4,6 +4,7 @@ import { GroupContainer } from "./GroupContainer";
 
 export default {
     title: "uikit/GroupContainer",
+    tags: ["autodocs"],
 };
 
 export const Default = () => (

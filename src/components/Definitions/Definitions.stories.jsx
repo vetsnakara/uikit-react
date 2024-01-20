@@ -5,6 +5,7 @@ import { Definitions } from "./Definitions";
 
 export default {
     title: "uikit/Definitions",
+    tags: ["autodocs"],
 };
 
 const items = [

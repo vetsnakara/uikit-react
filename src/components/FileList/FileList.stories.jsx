@@ -4,6 +4,7 @@ import { FileList, getId } from "./FileList";
 
 export default {
     title: "inputs/FileList",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 

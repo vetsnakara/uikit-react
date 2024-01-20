@@ -4,6 +4,7 @@ import { Separator } from "./Separator";
 
 export default {
     title: "uikit/Separator",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 

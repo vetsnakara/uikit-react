@@ -7,4 +7,4 @@ declare const _Input: import("react").MemoExoticComponent<import("react").Forwar
     className?: string;
     value?: "string";
     defaultValue?: string;
-} & import("react").HTMLAttributes<HTMLInputElement> & import("react").RefAttributes<any>>>;
+} & import("react").InputHTMLAttributes<HTMLInputElement> & import("react").RefAttributes<any>>>;

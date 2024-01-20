@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 import { Button } from "../Button";
+import { DateInput } from "../DateInput";
 import { Input } from "../Input";
 import { Paragraph } from "../Text";
-import { DateInput } from "../DateInput";
 
 import { Modal as ModalComponent, ModalVariant } from "./Modal";
 
 export default {
     title: "uikit/Modal",
+    tags: ["autodocs"],
 };
 
 export const Dialog = () => {

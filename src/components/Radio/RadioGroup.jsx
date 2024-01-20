@@ -1,4 +1,4 @@
-import React, { memo, forwardRef } from "react";
+import { forwardRef, memo } from "react";
 
 import { useFormControlRef } from "../../hooks";
 
@@ -35,6 +35,7 @@ export const RadioGroup = memo(
 
         // todo: should return (value, event)
         const onRadioChange = (event) => {
+            // console.log("onRadioChange");
             props?.onChange(ref.current.getValue(), event);
         };
 

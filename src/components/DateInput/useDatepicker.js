@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 
 import { useFormControlRef } from "../../hooks";
 
@@ -38,18 +38,22 @@ export const useDatepicker = (
     const context = useRef();
 
     // note: Input passes to callback ref object { el, setValue, ...}, not DOM input element
-    const { ref, callbackRef } = useFormControlRef(extRef, ({ el }) => ({
-        el,
-        getValue: () => {
-            const parsedDateValue = getDateValueFromString(el.value);
-            const { dateValue } = getValidatedDate(parsedDateValue);
-            return dateValue;
-        },
-        setValue: setDate,
-    }));
+    const { ref, callbackRef } = useFormControlRef(extRef, ({ el }) => {
+        return {
+            el,
+            getValue: () => {
+                const parsedDateValue = getDateValueFromString(el.value);
+                const { dateValue } = getValidatedDate(parsedDateValue);
+                return dateValue;
+            },
+            setValue: setDate,
+        };
+    });
 
-    useEffect(() => {
+    // info: use useLayoutEffect to initialize datepicker before useEffect
+    useLayoutEffect(() => {
         const $el = $(ref.current.el);
+        // console.log("--- useLayoutEffect", $el);
 
         $el.datepicker({
             ...defaultOptions,

@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { maxWidth } from "../../../.storybook/decorators";
 import { VStack } from "../Stack";
@@ -7,6 +7,7 @@ import { DateInput } from "./DateInput";
 
 export default {
     title: "inputs/DateInput",
+    tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
 

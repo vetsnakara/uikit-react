@@ -4,6 +4,7 @@ import { Status, StatusType } from "./Status";
 
 export default {
     title: "uikit/Status",
+    tags: ["autodocs"],
 };
 
 export const Default = () => (

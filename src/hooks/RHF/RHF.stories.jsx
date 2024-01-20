@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default {
@@ -7,26 +8,23 @@ export default {
     },
 };
 
-const BaseForm = ({ register, handleSubmit }) => (
-    <form onSubmit={handleSubmit((data) => console.log("data", data))} noValidate>
-        <div>
-            <input {...register("name")} />
-        </div>
-        <div>
-            <input type="checkbox" {...register("check")} />
-        </div>
-    </form>
-);
-
 export const Default = () => {
-    const formProps = useForm({
+    const { handleSubmit, register } = useForm({
+        shouldUnregister: false,
         defaultValues: {
-            //   name: "abc",
+            // name: "sdfsdf",
         },
     });
 
-    const watched = formProps.watch();
-    console.log("watched", watched);
+    const [show, setShow] = useState(true);
 
-    return <BaseForm {...formProps} />;
+    return (
+        <>
+            <input type="checkbox" checked={show} onChange={() => setShow((s) => !s)} />
+
+            <form onSubmit={handleSubmit((data) => console.log("data", data))} noValidate>
+                <div>{show && <input {...register("name")} />}</div>
+            </form>
+        </>
+    );
 };

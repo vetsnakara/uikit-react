@@ -1,13 +1,14 @@
 // todo: place to components ???
 
 import { Card } from "../components/Card";
-import { Title } from "../components/Text";
 import { VStack } from "../components/Stack";
+import { Title } from "../components/Text";
 
 import { MainWithStickySidebar as Layout } from "./MainWithStickySidebar";
 
 export default {
     title: "uikit/LayoutStickySidebar",
+    tags: ["autodocs"],
 };
 
 export const Base = () => {

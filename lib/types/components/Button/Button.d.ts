@@ -12,4 +12,4 @@ declare const _Button: import("react").ForwardRefExoticComponent<{
     wide?: boolean;
     icon?: string;
     type?: string;
-} & import("react").HTMLAttributes<HTMLButtonElement> & import("react").RefAttributes<any>>;
+} & import("react").ButtonHTMLAttributes<HTMLButtonElement> & import("react").RefAttributes<any>>;

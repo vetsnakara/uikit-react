@@ -1,7 +1,8 @@
-import { UList, OList } from "./List";
+import { OList, UList } from "./List";
 
 export default {
     title: "uikit/List",
+    tags: ["autodocs"],
 };
 
 export const Unordered = () => (
