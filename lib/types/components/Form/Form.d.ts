@@ -1,8 +1,4 @@
-export function Form({ className, children, ...otherProps }: {
-    [x: string]: any;
-    className: any;
-    children: any;
-}): import("react/jsx-runtime").JSX.Element;
+export const Form: import("react").ForwardRefExoticComponent<import("react").RefAttributes<any>>;
 export function FormSection({ className, children, ...otherProps }: {
     [x: string]: any;
     className: any;

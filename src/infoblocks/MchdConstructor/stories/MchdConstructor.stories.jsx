@@ -4,9 +4,6 @@ import { MchdConstructor } from "../MchdConstructor";
 
 import { LegalEntityPrincipalType, PrincipalType, Status, UserRole } from "../constatns/constants";
 
-import { Provider } from "../context";
-
-import { getData } from "./data";
 import { WithInfoblockLayout } from "./decorators";
 
 // todo: remove SB paddings
@@ -39,9 +36,9 @@ export default {
 // change key to force update element tree
 export const Default = (args) => (
     <React.Fragment key={JSON.stringify(args)}>
-        <Provider data={getData(args)}>
-            <MchdConstructor />
-        </Provider>
+        {/* <Provider data={getData(args)}> */}
+        <MchdConstructor />
+        {/* </Provider> */}
     </React.Fragment>
 );
 

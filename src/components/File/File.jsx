@@ -1,6 +1,6 @@
-import { useState, useRef, memo, forwardRef } from "react";
+import { forwardRef, memo, useEffect, useRef, useState } from "react";
 
-import { useFormControlRef } from "../../hooks";
+import { composeRef } from "../../hooks/useElementRef";
 
 import { FilePreview } from "./FilePreview";
 import { FileAction } from "./constants";
@@ -22,27 +22,17 @@ export const File = memo(
             },
             extRef
         ) => {
-            const [file, setFile] = useState(initFile);
+            const [file, setFile] = useState(null);
 
-            const currFileRef = useRef(null); //?! is needed (use inputRef???)
+            useEffect(() => {
+                setFile(initFile);
+            }, [initFile]);
+
+            const currFileRef = useRef(null);
             const actionRef = useRef();
 
-            const { ref: inputRef, callbackRef } = useFormControlRef(extRef, (el) => ({
-                el,
-                getValue: () => currFileRef.current,
-                setValue: (file) => {
-                    if (file) {
-                        // todo: combine setFile and currFileRef.current set to one func
-                        setFile(file);
-                        currFileRef.current = file;
-                        return;
-                    }
-
-                    // reset
-                    setFile(null);
-                    currFileRef.current = null;
-                },
-            }));
+            const inputRef = useRef(null);
+            const callbackRef = composeRef(inputRef, extRef);
 
             // handle add/change
             const handleChange = (event) => {
@@ -61,7 +51,7 @@ export const File = memo(
 
             const handleAction = (event) => {
                 const { target: el } = event;
-                const { el: inputEl } = inputRef.current;
+                const inputEl = inputRef.current;
 
                 if (el !== inputEl) {
                     event.preventDefault();

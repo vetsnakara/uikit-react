@@ -1,6 +1,6 @@
 import { Component, useEffect, useRef, useState } from "react";
 
-import ReactSelect from "react-select";
+// import ReactSelect from "react-select";
 
 import { maxWidth } from "../../../.storybook/decorators";
 
@@ -80,12 +80,12 @@ export const ReactSelectStory = () => {
     return (
         <>
             <div>value: {JSON.stringify(value)}</div>
-            <ReactSelect
+            {/* <ReactSelect
                 isMulti
                 ref={console.log}
                 options={options}
                 onChange={(value) => console.log("value", value)}
-            />
+            /> */}
             <button onClick={() => setValue(ref.current.getValue())}>get value</button>
             <button onClick={() => ref.current.setValue(options.slice(1))}>set value</button>
 

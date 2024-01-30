@@ -1,24 +1,22 @@
+import { FormProvider, useController, useForm } from "react-hook-form";
+// todo: rm yup (use global lib) ???
 import * as yup from "yup";
 
 // todo: ??? зачем подгружать бандлы react, react-dom, react-uikit, если не странице не используется рекат ???
 // todo: intellisent for @uikit/comopnents (hooks)
 import {
-    Card,
-    Input,
-    Textarea,
-    DateInput,
-    Checkbox,
-    Radio,
-    Form,
-    Select,
     Button,
     ButtonVariant,
-    VStack,
-    GroupContainer,
-    File,
-    Container,
-    Row,
+    Card,
+    Checkbox,
     Col,
+    Container,
+    Form,
+    GroupContainer,
+    Radio,
+    Row,
+    Select,
+    VStack,
 } from "@uikit/components";
 
 // todo: add prettier (with 4 spaces indentation)
@@ -31,10 +29,20 @@ import {
 //     Title: FormTitle,
 // });
 
-//! need types
-import { useForm } from "@uikit/hooks";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { maxWidth } from "../../../.storybook/decorators";
+
+import {
+    FormCheckbox,
+    FormCheckboxGroup,
+    FormDateInput,
+    FormFile,
+    FormInput,
+    FormRadioGroup,
+    FormSelect,
+    FormTextarea,
+} from "./inputs";
 
 export default {
     title: "form/Form",
@@ -60,129 +68,119 @@ export default {
 
 // todo: форма с распределенными контроломаи
 
-const BaseForm = ({
-    register,
-    handleSubmit,
-    reset,
-    clear,
-    getData,
-    formState, //! значения нужно брать через "." formState.isValid (чтобы работал proxy)
-}) => {
-    console.log("formState.isValid", formState.isValid);
+const BaseForm = ({ form }) => {
+    const { handleSubmit, reset, getValues, formState } = form;
+
+    console.log("formState.errors", formState.errors);
 
     return (
-        <Form onSubmit={handleSubmit((data) => console.log("submit:", data))} noValidate>
-            <GroupContainer className="mb-1">
-                <Button disabled={!formState.isValid} type="submit">
-                    Сохранить
-                </Button>
-                {/* todo: enabled if hasChanges/hasFieldsChange ? */}
-                <Button variant={ButtonVariant.Secondary} onClick={reset}>
-                    Сбросить
-                </Button>
-                <Button variant={ButtonVariant.Secondary} onClick={clear}>
-                    Очистить
-                </Button>
-                <Button variant={ButtonVariant.Secondary} onClick={() => console.log(getData())}>
-                    Значения
-                </Button>
-            </GroupContainer>
+        <FormProvider {...form}>
+            <Form onSubmit={handleSubmit((data) => console.log("submit:", data))} noValidate>
+                <GroupContainer className="mb-1">
+                    <Button type="submit">Сохранить</Button>
+                    <Button variant={ButtonVariant.Secondary} onClick={reset}>
+                        Сбросить
+                    </Button>
+                    <Button variant={ButtonVariant.Secondary} onClick={() => console.log(getValues())}>
+                        Значения
+                    </Button>
+                </GroupContainer>
 
-            {/* Сведения о доверенности */}
-            <VStack gap={2} className="mb-2">
-                <Card>
-                    <Form.Section>
-                        <Form.Title>Одиночный чекбокс</Form.Title>
-                        <Checkbox {...register("checkbox")} label="чекбокс" />
-                    </Form.Section>
+                {/* Сведения о доверенности */}
+                <VStack gap={2} className="mb-2">
+                    <Card>
+                        <Form.Section>
+                            <Form.Title>Одиночный чекбокс</Form.Title>
+                            <FormCheckbox name="checkbox" label="чекбокс" />
+                        </Form.Section>
 
-                    <Form.Section>
-                        <Form.Title>Текстовое поле</Form.Title>
-                        <Input {...register("text")} placeholder="Введите текст" />
-                    </Form.Section>
+                        <Form.Section>
+                            <Form.Title>Текстовое поле</Form.Title>
+                            <FormInput name="text" placeholder="Введите текст" />
+                        </Form.Section>
 
-                    <Form.Section>
-                        <Form.Title>Многострочное текстовое поле</Form.Title>
-                        <Textarea {...register("textarea")} placeholder="Введите текст" />
-                    </Form.Section>
+                        <Form.Section>
+                            <Form.Title>Многострочное текстовое поле</Form.Title>
+                            <FormTextarea name="textarea" placeholder="Введите текст" />
+                        </Form.Section>
 
-                    <Form.Section>
-                        <Form.Title>Дата</Form.Title>
-                        <DateInput
-                            {...register("date")}
-                            placeholder="Выберите дату"
-                            maskOptions={{
-                                mask: "99.99.9999", // default
-                            }}
-                        />
-                    </Form.Section>
+                        <Form.Section>
+                            <Form.Title>Дата</Form.Title>
+                            <FormDateInput
+                                name="date"
+                                placeholder="Выберите дату"
+                                maskOptions={{
+                                    mask: "99.99.9999", // default
+                                }}
+                            />
+                        </Form.Section>
 
-                    <Form.Section>
-                        <Form.Title>Диапазон дат</Form.Title>
-                        <DateInput
-                            {...register("dateRange")}
-                            placeholder="Выберите даты"
-                            datepickerOptions={{ range: true }}
-                            maskOptions={{
-                                mask: "99.99.9999 - 99.99.9999", // default
-                            }}
-                        />
-                    </Form.Section>
+                        <Form.Section>
+                            <Form.Title>Диапазон дат</Form.Title>
+                            <FormDateInput
+                                name="dateRange"
+                                placeholder="Выберите даты"
+                                datepickerOptions={{ range: true }}
+                                maskOptions={{
+                                    mask: "99.99.9999 - 99.99.9999", // default
+                                }}
+                            />
+                        </Form.Section>
 
-                    <Form.Section>
-                        <Form.Title>Радио-кнопки</Form.Title>
-                        {/* todo: case of vertical stack of checkbox (without wrapper div element) */}
-                        <Radio.Group {...register("radio")}>
-                            <Radio label="One" value="1" />
-                            <Radio label="Two" value="2" />
-                            <Radio label="Three" value="3" />
-                        </Radio.Group>
-                    </Form.Section>
+                        <Form.Section>
+                            <Form.Title>Радио-кнопки</Form.Title>
+                            <FormRadioGroup name="radio">
+                                <Radio label="One" value="1" />
+                                <Radio label="Two" value="2" />
+                                <Radio label="Three" value="3" />
+                            </FormRadioGroup>
+                        </Form.Section>
 
-                    <Form.Section>
-                        <Form.Title>Селект с одиночным выбором</Form.Title>
-                        <Select
-                            {...register("select")}
-                            placeholder="Выберите"
-                            items={[
-                                { value: "1", label: "One" },
-                                { value: "2", label: "Two" },
-                                { value: "3", label: "Three" },
-                            ]}
-                        />
-                    </Form.Section>
+                        <Form.Section>
+                            <Form.Title>Селект с одиночным выбором</Form.Title>
+                            <FormSelect
+                                name="select"
+                                placeholder="Выберите"
+                                items={[
+                                    { value: "1", label: "One" },
+                                    { value: "2", label: "Two" },
+                                    { value: "3", label: "Three" },
+                                ]}
+                            />
+                        </Form.Section>
 
-                    <Form.Section>
-                        <Form.Title>Селект с мультивыбором</Form.Title>
-                        <Select
-                            {...register("selectMultiple")}
-                            items={[
-                                { value: "1", label: "One" },
-                                { value: "2", label: "Two" },
-                                { value: "3", label: "Three" },
-                            ]}
-                            selectpickerOptions={{
-                                liveSearch: true,
-                            }}
-                            multiple
-                        />
-                    </Form.Section>
+                        <Form.Section>
+                            <Form.Title>Селект с мультивыбором</Form.Title>
+                            <FormSelect
+                                name="selectMultiple"
+                                items={[
+                                    { value: "1", label: "One" },
+                                    { value: "2", label: "Two" },
+                                    { value: "3", label: "Three" },
+                                ]}
+                                selectpickerOptions={{
+                                    liveSearch: true,
+                                }}
+                                multiple
+                            />
+                        </Form.Section>
 
-                    <Form.Section>
-                        <Form.Title>Группа чекбоксов</Form.Title>
-                        <Checkbox.Group {...register("checkboxGroup")}>
-                            <Checkbox label="One" value="1" />
-                            <Checkbox label="Two" value="2" />
-                            <Checkbox label="Three" value="3" />
-                        </Checkbox.Group>
-                    </Form.Section>
+                        <Form.Section>
+                            <Form.Title>Группа чекбоксов</Form.Title>
+                            <FormCheckboxGroup name="checkboxGroup">
+                                <Checkbox label="One" value="1" />
+                                <Checkbox label="Two" value="2" />
+                                <Checkbox label="Three" value="3" />
+                            </FormCheckboxGroup>
+                        </Form.Section>
 
-                    <Form.Section>
-                        <File {...register("file")} title="Загрузка файла" description="Допустимый размер 15 Мб" />
-                    </Form.Section>
-                </Card>
-            </VStack>
-        </Form>
+                        <Form.Section>
+                            <FormFile name="file" title="Загрузка файла" description="Допустимый размер 15 Мб" />
+                        </Form.Section>
+                    </Card>
+                </VStack>
+            </Form>
+        </FormProvider>
     );
 };
 
@@ -205,7 +203,7 @@ const defaultValues = {
     // dateRange: [],
     radio: "2",
     select: "2",
-    selectMultiple: ["2", "3"],
+    selectMultiple: ["1", "3"],
     checkboxGroup: ["1", "3"],
     file: {
         id: 1,
@@ -214,7 +212,7 @@ const defaultValues = {
     },
 };
 
-const schema = {
+const schema = yup.object({
     checkbox: yup.boolean().required(),
     text: yup.string().required("Поле обязательно для заполнения"),
     textarea: yup.string().required("Поле обязательно для заполнения"),
@@ -222,7 +220,11 @@ const schema = {
     dateRange: yup.array().of(yup.string()).length(2).required("Поле обязательно для заполнения"),
     radio: yup.string().required("Поле обязательно для заполнения"),
     select: yup.string().required("Поле обязательно для заполнения"),
-    selectMultiple: yup.array().of(yup.string()).min(1, "Поле обязательно для заполнения"),
+    selectMultiple: yup
+        .array()
+        .of(yup.string())
+        .min(2, "Нужно выбрать не менее 2 пунктов")
+        .required("Поле обязательно для заполнения"),
     checkboxGroup: yup.array().of(yup.string()).min(1, "Поле обязательно для заполнения"),
     file: yup
         .mixed()
@@ -239,107 +241,170 @@ const schema = {
             return result;
         })
         .nullable(),
-};
-
-export const FileOnly = () => {
-    const { handleSubmit, register, reset } = useForm({
-        // defaultValues,
-    });
-
-    return (
-        <Form onSubmit={handleSubmit((data) => console.log("data", data))} noValidate>
-            <GroupContainer className="mb-1">
-                {/* todo: enabled if isValid and !loading */}
-                <Button type="submit">Сохранить</Button>
-                {/* todo: enabled if hasChanges/hasFieldsChange ? */}
-                <Button variant={ButtonVariant.Secondary} onClick={reset}>
-                    Сбросить
-                </Button>
-            </GroupContainer>
-
-            {/* Сведения о доверенности */}
-            <VStack gap={2} className="mb-2">
-                <Card>
-                    <Form.Section>
-                        <File {...register("file")} title="Загрузка файла" description="Допустимый размер 15 Мб" />
-                    </Form.Section>
-                </Card>
-            </VStack>
-        </Form>
-    );
-};
+});
 
 export const Default = () => {
-    const formProps = useForm({
-        defaultValues: {
-            //   date: "10.10.1984",
-            //   checkbox: true,
-            //   text: "abc",
-        },
-    });
-
-    //   const checkboxValue = formProps.watch("checkbox");
-    //   const textValue = formProps.watch("text");
-    //   console.log("checkboxValue", checkboxValue);
-    //   console.log("textValue", textValue);
-
-    //   const watchValues = formProps.watch();
-    //   console.log("watchValues", watchValues);
-
-    //   const watchValues = formProps.watch();
-    //   console.log("watchValues", watchValues);
+    const form = useForm();
 
     return (
         <Layout aside={"state"}>
-            <BaseForm {...formProps} />
+            <BaseForm form={form} />
         </Layout>
     );
 };
 
 export const Validation = () => {
-    const formProps = useForm({ schema });
+    const form = useForm({
+        defaultValues: {
+            // selectMultiple: [],
+        },
+        resolver: yupResolver(schema),
+    });
+
+    const {
+        formState: { errors },
+        getValues,
+    } = form;
+
+    console.log("errors", errors);
+    console.log("values", getValues());
 
     return (
         <Layout aside={"state"}>
-            <BaseForm {...formProps} />
+            <BaseForm form={form} />
         </Layout>
     );
 };
 
 export const DefaultValues = () => {
-    const formProps = useForm({
+    const form = useForm({
         defaultValues,
     });
 
     return (
         <Layout aside={"state"}>
-            <BaseForm {...formProps} />
+            <BaseForm form={form} />
         </Layout>
     );
 };
 
 export const DefaultValuesValidation = () => {
-    const formProps = useForm({
+    const form = useForm({
         defaultValues,
-        schema,
+        resolver: yupResolver(schema),
     });
 
     return (
         <Layout aside={"state"}>
-            <BaseForm {...formProps} />
+            <BaseForm form={form} />
         </Layout>
     );
 };
 
-export const IsValid = () => {
-    const formProps = useForm({
-        // defaultValues,
-        schema,
+export const NativeMultipleSelect = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        getValues,
+    } = useForm({
+        resolver: yupResolver(
+            yup.object({
+                multipleSelect: yup.array().of(yup.string()).min(2),
+            })
+        ),
     });
 
+    console.log("errors", errors);
+    console.log("values", getValues());
+
     return (
-        <Layout aside={"state"}>
-            <BaseForm {...formProps} />
-        </Layout>
+        <form onSubmit={handleSubmit((data) => console.log(data))}>
+            <select {...register("multipleSelect")} multiple>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            {errors.multipleSelect && <p>{errors.multipleSelect.message}</p>}
+            <button>Submit</button>
+        </form>
+    );
+};
+
+export const SingleSelect = () => {
+    const {
+        handleSubmit,
+        formState: { errors },
+        control,
+        getValues,
+    } = useForm({
+        resolver: yupResolver(
+            yup.object({
+                select: yup.string().required(),
+            })
+        ),
+    });
+
+    const { field } = useController({ control, name: "select" });
+
+    console.log("errors", errors);
+    console.log("values", getValues());
+
+    return (
+        <form onSubmit={handleSubmit((data) => console.log(data))}>
+            <Select
+                value={field.value}
+                onChange={field.onChange}
+                items={[
+                    { value: "1", label: "One" },
+                    { value: "2", label: "Two" },
+                    { value: "3", label: "Three" },
+                ]}
+                placeholder="Выберите"
+            ></Select>
+            {errors.select && <p>{errors.select.message}</p>}
+            <button>Submit</button>
+        </form>
+    );
+};
+
+export const MultipleSelect = () => {
+    const form = useForm({
+        defaultValues: {
+            //! need defalut value for multiple select (for proper validation)
+            //! or need `required`
+            // multipleSelect: [],
+        },
+        resolver: yupResolver(
+            yup.object({
+                multipleSelect: yup.array().of(yup.string()).min(2).required(),
+            })
+        ),
+    });
+
+    const {
+        handleSubmit,
+        getValues,
+        formState: { errors },
+    } = form;
+
+    console.log("errors", errors);
+    console.log("values", getValues());
+
+    return (
+        <FormProvider {...form}>
+            <form onSubmit={handleSubmit((data) => console.log(data))}>
+                <FormSelect
+                    name="multipleSelect"
+                    items={[
+                        { value: "1", label: "One" },
+                        { value: "2", label: "Two" },
+                        { value: "3", label: "Three" },
+                    ]}
+                    multiple
+                ></FormSelect>
+                <button>Submit</button>
+            </form>
+        </FormProvider>
     );
 };

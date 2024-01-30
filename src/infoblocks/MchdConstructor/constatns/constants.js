@@ -1,5 +1,7 @@
 import { StatusType } from "../../../components/Status";
 
+export const DATE_FORMAT = "DD.MM.YYYY";
+
 export const Status = {
     Draft: "DRAFT",
     Signed: "SIGNED",
@@ -134,4 +136,18 @@ export const LegalEntityPrincipalType = {
 export const LegalEntityPrincipalName = {
     [LegalEntityPrincipalType.LegalEntityPerson]: "Юридическое лицо",
     [LegalEntityPrincipalType.Person]: "Физическое лицо",
+};
+
+/**
+ * Вид документа
+ */
+export const DocKind = {
+    // Паспорт гражданина РФ
+    RussianCitizenPassport: "21",
+    // Военный билет
+    MilitaryTicket: "07",
+    // Паспорт иностранного гражданина
+    ForeignCitizenPassport: "10",
+    //  Загранпаспорт гражданина Российской Федерации
+    InternationalPassportOfCitizenOfRussianFederation: "22",
 };

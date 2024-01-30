@@ -1,17 +1,18 @@
 import cn from "classnames";
+import { forwardRef } from "react";
 
 // todo: form__descripted (variant)
 // todo: recreate all examples from uikit
 
-export const Form = ({ className, children, ...otherProps }) => {
+export const Form = forwardRef(({ className, children, ...otherProps }, ref) => {
     const classNames = cn("form", className, {});
 
     return (
-        <form className={classNames} {...otherProps}>
+        <form ref={ref} className={classNames} {...otherProps}>
             {children}
         </form>
     );
-};
+});
 
 export const FormSection = ({ className, children, ...otherProps }) => {
     const classNames = cn("form__section", className, {});

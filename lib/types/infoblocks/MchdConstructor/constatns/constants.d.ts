@@ -1,3 +1,4 @@
+export const DATE_FORMAT: "DD.MM.YYYY";
 export namespace Status {
     let Draft: string;
     let Signed: string;
@@ -70,3 +71,9 @@ export namespace LegalEntityPrincipalType {
 export const LegalEntityPrincipalName: {
     [x: string]: string;
 };
+export namespace DocKind {
+    let RussianCitizenPassport: string;
+    let MilitaryTicket: string;
+    let ForeignCitizenPassport: string;
+    let InternationalPassportOfCitizenOfRussianFederation: string;
+}

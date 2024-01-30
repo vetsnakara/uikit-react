@@ -1,7 +1,7 @@
-import { forwardRef, memo } from "react";
 import cn from "classnames";
+import { forwardRef, memo } from "react";
 
-import { Input } from "../Input";
+import { Input } from "../Input/Input";
 
 import { useDatepicker } from "./useDatepicker";
 

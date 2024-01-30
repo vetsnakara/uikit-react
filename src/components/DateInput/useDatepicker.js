@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 
-import { useFormControlRef } from "../../hooks";
+import { composeRef } from "../../hooks/useElementRef";
 
 // const DEFAULT_DATE_VALUE = "";
 // const DEFAULT_DATE_RANGE = [];
@@ -37,23 +37,25 @@ export const useDatepicker = (
 ) => {
     const context = useRef();
 
+    const ref = useRef(null);
+    const callbackRef = composeRef(ref, extRef);
+
     // note: Input passes to callback ref object { el, setValue, ...}, not DOM input element
-    const { ref, callbackRef } = useFormControlRef(extRef, ({ el }) => {
-        return {
-            el,
-            getValue: () => {
-                const parsedDateValue = getDateValueFromString(el.value);
-                const { dateValue } = getValidatedDate(parsedDateValue);
-                return dateValue;
-            },
-            setValue: setDate,
-        };
-    });
+    // const { ref, callbackRef } = useFormControlRef(extRef, ({ el }) => {
+    //     return {
+    //         el,
+    //         getValue: () => {
+    //             const parsedDateValue = getDateValueFromString(el.value);
+    //             const { dateValue } = getValidatedDate(parsedDateValue);
+    //             return dateValue;
+    //         },
+    //         setValue: setDate,
+    //     };
+    // });
 
     // info: use useLayoutEffect to initialize datepicker before useEffect
     useLayoutEffect(() => {
-        const $el = $(ref.current.el);
-        // console.log("--- useLayoutEffect", $el);
+        const $el = $(ref.current);
 
         $el.datepicker({
             ...defaultOptions,
@@ -88,7 +90,7 @@ export const useDatepicker = (
         if (context.openOnInit) {
             context.openOnInit = false;
 
-            const dp = $(ref.current.el).data("datepicker");
+            const dp = $(ref.current).data("datepicker");
             dp.show();
         }
     }, [value]);
@@ -102,7 +104,7 @@ export const useDatepicker = (
 
         // if event - date is changed by hand (typing in input)
         if (event.type !== DATE_SELECT_EVENT) {
-            const dp = $(ref.current.el).data("datepicker");
+            const dp = $(ref.current).data("datepicker");
             dp.show(); // for uncontrolled component - open calendar
             context.openOnInit = true; // for controlled component - open calendar on next render
         }
@@ -185,7 +187,7 @@ export const useDatepicker = (
          * @param {*} date
          */
         function selectDate(date) {
-            const dp = $(ref.current.el).data("datepicker");
+            const dp = $(ref.current).data("datepicker");
 
             context.silent = true;
             dp.clear();

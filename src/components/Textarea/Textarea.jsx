@@ -1,21 +1,23 @@
-import { forwardRef, useEffect, memo } from "react";
 import cn from "classnames";
+import { forwardRef, memo, useEffect, useRef } from "react";
 
-import { useFormControlRef } from "../../hooks";
+import { composeRef } from "../../hooks/useElementRef";
 
 const Textarea = memo(
     forwardRef(({ value, title, error, wysiwyg, onChange, className, ...textareaProps }, extRef) => {
-        const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
-            el,
-            getValue: () => el.value,
-            setValue: (value = "") => {
-                el.value = value;
-            },
-            //! setError?
-        }));
+        const ref = useRef(null);
+        const callbackRef = composeRef(ref, extRef);
+        // const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
+        //     el,
+        //     getValue: () => el.value,
+        //     setValue: (value = "") => {
+        //         el.value = value;
+        //     },
+        //     //! setError?
+        // }));
 
         useEffect(() => {
-            const $textarea = $(ref.current.el);
+            const $textarea = $(ref.current);
 
             if (wysiwyg) window.initWYSIWYG($textarea);
 

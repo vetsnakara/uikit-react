@@ -1,21 +1,39 @@
-// todo: нужно работать изначально со вложенными полями, без маппинга
+import { formatSnils } from "../utils";
 
 import { LegalEntityPrincipalType, PrincipalType } from "./constants";
+
+const snils = formatSnils("52013557838");
+const inn = "1111111111";
+const innPerson = "111111111122";
+const kpp = "222222222";
+const ogrn = "3333333333333";
+const ogrnip = "333333333333344";
+const date = "10.10.1984";
+const firstName = "Firstname";
+const lastName = "Lastname";
+const middleName = "Middlename";
+const companyName = "Company Name";
+const region = "7800000000000";
+const representativeId = "495ff8c0-6f2a-11ee-bd29-e5e06384a8a9";
+// const documentType = "21";
+const seriesAndNumber = "12345";
+const authorityDocument = "abc";
+const authorityCodeDocument = "123";
 
 export const mockState = {
     /**************************
      * Сведения о доверенности
      **************************/
-    id: "123",
-    fio: "Aaaaaa Bbbbbb Cccccc",
-    number: "123",
+    id: "",
+    fio: "",
+    number: "",
 
-    innerNumber: "123",
-    attorneyDateBegin: "10.10.1984",
-    attorneyDateEnd: "10.10.1984",
+    extensionNumber: "123",
+    created: date,
+    validity: date,
 
     // Тип доверителя
-    principalType: PrincipalType.IndividualEntrepreneurPrincipal,
+    type: PrincipalType.LegalEntityPrincipal,
 
     /************************
      * Сведения о доверителе
@@ -23,73 +41,84 @@ export const mockState = {
     /**
      * Тип доверителя - Юридическое лицо
      */
-    // "legalEntityPrincipal.id": "principalCompanyId",
+    legalEntityPrincipal: {
+        id: "",
 
-    principalCompanyName: "Company name",
-    principalCompanyInn: "1111111111",
-    principalCompanyOgrn: "222222222",
-    principalCompanyKpp: "333333333",
-    principalCompanyRegion: "7800000000000",
+        // Лицо, действующее без доверенности
+        type: LegalEntityPrincipalType.LegalEntityPerson,
 
-    // Лицо, действующее без доверенности
-    noAttorneyType: LegalEntityPrincipalType.Person,
+        companyName,
+        inn,
+        ogrn,
+        kpp,
+        region,
 
-    // Лицо, действующее без доверенности - Юридическое лицо
-    noAttorneyCompanyName: "Company name",
-    noAttorneyCompanyInn: "11111111",
-    noAttorneyCompanyOgrn: "222222222",
-    noAttorneyCompanyKpp: "333333333",
-    noAttorneyCompanyRegion: "7800000000000",
+        // Лицо, действующее без доверенности - Юридическое лицо
+        legalEntityPerson: {
+            companyName,
+            inn,
+            ogrn,
+            kpp,
+            region,
 
-    // Сведение о руководителе организации
-    noAttorneyCompanyDirectorFirstName: "Firstname",
-    noAttorneyCompanyDirectorMiddleName: "Middlename",
-    noAttorneyCompanyDirectorLastName: "Lastname",
-    noAttorneyCompanyDirectorSnils: "23423425345",
-    noAttorneyCompanyDirectorBirthDate: "10.10.1984",
+            // Сведение о руководителе организации
+            firstName,
+            middleName,
+            lastName,
+            snils,
+            birthday: date,
+            innEIOUK: "",
+        },
 
-    // Лицо, действующее без доверенности - Физическое лицо
-    noAttorneyPersonFirstName: "Firstname",
-    noAttorneyPersonMiddleName: "MiddleName",
-    noAttorneyPersonLastName: "Lastname",
-    noAttorneyPersonSnils: "3453453453",
-    noAttorneyPersonBirthDate: "10.10.1984",
-    noAttorneyPersonInn: "34535345345",
+        // Лицо, действующее без доверенности - Физическое лицо
+        person: {
+            firstName,
+            middleName,
+            lastName,
+            snils,
+            birthday: date,
+            inn: innPerson,
+        },
+    },
 
     /**
      * Тип доверителя - Физическое лицо
      */
-    principalPersonName: "Compnay name",
-    principalPersonOgrnip: "3345345345",
+    individualEntrepreneurPrincipal: {
+        companyName,
+        ogrn: ogrnip,
 
-    // Сведения о подписанте
-    signatoryFirstName: "Firstname",
-    signatoryMiddleName: "Middlename",
-    signatoryLastName: "Lastname",
-    signatorySnils: "34345345",
-    signatoryBirthDate: "10.10.1984",
-    signatoryInn: "23234234234",
-    //  "signatoryId",
+        // Сведения о подписанте
+        id: "",
+        firstName,
+        middleName,
+        lastName,
+        snils,
+        birthday: date,
+        inn: innPerson,
+    },
 
-    // /***************************
-    //  * Сведения о представителе
-    //  ***************************/
-    representativeId: "98de3b20-6f28-11ee-bd29-e5e06384a8a9",
+    /***************************
+     * Сведения о представителе
+     ***************************/
+    representative: {
+        id: representativeId,
 
-    // "representative.firstName": "representativeFirstName",
-    // "representative.middleName": "representativeMiddleName",
-    // "representative.lastName": "representativeLastName",
+        firstName,
+        middleName,
+        lastName,
 
-    representativeBirthDate: "10.10.1984",
+        birthday: date,
 
-    representativeSnils: "32423423345",
-    representativeInn: "34234234234",
+        snils,
+        inn: innPerson,
 
-    representativeDocument: 21,
-    representativeDocumentNumber: "345345345",
-    representativeDocumentOrganizationName: "Docname",
-    representativeDocumentOrganizationCode: "343423",
+        documentType: "",
+        seriesAndNumber,
+        authorityDocument,
+        authorityCodeDocument,
 
-    representativeDocumentDateBegin: "10.10.1938",
-    representativeDocumentDateEnd: "11.11.1985",
+        created: date,
+        validity: date,
+    },
 };

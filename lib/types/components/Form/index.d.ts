@@ -1,1 +1,2 @@
-export { Form, FormSection, FormDescription, FormFieldset, FormTitle } from "./Form";
+export { Form } from "./Form";
+export * from "./inputs";

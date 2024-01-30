@@ -1,11 +1,11 @@
-import { memo, forwardRef, useContext } from "react";
+import { forwardRef, memo, useContext } from "react";
 
 import cn from "classnames";
 
 import { useFormControlRef } from "../../hooks";
 
-import { CheckboxGroupContext } from "./context";
 import { CheckboxGroup } from "./CheckboxGroup";
+import { CheckboxGroupContext } from "./context";
 
 const CheckboxVariant = {
     Checkbox: "checkbox",

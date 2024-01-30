@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 
 import { Button, ButtonVariant } from "../../Button";
-import { Select } from "../Select";
 import { VStack } from "../../Stack";
+import { Select } from "../Select";
 
 import { options } from "./data";
 
@@ -88,7 +88,7 @@ export const Controlled = () => {
                 value={value} // current value
                 onChange={setValue} // set new value on every change (with rerender)
                 // todo: don't close on rerender
-                multiple
+                // multiple
             />
             <div>Render: {countRef.current}</div>
             <div>Value: {value}</div>

@@ -1,11 +1,11 @@
 import cn from "classnames";
-import { forwardRef, memo, useEffect } from "react";
+import { forwardRef, memo, useEffect, useRef } from "react";
 
 //! будет тащиться в каждый бандл
 //! подумать о динамически подгружаемых либах и динамически подгружаемых компонентах
 import Inputmask from "inputmask"; // todo: check version with existing
 
-import { useFormControlRef } from "../../hooks";
+import { composeRef } from "../../hooks/useElementRef/composeRef";
 
 // todo: useInputMask hook
 // todo: useDateinput hook
@@ -30,6 +30,7 @@ import { useFormControlRef } from "../../hooks";
 // ??? why no `placeholder` attribute ???
 function Input(
     {
+        name,
         title,
         error,
         type = "text",
@@ -45,14 +46,15 @@ function Input(
     },
     extRef
 ) {
-    const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
-        el,
-        getValue: () => el.value,
-        setValue: (value = "") => {
-            el.value = value;
-        },
-        //! setError?
-    }));
+    const ref = useRef(null);
+    const callbackRef = composeRef(ref, extRef);
+    // const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
+    //     el,
+    //     getValue: () => el.value,
+    //     setValue: (value = "") => {
+    //         el.value = value;
+    //     },
+    // }));
 
     useEffect(() => {
         //! don't work React onChange witn jquery inputmask
@@ -61,23 +63,23 @@ function Input(
 
         if (maskOptions) {
             im = new Inputmask(maskOptions);
-            im.mask(ref.current.el);
+            im.mask(ref.current);
         }
 
         return () => {
             im?.remove(ref.current);
             // restore default placeholder
-            if (ref.current?.el && placeholder) ref.current.el.placeholder = placeholder;
+            if (ref.current && placeholder) ref.current.placeholder = placeholder;
         };
     }, [JSON.stringify(maskOptions)]);
 
     const handleChange = (event) => {
-        onChange?.(ref.current.getValue(), event);
+        onChange?.(ref.current.value, event);
     };
 
     const handleKeyDown = (event) => {
         if (event.key === "Enter") {
-            onSubmit?.(ref.current.getValue(), event);
+            onSubmit?.(ref.current.value, event);
         }
     };
 
@@ -93,6 +95,7 @@ function Input(
         <label className={labelClassNames}>
             <input
                 ref={callbackRef}
+                name={name}
                 type={type}
                 value={value}
                 defaultValue={defaultValue}

@@ -1,5 +1,5 @@
-import { memo, forwardRef, useEffect } from "react";
 import cn from "classnames";
+import { forwardRef, memo, useEffect } from "react";
 
 import { useFormControlRef } from "../../hooks";
 
@@ -10,6 +10,7 @@ const defaultItems = [];
 
 // todo: "All" options for single/multiple select (how to set?)
 // todo: empty option (how to set?)
+// todo: implement [data-init] setting
 
 const renderOptions = (items) =>
     items.map(
@@ -140,7 +141,7 @@ export const Select = memo(
                     $select.off().selectpicker("destroy");
                 };
             }, [
-                value,
+                // value,
                 placeholder,
                 multiple,
                 disabled,
@@ -148,10 +149,18 @@ export const Select = memo(
                 //! используем JSON.stringify, чтобы предотвратить переинициализацию в случае, если произошел рендер (пропсы изменились, memo не помогло),
                 //! но при этом объектный пропсы не были мемоизированы в клиентском коде (это распространияется также на Input, DateInput, где
                 //! используются плагины air-datepicker и inputmask)
+                // ? нужет ли JSON.stringify, если использовать _.isEqual
                 JSON.stringify(items),
                 JSON.stringify(selectpickerOptions),
                 onChange,
             ]);
+
+            useEffect(() => {
+                if (!_.isUndefined(value)) {
+                    const $select = $(ref.current.el);
+                    $select.selectpicker("val", value);
+                }
+            }, [value]);
 
             const handleChange = (event) => {
                 const {

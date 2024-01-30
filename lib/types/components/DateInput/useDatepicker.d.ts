@@ -11,6 +11,6 @@ export function useDatepicker(extRef: any, { value, defaultValue, name, onChange
     };
     format?: string;
 }): {
-    callbackRef: (refParam: any) => void;
+    callbackRef: any;
     handleChange: (value: any, event: any) => void;
 };
