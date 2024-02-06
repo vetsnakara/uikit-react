@@ -1,4 +1,5 @@
-import { useController, useForm } from "react-hook-form";
+// import { useController, useForm } from "react-hook-form";
+import * as rhf from "react-hook-form";
 
 // todo: ??? зачем подгружать бандлы react, react-dom, react-uikit, если не странице не используется рекат ???
 // todo: intellisent for @uikit/comopnents (hooks)
@@ -17,8 +18,6 @@ import {
     VStack,
 } from "@uikit/components";
 
-import { FormProvider } from "@uikit/hooks";
-
 // todo: add prettier (with 4 spaces indentation)
 
 // todo: stories for
@@ -33,6 +32,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { maxWidth } from "../../../.storybook/decorators";
 
+import { initForm } from "../../hooks/useFormField";
+
 import {
     FormCheckbox,
     FormCheckboxGroup,
@@ -43,6 +44,10 @@ import {
     FormSelect,
     FormTextarea,
 } from "./inputs";
+
+const { getRhfInstance } = initForm(rhf);
+
+const { useForm, useController, FormProvider } = getRhfInstance();
 
 export default {
     title: "form/Form",

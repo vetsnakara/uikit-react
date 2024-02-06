@@ -1,13 +1,36 @@
-import { useController, useFormContext as useFormContextRHF, FormProvider as FormProviderRHF } from "react-hook-form";
+// import { useController, useFormContext as useFormContextRHF, FormProvider as FormProviderRHF } from "react-hook-form";
 
 //?! create namespace @uikit/form
 // todo?: move to Form component
 
+//!!! Refactor
+
+const ReactHookForm = { instance: null };
+
+export const initForm = (rhfInstance) => {
+    ReactHookForm.instance = rhfInstance;
+
+    return {
+        getRhfInstance: () => rhfInstance,
+    };
+};
+
+export const getRhfInstance = () => ReactHookForm.instance;
+
 export const useFormField = (options) => {
-    const { control } = useFormContextRHF();
+    const { useFormContext, useController } = ReactHookForm.instance;
+    const { control } = useFormContext();
     return useController({ control, ...options });
 };
 
-export const useFormContext = () => useFormContextRHF();
+// /**
+//  * For external useage
+//  * @returns
+//  */
+// export const useFormContext = () => useFormContextRHF();
 
-export const FormProvider = ({ children, ...methods }) => <FormProviderRHF {...methods}>{children}</FormProviderRHF>;
+// /**
+//  * For external useage
+//  * @returns
+//  */
+// export const FormProvider = ({ children, ...methods }) => <FormProviderRHF {...methods}>{children}</FormProviderRHF>;

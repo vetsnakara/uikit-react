@@ -4,14 +4,21 @@
 // todo: rm multipleness in radio and checkbox (they should be single)
 // todo: render form only when all default values are set
 
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 
 import { Card, Form, Paragraph, Subtitle, VStack } from "@uikit/components";
-import { FormProvider } from "@uikit/hooks";
+// import { FormProvider } from "@uikit/hooks";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as rhf from "react-hook-form";
 
 import React from "react";
+
+import { initForm } from "../../../../hooks/useFormField";
+
+//! use react-query in MchdForm
+//! try in prr repo (могут быть проблемы с провайдером) -- возможно нужно все реэкспортировать из react-hook-from и react-query
+//! try in portal
 
 import { documentTypes } from "../../constatns/documentTypes";
 import { managers } from "../../constatns/managers";
@@ -25,6 +32,10 @@ import { FormActions } from "./FormActions";
 import { AttorneyInfo } from "./FormSegments/AttorneyInfo";
 import { PrincipalInfo } from "./FormSegments/PrincipalInfo";
 import { RepresentativeInfo } from "./FormSegments/RepresentativeInfo";
+
+const { getRhfInstance } = initForm(rhf);
+
+const { useForm, FormProvider } = getRhfInstance();
 
 const selectItems = {
     managers: managers.map(({ id, firstName, lastName, middleName }) => ({
