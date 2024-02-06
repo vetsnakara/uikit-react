@@ -53,6 +53,12 @@ module.exports = () => {
 
         // todo: добавить другие библиотеки
         externals: {
+            axios: {
+                root: "axios",
+                commonjs2: "axios",
+                commonjs: "axios",
+                amd: "axios",
+            },
             react: {
                 root: "React",
                 commonjs2: "react",
@@ -70,6 +76,12 @@ module.exports = () => {
                 commonjs2: "react-hook-form",
                 commonjs: "react-hook-form",
                 amd: "react-dom",
+            },
+            "react-query": {
+                root: "ReactQuery",
+                commonjs2: "react-query",
+                commonjs: "react-query",
+                amd: "react-query",
             }
         },
 
