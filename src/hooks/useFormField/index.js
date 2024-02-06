@@ -1,1 +1,1 @@
-export { useFormField, initForm } from "./useFormField";
+export { useFormField, initForm, getRhfInstance } from "./useFormField";
