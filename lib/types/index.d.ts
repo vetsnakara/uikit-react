@@ -1,2 +1,2 @@
 export * from "./components";
-export { initForm } from "./hooks";
+export { initForm, getRhfInstance } from "./hooks";
