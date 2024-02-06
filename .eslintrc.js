@@ -7,6 +7,7 @@ module.exports = {
     globals: {
         moment: true,
         _: true,
+        yup: true
     },
     parser: "@typescript-eslint/parser",
     extends: [

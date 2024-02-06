@@ -4,11 +4,14 @@
 // todo: rm multipleness in radio and checkbox (they should be single)
 // todo: render form only when all default values are set
 
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import { Card, Form, Paragraph, Subtitle, VStack } from "@uikit/components";
+import { FormProvider } from "@uikit/hooks";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import React from "react";
 
 import { documentTypes } from "../../constatns/documentTypes";
 import { managers } from "../../constatns/managers";
@@ -52,6 +55,19 @@ export const MchdForm = () => {
         const requestData = buildData(data);
         console.log("data", requestData);
     });
+
+    // return null;
+
+    // return (
+    //     <DataProvider data={{ selectItems }}>
+    //         <FormProvider {...methods}>
+    //         {React.createElement(function Text() {
+    //             const { control } = useFormContext();
+    //             console.log('control', control)
+    //         })}
+    //         </FormProvider>
+    //     </DataProvider>
+    // );
 
     return (
         <DataProvider data={{ selectItems }}>

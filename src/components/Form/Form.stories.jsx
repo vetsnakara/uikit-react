@@ -1,6 +1,4 @@
-import { FormProvider, useController, useForm } from "react-hook-form";
-// todo: rm yup (use global lib) ???
-import * as yup from "yup";
+import { useController, useForm } from "react-hook-form";
 
 // todo: ??? зачем подгружать бандлы react, react-dom, react-uikit, если не странице не используется рекат ???
 // todo: intellisent for @uikit/comopnents (hooks)
@@ -18,6 +16,8 @@ import {
     Select,
     VStack,
 } from "@uikit/components";
+
+import { FormProvider } from "@uikit/hooks";
 
 // todo: add prettier (with 4 spaces indentation)
 
