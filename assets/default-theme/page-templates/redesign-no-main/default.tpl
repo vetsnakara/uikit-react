@@ -20,6 +20,7 @@
     <script th:src="${@ResourceProcessor.wrap('/assets/redesign-theme/scripts/underscore.js')}"></script>
     <script th:src="${@ResourceProcessor.wrap('/assets/redesign-theme/scripts/react.production.min.js')}"></script>
     <script th:src="${@ResourceProcessor.wrap('/assets/redesign-theme/scripts/react-dom.production.min.js')}"></script>
+    <script th:src="${@ResourceProcessor.wrap('/assets/redesign-theme/scripts/react-hook-form.min.js')}"></script>
     <!-- UI kit -->
     <script th:src="${@ResourceProcessor.wrap('/assets/redesign-theme/scripts/uikit.js')}"></script>
     <script th:src="${@ResourceProcessor.wrap('/assets/redesign-theme/scripts/react-uikit.min.js')}"></script>
