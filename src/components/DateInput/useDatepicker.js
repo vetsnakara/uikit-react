@@ -21,13 +21,16 @@ const defaultOptions = {
 // todo: в неконтр. варианте сделать так, чтобы через ref в range mode отдавался массив дат-строк
 // todo: return focus to input after setting date by hand input
 
+//! invalid date (single or range) => null returned
+//! empty date => "" or [] returned
+
 //! sort dates array on return outside (can be [1985, 1984] when type by hand in reverse order and plugin changes order by himself)
 
 export const useDatepicker = (
     extRef,
     {
         value,
-        defaultValue,
+        // defaultValue = "",
         name,
         onChange,
         onBlur,
@@ -82,8 +85,13 @@ export const useDatepicker = (
 
     // for controlled input
     useEffect(() => {
-        const dateValue = value || defaultValue; // todo?: don't use default value here
-        if (!dateValue) return;
+        const dateValue = value; // || defaultValue; // todo?: don't use default value here
+        if (_.isNull(dateValue) || _.isUndefined(dateValue)) {
+            console.log("dateValue", dateValue, "🛑 return");
+            return;
+        }
+        // console.log("useEffect:dateValue", dateValue);
+        // if (!dateValue) return;
 
         setDate(dateValue);
 
@@ -98,6 +106,7 @@ export const useDatepicker = (
     // set date on value change
     // !!! handleChange gets (value, event) because is passed to <Input/> component (not to primitive <input/>)
     const handleChange = useCallback((value, event) => {
+        // console.log("handleChange:value", value);
         const date = setDate(value, { parse: true });
 
         onChange?.(date, event);
@@ -172,15 +181,20 @@ export const useDatepicker = (
 
     const setDate = (value, { parse = false } = {}) => {
         //? call selectDate two times ??? (see below)
+        console.log("setDate:value", value);
         if (!value) selectDate(); // reset date
 
         if (parse) value = getDateValueFromString(value);
+        console.log("parsed:value", value);
 
+        //? is needed dateValue
         const { isValid, dateValue, dateObj } = getValidatedDate(value);
+        // console.log("isValid, dateValue", isValid, dateValue);
 
         if (isValid) selectDate(dateObj);
 
         return dateValue;
+        // return value;
 
         /**
          * todo

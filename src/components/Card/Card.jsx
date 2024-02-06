@@ -1,7 +1,6 @@
 import cn from "classnames";
 
 export const Card = ({ children, className, theme, ...props }) => {
-    console.log("className", className);
     const classNames = cn("card", className, { [`card_${theme}`]: theme });
 
     return (

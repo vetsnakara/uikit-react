@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { forwardRef } from "react";
 
-// todo: Button as link
+// todo: Button as link (prop `as`)
 // todo: use Button.Variant
 // todo: change order of memo and forwardRef ???
 // todo: create helper for generate new component (cli, snippet)

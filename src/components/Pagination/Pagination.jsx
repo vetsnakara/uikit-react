@@ -1,5 +1,5 @@
-import { memo } from "react";
 import cn from "classnames";
+import { memo } from "react";
 
 // todo: mv to shared utils?
 // todo: don't show pagination if no data available (total = 0)
@@ -52,7 +52,7 @@ export const Pagination = memo(
     }) => {
         const pages = pagination(page, Math.ceil(total / pageSize), delta);
 
-        if (pages.length === 1) return null;
+        if (!total || pages.length === 1) return null;
 
         const handleClick = (event) => {
             event.preventDefault();

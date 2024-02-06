@@ -2,7 +2,7 @@
 // import "./examples/examples.css";
 
 export default {
-    title: "uikit/Grid",
+    title: "layout/Grid",
     tags: ["autodocs"],
 };
 

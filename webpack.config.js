@@ -51,6 +51,7 @@ module.exports = () => {
 
         // plugins: [new CleanWebpackPlugin()],
 
+        // todo: добавить другие библиотеки
         externals: {
             react: {
                 root: "React",
@@ -64,6 +65,12 @@ module.exports = () => {
                 commonjs: "react-dom",
                 amd: "react-dom",
             },
+            "react-hook-form": {
+                root: "ReactHookForm",
+                commonjs2: "react-hook-form",
+                commonjs: "react-hook-form",
+                amd: "react-dom",
+            }
         },
 
         // to NOT generate license file

@@ -2,13 +2,16 @@ import { rest } from "msw";
 
 import { Select } from "../Select";
 
-import { options } from "./data";
-
 const AJAX_SELECT_SERCH_PATH = "ajaxSelectSearchPath";
 
 export const Ajax = () => {
+    // const [value, setValue] = useState([]);
+
     const selectpickerOptions = {
         liveSearch: true,
+
+        container: "body",
+        selectedTextFormat: "count",
         ajaxOptions: {
             ajax: {
                 url: AJAX_SELECT_SERCH_PATH,
@@ -17,17 +20,22 @@ export const Ajax = () => {
                     term: "{{{q}}}",
                 }),
             },
-            preprocessData: (result) =>
-                result.data.map((item) => ({
+            preprocessData: (result) => {
+                const items = result.data.map((item) => ({
                     value: item.code,
                     label: item.name,
-                })),
-            cache: false,
-            preserveSelected: false,
+                }));
+
+                return items;
+            },
+            cache: true,
+            preserveSelected: true,
         },
     };
 
-    return <Select {...options} items={[]} selectpickerOptions={selectpickerOptions} multiple />;
+    // todo: controlled / uncontrolled
+
+    return <Select selectpickerOptions={selectpickerOptions} multiple />;
 };
 
 Ajax.parameters = {

@@ -4,6 +4,7 @@ import { maxWidth } from "../../../.storybook/decorators";
 import { Button, ButtonVariant } from "../Button";
 
 import { Input } from "./Input";
+import { SearchInput } from "./SearchInput";
 
 export default {
     title: "inputs/Input",
@@ -113,17 +114,18 @@ export const Readonly = () => <Input defaultValue="123" readOnly />;
 // todo: create separate kind of input
 export const Search = () => {
     const [value, setValue] = useState("");
+    const [submitValue, setSubmitValue] = useState("");
 
     return (
         <>
-            <Input
-                defaultValue="123"
-                placeholder="Поиск"
-                type="search"
-                onSubmit={setValue}
-                onChange={(value) => console.log("SearchInput:value", value)}
+            <SearchInput
+                value={value}
+                onChange={(value) => setValue(value)}
+                onSubmit={(value) => setSubmitValue(value)}
             />
-            <div>value: {value}</div>
+            <div>change value: {value}</div>
+            <div>submit value: {submitValue}</div>
+            <button onClick={() => setValue("")}>reset</button>
         </>
     );
 };

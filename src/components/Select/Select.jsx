@@ -1,7 +1,7 @@
 import cn from "classnames";
-import { forwardRef, memo, useEffect } from "react";
+import { forwardRef, memo, useEffect, useRef } from "react";
 
-import { useFormControlRef } from "../../hooks";
+import { composeRef } from "../../hooks/useElementRef";
 
 import { SelectEvent, selectpickerEventHandlers } from "./constants";
 
@@ -53,184 +53,156 @@ const renderOptions = (items) =>
     );
 
 export const Select = memo(
-    forwardRef(
-        (
-            {
-                value,
-                items = defaultItems,
-                selectpickerOptions = defaultSelectpickerOptions,
-                title,
-                label,
-                placeholder,
-                error,
-                multiple,
-                disabled,
-                closeable,
-                noDecor,
-                onChange,
-                onClose,
-                // onBlur, // todo: is needed for useForm (?)
-                className,
-                ...selectOptions
-            },
-            extRef
-        ) => {
-            const { ajaxOptions, addItemsOptions } = selectpickerOptions;
+    forwardRef((props, extRef) => {
+        const {
+            value,
+            items = defaultItems,
+            selectpickerOptions = defaultSelectpickerOptions,
+            title,
+            label,
+            placeholder,
+            error,
+            multiple,
+            disabled,
+            closeable,
+            noDecor,
+            onChange,
+            onClose,
+            // onBlur, // todo: is needed for useForm (?)
+            className,
+            ...selectOptions
+        } = props;
 
-            const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
-                el,
-                getValue: () => {
-                    const value = $(el).selectpicker("val");
-                    const { options } = el;
+        // console.log("props", props);
 
-                    const values = Array.from(options)
-                        .filter(({ selected }) => selected)
-                        .map(({ value }) => value);
+        const ref = useRef(null);
+        const callbackRef = composeRef(ref, extRef);
 
-                    return multiple ? values : value;
-                },
-                setValue: (value) => {
-                    const defaultValue = multiple ? [] : "";
-                    $(el).selectpicker("val", value ?? defaultValue);
-                },
-            }));
+        const { ajaxOptions, addItemsOptions } = selectpickerOptions;
 
-            useEffect(() => {
-                const $select = $(ref.current.el);
+        useEffect(() => {
+            const $select = $(ref.current);
 
-                window.initBootstrapSelect(
-                    ref.current.el,
-                    _.omit(selectpickerOptions, ["ajaxOptions", "addItemsOptions"])
-                );
+            const baseSelectpickerOptions = _.omit(selectpickerOptions, ["ajaxOptions", "addItemsOptions"]);
 
-                // todo: init plugins in separate effects ???
-                if (ajaxOptions) $select.ajaxSelectPicker(ajaxOptions);
-                if (addItemsOptions) $select.addSelectPicker(addItemsOptions);
+            if (ajaxOptions) {
+                //! для корректной работы ajax используем базовый конструктор селектпикера,
+                //! т.к. в initBootstrapSelect реализовано кеширование опций, которое ломает
+                //! поведение ajax-селектпикера (после закрытия дропдауна выбранные опции слетают)
+                $select.selectpicker(baseSelectpickerOptions);
+            } else {
+                window.initBootstrapSelect(ref.current, baseSelectpickerOptions);
+            }
 
-                // todo: is needed for useForm (?)
-                // const { $button } = $select.data("selectpicker");
-                // $button.removeAttr("tabindex");
-                // $button
-                //     .on("blur", () => {
-                //         // console.log("blur button");
-                //         onBlur?.({ target: { name: selectOptions.name } });
-                //     })
-                //     .on("focus", () => {
-                //         // console.log("focus button");
-                //     })
-                //     .on("keydown", (event) => {
-                //         if (event.key === " ") {
-                //             $select.selectpicker("toggle");
-                //         }
-                //     });
+            console.log("--- Select:init");
 
-                // add selectpicker event handlers
-                // todo: check order of events
-                Object.entries(selectOptions).forEach(([propName, fn]) => {
-                    const [, eventName] = propName.split("on");
-                    if (!eventName) return;
-                    const eventNameUppercase = eventName.toUpperCase();
-                    if (eventNameUppercase in SelectEvent) {
-                        const selectpickerEventName = SelectEvent[eventNameUppercase];
-                        $select.on(selectpickerEventName, fn);
-                    }
-                });
+            // todo: init plugins in separate effects ???
+            if (ajaxOptions) $select.ajaxSelectPicker(ajaxOptions);
+            if (addItemsOptions) $select.addSelectPicker(addItemsOptions);
 
-                return () => {
-                    $select.data("AddBootstrapSelect")?.destroy();
-                    $select.off().selectpicker("destroy");
-                };
-            }, [
-                // value,
-                placeholder,
-                multiple,
-                disabled,
-                //! NOTE:
-                //! используем JSON.stringify, чтобы предотвратить переинициализацию в случае, если произошел рендер (пропсы изменились, memo не помогло),
-                //! но при этом объектный пропсы не были мемоизированы в клиентском коде (это распространияется также на Input, DateInput, где
-                //! используются плагины air-datepicker и inputmask)
-                // ? нужет ли JSON.stringify, если использовать _.isEqual
-                JSON.stringify(items),
-                JSON.stringify(selectpickerOptions),
-                onChange,
-            ]);
-
-            useEffect(() => {
-                if (!_.isUndefined(value)) {
-                    const $select = $(ref.current.el);
-                    $select.selectpicker("val", value);
+            // add selectpicker event handlers
+            // todo: check order of events
+            Object.entries(selectOptions).forEach(([propName, fn]) => {
+                const [, eventName] = propName.split("on");
+                if (!eventName) return;
+                const eventNameUppercase = eventName.toUpperCase();
+                if (eventNameUppercase in SelectEvent) {
+                    const selectpickerEventName = SelectEvent[eventNameUppercase];
+                    $select.on(selectpickerEventName, fn);
                 }
-            }, [value]);
-
-            const handleChange = (event) => {
-                const {
-                    target: { options, value },
-                } = event;
-
-                //! DRY (see ref)
-                const values = Array.from(options)
-                    .filter(({ selected }) => selected)
-                    .map(({ value }) => value);
-
-                onChange?.(multiple ? values : value, event);
-            };
-
-            const labelClassNames = cn(
-                "select",
-                {
-                    [`${closeable ? "select_closeable_error" : "select_error"}`]: error,
-                    select_closeable: closeable,
-                    "select_no-decor": noDecor,
-                    select_required: selectOptions.required,
-                },
-                className
-            );
-
-            const selectClassNames = cn("select__control", {
-                dropup: selectpickerOptions.dropupAuto === false,
             });
 
-            const isDisabled = disabled || (!ajaxOptions && !items.length);
+            return () => {
+                $select.data("AddBootstrapSelect")?.destroy();
+                $select.off().selectpicker("destroy");
+            };
+        }, [
+            // value,
+            placeholder,
+            multiple,
+            disabled,
+            //! NOTE:
+            //! используем JSON.stringify, чтобы предотвратить переинициализацию в случае, если произошел рендер (пропсы изменились, memo не помогло),
+            //! но при этом объектный пропсы не были мемоизированы в клиентском коде (это распространияется также на Input, DateInput, где
+            //! используются плагины air-datepicker и inputmask)
+            // ? нужет ли JSON.stringify, если использовать _.isEqual
+            JSON.stringify(items),
+            JSON.stringify(selectpickerOptions),
+            onChange,
+        ]);
 
-            // todo: use data-init=false
+        useEffect(() => {
+            console.log("🍫 Select:setvalue", value);
+            if (!_.isUndefined(value)) {
+                const $select = $(ref.current);
+                $select.selectpicker("val", value).selectpicker("refresh");
+            }
+        }, [value]);
 
-            return (
-                <label className={labelClassNames}>
-                    <select
-                        ref={callbackRef}
-                        className={selectClassNames}
-                        value={value}
-                        onChange={handleChange}
-                        multiple={multiple}
-                        disabled={isDisabled}
-                        title={placeholder}
-                        {..._.omit(selectOptions, selectpickerEventHandlers)}
-                    >
-                        {/* <option data-hidden="true" key="default" /> */}
-                        {renderOptions(items)}
-                    </select>
+        const handleChange = (event) => {
+            const {
+                target: { options, value },
+            } = event;
 
-                    {closeable && (
-                        <button
-                            type="button"
-                            className="button button_plain button_icon select__close"
-                            onClick={onClose}
-                        >
-                            <svg className="icon button__icon select__close-icon">
-                                <use href="uikit/icon/icons.svg#close"></use>
-                            </svg>
-                        </button>
-                    )}
+            //! DRY (see ref)
+            const values = Array.from(options)
+                .filter(({ selected }) => selected)
+                .map(({ value }) => value);
 
-                    {title && !closeable && <span className="select__title">{title}</span>}
+            onChange?.(multiple ? values : value, event);
+        };
 
-                    {/* is used with noDecor mode */}
-                    {label && !closeable && <span className="select__label">{label}</span>}
+        const labelClassNames = cn(
+            "select",
+            {
+                [`${closeable ? "select_closeable_error" : "select_error"}`]: error,
+                select_closeable: closeable,
+                "select_no-decor": noDecor,
+                select_required: selectOptions.required,
+            },
+            className
+        );
 
-                    {error && !closeable && !noDecor && <span className="select__error">{error}</span>}
-                </label>
-            );
-        }
-    ),
-    _.isEqual
+        const selectClassNames = cn("select__control", {
+            dropup: selectpickerOptions.dropupAuto === false,
+        });
+
+        const isDisabled = disabled || (!ajaxOptions && !items.length);
+
+        // todo: use data-init=false
+
+        return (
+            <label className={labelClassNames}>
+                <select
+                    ref={callbackRef}
+                    className={selectClassNames}
+                    value={value}
+                    onChange={handleChange}
+                    multiple={multiple}
+                    disabled={isDisabled}
+                    title={placeholder}
+                    {..._.omit(selectOptions, selectpickerEventHandlers)}
+                >
+                    {/* <option data-hidden="true" key="default" /> */}
+                    {renderOptions(items)}
+                </select>
+
+                {closeable && (
+                    <button type="button" className="button button_plain button_icon select__close" onClick={onClose}>
+                        <svg className="icon button__icon select__close-icon">
+                            <use href="uikit/icon/icons.svg#close"></use>
+                        </svg>
+                    </button>
+                )}
+
+                {title && !closeable && <span className="select__title">{title}</span>}
+
+                {/* is used with noDecor mode */}
+                {label && !closeable && <span className="select__label">{label}</span>}
+
+                {error && !closeable && !noDecor && <span className="select__error">{error}</span>}
+            </label>
+        );
+    }),
+    _.isEqual // deep comparison
 );

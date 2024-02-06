@@ -9,6 +9,13 @@ export default {
     title: "uikit/Button",
     tags: ["autodocs"],
     decorators: [maxWidth(500)],
+    parameters: {
+        docs: {
+            description: {
+                component: "Кнопка",
+            },
+        },
+    },
 };
 
 // todo: constant "secondary,plain", theme
@@ -42,6 +49,32 @@ export const Default = () => (
         </HStack>
     </VStack>
 );
+
+Default.parameters = {
+    docs: {
+        description: {
+            story: "Кнока по умолчанию",
+        },
+        // todo: use raw-loader
+        source: {
+            code: `
+                <VStack gap={1}>
+                    <HStack gap={1}>
+                        <Buttons />
+                    </HStack>
+                    <HStack gap={1}>
+                        <Buttons theme="destruct" />
+                    </HStack>
+                    <HStack gap={1}>
+                        <Buttons disabled />
+                    </HStack>
+                </VStack>
+            `,
+            language: "jsx",
+            type: "auto",
+        },
+    },
+};
 
 export const WithIcon = () => (
     <VStack gap={1}>

@@ -165,6 +165,8 @@ const BaseForm = ({ form }) => {
                             />
                         </Form.Section>
 
+                        {/* todo: add ajax-select */}
+
                         <Form.Section>
                             <Form.Title>Группа чекбоксов</Form.Title>
                             <FormCheckboxGroup name="checkboxGroup">

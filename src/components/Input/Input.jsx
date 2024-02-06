@@ -77,6 +77,7 @@ function Input(
         onChange?.(ref.current.value, event);
     };
 
+    // todo: remove (have SearchInput component)
     const handleKeyDown = (event) => {
         if (event.key === "Enter") {
             onSubmit?.(ref.current.value, event);

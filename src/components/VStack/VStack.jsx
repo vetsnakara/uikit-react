@@ -4,6 +4,8 @@ import { Children, cloneElement } from "react";
 
 export const VStack = ({ gap = 0, children, ...props }) => {
     const childrenWithGap = Children.map(children, (child, index) => {
+        if (!child) return null;
+
         const { props } = child;
         const { className = "" } = props;
 

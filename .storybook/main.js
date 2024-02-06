@@ -2,12 +2,18 @@ import path from "path";
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-    stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)"],
+    stories: [
+        "../src/**/*.mdx",
+        "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+    ],
     addons: [
         "@storybook/addon-essentials",
         {
             name: "@storybook/addon-docs",
-            options: { transcludeMarkdown: true }, // for import .md in .mdx files
+            options: {
+                // for import .md in .mdx files
+                transcludeMarkdown: true
+            }, 
         },
     ],
     framework: {
@@ -22,7 +28,6 @@ const config = {
             config.resolve.alias = {
                 ...config.resolve.alias,
                 "@uikit": path.resolve(__dirname, "../src"),
-                // "@storybook": path.resolve(__dirname, "../.storybook"),
             };
         }
 
@@ -34,10 +39,6 @@ const config = {
 
             return rule;
         });
-
-        // if (process.env.NODE_ENV === "production") {
-        //   config.output.publicPath = "/react-uikit";
-        // }
 
         return config;
     },

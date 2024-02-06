@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 import { maxWidth } from "../../../.storybook/decorators";
 import { VStack } from "../Stack";
@@ -110,10 +110,9 @@ export const Uncontrolled = () => {
             <DateInput
                 ref={dateRef}
                 defaultValue="10.10.1984"
-                onChange={(value) => {
+                onChange={useCallback((value) => {
                     console.log("value", value);
-                    console.log("dateRef.current.getValue()", dateRef.current.getValue());
-                }}
+                }, [])}
                 maskOptions={{
                     mask: "99.99.9999",
                 }}
@@ -121,10 +120,9 @@ export const Uncontrolled = () => {
             <DateInput
                 ref={dateRangeRef}
                 defaultValue={["10.10.1984", "15.10.1984"]}
-                onChange={(value) => {
+                onChange={useCallback((value) => {
                     console.log("value", value);
-                    console.log("dateRangeRef.current.getValue()", dateRangeRef.current.getValue());
-                }}
+                }, [])}
                 datepickerOptions={{
                     range: true,
                 }}
@@ -159,10 +157,13 @@ const ControlledSingle = () => {
         []
     );
 
+    console.log("ControlledSingle:date", date);
+
     return (
         <>
             <DateInput value={date} onChange={setDate} {...options} />
             <div>date: {JSON.stringify(date)}</div>
+            <button onClick={() => setDate("")}>reset</button>
         </>
     );
 };
@@ -186,6 +187,7 @@ const ControlledRange = () => {
         <>
             <DateInput value={dates} onChange={setDates} {...options} />
             <div>dates: {JSON.stringify(dates)}</div>
+            <button onClick={() => setDates([])}>reset</button>
         </>
     );
 };

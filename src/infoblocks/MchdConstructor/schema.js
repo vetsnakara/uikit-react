@@ -192,7 +192,11 @@ yup.addMethod(yup.string, "validAge", function validAge() {
 });
 
 yup.addMethod(yup.string, "validDate", function validDate() {
-    return this.test("isDateValid", msg[IS_DATE_VALID], (value) => isDateValid(value)).mask(Mask[DATE]);
+    return this.test("isDateValid", msg[IS_DATE_VALID], (value, ctx) => {
+        const { createError } = ctx;
+        if (value === "") return createError({ message: msg[IS_VALUE_EXIST] });
+        return isDateValid(value);
+    }).mask(Mask[DATE]);
 });
 
 yup.addMethod(yup.string, "beforeToday", function beforeToday() {
@@ -286,8 +290,8 @@ function isAgeValid(value) {
     return age > 15 && age < 100;
 }
 
-export const attorneyDateBeginBaseSchema = string().isRequired(); //.validDate().beforeToday();
-export const attorneyDateEndBaseSchema = string().isRequired(); //.validDate();
+export const attorneyDateBeginBaseSchema = string().nullable().validDate().beforeToday();
+export const attorneyDateEndBaseSchema = string().nullable().validDate();
 
 // Дефолтная схема валидации для поля "Серия и номер документа"
 // Схема обновляется при изменении кода типа документа

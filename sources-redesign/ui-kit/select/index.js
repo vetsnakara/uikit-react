@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("select.select__control").each(function (index, element) {
+    $("select.select__control").not('[data-init="false"]').each(function (index, element) {
         initBootstrapSelect(element);
     });
 });
