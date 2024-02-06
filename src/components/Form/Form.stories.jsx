@@ -45,9 +45,7 @@ import {
     FormTextarea,
 } from "./inputs";
 
-const { getRhfInstance } = initForm(rhf);
-
-const { useForm, useController, FormProvider } = getRhfInstance();
+const { useForm, useController, FormProvider } = initForm(rhf);
 
 export default {
     title: "form/Form",

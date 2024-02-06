@@ -9,10 +9,7 @@ const ReactHookForm = { instance: null };
 
 export const initForm = (rhfInstance) => {
     ReactHookForm.instance = rhfInstance;
-
-    return {
-        getRhfInstance: () => rhfInstance,
-    };
+    return rhfInstance;
 };
 
 export const getRhfInstance = () => ReactHookForm.instance;

@@ -33,9 +33,7 @@ import { AttorneyInfo } from "./FormSegments/AttorneyInfo";
 import { PrincipalInfo } from "./FormSegments/PrincipalInfo";
 import { RepresentativeInfo } from "./FormSegments/RepresentativeInfo";
 
-const { getRhfInstance } = initForm(rhf);
-
-const { useForm, FormProvider } = getRhfInstance();
+const { useForm, FormProvider } = initForm(rhf);
 
 const selectItems = {
     managers: managers.map(({ id, firstName, lastName, middleName }) => ({
