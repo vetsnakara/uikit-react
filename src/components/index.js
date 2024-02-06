@@ -15,6 +15,7 @@ export * from "./GroupContainer";
 export * from "./Input";
 export * from "./List";
 export * from "./Loader";
+export * from "./MainWithStickySidebarLayout";
 export * from "./Modal";
 export * from "./Notification";
 export * from "./Pagination";

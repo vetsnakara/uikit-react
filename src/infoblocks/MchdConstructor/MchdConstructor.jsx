@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
-import { Row, Title } from "@uikit/components";
-import { MainWithStickySidebar as Layout } from "@uikit/layout/MainWithStickySidebar";
+import { Row, Title, MainWithStickySidebarLayout as Layout } from "@uikit/components";
 
 import { MchdForm } from "./components/MchdForm/MchdForm";
 // import { RemoveModal, RevokeModal, SignModal } from "./components/modals";

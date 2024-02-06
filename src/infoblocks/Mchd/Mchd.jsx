@@ -1,5 +1,4 @@
-import { MainWithStickySidebar as Layout } from "@uikit/layout/MainWithStickySidebar";
-import { Title, Row } from "@uikit/components";
+import { Title, Row, MainWithStickySidebarLayout as Layout } from "@uikit/components";
 
 import { Main } from "./components/Main";
 import { Sidebar } from "./components/Sidebar";

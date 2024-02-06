@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const MainWithStickySidebar = ({ children }) => {
+export const MainWithStickySidebarLayout = ({ children }) => {
     useEffect(() => {
         var neighbour = document.querySelector(".main__aside-neighbour");
         var wrapper = document.querySelector(".main__aside");
@@ -87,11 +87,11 @@ export const MainWithStickySidebar = ({ children }) => {
     return <>{children}</>;
 };
 
-MainWithStickySidebar.Main = ({ children }) => {
+MainWithStickySidebarLayout.Main = ({ children }) => {
     return <div className="main__aside-neighbour">{children}</div>;
 };
 
-MainWithStickySidebar.Aside = ({ children }) => {
+MainWithStickySidebarLayout.Aside = ({ children }) => {
     return (
         <div className="main__aside">
             <div className="main__aside-container">{children}</div>

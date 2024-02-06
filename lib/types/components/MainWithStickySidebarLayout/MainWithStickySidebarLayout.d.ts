@@ -1,7 +1,7 @@
-export function MainWithStickySidebar({ children }: {
+export function MainWithStickySidebarLayout({ children }: {
     children: any;
 }): import("react/jsx-runtime").JSX.Element;
-export namespace MainWithStickySidebar {
+export namespace MainWithStickySidebarLayout {
     function Main({ children }: {
         children: any;
     }): import("react/jsx-runtime").JSX.Element;
