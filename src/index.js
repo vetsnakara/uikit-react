@@ -1,2 +1,2 @@
 export * from "./components";
-export { FormProvider } from "./hooks";
+export { FormProvider, useFormContext } from "./hooks";
