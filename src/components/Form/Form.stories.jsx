@@ -1,5 +1,4 @@
-// import { useController, useForm } from "react-hook-form";
-import * as rhf from "react-hook-form";
+import * as ReactHookForm from "react-hook-form";
 
 // todo: ??? зачем подгружать бандлы react, react-dom, react-uikit, если не странице не используется рекат ???
 // todo: intellisent for @uikit/comopnents (hooks)
@@ -32,7 +31,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { maxWidth } from "../../../.storybook/decorators";
 
-import { initForm } from "../../hooks/useFormField";
+import { initLib } from "../../utils/libAdapter";
 
 import {
     FormCheckbox,
@@ -45,7 +44,7 @@ import {
     FormTextarea,
 } from "./inputs";
 
-const { useForm, useController, FormProvider } = initForm(rhf);
+const { useForm, useController, FormProvider } = initLib({ ReactHookForm });
 
 export default {
     title: "form/Form",

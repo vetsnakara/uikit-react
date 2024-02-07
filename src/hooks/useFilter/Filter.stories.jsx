@@ -1,7 +1,8 @@
 import { rest } from "msw";
-import { FormProvider, useForm } from "react-hook-form";
+// import { FormProvider, useForm } from "react-hook-form";
 
 import { QueryClient, QueryClientProvider, keepPreviousData, useQuery } from "@tanstack/react-query";
+import * as ReactHookForm from "react-hook-form";
 
 import axios from "axios";
 
@@ -28,6 +29,9 @@ import {
     FormSearchInput,
     FormSelect,
 } from "../../components/Form/inputs";
+import { initLib } from "../../utils/libAdapter";
+
+const { FormProvider, useForm } = initLib({ ReactHookForm });
 
 export default {
     title: "hooks/useFilter",
