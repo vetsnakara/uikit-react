@@ -1,6 +1,6 @@
 {
     "name": "@vetsnakara/uikit-react",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "UIKit React with PRR styles",
     "main": "lib/uikit-react.js",
     "types": "lib/types/index.d.ts",
