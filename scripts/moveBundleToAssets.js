@@ -1,12 +1,12 @@
 /**
- * @file Перемещение минифицированного бандла библиотеки React UIKit из каталога сборки `lib` в каталог `assets`
+ * @file Перемещение минифицированного бандла React UIKit из каталога сборки `lib` в каталог `assets`
  * для возможности подключения React UIKit в качестве ресурса инфоблока.
  */
 
 const fs = require("fs");
 const path = require("path");
 
-const fileName = "react-uikit.min.js";
+const fileName = "uikit-react.min.js";
 
 const src = path.resolve(__dirname, "..", "lib", fileName);
 

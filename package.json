@@ -1,8 +1,8 @@
 {
-    "name": "@vetsnakara/react-uikit",
-    "version": "1.0.17",
-    "description": "React based UIKit with PRR styles",
-    "main": "lib/react-uikit.js",
+    "name": "@vetsnakara/uikit-react",
+    "version": "0.0.0",
+    "description": "UIKit React with PRR styles",
+    "main": "lib/uikit-react.js",
     "types": "lib/types/index.d.ts",
     "scripts": {
         "prod": "cross-env PRRENV=production gulp production",
@@ -28,7 +28,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/vetsnakara/react-uikit.git"
+        "url": "git+https://github.com/vetsnakara/uikit-react.git"
     },
     "keywords": [
         "react",
@@ -36,7 +36,7 @@
     ],
     "author": "BFT",
     "license": "MIT",
-    "homepage": "https://github.com/vetsnakara/react-uikit#readme",
+    "homepage": "https://github.com/vetsnakara/uikit-react#readme",
     "devDependencies": {
         "@babel/core": "7.23.6",
         "@babel/plugin-proposal-class-properties": "7.18.6",

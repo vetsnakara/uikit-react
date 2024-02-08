@@ -1,6 +1,5 @@
 import * as ReactHookForm from "react-hook-form";
 
-// todo: ??? зачем подгружать бандлы react, react-dom, react-uikit, если не странице не используется рекат ???
 // todo: intellisent for @uikit/comopnents (hooks)
 import {
     Button,

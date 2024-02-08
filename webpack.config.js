@@ -9,6 +9,7 @@ const Mode = {
 
 const mode = process.env.NODE_ENV;
 const isProduction = mode === Mode.Production;
+const libName = "uikit-react";
 
 module.exports = () => {
     console.log(`Running webpack in ${mode} mode.`);
@@ -24,7 +25,7 @@ module.exports = () => {
 
         output: {
             path: path.resolve(__dirname, "./lib"),
-            filename: isProduction ? "react-uikit.min.js" : "react-uikit.js",
+            filename: isProduction ? `${libName}.min.js` : `${libName}.js`,
 
             // собираем UMD-модуль
             libraryTarget: "umd",

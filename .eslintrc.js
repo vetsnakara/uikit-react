@@ -7,7 +7,7 @@ module.exports = {
     globals: {
         moment: true,
         _: true,
-        yup: true
+        yup: true,
     },
     parser: "@typescript-eslint/parser",
     extends: [
@@ -19,10 +19,7 @@ module.exports = {
     ],
     plugins: ["react", "react-hooks", "@typescript-eslint", "import", "unused-imports"],
     rules: {
-        // "no-console": "error", // todo: fix (don't use for SB files)
         "prefer-const": "error",
-        // "max-len": ["error", { code: 120 }], // todo: fix
-        // indent: ["error", 4], // todo: fix
 
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",

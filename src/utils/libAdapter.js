@@ -1,6 +1,14 @@
+/**
+ * @file Функции для работы с библиотеками, использующими провайдер
+ *
+ * todo: description
+ *
+ * todo: set correct types for functions
+ * todo: rename initLib
+ */
+
 const libsCache = {};
 
-// todo: types!
 /**
  * @param {string | string[]} names
  * @returns
@@ -18,7 +26,6 @@ export const getLib = (names) => {
     );
 };
 
-// todo: rename?
 /**
  * @param {Record<"ReactHookForm" | "ReactQuery", object>} libsObj
  * @returns

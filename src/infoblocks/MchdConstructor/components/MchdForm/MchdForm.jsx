@@ -10,11 +10,9 @@ import { Card, Form, Paragraph, Subtitle, VStack } from "@uikit/components";
 // import { FormProvider } from "@uikit/hooks";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as rhf from "react-hook-form";
+import * as ReactHookForm from "react-hook-form";
 
 import React from "react";
-
-import { initForm } from "../../../../hooks/useFormField";
 
 //! use react-query in MchdForm
 //! try in prr repo (могут быть проблемы с провайдером) -- возможно нужно все реэкспортировать из react-hook-from и react-query
@@ -28,12 +26,14 @@ import { buildData, schema } from "../../schema";
 
 import { DataProvider } from "../../context/DataContext";
 
+import { initLib } from "../../../../utils/libAdapter";
+
 import { FormActions } from "./FormActions";
 import { AttorneyInfo } from "./FormSegments/AttorneyInfo";
 import { PrincipalInfo } from "./FormSegments/PrincipalInfo";
 import { RepresentativeInfo } from "./FormSegments/RepresentativeInfo";
 
-const { useForm, FormProvider } = initForm(rhf);
+const { useForm, FormProvider } = initLib({ ReactHookForm });
 
 const selectItems = {
     managers: managers.map(({ id, firstName, lastName, middleName }) => ({
