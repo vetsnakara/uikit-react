@@ -2,6 +2,6 @@
 
 git add .
 git commit -m 'wip'
-# npm version patch
+npm version patch
 git push origin HEAD
 npm publish
