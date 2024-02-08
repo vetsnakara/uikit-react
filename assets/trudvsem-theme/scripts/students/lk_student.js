@@ -1,1 +1,0 @@
-$(function(){var t;currentUser&&currentUser.snils&&currentUser.snils.length&&(t={snils:[currentUser.snils]},getCatalogData("STUDENT",t).done(function(t){t=t.result.data.length?t.result.data[0]:[];t&&t.length&&t[0]&&(userDataQuery({key:"student:catalog:id",data:t[0]}),userDataQuery({key:"student:snils",data:t[2]}),t[0])}))});
