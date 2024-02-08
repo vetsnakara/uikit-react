@@ -30,8 +30,8 @@ module.exports = () => {
             // собираем UMD-модуль
             libraryTarget: "umd",
 
-            // в месте использования библиотека будет доступна через глобальную переменную ReactUIKit
-            library: "ReactUIKit",
+            // в месте использования библиотека будет доступна через глобальную переменную UIKitReact
+            library: "UIKitReact",
         },
 
         devtool: isProduction ? false : "inline-source-map",
