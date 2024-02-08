@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+    <div class="ib-error">
+        <div class="ib-error__text">
+            <h2 class="content__section-title content__section-title_small">Информация временно недоступна</h2>
+        </div>
+        <div class="ib-error__image-wrap">
+            <img class="ib-error__img" src="/information/resources/upload/error/error.svg" alt="">
+        </div>
+        <div th:if="${debugEnabled}">
+            <p class="content_paragraph" th:text="'Iblocks error: ' + ${errorMessage}"></p>
+            <p class="content_paragraph" th:text="'Portal code: ' + ${portalCode}"></p>
+            <p class="content_paragraph" th:text="'IBlock code: ' + ${code}"></p>
+            <p class="content_paragraph" th:text="'IBlock template code: ' + ${template}"></p>
+            <p class="content_paragraph" th:text="'Properties: ' + ${properties}"></p>
+            <pre class="code" th:text="'Stack: ' + ${stack}"></pre>
+        </div>
+    </div>
+</th:block>

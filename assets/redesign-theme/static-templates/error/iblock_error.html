@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iblock error stub</title>
+    <style>
+        .error-div {
+            border: 4px ridge red;
+            background: #e4b9b9;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="error-div">
+    <h2> Произошла непредвиденная ошибка, обратитесь к администратору. </h2>
+    <th:block th:if="${debugEnabled}">
+        <div th:text="'Portal error: ' + ${errorMessage}"></div>
+        <div th:text="'Portal code: ' + ${portalCode}"></div>
+        <div th:text="'IBlock code: ' + ${code}"></div>
+        <div th:text="'IBlock template code: ' + ${template}"></div>
+        <div th:text="'Properties: ' + ${properties}"></div>
+        <pre th:text="'Stack: ' + ${stack}"></pre>
+    </th:block>
+</div>
+</body>
+</html>

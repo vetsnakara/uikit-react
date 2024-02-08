@@ -1,0 +1,55 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        #left-triangle {
+        animation-name: opacity;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-delay: -800ms;
+        transform-origin: center;
+        }
+        #up-triangle {
+        animation-name: opacity;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-delay: -400ms;
+        transform-origin: center;
+        }
+        #right-triangle {
+        animation-name: opacity;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-delay: -200ms;
+        transform-origin: center;
+        }
+        #down-triangle {
+        animation-name: opacity;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-delay: 0;
+        transform-origin: center;
+        }
+
+        @keyframes opacity {
+        0% {
+        opacity: 0.1;
+        transform: scale(0.7);
+        }
+        50% {
+        opacity: 1;
+        transform: scale(1);
+        }
+        100% {
+        opacity: 0.1;
+        transform: scale(0.7);
+        }
+        }
+    </style>
+    <path id="right-triangle" d="M1131.56 399.92V649.36C1131.56 664.58 1148.17 673.97 1161.21 666.12L1368.53 541.4C1381.17 533.8 1381.17 515.48 1368.53 507.87L1161.2 383.16C1148.17 375.31 1131.56 384.71 1131.56 399.92Z" fill="#6CB2E3"/>
+    <path id="up-triangle" d="M892.28 163.25V412.69C892.28 427.91 908.89 437.3 921.93 429.45L1129.25 304.73C1141.89 297.13 1141.89 278.81 1129.25 271.2L921.93 146.49C908.89 138.65 892.28 148.04 892.28 163.25Z" fill="#6CB2E3"/>
+    <path id="left-triangle" d="M653 399.92V649.36C653 664.58 669.61 673.97 682.65 666.12L889.97 541.4C902.61 533.8 902.61 515.48 889.97 507.87L682.65 383.16C669.61 375.31 653 384.71 653 399.92Z" fill="#6CB2E3"/>
+    <path id="down-triangle" d="M892.28 636.53V885.97C892.28 901.19 908.89 910.58 921.93 902.73L1129.25 778.01C1141.89 770.41 1141.89 752.09 1129.25 744.48L921.93 619.77C908.89 611.93 892.28 621.32 892.28 636.53Z" fill="#6CB2E3"/>
+</svg>
