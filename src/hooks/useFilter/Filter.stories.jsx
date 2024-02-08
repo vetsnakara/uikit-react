@@ -1,7 +1,7 @@
 import { rest } from "msw";
 // import { FormProvider, useForm } from "react-hook-form";
 
-import { QueryClient, QueryClientProvider, keepPreviousData, useQuery } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import * as ReactHookForm from "react-hook-form";
 
 import axios from "axios";
@@ -142,7 +142,7 @@ function Filter() {
     const { data, isSuccess, isLoading } = useQuery({
         queryKey: ["filter", params],
         queryFn: () => fetchItems(params),
-        placeholderData: keepPreviousData,
+        keepPreviousData: true,
     });
 
     useEffect(() => {

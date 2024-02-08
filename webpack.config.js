@@ -2,9 +2,6 @@ const path = require("path");
 
 const TerserPlugin = require("terser-webpack-plugin");
 
-// Example: build with iblock names
-// npm run devjs -- --env names=name1,name2,...
-
 const Mode = {
     Development: "development",
     Production: "production",
@@ -22,43 +19,42 @@ module.exports = () => {
         entry: "./src/index.js",
 
         resolve: {
-            extensions: [".js", ".jsx", ".ts", ".tsx"], //? ts
+            extensions: [".js", ".jsx", ".ts", ".tsx"],
         },
 
         output: {
             path: path.resolve(__dirname, "./lib"),
             filename: isProduction ? "react-uikit.min.js" : "react-uikit.js",
-            library: "ReactUikit",
+
+            // собираем UMD-модуль
             libraryTarget: "umd",
+
+            // в месте использования библиотека будет доступна через глобальную переменную ReactUIKit
+            library: "ReactUIKit",
         },
 
         devtool: isProduction ? false : "inline-source-map",
 
         module: {
             rules: [
-                // todo: rm ???
+                // {
+                //     test: /\.css$/i,
+                //     use: ["style-loader", "css-loader"], // todo: rm deps
+                // },
                 {
-                    test: /\.css$/i,
-                    use: ["style-loader", "css-loader"],
-                },
-                {
-                    test: /\.(js|jsx|ts|tsx)$/, //? ts
+                    test: /\.(js|jsx|ts|tsx)$/,
                     exclude: /node_modules/,
                     use: "babel-loader",
                 },
             ],
         },
 
-        // plugins: [new CleanWebpackPlugin()],
-
-        // todo: добавить другие библиотеки
+        // зависимости UMD-модуля библиотеки React UIKit
+        // ---------------------------------------------
+        // NOTE: указанные ниже библиотеки не включаются в бандл библиотеки React UIKIT,
+        // их UMD-модули доллжны быть загружены в браузер перед загрузкой React UIKit
+        // и быть доступны глобально под указанными именами (root)
         externals: {
-            axios: {
-                root: "axios",
-                commonjs2: "axios",
-                commonjs: "axios",
-                amd: "axios",
-            },
             react: {
                 root: "React",
                 commonjs2: "react",
@@ -77,15 +73,21 @@ module.exports = () => {
                 commonjs: "react-hook-form",
                 amd: "react-dom",
             },
-            "react-query": {
+            "@tanstack/react-query": {
                 root: "ReactQuery",
                 commonjs2: "react-query",
                 commonjs: "react-query",
                 amd: "react-query",
-            }
+            },
+            axios: {
+                root: "axios",
+                commonjs2: "axios",
+                commonjs: "axios",
+                amd: "axios",
+            },
         },
 
-        // to NOT generate license file
+        // не генерировать файл лицензии
         optimization: {
             minimizer: [
                 new TerserPlugin({
