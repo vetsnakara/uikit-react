@@ -1,4 +1,3 @@
-// todo: use alias @storybook
 import { maxWidth } from "../../../.storybook/decorators";
 
 import { HStack, VStack } from "../Stack";
@@ -17,10 +16,6 @@ export default {
         },
     },
 };
-
-// todo: constant "secondary,plain", theme
-// todo: use constant for theme ("desctuct", ...)
-// todo: setup css-modules class names in Elements tab
 
 const Buttons = ({ label = "Click", ...props }) => (
     <>
@@ -50,32 +45,6 @@ export const Default = () => (
     </VStack>
 );
 
-Default.parameters = {
-    docs: {
-        description: {
-            story: "Кнока по умолчанию",
-        },
-        // todo: use raw-loader
-        source: {
-            code: `
-                <VStack gap={1}>
-                    <HStack gap={1}>
-                        <Buttons />
-                    </HStack>
-                    <HStack gap={1}>
-                        <Buttons theme="destruct" />
-                    </HStack>
-                    <HStack gap={1}>
-                        <Buttons disabled />
-                    </HStack>
-                </VStack>
-            `,
-            language: "jsx",
-            type: "auto",
-        },
-    },
-};
-
 export const WithIcon = () => (
     <VStack gap={1}>
         <HStack gap={1}>
@@ -89,6 +58,14 @@ export const WithIcon = () => (
         </HStack>
     </VStack>
 );
+
+WithIcon.parameters = {
+    docs: {
+        description: {
+            story: "Кнока с иконкой",
+        },
+    },
+};
 
 export const IconButton = () => (
     <VStack gap={1}>
@@ -104,17 +81,32 @@ export const IconButton = () => (
     </VStack>
 );
 
-// todo: don't work nested VStack
+IconButton.parameters = {
+    docs: {
+        description: {
+            story: "Кнока с иконкой без текста",
+        },
+    },
+};
+
 export const Wide = () => (
     <VStack gap={3}>
-        <VStack gap={2} max>
+        <VStack gap={1} max>
             <Buttons wide />
         </VStack>
-        <VStack gap={2} max>
+        <VStack gap={1} max>
             <Buttons wide theme="destruct" />
         </VStack>
-        <VStack gap={2} max>
+        <VStack gap={1} max>
             <Buttons wide disabled />
         </VStack>
     </VStack>
 );
+
+Wide.parameters = {
+    docs: {
+        description: {
+            story: "Широкая кнопка",
+        },
+    },
+};

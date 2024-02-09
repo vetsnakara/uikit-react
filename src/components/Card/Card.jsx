@@ -1,5 +1,12 @@
 import cn from "classnames";
 
+/**
+ * Card
+ *
+ * @param {{
+ *     theme?: "muted",
+ * } & import('react').HTMLAttributes<HTMLDivElement>} props
+ */
 export const Card = ({ children, className, theme, ...props }) => {
     const classNames = cn("card", className, { [`card_${theme}`]: theme });
 

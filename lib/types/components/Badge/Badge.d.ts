@@ -1,18 +1,11 @@
-export namespace BadgeVariant {
-    let Success: string;
-    let Error: string;
-    let Warning: string;
-    let Danger: string;
-    let Transparent: string;
-}
-export const BadgeMaxWidth250: 250;
 export function Badge({ className, icon, variant, round, maxWidth, closeable, onClose, children }: {
-    className: any;
-    icon: any;
-    variant: any;
-    round: any;
-    maxWidth: any;
-    closeable: any;
-    onClose: any;
-    children: any;
-}): import("react/jsx-runtime").JSX.Element;
+    className?;
+    string;
+    icon?: string;
+    variant?: "success" | "error" | "warning" | "danger" | "transparent";
+    round?: boolean;
+    maxWidth?: 250;
+    closeable?: boolean;
+    onClose: () => void;
+    children: import("react").ReactNode;
+} & import('react').HTMLAttributes<HTMLDivElement>): import("react/jsx-runtime").JSX.Element;

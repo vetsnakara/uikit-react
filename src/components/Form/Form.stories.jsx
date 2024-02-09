@@ -196,14 +196,25 @@ const Layout = ({ children, aside }) => (
     </Container>
 );
 
+const defaultValuesEmptyForm = {
+    checkbox: false,
+    text: "",
+    textarea: "",
+    date: "",
+    dateRange: [],
+    radio: "",
+    select: "",
+    selectMultiple: [],
+    checkboxGroup: [],
+    file: null,
+};
+
 const defaultValues = {
     checkbox: true,
     text: "abc",
     textarea: "ABC",
     date: "10.10.1984",
     dateRange: ["10.10.1984", "15.10.1984"],
-    // date: "",
-    // dateRange: [],
     radio: "2",
     select: "2",
     selectMultiple: ["1", "3"],
@@ -247,7 +258,7 @@ const schema = yup.object({
 });
 
 export const Default = () => {
-    const form = useForm();
+    const form = useForm({ defaultValues: defaultValuesEmptyForm });
 
     return (
         <Layout aside={"state"}>
@@ -258,9 +269,7 @@ export const Default = () => {
 
 export const Validation = () => {
     const form = useForm({
-        defaultValues: {
-            // selectMultiple: [],
-        },
+        defaultValues: defaultValuesEmptyForm,
         resolver: yupResolver(schema),
     });
 

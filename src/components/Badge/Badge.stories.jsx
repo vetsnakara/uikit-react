@@ -1,27 +1,134 @@
-import { VStack } from "../Stack";
-
-import { Badge, BadgeMaxWidth250, BadgeVariant } from "./Badge";
+import { Badge } from "./Badge";
 
 export default {
     title: "uikit/Badge",
+    component: Badge,
     tags: ["autodocs"],
+    parameters: {
+        docs: {
+            description: {
+                component: "Бейдж",
+            },
+        },
+    },
 };
 
-export const Default = () => (
-    <VStack gap={1}>
-        <Badge>Default</Badge>
-        <Badge variant={BadgeVariant.Success}>Success</Badge>
-        <Badge variant={BadgeVariant.Warning}>Warning</Badge>
-        <Badge variant={BadgeVariant.Danger}>Danger</Badge>
-        <Badge variant={BadgeVariant.Error}>Error</Badge>
-        <Badge variant={BadgeVariant.Error} closeable>
-            Error Closeable
-        </Badge>
-        <Badge variant={BadgeVariant.Transparent}>Transparent</Badge>
-        <Badge variant={BadgeVariant.Success} icon="book">
-            Text
-        </Badge>
-        <Badge icon="book" round />
-        <Badge maxWidth={BadgeMaxWidth250}>Very very very very very very long text</Badge>
-    </VStack>
-);
+export const Default = {
+    args: {
+        children: "Text",
+    },
+};
+
+export const Success = {
+    args: {
+        children: "Text",
+        variant: "success",
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: "Со статусом success",
+            },
+        },
+    },
+};
+
+export const Warning = {
+    args: {
+        children: "Text",
+        variant: "warning",
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: "Со статусом warning",
+            },
+        },
+    },
+};
+
+export const Danger = {
+    args: {
+        children: "Text",
+        variant: "danger",
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: "Со статусом danger",
+            },
+        },
+    },
+};
+
+export const Error = {
+    args: {
+        children: "Text",
+        variant: "error",
+        closeable: true,
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: "С ошибкой",
+            },
+        },
+    },
+};
+
+export const Transparent = {
+    args: {
+        children: "Text",
+        variant: "transparent",
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: "Без фона",
+            },
+        },
+    },
+};
+
+export const WithIcon = {
+    args: {
+        children: "Text",
+        variant: "success",
+        icon: "book",
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: "С иконкой",
+            },
+        },
+    },
+};
+
+export const WithIconRound = {
+    args: {
+        icon: "book",
+        round: true,
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: "С иконкой, без текста",
+            },
+        },
+    },
+};
+
+export const MaxWidth250 = {
+    args: {
+        maxWidth: 250,
+        children: "Very very very very very very long text",
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: "С максимальной шириной 250",
+            },
+        },
+    },
+};

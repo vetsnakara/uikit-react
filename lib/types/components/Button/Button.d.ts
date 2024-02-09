@@ -8,7 +8,7 @@ export namespace ButtonTheme {
 export { _Button as Button };
 declare const _Button: import("react").ForwardRefExoticComponent<{
     variant?: "secondary" | "plain";
-    theme?: string;
+    theme?: "destruct";
     wide?: boolean;
     icon?: string;
     type?: string;

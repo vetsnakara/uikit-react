@@ -73,8 +73,6 @@ export const Select = memo(
             ...selectOptions
         } = props;
 
-        // console.log("props", props);
-
         const ref = useRef(null);
         const callbackRef = composeRef(ref, extRef);
 

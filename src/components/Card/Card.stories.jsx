@@ -1,5 +1,4 @@
 import { maxWidth } from "../../../.storybook/decorators";
-import { VStack } from "../Stack";
 
 import { Card } from "./Card";
 
@@ -7,19 +6,30 @@ export default {
     title: "uikit/Card",
     tags: ["autodocs"],
     decorators: [maxWidth(500)],
+    parameters: {
+        docs: {
+            description: {
+                component: "Карточка",
+            },
+        },
+    },
 };
 
-// todo: don't use inline styles
+export const Default = () => <Card style={{ width: "100%" }}>Default</Card>;
 
-export const Default = () => (
-    <VStack gap={1}>
-        <Card style={{ width: "100%" }}>Default</Card>
-        {/* todo: use constant for theme */}
-        <Card style={{ width: "100%" }} theme="muted">
-            Muted
-        </Card>
-    </VStack>
+export const Muted = () => (
+    <Card style={{ width: "100%" }} theme="muted">
+        Muted
+    </Card>
 );
+
+Muted.parameters = {
+    docs: {
+        description: {
+            story: "Карточка c тенью",
+        },
+    },
+};
 
 export const WithFooter = () => (
     <Card>
@@ -27,3 +37,11 @@ export const WithFooter = () => (
         <Card.Footer>Footer</Card.Footer>
     </Card>
 );
+
+WithFooter.parameters = {
+    docs: {
+        description: {
+            story: "Карточка c футером",
+        },
+    },
+};

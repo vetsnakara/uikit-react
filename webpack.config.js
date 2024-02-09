@@ -38,10 +38,6 @@ module.exports = () => {
 
         module: {
             rules: [
-                // {
-                //     test: /\.css$/i,
-                //     use: ["style-loader", "css-loader"], // todo: rm deps
-                // },
                 {
                     test: /\.(js|jsx|ts|tsx)$/,
                     exclude: /node_modules/,

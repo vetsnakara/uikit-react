@@ -1,15 +1,20 @@
+import React from "react";
 import cn from "classnames";
 
-export const BadgeVariant = {
-    Success: "success",
-    Error: "error",
-    Warning: "warning",
-    Danger: "danger",
-    Transparent: "transparent",
-};
-
-export const BadgeMaxWidth250 = 250;
-
+/**
+ * Badge
+ *
+ * @param {{
+ *     className? string,
+ *     icon?: string,
+ *     variant?: "success"  | "error" | "warning" | "danger" | "transparent"
+ *     round?: boolean,
+ *     maxWidth?: 250,
+ *     closeable?: boolean,
+ *     onClose: () => void,
+ *     children: import("react").ReactNode
+ * } & import('react').HTMLAttributes<HTMLDivElement>} props
+ */
 export const Badge = ({ className, icon, variant, round, maxWidth, closeable, onClose, children }) => {
     const classNames = cn("badge", className, {
         [`badge_${variant}`]: variant,
