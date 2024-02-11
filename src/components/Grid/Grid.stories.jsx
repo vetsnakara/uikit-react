@@ -1,6 +1,3 @@
-// todo: add styles for this story only
-// import "./examples/examples.css";
-
 export default {
     title: "layout/Grid",
     tags: ["autodocs"],

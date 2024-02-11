@@ -1,8 +1,5 @@
 import { Table } from "./Table";
 
-// todo: use casual.js ???
-// todo: memoize columns and items ???
-
 export default {
     title: "uikit/Table",
     tags: ["autodocs"],

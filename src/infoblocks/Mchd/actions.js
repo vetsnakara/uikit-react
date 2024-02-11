@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 
+import * as api from "./api";
 import { AppAction, Status } from "./constants";
 import { useAppDispatch } from "./context";
 import { useUIState } from "./uiContext";
-import * as api from "./api";
 
 export const setStatus = (status) => ({
     type: AppAction.SET_STATUS,
@@ -26,8 +26,8 @@ export const useAction = () => {
             dispatch(setStatus(Status.Signed));
             // todo: success notification
         } catch (error) {
-            // todo: error notification
             console.log("error", error);
+            // todo: error notification
         }
     }, []);
 

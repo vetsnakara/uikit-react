@@ -1,20 +1,9 @@
 import cn from "classnames";
 import { forwardRef, memo, useEffect, useRef } from "react";
 
-//! будет тащиться в каждый бандл
-//! подумать о динамически подгружаемых либах и динамически подгружаемых компонентах
-import Inputmask from "inputmask"; // todo: check version with existing
+import Inputmask from "inputmask";
 
-import { composeRef } from "../../hooks/useElementRef/composeRef";
-
-// todo: useInputMask hook
-// todo: useDateinput hook
-// todo: use const for format (and option)
-// todo: use constants for input type: text, search, date
-// todo: update dp to use silent option (is needed here?)
-// todo: hook useInputmask
-
-//? будет вопрос, почему просто не использовать jsdoc
+import { composeRef } from "../../utils/composeRef";
 
 /**
  * @param {{
@@ -27,9 +16,8 @@ import { composeRef } from "../../hooks/useElementRef/composeRef";
  *    defaultValue?: string
  * } & import('react').InputHTMLAttributes<HTMLInputElement>} props
  */
-// ??? why no `placeholder` attribute ???
-function Input(
-    {
+function Input(props, extRef) {
+    const {
         name,
         title,
         error,
@@ -43,21 +31,13 @@ function Input(
         value,
         defaultValue,
         ...inputOptions
-    },
-    extRef
-) {
+    } = props;
+
     const ref = useRef(null);
     const callbackRef = composeRef(ref, extRef);
-    // const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
-    //     el,
-    //     getValue: () => el.value,
-    //     setValue: (value = "") => {
-    //         el.value = value;
-    //     },
-    // }));
 
     useEffect(() => {
-        //! don't work React onChange witn jquery inputmask
+        // note: React onChange doesn't work with jquery inputmask; need valilla lib
         // https://github.com/RobinHerbots/Inputmask/issues/1377
         let im = null;
 
@@ -77,7 +57,6 @@ function Input(
         onChange?.(ref.current.value, event);
     };
 
-    // todo: remove (have SearchInput component)
     const handleKeyDown = (event) => {
         if (event.key === "Enter") {
             onSubmit?.(ref.current.value, event);

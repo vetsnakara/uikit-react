@@ -1,6 +1,6 @@
-import { maxWidth } from "../../../.storybook/decorators";
-
 import { FileList, getId } from "./FileList";
+
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "inputs/FileList",

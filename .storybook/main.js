@@ -27,7 +27,8 @@ const config = {
         if (config.resolve) {
             config.resolve.alias = {
                 ...config.resolve.alias,
-                "@uikit": path.resolve(__dirname, "../src"),
+                "@/storybook": path.resolve(__dirname, "."),
+                "@": path.resolve(__dirname, "../src"),
             };
         }
 

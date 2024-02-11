@@ -1,12 +1,8 @@
-import React, { memo, forwardRef } from "react";
-
-import { useFormControlRef } from "../../hooks";
+import { forwardRef, memo, useRef } from "react";
 
 import { CheckboxGroupContext } from "./context";
 
-// todo: optimize renders for controlled variant
-// todo: show error (if any) on last Radio only
-// todo: create Radios from items list prop
+import { composeRef } from "@/utils";
 
 export const CheckboxGroup = memo(
     forwardRef((props, extRef) => {
@@ -18,33 +14,17 @@ export const CheckboxGroup = memo(
             variant,
             className,
             children,
-            component: Component = "div", //? prop: as
+            component: Component = "div",
         } = props;
 
-        const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
-            el,
-            getValue: () => {
-                const checkboxNodes = [...el.querySelectorAll("[type='checkbox']")];
-
-                const values = [...checkboxNodes].map(({ value, checked }) => (checked ? value : null)).filter(Boolean);
-
-                return values;
-            },
-            setValue: (values = []) => {
-                //! DRY
-                const checkboxNodes = [...el.querySelectorAll("[type='checkbox']")];
-
-                checkboxNodes.forEach((node) => {
-                    node.checked = values.includes(node.value);
-                });
-            },
-        }));
+        const ref = useRef(null);
+        const callbackRef = composeRef(ref, extRef);
 
         const onCheckboxChange = (event) => {
-            const checkboxNodes = ref.current.el.querySelectorAll("[type='checkbox']");
+            const checkboxNodes = ref.current.querySelectorAll("[type='checkbox']");
             const values = [...checkboxNodes].map(({ value, checked }) => (checked ? value : null)).filter(Boolean);
 
-            ref.current.el.value = values; // ref points to div
+            ref.current.value = values; // ref points to wrapper el (div)
 
             props.onChange?.(values, event);
         };
@@ -52,7 +32,6 @@ export const CheckboxGroup = memo(
         return (
             <Component ref={callbackRef} className={className}>
                 <CheckboxGroupContext.Provider
-                    // todo: memo?
                     value={{
                         name,
                         value,

@@ -1,9 +1,5 @@
-import { useEffect, useRef, memo } from "react";
 import cn from "classnames";
-
-// todo: add ext ref ?
-// todo: programmatic call
-// todo: html in tooltip
+import { memo, useEffect, useRef } from "react";
 
 // const TooltipPlacement = {};
 
@@ -19,7 +15,7 @@ export const Tooltip = memo(
                 window.initToolTip($(event.target));
             }
 
-            // todo: destory???
+            // todo: destory
             return () => container.removeEventListener("mouseenter", showTooltip);
         }, [options]);
 

@@ -1,16 +1,14 @@
 import { useCallback, useMemo } from "react";
 
-import { Button, ButtonVariant } from "../Button";
-
 import { Dropdown } from "./Dropdown";
 import { DropdownItemType } from "./DropdownItem";
+
+import { Button, ButtonVariant } from "@/components";
 
 export default {
     title: "uikit/Dropdown",
     tags: ["autodocs"],
 };
-
-// todo: в виде кнопки с иконкой
 
 export const Default = () => {
     const items = useMemo(
@@ -50,8 +48,8 @@ export const Default = () => {
                 ref={ref}
                 data-toggle="dropdown"
                 icon="more"
-                variant={ButtonVariant.Plain} //! не удобно
-                className="content_pale" //???
+                variant={ButtonVariant.Plain}
+                className="content_pale"
             />
         ),
         []

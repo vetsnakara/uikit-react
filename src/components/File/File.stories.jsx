@@ -1,7 +1,7 @@
-import { maxWidth } from "../../../.storybook/decorators";
-
 import { File as FileUpload } from "./File";
 import { FilePreview } from "./FilePreview";
+
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "inputs/File",

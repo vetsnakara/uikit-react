@@ -5,8 +5,6 @@ import { Select } from "../Select";
 const AJAX_SELECT_SERCH_PATH = "ajaxSelectSearchPath";
 
 export const Ajax = () => {
-    // const [value, setValue] = useState([]);
-
     const selectpickerOptions = {
         liveSearch: true,
 
@@ -32,8 +30,6 @@ export const Ajax = () => {
             preserveSelected: true,
         },
     };
-
-    // todo: controlled / uncontrolled
 
     return <Select selectpickerOptions={selectpickerOptions} multiple />;
 };

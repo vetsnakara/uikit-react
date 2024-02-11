@@ -7,11 +7,13 @@ import cn from "classnames";
  *     theme?: "muted",
  * } & import('react').HTMLAttributes<HTMLDivElement>} props
  */
-export const Card = ({ children, className, theme, ...props }) => {
+export const Card = (props) => {
+    const { children, className, theme, ...otherProps } = props;
+
     const classNames = cn("card", className, { [`card_${theme}`]: theme });
 
     return (
-        <div className={classNames} {...props}>
+        <div className={classNames} {...otherProps}>
             {children}
         </div>
     );

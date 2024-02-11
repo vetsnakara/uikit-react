@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
 import cn from "classnames";
+import { forwardRef } from "react";
 
 const rowColWidths = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
@@ -18,7 +18,6 @@ export const Row = forwardRef((props, ref) => {
         }
 
         const isXs = !i;
-        // todo: no row-cols in uikit
         colClasses.push(isXs ? `row-cols-${colSize}` : `row-cols-${colWidth}-${colSize}`);
     });
 

@@ -23,7 +23,9 @@ const ButtonPropTypes = {};
  *     type?: string
  * } & import('react').ButtonHTMLAttributes<HTMLButtonElement>} props
  */
-function Button({ variant, theme, wide, icon, type = "button", className, children, ...buttonProps }, ref) {
+function Button(props, ref) {
+    const { variant, theme, wide, icon, type = "button", className, children, ...buttonProps } = props;
+
     const classNames = cn(
         "button",
         {

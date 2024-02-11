@@ -1,8 +1,6 @@
 import cn from "classnames";
 import { memo } from "react";
 
-// todo: mv to shared utils?
-// todo: don't show pagination if no data available (total = 0)
 import { pagination } from "./utils";
 
 const PrevButton = ({ page, pages }) => {
@@ -36,7 +34,6 @@ const Pages = ({ page, pages }) =>
         );
     });
 
-// todo: prevButtonText, nextButtonText
 export const Pagination = memo(
     ({
         page,
@@ -44,7 +41,6 @@ export const Pagination = memo(
         total,
         delta,
         arrows = true,
-        // todo
         // prevButtonText = "Назад",
         // nextButtonText = "Вперёд",
         onPageChange,

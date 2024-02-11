@@ -9,7 +9,10 @@
         "jsx": "react-jsx",
         "skipLibCheck": true,
         "allowSyntheticDefaultImports": true,
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "paths": {
+            "@/*": ["./src"]
+        }
     },
     "include": ["src/**/*.js", "src/**/*.jsx"],
     "exclude": ["src/components/**/*.stories.jsx"]

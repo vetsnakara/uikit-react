@@ -1,8 +1,6 @@
-import { Card } from "../Card";
-import { VStack } from "../Stack";
-import { Title } from "../Text";
-
 import { MainWithStickySidebarLayout as Layout } from "./MainWithStickySidebarLayout";
+
+import { Card, Title, VStack } from "@/components";
 
 export default {
     title: "layout/LayoutStickySidebar",

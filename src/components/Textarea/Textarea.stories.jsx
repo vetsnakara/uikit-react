@@ -1,15 +1,12 @@
-import { maxWidth } from "../../../.storybook/decorators";
-
 import { Textarea } from "./Textarea";
+
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "inputs/Textarea",
     tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
-
-// todo: controlled / uncontrolled
-// todo: add mock onChange
 
 const options = {
     value: "123",

@@ -1,4 +1,1 @@
-export function Loader({ className, ...props }: {
-    [x: string]: any;
-    className: any;
-}): import("react/jsx-runtime").JSX.Element;
+export function Loader(props: any): import("react/jsx-runtime").JSX.Element;

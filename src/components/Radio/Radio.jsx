@@ -1,12 +1,10 @@
 import cn from "classnames";
 import { forwardRef, memo, useContext, useRef } from "react";
 
-import { composeRef } from "../../hooks/useElementRef";
+import { composeRef } from "../../utils/composeRef";
 
 import { RadioGroup } from "./RadioGroup";
 import { RadioGroupContext } from "./context";
-
-// todo: optimize renders
 
 export const Radio = memo(
     forwardRef((props, ref) => {

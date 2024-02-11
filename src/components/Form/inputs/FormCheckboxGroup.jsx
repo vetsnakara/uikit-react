@@ -1,9 +1,11 @@
-import { get } from "react-hook-form";
+import { useFormField } from "../hooks/useFormField";
 
-import { useFormField } from "../../../hooks/useFormField";
-import { Checkbox } from "../../Checkbox";
+import { Checkbox } from "@/components";
+import { get } from "@/utils";
 
-export const FormCheckboxGroup = ({ name, children, ...restProps }) => {
+export const FormCheckboxGroup = (props) => {
+    const { name, children, ...restProps } = props;
+
     const { field, formState } = useFormField({ name });
 
     const radioProps = _.omit(restProps, ["value", "onChange", "error"]);

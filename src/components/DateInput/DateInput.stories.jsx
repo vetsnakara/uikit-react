@@ -1,18 +1,16 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 
-import { maxWidth } from "../../../.storybook/decorators";
-import { VStack } from "../Stack";
-
 import { DateInput } from "./DateInput";
+
+import { maxWidth } from "@/storybook/decorators";
+
+import { VStack } from "@/components";
 
 export default {
     title: "inputs/DateInput",
     tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
-
-// todo: controlled, uncontrolled, sandbox
-// todo: sandbox like for select
 
 export const Default = () => <DateInput />;
 
@@ -23,9 +21,6 @@ export const Error = () => <DateInput error="Error text" />;
 export const Disabled = () => <DateInput disabled />;
 
 export const Required = () => <DateInput title="Title" required />;
-
-// todo: don't works
-// export const Readonly = () => <DateInput value="10.10.1984" readOnly />;
 
 export const Mask = () => (
     <VStack gap={1}>
@@ -52,13 +47,8 @@ export const Range = () => (
     />
 );
 
-// // datepicker options
-
 export const DatepickerOptions = () => (
     <VStack gap={1}>
-        {/* don't work */}
-        {/* <DateInput title="inline: true" datepickerOptions={{ inline: true }} /> */}
-
         <DateInput
             title="Months"
             datepickerOptions={{
@@ -67,15 +57,6 @@ export const DatepickerOptions = () => (
                 dateFormat: "MMMM yyyy", // don't works correctly
             }}
         />
-
-        {/* don't work */}
-        {/* <DateInput
-            title="isMobile: true"
-            datepickerOptions={{
-                isMobile: true,
-                autoClose: true,
-            }}
-        /> */}
 
         <DateInput
             title="minMaxDate"
@@ -100,7 +81,6 @@ export const DatepickerOptions = () => (
     </VStack>
 );
 
-// todo: create case with submit form (like for ordinary input)
 export const Uncontrolled = () => {
     const dateRef = useRef();
     const dateRangeRef = useRef();
@@ -140,10 +120,6 @@ export const Controlled = () => (
         <ControlledRange />
     </VStack>
 );
-
-//! при использовании контролируемых инпутов
-//! 1 - лишние перерендеры всегда при изменении значения
-//! 2 - нужно мемоизировать все передаваемые объекты (+ массивы), чтобы исключить лишние перерендеры, когда ничего в компоненте не поменялось (нужно делать и для неконтролируемых тоже)
 
 const ControlledSingle = () => {
     const [date, setDate] = useState("10.10.1984");

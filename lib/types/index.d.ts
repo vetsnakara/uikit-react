@@ -1,2 +1,3 @@
 export * from "./components";
-export { initLib, getLib } from "./utils/libAdapter";
+export * from "./hooks";
+export * from "./utils";

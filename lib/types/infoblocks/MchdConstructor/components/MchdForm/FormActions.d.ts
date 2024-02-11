@@ -1,1 +1,3 @@
-export function FormActions(): import("react/jsx-runtime").JSX.Element;
+export function FormActions({ className }: {
+    className: any;
+}): import("react/jsx-runtime").JSX.Element;

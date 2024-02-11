@@ -32,7 +32,6 @@ export const RowTable = () => <Definitions items={items} variant={Variant.RowTab
 
 export const FixWidth = () => (
     <VStack gap={3}>
-        {/* todo: use Box */}
         <div>
             <Subtitle>Ширина лейбла 150px</Subtitle>
             <Definitions items={items} variant={Variant.RowTable} fixWidth={Width.W150} />

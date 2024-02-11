@@ -1,9 +1,11 @@
-import { get } from "react-hook-form";
+import { useFormField } from "../hooks/useFormField";
 
-import { useFormField } from "../../../hooks/useFormField";
-import { Input } from "../../Input";
+import { Input } from "@/components";
+import { get } from "@/utils";
 
-export const FormInput = ({ name, type, ...restProps }) => {
+export const FormInput = (props) => {
+    const { name, type, ...restProps } = props;
+
     const { field, formState } = useFormField({ name });
 
     const inputProps = _.omit(restProps, ["value", "onChange", "error"]);

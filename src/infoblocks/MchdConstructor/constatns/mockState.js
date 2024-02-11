@@ -15,7 +15,7 @@ const middleName = "Middlename";
 const companyName = "Company Name";
 const region = "7800000000000";
 const representativeId = "495ff8c0-6f2a-11ee-bd29-e5e06384a8a9";
-// const documentType = "21";
+const documentType = "21";
 const seriesAndNumber = "12345";
 const authorityDocument = "abc";
 const authorityCodeDocument = "123";
@@ -113,7 +113,7 @@ export const mockState = {
         snils,
         inn: innPerson,
 
-        documentType: "",
+        documentType,
         seriesAndNumber,
         authorityDocument,
         authorityCodeDocument,

@@ -9,6 +9,15 @@ import axios from "axios";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import {
+    FormCheckbox,
+    FormCheckboxGroup,
+    FormDateInput,
+    FormRadioGroup,
+    FormSearchInput,
+    FormSelect,
+} from "@/components/Form/inputs";
+
+import {
     Button,
     ButtonVariant,
     Card,
@@ -19,54 +28,14 @@ import {
     Radio,
     Separator,
     VStack,
-} from "@uikit/components";
-
-import {
-    FormCheckbox,
-    FormCheckboxGroup,
-    FormDateInput,
-    FormRadioGroup,
-    FormSearchInput,
-    FormSelect,
-} from "../../components/Form/inputs";
-import { initLib } from "../../utils/libAdapter";
+} from "@/components";
+import { initLib } from "@/utils";
 
 const { FormProvider, useForm } = initLib({ ReactHookForm });
 
 export default {
     title: "hooks/useFilter",
 };
-
-// todo: implement search vacancies/laborers filter ?
-// todo: sorting
-// todo: history of searches (prev, next browwer buttons)
-// todo: submit button in search field should work
-// todo: pagination
-// todo: filtering (text search, date, date range, select, multiselect, ajax select, checkbox, radio)
-// todo: default filter values (from url params)
-// todo: hidden filters with value
-// todo: show/hide filters button
-// todo: dependent filters (use setValue)
-// todo:      - dependent selects
-// todo:      - dependent selectw (second select is ajax: Region => City)
-// todo: CRUD operations (case of last item!)
-// todo: distributed filters
-// todo: filters in sidebar (pis)
-// todo: extended filters in modal
-// todo: reset filters
-// todo: компоненты для раскладки фильтров, но здесь фильтры не должны выглядеть, как на страницах; главное - иллюстрация всех кейсов; примеры страниц сделать отдельно (вместе с Mchd)
-// todo: cancelling requests
-// todo: datePeriod send null in request after first date select
-// todo: при открытом дропдауне селекта клик по кнопке пагинации не закрывает дропдаун
-
-// todo: set default values for selectpicker
-// todo: restore selected items in ajax picker after remount
-// https://github.com/truckingsim/Ajax-Bootstrap-Select/issues/177
-// https://stackoverflow.com/questions/73813617/how-to-load-the-default-selected-values-from-ajax-for-bootstrap-select
-// https://stackoverflow.com/questions/14804253/how-to-set-selected-value-on-select-using-selectpicker-plugin-from-bootstrap
-// https://codepen.io/Vadammt/pen/NgNVQx
-
-//! can't reset date value if defaultValue is ""
 
 const selectItems = [
     { value: "1", label: "One" },
@@ -123,15 +92,11 @@ function Filter() {
         total: null,
     });
 
-    //! позволяет справиться с перерендерами и сбросом дропдаунов при переиницилизации контролов
-    //! если делать фильтры самому на useState
     const methods = useForm({
         defaultValues,
     });
 
     const filter = methods.watch();
-
-    console.log("❗ filter", filter);
 
     const params = {
         filter,

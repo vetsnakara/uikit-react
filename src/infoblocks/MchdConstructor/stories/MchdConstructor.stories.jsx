@@ -1,3 +1,4 @@
+import { rest } from "msw";
 import React from "react";
 
 import { MchdConstructor } from "../MchdConstructor";
@@ -31,14 +32,12 @@ export default {
     },
 };
 
-// todo: SB for Sidebar and Main separately?
-
 // change key to force update element tree
 export const Default = (args) => (
     <React.Fragment key={JSON.stringify(args)}>
-        {/* <Provider data={getData(args)}> */}
+        {/* <DataProvider data={getData(args)}> */}
         <MchdConstructor />
-        {/* </Provider> */}
+        {/* </DataProvider> */}
     </React.Fragment>
 );
 
@@ -49,4 +48,18 @@ Default.args = {
     legalEntityPrincipalType: LegalEntityPrincipalType.LegalEntityPerson,
 };
 
-// Default.decorators = [WithData(getData(defaultDataOptions))];
+Default.parameters = {
+    msw: {
+        handlers: [
+            // filter
+            rest.post("https://jsonplaceholder.typicode.com/posts", async (req, res, ctx) => {
+                return res(
+                    ctx.status(200),
+                    ctx.json({
+                        code: "SUCCESS",
+                    })
+                );
+            }),
+        ],
+    },
+};

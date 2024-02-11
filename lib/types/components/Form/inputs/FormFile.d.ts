@@ -1,4 +1,1 @@
-export function FormFile({ name, ...restProps }: {
-    [x: string]: any;
-    name: any;
-}): import("react/jsx-runtime").JSX.Element;
+export function FormFile(props: any): import("react/jsx-runtime").JSX.Element;

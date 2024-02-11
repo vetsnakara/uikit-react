@@ -1,5 +1,7 @@
 import { memo } from "react";
 
+import { get } from "../../utils/get";
+
 export const TableBody = memo(({ columns, items, idFieldName = "id" }) => (
     <tbody className="table__body">
         {items.map((item) => (
@@ -21,12 +23,4 @@ function renderCell(col, item) {
             {value}
         </td>
     );
-}
-
-function get(obj, path) {
-    // eslint-disable-next-line
-    for (var i = 0, path = path.split("."), len = path.length; i < len; i++) {
-        obj = obj[path[i]];
-    }
-    return obj;
 }

@@ -1,10 +1,10 @@
 export function getData({ status, userRole, principalType, legalEntityPrincipalType, }?: {
-    status?: any;
-    userRole?: any;
-    principalType?: any;
-    legalEntityPrincipalType?: any;
+    status?: string;
+    userRole?: string;
+    principalType?: string;
+    legalEntityPrincipalType?: string;
 }): {
-    userRole: any;
+    userRole: string;
     mchd: {
         id: any;
         fio: string;
@@ -12,7 +12,7 @@ export function getData({ status, userRole, principalType, legalEntityPrincipalT
         extensionNumber: string;
         number: string;
         validity: string;
-        type: any;
+        type: string;
         legalEntityPrincipal: {
             id: string;
             companyName: string;
@@ -20,7 +20,7 @@ export function getData({ status, userRole, principalType, legalEntityPrincipalT
             ogrn: string;
             kpp: string;
             region: string;
-            type: any;
+            type: string;
             legalEntityPerson: {
                 firstName: string;
                 middleName: string;
@@ -68,7 +68,7 @@ export function getData({ status, userRole, principalType, legalEntityPrincipalT
             validity: string;
             created: string;
         };
-        status: any;
+        status: string;
         actions: string[];
     };
     documentTypes: {

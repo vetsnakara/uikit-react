@@ -1,9 +1,11 @@
-import { get } from "react-hook-form";
+import { useFormField } from "../hooks/useFormField";
 
-import { useFormField } from "../../../hooks/useFormField";
-import { File } from "../../File";
+import { File } from "@/components";
+import { get } from "@/utils";
 
-export const FormFile = ({ name, ...restProps }) => {
+export const FormFile = (props) => {
+    const { name, ...restProps } = props;
+
     const { field, formState } = useFormField({ name });
 
     const fileProps = _.omit(restProps, ["value", "onChange", "error"]);

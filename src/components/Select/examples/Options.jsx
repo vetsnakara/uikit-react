@@ -56,7 +56,6 @@ export const Divider = () => {
     return <Select items={items} />;
 };
 
-// todo: liveSearch with groups
 export const Groups = () => {
     const items = [
         {
@@ -92,8 +91,7 @@ export const Groups = () => {
     return (
         <VStack gap={2}>
             <Select items={items} title="Единственный выбор" />
-            {/* todo: groups don't work in multiple mode??? */}
-            {/* <Select items={items} title="Множественный выбор" multiple /> */}
+            {/* <Select items={items} title="Множественный выбор" multiple />  */}
         </VStack>
     );
 };

@@ -1,14 +1,15 @@
-import { get } from "react-hook-form";
+import { useFormField } from "../hooks/useFormField";
 
-import { useFormField } from "../../../hooks/useFormField";
-import { Radio } from "../../Radio";
+import { Radio } from "@/components";
+import { get } from "@/utils";
 
-export const FormRadioGroup = ({ name, children, ...restProps }) => {
+export const FormRadioGroup = (props) => {
+    const { name, children, ...restProps } = props;
+
     const { field, formState } = useFormField({ name });
 
     const radioProps = _.omit(restProps, ["value", "onChange", "error"]);
 
-    // todo: check case of empty default value
     return (
         <Radio.Group
             name={name}

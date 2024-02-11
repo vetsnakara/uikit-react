@@ -1,15 +1,15 @@
 import { createContext, useContext, useReducer } from "react";
 
-import { formatDate } from "./utils";
-import { reducer } from "./reducer";
 import {
-    PrincipalType,
-    PrincipalName,
-    LegalEntityPrincipalType,
     LegalEntityPrincipalName,
+    LegalEntityPrincipalType,
+    PrincipalName,
+    PrincipalType,
     getStatusAttrs,
 } from "./constants";
+import { reducer } from "./reducer";
 import { UIProvider } from "./uiContext";
+import { formatDate } from "./utils";
 
 const StateContext = createContext();
 const DispatchContext = createContext();

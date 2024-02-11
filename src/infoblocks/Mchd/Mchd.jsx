@@ -1,11 +1,12 @@
-import { Title, Row, MainWithStickySidebarLayout as Layout } from "@uikit/components";
-
 import { Main } from "./components/Main";
 import { Sidebar } from "./components/Sidebar";
+import { RemoveModal, RevokeModal, SignModal } from "./components/modals";
 import { useAppState } from "./context";
-import { SignModal, RemoveModal, RevokeModal } from "./components/modals";
+
+import { MainWithStickySidebarLayout as Layout, Row, Title } from "@/components";
 
 // todo: icon are not visible now
+// todo: переписать на react-query
 
 export const Mchd = () => {
     const { extensionNumber } = useAppState();

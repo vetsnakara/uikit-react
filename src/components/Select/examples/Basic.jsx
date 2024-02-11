@@ -87,7 +87,6 @@ export const Controlled = () => {
                 {...options}
                 value={value} // current value
                 onChange={setValue} // set new value on every change (with rerender)
-                // todo: don't close on rerender
                 // multiple
             />
             <div>Render: {countRef.current}</div>

@@ -1,4 +1,4 @@
-import { StatusType } from "../../components/Status";
+import { StatusType } from "@/components";
 
 export const Status = {
     Draft: "DRAFT",
@@ -19,7 +19,6 @@ export const Action = {
     COPY: "COPY",
 };
 
-// todo: is needed?
 export const AppAction = {
     ..._.pick(Action, ["SIGN", "DELETE", "REVOKE"]),
     SET_STATUS: "SET_STATUS",

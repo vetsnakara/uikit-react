@@ -1,19 +1,17 @@
 import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 
-import { maxWidth } from "../../../.storybook/decorators";
-import { Button, ButtonVariant } from "../Button";
-
 import { Input } from "./Input";
 import { SearchInput } from "./SearchInput";
+
+import { Button, ButtonVariant } from "@/components";
+
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "inputs/Input",
     tags: ["autodocs"],
     decorators: [maxWidth(500)],
 };
-
-// todo: password, capcha, with prev text (see assets/redesign-theme)
-// todo: search button don't work
 
 export const Default = () => <Input />;
 
@@ -43,7 +41,6 @@ export const Uncontrolled = () => {
                     defaultValue="Hello"
                     onChange={(value) => {
                         console.log("value", value);
-                        console.log("ref.current.getValue()", inputRef.current.getValue());
                     }}
                 />
                 <Button type="submit">Submit Form</Button>
@@ -86,12 +83,10 @@ export const Mask = () => {
             };
     }, [mask]);
 
-    console.log("maskOptions", maskOptions);
-
     return (
         <>
             <Input maskOptions={maskOptions} />
-            {/* todo: use HStack */}
+
             <div>
                 <Button variant={ButtonVariant.Plain} onClick={() => setMask("phone")}>
                     Change to Phone Mask
@@ -111,7 +106,6 @@ export const Required = () => <Input title="Title" required />;
 
 export const Readonly = () => <Input defaultValue="123" readOnly />;
 
-// todo: create separate kind of input
 export const Search = () => {
     const [value, setValue] = useState("");
     const [submitValue, setSubmitValue] = useState("");

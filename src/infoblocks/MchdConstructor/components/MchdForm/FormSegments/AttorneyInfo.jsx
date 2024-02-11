@@ -1,27 +1,49 @@
 import { useCallback, useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
-
-import { Card, Checkbox, Col, Form, Row, Subtitle } from "@uikit/components";
 
 import { DateInput, Input } from "../inputs";
 
+import { Card, Checkbox, Col, Form, Row, Subtitle } from "@/components";
+import { getLib } from "@/utils";
+
+const EXT_NUMBER_KEY = "extensionNumber";
+
+// todo: create hook for logic
 export const AttorneyInfo = ({ className }) => {
+    const [noExtensionNumber, setNoExtensionNumber] = useState(false);
+
+    const { useFormContext, useWatch } = getLib("ReactHookForm");
+
     const {
         setValue,
         formState: { isSubmitted },
+        getFieldState,
     } = useFormContext();
 
-    const [noExtensionNumber, setNoExtensionNumber] = useState(false);
+    const { isDirty: isExtNumberDirty } = getFieldState(EXT_NUMBER_KEY);
+    const extensionNumber = useWatch({ name: EXT_NUMBER_KEY });
 
-    const handleChangeNoExtensionNumber = useCallback(() => {
-        setNoExtensionNumber((prev) => !prev);
-    }, []);
+    console.log({ isExtNumberDirty, extensionNumber });
 
+    // handle reset
     useEffect(() => {
-        setValue("extensionNumber", noExtensionNumber ? "Б/н" : "", {
-            shouldValidate: isSubmitted,
-        });
-    }, [noExtensionNumber, isSubmitted]);
+        if (!isExtNumberDirty) {
+            setNoExtensionNumber(false);
+        }
+    }, [extensionNumber, isExtNumberDirty]);
+
+    const handleChangeNoExtensionNumber = useCallback(
+        (checked) => {
+            setNoExtensionNumber(checked);
+
+            const newValue = checked ? "Б/н" : "";
+
+            setValue(EXT_NUMBER_KEY, newValue, {
+                shouldValidate: isSubmitted,
+                shouldDirty: true,
+            });
+        },
+        [isSubmitted]
+    );
 
     return (
         <Card className={className}>
@@ -29,7 +51,7 @@ export const AttorneyInfo = ({ className }) => {
             <Form.Section>
                 <Input
                     title="Внтуренний номер"
-                    name="extensionNumber"
+                    name={EXT_NUMBER_KEY}
                     placeholder="Введите значение"
                     className="mb-1"
                     disabled={noExtensionNumber}

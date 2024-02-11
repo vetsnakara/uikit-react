@@ -50,4 +50,9 @@ export namespace Default {
         let legalEntityPrincipalType_1: string;
         export { legalEntityPrincipalType_1 as legalEntityPrincipalType };
     }
+    namespace parameters {
+        namespace msw {
+            let handlers: import("msw").RestHandler<import("msw/lib/glossary-de6278a9").M<import("msw/lib/glossary-de6278a9").h>>[];
+        }
+    }
 }

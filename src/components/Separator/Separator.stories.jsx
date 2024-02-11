@@ -1,6 +1,6 @@
-import { maxWidth } from "../../../.storybook/decorators";
-
 import { Separator } from "./Separator";
+
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "uikit/Separator",

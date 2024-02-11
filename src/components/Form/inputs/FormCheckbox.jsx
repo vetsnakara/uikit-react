@@ -1,10 +1,12 @@
-// todo: rm rhf dependency from inputs
-import { get } from "react-hook-form";
+import { useFormField } from "../hooks/useFormField";
 
-import { useFormField } from "../../../hooks/useFormField";
-import { Checkbox } from "../../Checkbox";
+import { Checkbox } from "@/components";
 
-export const FormCheckbox = ({ name, ...restProps }) => {
+import { get } from "@/utils";
+
+export const FormCheckbox = (props) => {
+    const { name, ...restProps } = props;
+
     const { field, formState } = useFormField({ name });
 
     const checkboxProps = _.omit(restProps, ["value", "onChange", "error"]);

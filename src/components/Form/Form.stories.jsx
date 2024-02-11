@@ -1,6 +1,22 @@
 import * as ReactHookForm from "react-hook-form";
 
-// todo: intellisent for @uikit/comopnents (hooks)
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import {
+    FormCheckbox,
+    FormCheckboxGroup,
+    FormDateInput,
+    FormFile,
+    FormInput,
+    FormRadioGroup,
+    FormSelect,
+    FormTextarea,
+} from "./inputs";
+
+import { maxWidth } from "@/storybook/decorators";
+
+import { initLib } from "@/utils";
+
 import {
     Button,
     ButtonVariant,
@@ -14,65 +30,17 @@ import {
     Row,
     Select,
     VStack,
-} from "@uikit/components";
-
-// todo: add prettier (with 4 spaces indentation)
-
-// todo: stories for
-// Object.assign(Form, {
-//     Section: FormSection,
-//     Description: FormDescription,
-//     Fieldset: FormFieldset,
-//     Title: FormTitle,
-// });
-
-import { yupResolver } from "@hookform/resolvers/yup";
-
-import { maxWidth } from "../../../.storybook/decorators";
-
-import { initLib } from "../../utils/libAdapter";
-
-import {
-    FormCheckbox,
-    FormCheckboxGroup,
-    FormDateInput,
-    FormFile,
-    FormInput,
-    FormRadioGroup,
-    FormSelect,
-    FormTextarea,
-} from "./inputs";
+} from "@/components";
 
 const { useForm, useController, FormProvider } = initLib({ ReactHookForm });
 
 export default {
     title: "form/Form",
-    parameters: {
-        // layout: "centered",
-    },
-    decorators: [maxWidth(1000)],
+    decorators: [maxWidth(600)],
 };
 
-//! cases
-// no schema, no default values
-// with default values
-// with reset
-// with schema
-// with dynamic form configuration (watch)
-// with dynamic fields (array fields)
-// with nested components
-// with scroll to error
-// multistep form
-// states: isValid, isChanged, ...
-// reset to defaultValues
-// clear form (if no defaultValues are set)
-
-// todo: форма с распределенными контроломаи
-
 const BaseForm = ({ form }) => {
-    const { handleSubmit, reset, getValues, formState } = form;
-
-    console.log("formState.errors", formState.errors);
+    const { handleSubmit, reset, getValues } = form;
 
     return (
         <FormProvider {...form}>
@@ -87,7 +55,6 @@ const BaseForm = ({ form }) => {
                     </Button>
                 </GroupContainer>
 
-                {/* Сведения о доверенности */}
                 <VStack gap={2} className="mb-2">
                     <Card>
                         <Form.Section>
@@ -245,13 +212,11 @@ const schema = yup.object({
         .test("required", "Поле обязательно для заполнения", (file) => {
             let result = false;
             if (file) result = true;
-            // console.log("required:result", result);
             return result;
         })
         .test("size", "Слишком большой файл", (file) => {
             let result = false;
             if (file && file.size < 1000000) result = true;
-            // console.log("size:result", result);
             return result;
         })
         .nullable(),
@@ -261,9 +226,9 @@ export const Default = () => {
     const form = useForm({ defaultValues: defaultValuesEmptyForm });
 
     return (
-        <Layout aside={"state"}>
-            <BaseForm form={form} />
-        </Layout>
+        // <Layout aside={"state"}>
+        <BaseForm form={form} />
+        // </Layout>
     );
 };
 
@@ -272,14 +237,6 @@ export const Validation = () => {
         defaultValues: defaultValuesEmptyForm,
         resolver: yupResolver(schema),
     });
-
-    const {
-        formState: { errors },
-        getValues,
-    } = form;
-
-    console.log("errors", errors);
-    console.log("values", getValues());
 
     return (
         <Layout aside={"state"}>
@@ -318,7 +275,6 @@ export const NativeMultipleSelect = () => {
         register,
         handleSubmit,
         formState: { errors },
-        getValues,
     } = useForm({
         resolver: yupResolver(
             yup.object({
@@ -326,9 +282,6 @@ export const NativeMultipleSelect = () => {
             })
         ),
     });
-
-    console.log("errors", errors);
-    console.log("values", getValues());
 
     return (
         <form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -348,7 +301,6 @@ export const SingleSelect = () => {
         handleSubmit,
         formState: { errors },
         control,
-        getValues,
     } = useForm({
         resolver: yupResolver(
             yup.object({
@@ -358,9 +310,6 @@ export const SingleSelect = () => {
     });
 
     const { field } = useController({ control, name: "select" });
-
-    console.log("errors", errors);
-    console.log("values", getValues());
 
     return (
         <form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -383,8 +332,7 @@ export const SingleSelect = () => {
 export const MultipleSelect = () => {
     const form = useForm({
         defaultValues: {
-            //! need defalut value for multiple select (for proper validation)
-            //! or need `required`
+            // note: need defalut value for multiple select (for proper validation) or need `required`
             // multipleSelect: [],
         },
         resolver: yupResolver(
@@ -394,14 +342,7 @@ export const MultipleSelect = () => {
         ),
     });
 
-    const {
-        handleSubmit,
-        getValues,
-        formState: { errors },
-    } = form;
-
-    console.log("errors", errors);
-    console.log("values", getValues());
+    const { handleSubmit } = form;
 
     return (
         <FormProvider {...form}>

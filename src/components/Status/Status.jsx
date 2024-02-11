@@ -2,8 +2,6 @@ import cn from "classnames";
 
 import { Span } from "../Text";
 
-// todo: use Status.Type = {...}
-
 export const StatusType = {
     Success: "success",
     Warning: "warning",

@@ -1,2 +1,1 @@
-export const CheckboxGroup: React.MemoExoticComponent<React.ForwardRefExoticComponent<React.RefAttributes<any>>>;
-import React from "react";
+export const CheckboxGroup: import("react").MemoExoticComponent<import("react").ForwardRefExoticComponent<import("react").RefAttributes<any>>>;

@@ -1,15 +1,26 @@
-import { Button, ButtonVariant, GroupContainer } from "@uikit/components";
-import { useFormContext } from "react-hook-form";
+import { useIsMutating } from "@tanstack/react-query";
 
-export const FormActions = () => {
+import { Button, ButtonVariant, GroupContainer } from "@/components";
+import { getLib } from "@/utils";
+
+export const FormActions = ({ className }) => {
+    const saveMutationsNum = useIsMutating({ mutationKey: "save" });
+    const isLoading = saveMutationsNum > 0;
+
+    const { useFormContext } = getLib("ReactHookForm");
     const {
         reset,
-        formState: { defaultValues },
+        formState: { defaultValues, isValid },
     } = useFormContext();
 
+    const isSubmitDisabled = !isValid || isLoading;
+    console.log({ isValid, isLoading, isSubmitDisabled });
+
     return (
-        <GroupContainer>
-            <Button type="submit">Сохранить</Button>
+        <GroupContainer className={className}>
+            <Button type="submit" disabled={false}>
+                Сохранить
+            </Button>
             <Button variant={ButtonVariant.Secondary}>Отменить</Button>
             <Button variant={ButtonVariant.Secondary} onClick={() => reset(defaultValues)}>
                 Reset

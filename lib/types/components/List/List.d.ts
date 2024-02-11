@@ -6,13 +6,7 @@ export namespace OrderedListType {
     let Bracked: string;
     let Letter: string;
 }
-export function List({ type, letter, bracket, className, ...props }: {
-    [x: string]: any;
-    type?: string;
-    letter: any;
-    bracket: any;
-    className: any;
-}): import("react/jsx-runtime").JSX.Element;
+export function List(props: any): import("react/jsx-runtime").JSX.Element;
 export namespace List {
     export { Item };
 }

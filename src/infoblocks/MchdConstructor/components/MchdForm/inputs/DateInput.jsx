@@ -1,6 +1,6 @@
-import { FormDateInput } from "@uikit/components";
-
 import { getFieldConfig } from "../../../schema";
+
+import { FormDateInput } from "@/components";
 
 export const DateInput = ({ placeholder, maskOptions = {}, ...otherProps }) => {
     const config = getFieldConfig(otherProps.name);
@@ -9,7 +9,6 @@ export const DateInput = ({ placeholder, maskOptions = {}, ...otherProps }) => {
         <FormDateInput
             placeholder={placeholder ?? "Выберите дату"}
             maskOptions={{
-                // todo: memo (set as default)
                 mask: "99.99.9999",
                 ...maskOptions,
             }}

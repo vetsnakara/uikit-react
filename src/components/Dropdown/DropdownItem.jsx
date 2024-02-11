@@ -7,7 +7,9 @@ export const DropdownItemType = {
 
 const itemClass = "dropdown-item";
 
-export const DropdownItem = ({ type = DropdownItemType.Button, text, icon, href, className, onClick, ...props }) => {
+export const DropdownItem = (props) => {
+    const { type = DropdownItemType.Button, text, icon, href, className, onClick, ...otherProps } = props;
+
     const content = (
         <>
             {icon && (
@@ -26,13 +28,12 @@ export const DropdownItem = ({ type = DropdownItemType.Button, text, icon, href,
 
     const element = {
         [DropdownItemType.Button]: (
-            <button className={classes[type]} onClick={onClick} {...props}>
+            <button className={classes[type]} onClick={onClick} {...otherProps}>
                 {content}
             </button>
         ),
         [DropdownItemType.Link]: (
-            // todo: use Link
-            <a href={href} className={classes[type]} {...props}>
+            <a href={href} className={classes[type]} {...otherProps}>
                 {content}
             </a>
         ),

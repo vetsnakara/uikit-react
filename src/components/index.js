@@ -24,8 +24,6 @@ export * from "./Radio";
 export * from "./Select";
 export * from "./Separator";
 export * from "./Status";
-// todo: use variant with modifying children classes with mb-x
-// export * from "./Stack";
 export * from "./Table";
 export * from "./Text";
 export * from "./Textarea";

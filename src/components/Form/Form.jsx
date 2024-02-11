@@ -1,10 +1,9 @@
 import cn from "classnames";
 import { forwardRef } from "react";
 
-// todo: form__descripted (variant)
-// todo: recreate all examples from uikit
+export const Form = forwardRef((props, ref) => {
+    const { className, children, ...otherProps } = props;
 
-export const Form = forwardRef(({ className, children, ...otherProps }, ref) => {
     const classNames = cn("form", className, {});
 
     return (

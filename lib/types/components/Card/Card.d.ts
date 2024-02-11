@@ -1,6 +1,6 @@
-export function Card({ children, className, theme, ...props }: {
+export function Card(props: {
     theme?: "muted";
-} & import('react').HTMLAttributes<HTMLDivElement>): import("react/jsx-runtime").JSX.Element;
+} & import("react").HTMLAttributes<HTMLDivElement>): import("react/jsx-runtime").JSX.Element;
 export namespace Card {
     export { CardFooter as Footer };
 }

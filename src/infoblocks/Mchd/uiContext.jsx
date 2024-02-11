@@ -38,7 +38,6 @@ export const UIProvider = ({ children }) => {
         }));
     }, []);
 
-    // todo: use useMemo for main provider ???
     const value = useMemo(
         () => ({
             ...state,

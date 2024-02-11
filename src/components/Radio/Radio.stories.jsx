@@ -7,8 +7,6 @@ export default {
     tags: ["autodocs"],
 };
 
-// todo: controlled and uncontrolled
-
 export const Default = () => <Radio label="Default" />;
 
 export const Checked = () => <Radio label="Checked" checked />;
@@ -34,10 +32,6 @@ export const Ref = () => {
 export const GroupUncontrolled = () => {
     const ref = useRef(null);
 
-    useEffect(() => {
-        console.log("ref.current.getValue()", ref.current.getValue());
-    }, []);
-
     return (
         <Radio.Group
             ref={ref}
@@ -45,7 +39,6 @@ export const GroupUncontrolled = () => {
             defaultValue="2"
             onChange={(value) => {
                 console.log("value", value);
-                console.log("ref.current.getValue()", ref.current.getValue());
             }}
         >
             <Radio value="1" label="One" />

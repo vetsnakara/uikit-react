@@ -2,14 +2,12 @@ import React from "react";
 
 import { Mchd } from "../Mchd";
 
-import { LegalEntityPrincipalType, PrincipalType, UserRole, Status } from "../constants";
+import { LegalEntityPrincipalType, PrincipalType, Status, UserRole } from "../constants";
 
 import { Provider } from "../context";
 
 import { getData } from "./data";
 import { WithInfoblockLayout } from "./decorators";
-
-// todo: remove SB paddings
 
 export default {
     title: "infoblocks/Mchd",
@@ -34,16 +32,16 @@ export default {
     },
 };
 
-// todo: SB for Sidebar and Main separately?
-
 // change key to force update element tree
-export const Default = (args) => (
-    <React.Fragment key={JSON.stringify(args)}>
-        <Provider data={getData(args)}>
-            <Mchd />
-        </Provider>
-    </React.Fragment>
-);
+export const Default = (args) => {
+    return (
+        <React.Fragment key={JSON.stringify(args)}>
+            <Provider data={getData(args)}>
+                <Mchd />
+            </Provider>
+        </React.Fragment>
+    );
+};
 
 Default.args = {
     status: Status.Draft,
@@ -51,5 +49,3 @@ Default.args = {
     principalType: PrincipalType.LegalEntityPrincipal,
     legalEntityPrincipalType: LegalEntityPrincipalType.LegalEntityPerson,
 };
-
-// Default.decorators = [WithData(getData(defaultDataOptions))];

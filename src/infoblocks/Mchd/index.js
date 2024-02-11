@@ -1,10 +1,10 @@
-import { ReactDOM } from "react-dom";
+// import { ReactDOM } from "react-dom";
 
 import { Mchd } from "./Mchd";
 import { Provider } from "./context";
 
 window.initMchd = ({ selector, data }) => {
-    const root = ReactDOM.createRoot(document.getElementById(selector));
+    const root = window.ReactDOM.createRoot(document.getElementById(selector));
 
     // todo: add userRole here
     // todo: import getData to test

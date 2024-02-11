@@ -1,39 +1,32 @@
-import { forwardRef, memo, useContext } from "react";
+import { forwardRef, memo, useContext, useRef } from "react";
 
 import cn from "classnames";
 
-import { useFormControlRef } from "../../hooks";
-
 import { CheckboxGroup } from "./CheckboxGroup";
 import { CheckboxGroupContext } from "./context";
+
+import { composeRef } from "@/utils";
 
 const CheckboxVariant = {
     Checkbox: "checkbox",
     Switch: "switch",
 };
 
-// todo: is needed required?
-
 export const Checkbox = memo(
     forwardRef((props, extRef) => {
         const { label, title, error, className, onChange, ...otherProps } = props;
+
         const checkboxProps = { ...otherProps };
 
-        const { ref, callbackRef } = useFormControlRef(extRef, (el) => ({
-            el,
-            getValue: () => el.checked,
-            setValue: (checked = false) => {
-                el.checked = checked;
-            },
-        }));
+        const ref = useRef(null);
+        const callbackRef = composeRef(ref, extRef);
 
         const onCheckboxChange = (event) => {
-            onChange?.(ref.current.getValue(), event);
+            onChange?.(ref.current.checked, event);
         };
 
         checkboxProps.onChange = onCheckboxChange;
 
-        //! use defaultValue for consistency (useForm)
         if (checkboxProps.defaultValue) {
             checkboxProps.defaultChecked = checkboxProps.defaultValue;
         }

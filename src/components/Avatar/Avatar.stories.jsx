@@ -1,4 +1,4 @@
-import { Avatar } from "./Avatar";
+import { Avatar } from "@/components";
 
 export default {
     title: "uikit/Avatar",

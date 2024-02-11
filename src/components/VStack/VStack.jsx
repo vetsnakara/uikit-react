@@ -1,7 +1,5 @@
 import { Children, cloneElement } from "react";
 
-// todo: настроить отображение классов css-модулей во вкладек Elements при использовании SB и в production
-
 export const VStack = ({ gap = 0, children, ...props }) => {
     const childrenWithGap = Children.map(children, (child, index) => {
         if (!child) return null;
@@ -18,7 +16,6 @@ export const VStack = ({ gap = 0, children, ...props }) => {
         });
     });
 
-    // todo: is need element div? (can be <> ?)
     return <div {...props}>{childrenWithGap}</div>;
 };
 

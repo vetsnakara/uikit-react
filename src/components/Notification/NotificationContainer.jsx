@@ -4,16 +4,6 @@ import { Portal } from "../Portal";
 
 import { Notification } from "./Notification";
 
-// todo: title icon
-// todo: content markup
-// todo: removeAll
-// todo: add icon
-
-// todo: как удобно передавать настройки??? (see toastify)
-
-// {% set classNameName = (type=="info")? "accent" : type  %}
-// {% set iconAttr = (type=="success")? type : "question" %}
-
 const Type = {
     Accent: "accent",
     Warning: "warning",
@@ -30,9 +20,6 @@ const show = (data, { type = Type.Accent } = {}) => {
     const item = { id, title: id, type };
 
     addItem(item);
-
-    // todo: removeTimeout
-    // setTimeout(() => removeItem(id), 5000); // todo: options
 };
 
 export const notification = {
@@ -55,7 +42,6 @@ export const NotificationContainer = ({ /* autoClose = true */ element }) => {
 
     const handleClose = useCallback((event) => {
         const { id } = $(event.target).data();
-        // todo: removeTimeout if any
         if (id) removeItem(id);
     }, []);
 

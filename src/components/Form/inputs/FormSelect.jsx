@@ -1,17 +1,13 @@
-import { get } from "react-hook-form";
+import { useFormField } from "../hooks/useFormField";
 
-import { useFormField } from "../../../hooks/useFormField";
-import { Select } from "../../Select";
+import { Select } from "@/components";
+import { get } from "@/utils";
 
-export const FormSelect = ({ name, ...restProps }) => {
+export const FormSelect = (props) => {
+    const { name, ...restProps } = props;
+
     const { field, formState } = useFormField({ name });
 
-    // const ref = useRef();
-    // if (ref.current) console.log("===", ref.current === restProps.items);
-    // ref.current = restProps.items;
-
-    // todo: rm useMemo
-    // const selectProps = useMemo(() => _.omit(restProps, ["value", "onChange", "error"]), []);
     const selectProps = _.omit(restProps, ["value", "onChange", "error"]);
 
     return (

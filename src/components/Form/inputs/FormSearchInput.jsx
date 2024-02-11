@@ -1,12 +1,14 @@
-import { get } from "react-hook-form";
-
 import { forwardRef, useCallback, useEffect, useRef } from "react";
 
-import { composeRef } from "../../../hooks/useElementRef";
-import { useFormField } from "../../../hooks/useFormField";
-import { Input } from "../../Input";
+import { useFormField } from "../hooks/useFormField";
 
-export const FormSearchInput = forwardRef(({ name, ...restProps }, extRef) => {
+import { Input } from "@/components";
+
+import { composeRef, get } from "@/utils";
+
+export const FormSearchInput = forwardRef((props, extRef) => {
+    const { name, ...restProps } = props;
+
     const ref = useRef();
     const callbackRef = composeRef(ref, extRef);
 
@@ -16,7 +18,6 @@ export const FormSearchInput = forwardRef(({ name, ...restProps }, extRef) => {
         ref.current.value = field.value;
     }, [field.value]);
 
-    //???
     const inputProps = _.omit(restProps, ["value", "onChange", "error"]);
 
     const handleSubmit = useCallback((value) => {

@@ -1,10 +1,9 @@
-import { Modal, ModalVariant, Paragraph } from "@uikit/components";
-
 import { useAction } from "../../actions";
 import { useUIState } from "../../uiContext";
 
+import { Modal, ModalVariant, Paragraph } from "@/components";
+
 export const RevokeModal = () => {
-    // todo: useUIState has state and change functions ???
     const { revoke } = useAction();
     const { isRevokeModalOpen, setIsRevokeModalOpen } = useUIState();
 

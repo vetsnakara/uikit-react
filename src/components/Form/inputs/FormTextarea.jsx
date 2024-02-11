@@ -1,9 +1,11 @@
-import { get } from "react-hook-form";
+import { useFormField } from "../hooks/useFormField";
 
-import { useFormField } from "../../../hooks/useFormField";
-import { Textarea } from "../../Textarea";
+import { Textarea } from "@/components";
+import { get } from "@/utils";
 
-export const FormTextarea = ({ name, ...restProps }) => {
+export const FormTextarea = (props) => {
+    const { name, ...restProps } = props;
+
     const { field, formState } = useFormField({ name });
 
     const textareaProps = _.omit(restProps, ["value", "onChange", "error"]);

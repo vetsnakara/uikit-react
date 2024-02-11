@@ -1,19 +1,7 @@
-import { memo, useState, useEffect, useRef } from "react";
 import cn from "classnames";
+import { memo, useEffect, useRef, useState } from "react";
 
 import { Portal } from "../Portal";
-
-// todo: close on ESC dont work
-// todo: use Portal
-// todo: validation
-// todo: dont close on outside
-// todo: theme: Danger
-// todo: crt modal
-// todo: close button hide
-// todo: with proptypes dont need constants ???
-// todo: dont close events when disabled
-// todo: multiple confirm
-// todo: bootstrap modal events
 
 export const ModalVariant = {
     Modal: "modal",
@@ -90,7 +78,6 @@ const renderBody = (props) => {
     return <div className="modal__body">{children}</div>;
 };
 
-// todo: lazy
 export const Modal = memo((props) => {
     const { open, onClose, variant = ModalVariant.Modal, element, lazy = true } = props;
 
@@ -134,7 +121,6 @@ export const Modal = memo((props) => {
     );
 });
 
-// todo
 export const Dialog = () => {};
 export const Alert = () => {};
 export const Confirm = () => {};

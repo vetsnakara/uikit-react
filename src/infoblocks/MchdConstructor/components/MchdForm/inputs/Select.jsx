@@ -1,6 +1,6 @@
-import { FormSelect } from "@uikit/components";
-
 import { getFieldConfig } from "../../../schema";
+
+import { FormSelect } from "@/components";
 
 const defaultSelectpickerOptions = {
     size: 6,

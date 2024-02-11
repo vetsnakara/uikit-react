@@ -1,4 +1,4 @@
-import { StatusType } from "../../../components/Status";
+import { StatusType } from "@/components";
 
 export const DATE_FORMAT = "DD.MM.YYYY";
 

@@ -51,8 +51,9 @@ const getColumnClasses = (attributes, widths = colWidths) => {
     };
 };
 
-// todo: rm cssModule
-export const Col = ({ className, cssModule, widths = colWidths, tag: Tag = "div", ...attributes }) => {
+export const Col = (props) => {
+    const { className, cssModule, widths = colWidths, tag: Tag = "div", ...attributes } = props;
+
     const { modifiedAttributes, colClasses } = getColumnClasses(attributes, cssModule, widths);
 
     if (!colClasses.length) {

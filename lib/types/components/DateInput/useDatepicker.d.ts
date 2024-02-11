@@ -1,4 +1,4 @@
-export function useDatepicker(extRef: any, { value, name, onChange, onBlur, datepickerOptions: options, format, }: {
+export function useDatepicker(extRef: any, { value, name, onChange, onBlur, datepickerOptions: options, format }: {
     value: any;
     name: any;
     onChange: any;

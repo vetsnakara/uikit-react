@@ -7,8 +7,6 @@ export default {
     tags: ["autodocs"],
 };
 
-// todo: nested (for HStack too)
-
 export const GapOne = ({ gap = 1 }) => {
     return (
         <VStack gap={gap}>

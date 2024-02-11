@@ -1,8 +1,9 @@
-import { Container, Row, Col } from "../../../components/Grid";
-// import { Provider } from "../context";
+import { Provider } from "../context/DataContext";
+
+import { Col, Container, Row } from "@/components";
 
 export const WithInfoblockLayout = (Story) => (
-    // todo: create classess for iblocks (don't use classes directly)
+    // todo: create components for ib-... classes
     <Container className="ib-container">
         <Row>
             <Col md={12}>
@@ -12,9 +13,8 @@ export const WithInfoblockLayout = (Story) => (
     </Container>
 );
 
-// export const WithData = (data) => (Story) =>
-//     (
-//         <Provider data={data}>
-//             <Story />
-//         </Provider>
-//     );
+export const WithData = (data) => (Story) => (
+    <Provider data={data}>
+        <Story />
+    </Provider>
+);

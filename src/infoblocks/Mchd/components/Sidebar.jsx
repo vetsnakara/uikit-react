@@ -1,10 +1,10 @@
-import { Card, Status, Loader } from "@uikit/components";
-
-import { useAppState } from "../context";
 import { Action } from "../constants";
+import { useAppState } from "../context";
 import { useUIState } from "../uiContext";
 
 import { ActionDropdown } from "./ActionDropdown";
+
+import { Button, Card, Loader, Status } from "@/components";
 
 export const Sidebar = () => {
     const {
@@ -21,27 +21,24 @@ export const Sidebar = () => {
 
             {/* Sign */}
             {actions.includes(Action.SIGN) && (
-                // todo: use Button
-                <button type="button" className="button button_wide mt-2" onClick={() => setIsSignModalOpen(true)}>
+                <Button wide onClick={() => setIsSignModalOpen(true)} className="mt-2">
                     Подписать
-                </button>
+                </Button>
             )}
 
             {/* Download */}
             {actions.includes(Action.DOWNLOAD) && (
                 // todo: use Link
+                // todo: display: block
                 <a
                     href="/iblocks/mchd/123f3c10-fafb-4b35-b556-6bf54d939d48/signed"
                     download="mchd.zip"
                     className="button button_secondary button_wide mt-2 d-block"
-                    // todo: display: block
                 >
                     Скачать
                 </a>
             )}
 
-            {/* !!! method: can be placed in any place  */}
-            {/* !!! method: can be remove easyly */}
             <ActionDropdown />
 
             {loading && <Loader />}

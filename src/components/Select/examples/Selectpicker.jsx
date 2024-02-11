@@ -22,7 +22,6 @@ export const Container = () => {
         // width: "100%",
     };
 
-    // todo: why div's width is shortened ?
     return (
         <VStack gap={2}>
             <div style={style}>
@@ -126,8 +125,8 @@ export const AddItems = () => {
     const commonOptions = {
         ...options,
         selectpickerOptions: {
-            liveSearch: true, //??? set by default with addItemsOptions
-            addItemsOptions: {}, //??? or {} with options
+            liveSearch: true,
+            addItemsOptions: {},
         },
     };
 

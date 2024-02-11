@@ -1,6 +1,6 @@
-import { FormInput } from "@uikit/components";
-
 import { getFieldConfig } from "../../../schema";
+
+import { FormInput } from "@/components";
 
 export const Input = ({ placeholder = "", maskOptions = {}, ...otherProps }) => {
     const config = getFieldConfig(otherProps.name);

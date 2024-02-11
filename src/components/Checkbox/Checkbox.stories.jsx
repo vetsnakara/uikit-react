@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-import { VStack } from "../VStack";
-
 import { Checkbox } from "./Checkbox";
+
+import { VStack } from "@/components";
 
 export default {
     title: "inputs/Checkbox",

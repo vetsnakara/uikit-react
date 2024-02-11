@@ -1,8 +1,8 @@
 import cn from "classnames";
 
-// todo: title icon
+export const Notification = (props) => {
+    const { id, title, content, icon, visibleCloseButton = true, type } = props;
 
-export const Notification = ({ id, title, content, icon, visibleCloseButton = true, type }) => {
     const classNames = cn("notifications__card", { [`notifications__card_${type}`]: type });
 
     return (

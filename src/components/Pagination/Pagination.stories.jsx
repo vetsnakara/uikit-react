@@ -12,7 +12,6 @@ export const Default = () => {
     return <Pagination page={page} total={111} pageSize={10} onPageChange={setPage} />;
 };
 
-// todo: DRY
 export const NoArrows = () => {
     const [page, setPage] = useState(1);
     return <Pagination page={page} total={111} pageSize={10} onPageChange={setPage} arrows={false} />;

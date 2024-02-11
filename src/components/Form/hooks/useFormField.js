@@ -1,7 +1,4 @@
-//?! create namespace @uikit/form
-// todo?: move to Form component
-
-import { getLib } from "../../utils/libAdapter";
+import { getLib } from "@/utils";
 
 export const useFormField = (options) => {
     const { useFormContext, useController } = getLib("ReactHookForm");

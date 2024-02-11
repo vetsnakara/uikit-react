@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 
-import { composeRef } from "../../hooks/useElementRef";
+import { composeRef } from "@/utils";
 
 // const DEFAULT_DATE_VALUE = "";
 // const DEFAULT_DATE_RANGE = [];
@@ -15,48 +15,16 @@ const defaultOptions = {
     multipleDatesSeparator: DEFAULT_MULTIPLE_DATES_SEPARATOR,
 };
 
-// todo: update plugin to use silent option?
-// todo: check different time formats
-// todo: process minMaxDate (can input date < minDate by hand!)
-// todo: в неконтр. варианте сделать так, чтобы через ref в range mode отдавался массив дат-строк
-// todo: return focus to input after setting date by hand input
-
-//! invalid date (single or range) => null returned
-//! empty date => "" or [] returned
-
-//! sort dates array on return outside (can be [1985, 1984] when type by hand in reverse order and plugin changes order by himself)
-
 export const useDatepicker = (
     extRef,
-    {
-        value,
-        // defaultValue = "",
-        name,
-        onChange,
-        onBlur,
-        datepickerOptions: options = defaultOptions,
-        format = DEFAULT_DATE_FORMMAT,
-    }
+    { value, name, onChange, onBlur, datepickerOptions: options = defaultOptions, format = DEFAULT_DATE_FORMMAT }
 ) => {
     const context = useRef();
 
     const ref = useRef(null);
     const callbackRef = composeRef(ref, extRef);
 
-    // note: Input passes to callback ref object { el, setValue, ...}, not DOM input element
-    // const { ref, callbackRef } = useFormControlRef(extRef, ({ el }) => {
-    //     return {
-    //         el,
-    //         getValue: () => {
-    //             const parsedDateValue = getDateValueFromString(el.value);
-    //             const { dateValue } = getValidatedDate(parsedDateValue);
-    //             return dateValue;
-    //         },
-    //         setValue: setDate,
-    //     };
-    // });
-
-    // info: use useLayoutEffect to initialize datepicker before useEffect
+    // note: use useLayoutEffect to initialize datepicker before useEffect
     useLayoutEffect(() => {
         const $el = $(ref.current);
 
@@ -85,13 +53,12 @@ export const useDatepicker = (
 
     // for controlled input
     useEffect(() => {
-        const dateValue = value; // || defaultValue; // todo?: don't use default value here
+        const dateValue = value;
+
         if (_.isNull(dateValue) || _.isUndefined(dateValue)) {
             console.log("dateValue", dateValue, "🛑 return");
             return;
         }
-        // console.log("useEffect:dateValue", dateValue);
-        // if (!dateValue) return;
 
         setDate(dateValue);
 
@@ -103,10 +70,9 @@ export const useDatepicker = (
         }
     }, [value]);
 
-    // set date on value change
-    // !!! handleChange gets (value, event) because is passed to <Input/> component (not to primitive <input/>)
+    // note: handleChange gets (value, event) because is passed to <Input/>
+    // not to primitive <input/>
     const handleChange = useCallback((value, event) => {
-        // console.log("handleChange:value", value);
         const date = setDate(value, { parse: true });
 
         onChange?.(date, event);
@@ -117,7 +83,7 @@ export const useDatepicker = (
             dp.show(); // for uncontrolled component - open calendar
             context.openOnInit = true; // for controlled component - open calendar on next render
         }
-    }, []); // todo: deps?
+    }, []);
 
     /**
      * Parse to [d1, d2]
@@ -125,7 +91,6 @@ export const useDatepicker = (
      * @returns
      */
     const getDateValueFromString = (value) => {
-        // todo: optimize get separator
         const separator = options?.multipleDatesSeparator || DEFAULT_MULTIPLE_DATES_SEPARATOR;
 
         return options?.range ? value.split(separator).filter(Boolean) : value;
@@ -180,21 +145,15 @@ export const useDatepicker = (
     };
 
     const setDate = (value, { parse = false } = {}) => {
-        //? call selectDate two times ??? (see below)
-        console.log("setDate:value", value);
         if (!value) selectDate(); // reset date
 
         if (parse) value = getDateValueFromString(value);
-        console.log("parsed:value", value);
 
-        //? is needed dateValue
         const { isValid, dateValue, dateObj } = getValidatedDate(value);
-        // console.log("isValid, dateValue", isValid, dateValue);
 
         if (isValid) selectDate(dateObj);
 
         return dateValue;
-        // return value;
 
         /**
          * todo
@@ -209,7 +168,7 @@ export const useDatepicker = (
             context.silent = false;
 
             // update date in calendar dropdown
-            // note: dp.setViewDate(date.toDate()) in new version();
+            // note: dp.setViewDate(date.toDate()) in new version of air-datepicker;
             if (Array.isArray(date)) {
                 const [firstDate, secondDate] = date;
                 const isSame = moment(firstDate).isSame(moment(secondDate));

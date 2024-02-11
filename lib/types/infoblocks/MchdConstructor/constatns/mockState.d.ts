@@ -58,7 +58,7 @@ export namespace mockState {
         export { date as birthday };
         export { snils };
         export { innPerson as inn };
-        export let documentType: string;
+        export { documentType };
         export { seriesAndNumber };
         export { authorityDocument };
         export { authorityCodeDocument };
@@ -79,6 +79,7 @@ declare const snils: any;
 declare const innPerson: "111111111122";
 declare const ogrnip: "333333333333344";
 declare const representativeId: "495ff8c0-6f2a-11ee-bd29-e5e06384a8a9";
+declare const documentType: "21";
 declare const seriesAndNumber: "12345";
 declare const authorityDocument: "abc";
 declare const authorityCodeDocument: "123";

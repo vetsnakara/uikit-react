@@ -1,8 +1,10 @@
+import { Status, UserRole, PrincipalType, LegalEntityPrincipalType } from "../constants";
+
 export const getData = ({
-    status = null,
-    userRole = null,
-    principalType = null,
-    legalEntityPrincipalType = null,
+    status = Status.Draft,
+    userRole = UserRole.Owner,
+    principalType = PrincipalType.LegalEntityPrincipal,
+    legalEntityPrincipalType = LegalEntityPrincipalType.LegalEntityPerson,
 } = {}) => ({
     userRole,
     mchd: {

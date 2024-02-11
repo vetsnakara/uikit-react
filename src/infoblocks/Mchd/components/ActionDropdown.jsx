@@ -1,13 +1,11 @@
-import { Button, Dropdown } from "@uikit/components";
 import { useCallback } from "react";
-
-console.log("Button", Button);
 
 import { AppAction } from "../constants";
 import { useAppState } from "../context";
 import { useUIState } from "../uiContext";
 
-/* !!! can be placed in any place  */
+import { Button, Dropdown } from "@/components";
+
 export const ActionDropdown = () => {
     const {
         sidebar: {
@@ -26,7 +24,6 @@ export const ActionDropdown = () => {
 
     const toggle = useCallback(
         (ref) => (
-            // todo: arrow down
             <Button ref={ref} data-toggle="dropdown" variant={Button.Variant.Secondary} wide className="mt-2">
                 Действия с документом
             </Button>

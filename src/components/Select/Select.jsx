@@ -1,16 +1,12 @@
 import cn from "classnames";
 import { forwardRef, memo, useEffect, useRef } from "react";
 
-import { composeRef } from "../../hooks/useElementRef";
+import { composeRef } from "../../utils/composeRef";
 
 import { SelectEvent, selectpickerEventHandlers } from "./constants";
 
 const defaultSelectpickerOptions = {};
 const defaultItems = [];
-
-// todo: "All" options for single/multiple select (how to set?)
-// todo: empty option (how to set?)
-// todo: implement [data-init] setting
 
 const renderOptions = (items) =>
     items.map(
@@ -68,7 +64,6 @@ export const Select = memo(
             noDecor,
             onChange,
             onClose,
-            // onBlur, // todo: is needed for useForm (?)
             className,
             ...selectOptions
         } = props;
@@ -84,22 +79,18 @@ export const Select = memo(
             const baseSelectpickerOptions = _.omit(selectpickerOptions, ["ajaxOptions", "addItemsOptions"]);
 
             if (ajaxOptions) {
-                //! для корректной работы ajax используем базовый конструктор селектпикера,
-                //! т.к. в initBootstrapSelect реализовано кеширование опций, которое ломает
-                //! поведение ajax-селектпикера (после закрытия дропдауна выбранные опции слетают)
+                // note: для корректной работы ajax используем базовый конструктор селектпикера,
+                // т.к. в initBootstrapSelect реализовано кеширование опций, которое ломает
+                // поведение ajax-селектпикера (после закрытия дропдауна выбранные опции слетают)
                 $select.selectpicker(baseSelectpickerOptions);
             } else {
                 window.initBootstrapSelect(ref.current, baseSelectpickerOptions);
             }
 
-            console.log("--- Select:init");
-
-            // todo: init plugins in separate effects ???
             if (ajaxOptions) $select.ajaxSelectPicker(ajaxOptions);
             if (addItemsOptions) $select.addSelectPicker(addItemsOptions);
 
             // add selectpicker event handlers
-            // todo: check order of events
             Object.entries(selectOptions).forEach(([propName, fn]) => {
                 const [, eventName] = propName.split("on");
                 if (!eventName) return;
@@ -114,23 +105,9 @@ export const Select = memo(
                 $select.data("AddBootstrapSelect")?.destroy();
                 $select.off().selectpicker("destroy");
             };
-        }, [
-            // value,
-            placeholder,
-            multiple,
-            disabled,
-            //! NOTE:
-            //! используем JSON.stringify, чтобы предотвратить переинициализацию в случае, если произошел рендер (пропсы изменились, memo не помогло),
-            //! но при этом объектный пропсы не были мемоизированы в клиентском коде (это распространияется также на Input, DateInput, где
-            //! используются плагины air-datepicker и inputmask)
-            // ? нужет ли JSON.stringify, если использовать _.isEqual
-            JSON.stringify(items),
-            JSON.stringify(selectpickerOptions),
-            onChange,
-        ]);
+        }, [placeholder, multiple, disabled, JSON.stringify(items), JSON.stringify(selectpickerOptions), onChange]);
 
         useEffect(() => {
-            console.log("🍫 Select:setvalue", value);
             if (!_.isUndefined(value)) {
                 const $select = $(ref.current);
                 $select.selectpicker("val", value).selectpicker("refresh");
@@ -142,7 +119,6 @@ export const Select = memo(
                 target: { options, value },
             } = event;
 
-            //! DRY (see ref)
             const values = Array.from(options)
                 .filter(({ selected }) => selected)
                 .map(({ value }) => value);
@@ -166,8 +142,6 @@ export const Select = memo(
         });
 
         const isDisabled = disabled || (!ajaxOptions && !items.length);
-
-        // todo: use data-init=false
 
         return (
             <label className={labelClassNames}>

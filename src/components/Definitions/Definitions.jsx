@@ -12,9 +12,9 @@ const DefinitionsWidth = {
     W300: 300,
 };
 
-// todo: what to use for key?
+export const Definitions = (props) => {
+    const { items = [], variant, fixWidth, reverse = false, className, ...otherProps } = props;
 
-export const Definitions = ({ items = [], variant, fixWidth, reverse = false, className, ...props }) => {
     const classNames = cn("definitions", className, {
         [`definitions_${variant}`]: Boolean(variant),
         [`definitions_fix-width-${fixWidth}`]: variant === DefinitionsVariant.RowTable && Boolean(fixWidth),
@@ -22,7 +22,7 @@ export const Definitions = ({ items = [], variant, fixWidth, reverse = false, cl
     });
 
     return (
-        <div className={classNames} {...props}>
+        <div className={classNames} {...otherProps}>
             {items.map((item, index) => (
                 <DefinitionsItem key={index} {...item} />
             ))}
@@ -30,7 +30,6 @@ export const Definitions = ({ items = [], variant, fixWidth, reverse = false, cl
     );
 };
 
-// todo: do same for Button and other components
 Definitions.Variant = DefinitionsVariant;
 Definitions.Width = DefinitionsWidth;
 

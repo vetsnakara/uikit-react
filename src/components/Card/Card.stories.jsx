@@ -1,6 +1,6 @@
-import { maxWidth } from "../../../.storybook/decorators";
-
 import { Card } from "./Card";
+
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "uikit/Card",
