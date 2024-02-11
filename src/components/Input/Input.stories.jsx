@@ -1,9 +1,9 @@
-import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Input } from "./Input";
 import { SearchInput } from "./SearchInput";
 
-import { Button, ButtonVariant } from "@/components";
+import { Button, ButtonVariant, GroupContainer, VStack } from "@/components";
 
 import { maxWidth } from "@/storybook/decorators";
 
@@ -17,35 +17,39 @@ export const Default = () => <Input />;
 
 export const Uncontrolled = () => {
     const [value, setValue] = useState("");
-    const inputRef = useState(null);
-    const renderCountRef = useRef(0);
+    const inputRef = useRef(null);
 
-    renderCountRef.current += 1;
+    useEffect(() => {
+        console.log("inputRef", inputRef);
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setValue(inputRef.current.getValue());
+        setValue(inputRef.current.value);
     };
 
     const handleClickFocus = () => {
-        inputRef.current.el.focus();
+        inputRef.current.focus();
     };
 
     return (
         <>
-            <p>Render count: {renderCountRef.current}</p>
             <p>Input value: {value}</p>
             <form onSubmit={handleSubmit}>
-                <Input
-                    ref={inputRef}
-                    defaultValue="Hello"
-                    onChange={(value) => {
-                        console.log("value", value);
-                    }}
-                />
-                <Button type="submit">Submit Form</Button>
+                <VStack gap={1}>
+                    <Input
+                        ref={inputRef}
+                        defaultValue="Hello"
+                        onChange={(value) => {
+                            console.log("value", value);
+                        }}
+                    />
+                    <GroupContainer>
+                        <Button type="submit">Submit Form</Button>
+                        <Button onClick={handleClickFocus}>Focus</Button>
+                    </GroupContainer>
+                </VStack>
             </form>
-            <Button onClick={handleClickFocus}>Focus</Button>
         </>
     );
 };
@@ -119,35 +123,7 @@ export const Search = () => {
             />
             <div>change value: {value}</div>
             <div>submit value: {submitValue}</div>
-            <button onClick={() => setValue("")}>reset</button>
+            <Button onClick={() => setValue("")}>reset</Button>
         </>
     );
-};
-
-const InputRef = forwardRef((props, extRef) => {
-    const innerRef = useRef({});
-
-    const ref = (el) => {
-        innerRef.current = {
-            el,
-            getValue() {},
-            setValue() {},
-        };
-
-        if (!extRef) return;
-        if (typeof extRef === "function") extRef(innerRef.current);
-        else extRef.current = innerRef.current;
-    };
-
-    return <input ref={ref} />;
-});
-
-export const TestInputRef = () => {
-    const ref = useRef();
-
-    useEffect(() => {
-        console.log("ref", ref);
-    }, []);
-
-    return <InputRef ref={console.log} />;
 };

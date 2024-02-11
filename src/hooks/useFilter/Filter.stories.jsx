@@ -98,6 +98,8 @@ function Filter() {
 
     const filter = methods.watch();
 
+    console.log("🛑 filter", filter);
+
     const params = {
         filter,
         page: pagination.page,

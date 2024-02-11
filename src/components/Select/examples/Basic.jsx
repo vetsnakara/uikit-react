@@ -55,7 +55,6 @@ export const Uncontrolled = () => {
                 defaultValue={options.items[0].value} // initial value
                 onChange={(value) => {
                     console.log("value", value);
-                    console.log("selectRef.current.getValue()", selectRef.current.getValue());
                 }}
             />
             <div>
@@ -63,7 +62,7 @@ export const Uncontrolled = () => {
                     variant={ButtonVariant.Plain}
                     onClick={() => {
                         // read value from select (with rerender)
-                        setValue(selectRef.current.getValue());
+                        setValue(selectRef.current.value);
                     }}
                 >
                     Get value

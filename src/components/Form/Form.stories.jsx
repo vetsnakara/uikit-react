@@ -17,37 +17,59 @@ import { maxWidth } from "@/storybook/decorators";
 
 import { initLib } from "@/utils";
 
-import {
-    Button,
-    ButtonVariant,
-    Card,
-    Checkbox,
-    Col,
-    Container,
-    Form,
-    GroupContainer,
-    Radio,
-    Row,
-    Select,
-    VStack,
-} from "@/components";
+import { Button, ButtonVariant, Card, Checkbox, Form, GroupContainer, Radio, VStack } from "@/components";
 
-const { useForm, useController, FormProvider } = initLib({ ReactHookForm });
+const { useForm, FormProvider } = initLib({ ReactHookForm });
 
 export default {
     title: "form/Form",
     decorators: [maxWidth(600)],
 };
 
+const defaultValuesEmptyForm = {
+    checkbox: false,
+    text: "",
+    textarea: "",
+    date: "",
+    dateRange: [],
+    radio: "",
+    select: "",
+    selectMultiple: [],
+    checkboxGroup: [],
+    file: null,
+};
+
+const defaultValues = {
+    checkbox: true,
+    text: "abc",
+    textarea: "ABC",
+    date: "10.10.1984",
+    dateRange: ["10.10.1984", "15.10.1984"],
+    radio: "2",
+    select: "2",
+    selectMultiple: ["1", "3"],
+    checkboxGroup: ["1", "3"],
+    file: {
+        id: 1,
+        name: "Договор о партнерстве",
+        size: 324234,
+    },
+};
+
 const BaseForm = ({ form }) => {
-    const { handleSubmit, reset, getValues } = form;
+    const {
+        handleSubmit,
+        reset,
+        getValues,
+        formState: { defaultValues },
+    } = form;
 
     return (
         <FormProvider {...form}>
             <Form onSubmit={handleSubmit((data) => console.log("submit:", data))} noValidate>
                 <GroupContainer className="mb-1">
                     <Button type="submit">Сохранить</Button>
-                    <Button variant={ButtonVariant.Secondary} onClick={reset}>
+                    <Button variant={ButtonVariant.Secondary} onClick={() => reset(defaultValues)}>
                         Сбросить
                     </Button>
                     <Button variant={ButtonVariant.Secondary} onClick={() => console.log(getValues())}>
@@ -154,45 +176,6 @@ const BaseForm = ({ form }) => {
     );
 };
 
-const Layout = ({ children, aside }) => (
-    <Container>
-        <Row>
-            <Col xs={8}>{children}</Col>
-            <Col>{aside}</Col>
-        </Row>
-    </Container>
-);
-
-const defaultValuesEmptyForm = {
-    checkbox: false,
-    text: "",
-    textarea: "",
-    date: "",
-    dateRange: [],
-    radio: "",
-    select: "",
-    selectMultiple: [],
-    checkboxGroup: [],
-    file: null,
-};
-
-const defaultValues = {
-    checkbox: true,
-    text: "abc",
-    textarea: "ABC",
-    date: "10.10.1984",
-    dateRange: ["10.10.1984", "15.10.1984"],
-    radio: "2",
-    select: "2",
-    selectMultiple: ["1", "3"],
-    checkboxGroup: ["1", "3"],
-    file: {
-        id: 1,
-        name: "Договор о партнерстве",
-        size: 324234,
-    },
-};
-
 const schema = yup.object({
     checkbox: yup.boolean().required(),
     text: yup.string().required("Поле обязательно для заполнения"),
@@ -225,11 +208,7 @@ const schema = yup.object({
 export const Default = () => {
     const form = useForm({ defaultValues: defaultValuesEmptyForm });
 
-    return (
-        // <Layout aside={"state"}>
-        <BaseForm form={form} />
-        // </Layout>
-    );
+    return <BaseForm form={form} />;
 };
 
 export const Validation = () => {
@@ -238,11 +217,7 @@ export const Validation = () => {
         resolver: yupResolver(schema),
     });
 
-    return (
-        <Layout aside={"state"}>
-            <BaseForm form={form} />
-        </Layout>
-    );
+    return <BaseForm form={form} />;
 };
 
 export const DefaultValues = () => {
@@ -250,11 +225,7 @@ export const DefaultValues = () => {
         defaultValues,
     });
 
-    return (
-        <Layout aside={"state"}>
-            <BaseForm form={form} />
-        </Layout>
-    );
+    return <BaseForm form={form} />;
 };
 
 export const DefaultValuesValidation = () => {
@@ -263,101 +234,5 @@ export const DefaultValuesValidation = () => {
         resolver: yupResolver(schema),
     });
 
-    return (
-        <Layout aside={"state"}>
-            <BaseForm form={form} />
-        </Layout>
-    );
-};
-
-export const NativeMultipleSelect = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
-        resolver: yupResolver(
-            yup.object({
-                multipleSelect: yup.array().of(yup.string()).min(2),
-            })
-        ),
-    });
-
-    return (
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
-            <select {...register("multipleSelect")} multiple>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-            </select>
-            {errors.multipleSelect && <p>{errors.multipleSelect.message}</p>}
-            <button>Submit</button>
-        </form>
-    );
-};
-
-export const SingleSelect = () => {
-    const {
-        handleSubmit,
-        formState: { errors },
-        control,
-    } = useForm({
-        resolver: yupResolver(
-            yup.object({
-                select: yup.string().required(),
-            })
-        ),
-    });
-
-    const { field } = useController({ control, name: "select" });
-
-    return (
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
-            <Select
-                value={field.value}
-                onChange={field.onChange}
-                items={[
-                    { value: "1", label: "One" },
-                    { value: "2", label: "Two" },
-                    { value: "3", label: "Three" },
-                ]}
-                placeholder="Выберите"
-            ></Select>
-            {errors.select && <p>{errors.select.message}</p>}
-            <button>Submit</button>
-        </form>
-    );
-};
-
-export const MultipleSelect = () => {
-    const form = useForm({
-        defaultValues: {
-            // note: need defalut value for multiple select (for proper validation) or need `required`
-            // multipleSelect: [],
-        },
-        resolver: yupResolver(
-            yup.object({
-                multipleSelect: yup.array().of(yup.string()).min(2).required(),
-            })
-        ),
-    });
-
-    const { handleSubmit } = form;
-
-    return (
-        <FormProvider {...form}>
-            <form onSubmit={handleSubmit((data) => console.log(data))}>
-                <FormSelect
-                    name="multipleSelect"
-                    items={[
-                        { value: "1", label: "One" },
-                        { value: "2", label: "Two" },
-                        { value: "3", label: "Three" },
-                    ]}
-                    multiple
-                ></FormSelect>
-                <button>Submit</button>
-            </form>
-        </FormProvider>
-    );
+    return <BaseForm form={form} />;
 };

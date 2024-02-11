@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { Checkbox } from "./Checkbox";
 
@@ -35,17 +35,12 @@ export const Switch = () => (
 export const Uncontrolled = () => {
     const ref = useRef(null);
 
-    useEffect(() => {
-        console.log(ref.current.getValue());
-    }, []);
-
     return (
         <Checkbox
             ref={ref}
             label="One"
             onChange={(value) => {
                 console.log("value", value);
-                console.log("ref.current.getValue()", ref.current.getValue());
             }}
         />
     );
@@ -86,12 +81,7 @@ export const GroupUncontrolled = () => {
 
     const handleChange = (value) => {
         console.log("value", value);
-        console.log("ref.current.getValue()", ref.current.getValue());
     };
-
-    useEffect(() => {
-        console.log(ref.current.getValue());
-    });
 
     return (
         <Checkbox.Group ref={ref} name="group" defaultValue={["2"]} onChange={handleChange}>

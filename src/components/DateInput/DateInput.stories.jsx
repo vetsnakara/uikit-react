@@ -4,7 +4,7 @@ import { DateInput } from "./DateInput";
 
 import { maxWidth } from "@/storybook/decorators";
 
-import { VStack } from "@/components";
+import { Button, VStack } from "@/components";
 
 export default {
     title: "inputs/DateInput",
@@ -121,7 +121,7 @@ export const Controlled = () => (
     </VStack>
 );
 
-const ControlledSingle = () => {
+const ControlledSingle = ({ className }) => {
     const [date, setDate] = useState("10.10.1984");
 
     const options = useMemo(
@@ -133,18 +133,16 @@ const ControlledSingle = () => {
         []
     );
 
-    console.log("ControlledSingle:date", date);
-
     return (
-        <>
+        <div className={className}>
             <DateInput value={date} onChange={setDate} {...options} />
             <div>date: {JSON.stringify(date)}</div>
-            <button onClick={() => setDate("")}>reset</button>
-        </>
+            <Button onClick={() => setDate("")}>reset</Button>
+        </div>
     );
 };
 
-const ControlledRange = () => {
+const ControlledRange = ({ className }) => {
     const [dates, setDates] = useState(["10.10.1984", "15.10.1984"]);
 
     const options = useMemo(
@@ -160,10 +158,10 @@ const ControlledRange = () => {
     );
 
     return (
-        <>
+        <div className={className}>
             <DateInput value={dates} onChange={setDates} {...options} />
             <div>dates: {JSON.stringify(dates)}</div>
-            <button onClick={() => setDates([])}>reset</button>
-        </>
+            <Button onClick={() => setDates([])}>reset</Button>
+        </div>
     );
 };

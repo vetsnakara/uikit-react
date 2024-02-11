@@ -123,8 +123,7 @@ function addReactProps(ctx, props) {
     Object.assign(ctx, { _reactProps: { ...(ctx._reactProps ?? {}), ...props } });
 }
 
-yup.addMethod(yup.string, "isRequired", function (value) {
-    console.log("isRequired:value", value);
+yup.addMethod(yup.string, "isRequired", function () {
     addReactProps(this, { required: true });
     return this.required();
 });
