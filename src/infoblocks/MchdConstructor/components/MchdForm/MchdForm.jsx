@@ -18,8 +18,6 @@ import { RepresentativeInfo } from "./FormSegments/RepresentativeInfo";
 import { Card, Form, Paragraph, Subtitle, VStack } from "@/components";
 import { getLib } from "@/utils";
 
-// todo: copy MchdConstructor changes to uikit-react repo
-
 export const MchdForm = () => {
     const { useFormContext } = getLib("ReactHookForm");
 

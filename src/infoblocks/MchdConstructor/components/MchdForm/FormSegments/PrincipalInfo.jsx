@@ -15,6 +15,9 @@ export const PrincipalInfo = ({ className }) => {
     const type = watch("type");
     const legalEntityPrincipalType = watch("legalEntityPrincipal.type");
 
+    console.log("type", type);
+    console.log("legalEntityPrincipalType", legalEntityPrincipalType);
+
     return (
         <Card className={className}>
             <Subtitle>Сведения о доверителе</Subtitle>

@@ -31,6 +31,8 @@ export const getLib = (names) => {
  * @returns
  */
 export const initLib = (libsObj) => {
+    console.log("--- initLib", libsObj);
+
     Object.assign(libsCache, libsObj);
 
     const names = Object.keys(libsObj);
