@@ -11,11 +11,6 @@ import { MchdForm } from "./components/MchdForm/MchdForm";
 import { Sidebar } from "./components/Sidebar";
 // import { RemoveModal, RevokeModal, SignModal } from "./components/modals";
 
-// todo: icon are not visible now
-
-const queryClient = new QueryClient();
-const { useForm, FormProvider } = initLib({ ReactHookForm });
-
 import { schema } from "./schema";
 
 import { documentTypes } from "./constatns/documentTypes";
@@ -24,6 +19,12 @@ import { regions } from "./constatns/regions";
 
 import { MainWithStickySidebarLayout as Layout, Row, Title } from "@/components";
 import { initLib } from "@/utils";
+
+// todo: icon are not visible now
+
+const queryClient = new QueryClient();
+// const { useForm, FormProvider } = initLib({ ReactHookForm });
+const { useForm, FormProvider } = initLib({ ReactHookForm });
 
 const selectItems = {
     managers: managers.map(({ id, firstName, lastName, middleName }) => ({
