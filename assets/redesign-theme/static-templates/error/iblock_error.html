@@ -1,27 +1,21 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Iblock error stub</title>
-    <style>
-        .error-div {
-            border: 4px ridge red;
-            background: #e4b9b9;
-            padding: 20px;
-        }
-    </style>
-</head>
-<body>
-<div class="error-div">
-    <h2> Произошла непредвиденная ошибка, обратитесь к администратору. </h2>
-    <th:block th:if="${debugEnabled}">
-        <div th:text="'Portal error: ' + ${errorMessage}"></div>
-        <div th:text="'Portal code: ' + ${portalCode}"></div>
-        <div th:text="'IBlock code: ' + ${code}"></div>
-        <div th:text="'IBlock template code: ' + ${template}"></div>
-        <div th:text="'Properties: ' + ${properties}"></div>
-        <pre th:text="'Stack: ' + ${stack}"></pre>
-    </th:block>
-</div>
-</body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+    <div class="ib-error">
+        <div class="ib-error__text">
+            <h2 class="content__section-title content__section-title_small">Информация временно недоступна</h2>
+        </div>
+        <div class="ib-error__image-wrap">
+            <img class="ib-error__img" src="/information/resources/upload/error/error.svg" alt="">
+        </div>
+        <div th:if="${debugEnabled}">
+            <p class="content_paragraph" th:text="'Iblocks error: ' + ${errorMessage}"></p>
+            <p class="content_paragraph" th:text="'Portal code: ' + ${portalCode}"></p>
+            <p class="content_paragraph" th:text="'IBlock code: ' + ${code}"></p>
+            <p class="content_paragraph" th:text="'IBlock template code: ' + ${template}"></p>
+            <p class="content_paragraph" th:text="'Properties: ' + ${properties}"></p>
+            <pre class="code" th:text="'Stack: ' + ${stack}"></pre>
+        </div>
+    </div>
+</th:block>

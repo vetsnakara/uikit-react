@@ -11,7 +11,7 @@
         "rdev": "grunt rdev",
         "build:prod": "cross-env NODE_ENV=production webpack",
         "build:dev": "cross-env NODE_ENV=development webpack",
-        "build:assets": "npm run prod2",
+        "build:assets": "npm run prod",
         "build:all": "npm-run-all clear build:assets -p build:prod build:dev gen-types -s move-bundle",
         "clear": "rimraf ./lib ./assets",
         "gen-types": "tsc -p ./tsconfig.build.json",

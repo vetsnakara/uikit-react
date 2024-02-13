@@ -1,1 +1,1 @@
-$(function(){$(".body")});
+$((function(){$(".body")}));
