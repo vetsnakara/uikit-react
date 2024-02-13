@@ -1,14 +1,12 @@
+import { useFormContext } from "react-hook-form";
+
 import { DocKind } from "../../../constatns/constants";
 import { useData } from "../../../context/DataContext";
 import { DateInput, Input, Select } from "../inputs";
 
-import { getLib } from "@/utils";
-
 import { Card, Col, Form, Row, Subtitle } from "@/components";
 
 export const RepresentativeInfo = ({ className }) => {
-    const { useFormContext } = getLib("ReactHookForm");
-
     const { selectItems } = useData();
     const { watch } = useFormContext();
 

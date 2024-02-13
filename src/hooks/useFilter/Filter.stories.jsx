@@ -2,11 +2,12 @@ import { rest } from "msw";
 // import { FormProvider, useForm } from "react-hook-form";
 
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
-import * as ReactHookForm from "react-hook-form";
 
 import axios from "axios";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+
+import { FormProvider, useForm } from "react-hook-form";
 
 import {
     FormCheckbox,
@@ -29,9 +30,6 @@ import {
     Separator,
     VStack,
 } from "@/components";
-import { initLib } from "@/utils";
-
-const { FormProvider, useForm } = initLib({ ReactHookForm });
 
 export default {
     title: "hooks/useFilter",

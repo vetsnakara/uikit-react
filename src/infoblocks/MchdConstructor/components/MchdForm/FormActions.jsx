@@ -1,13 +1,13 @@
 // import { useIsMutating } from "@tanstack/react-query";
 
+import { useFormContext } from "react-hook-form";
+
 import { Button, ButtonVariant, GroupContainer } from "@/components";
-import { getLib } from "@/utils";
 
 export const FormActions = ({ className }) => {
     // const saveMutationsNum = useIsMutating({ mutationKey: "save" });
     // const isLoading = saveMutationsNum > 0;
 
-    const { useFormContext } = getLib("ReactHookForm");
     const {
         reset,
         // formState: { defaultValues, isValid },

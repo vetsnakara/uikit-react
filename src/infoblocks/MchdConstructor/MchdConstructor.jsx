@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import * as ReactHookForm from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 
 import { mockState as defaultValues } from "./constatns/mockState";
 import { DataProvider } from "./context/DataContext";
@@ -18,13 +18,8 @@ import { managers } from "./constatns/managers";
 import { regions } from "./constatns/regions";
 
 import { MainWithStickySidebarLayout as Layout, Row, Title } from "@/components";
-import { initLib } from "@/utils";
-
-// todo: icon are not visible now
 
 const queryClient = new QueryClient();
-// const { useForm, FormProvider } = initLib({ ReactHookForm });
-const { useForm, FormProvider } = initLib({ ReactHookForm });
 
 const selectItems = {
     managers: managers.map(({ id, firstName, lastName, middleName }) => ({

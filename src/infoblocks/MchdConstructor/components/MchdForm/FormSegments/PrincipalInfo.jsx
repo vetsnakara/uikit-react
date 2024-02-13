@@ -1,14 +1,12 @@
+import { useFormContext } from "react-hook-form";
+
 import { LegalEntityPrincipalType, PrincipalType } from "../../../constatns/constants";
 import { useData } from "../../../context/DataContext";
 import { DateInput, Input, Select } from "../inputs";
 
-import { getLib } from "@/utils";
-
 import { Card, Col, Form, FormRadioGroup, Radio, Row, Separator, Subtitle } from "@/components";
 
 export const PrincipalInfo = ({ className }) => {
-    const { useFormContext } = getLib("ReactHookForm");
-
     const { selectItems } = useData();
     const { watch } = useFormContext();
 

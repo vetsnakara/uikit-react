@@ -1,8 +1,6 @@
-import { getLib } from "@/utils";
+import { useController, useFormContext } from "react-hook-form";
 
 export const useFormField = (options) => {
-    const { useFormContext, useController } = getLib("ReactHookForm");
     const { control } = useFormContext();
-
     return useController({ control, ...options });
 };

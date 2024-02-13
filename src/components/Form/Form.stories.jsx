@@ -1,6 +1,6 @@
-import * as ReactHookForm from "react-hook-form";
-
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import { FormProvider, useForm } from "react-hook-form";
 
 import {
     FormCheckbox,
@@ -15,11 +15,7 @@ import {
 
 import { maxWidth } from "@/storybook/decorators";
 
-import { initLib } from "@/utils";
-
 import { Button, ButtonVariant, Card, Checkbox, Form, GroupContainer, Radio, VStack } from "@/components";
-
-const { useForm, FormProvider } = initLib({ ReactHookForm });
 
 export default {
     title: "form/Form",

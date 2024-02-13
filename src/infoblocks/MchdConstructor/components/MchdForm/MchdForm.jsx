@@ -7,6 +7,8 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
+import { useFormContext } from "react-hook-form";
+
 import { buildData } from "../../schema";
 
 import { FormActions } from "./FormActions";
@@ -16,11 +18,8 @@ import { PrincipalInfo } from "./FormSegments/PrincipalInfo";
 import { RepresentativeInfo } from "./FormSegments/RepresentativeInfo";
 
 import { Card, Form, Paragraph, Subtitle, VStack } from "@/components";
-import { getLib } from "@/utils";
 
 export const MchdForm = () => {
-    const { useFormContext } = getLib("ReactHookForm");
-
     const { handleSubmit } = useFormContext();
 
     const { mutate: save } = useMutation({

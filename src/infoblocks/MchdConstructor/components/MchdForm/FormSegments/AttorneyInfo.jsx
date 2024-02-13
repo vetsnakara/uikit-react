@@ -1,17 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 
+import { useFormContext, useWatch } from "react-hook-form";
+
 import { DateInput, Input } from "../inputs";
 
 import { Card, Checkbox, Col, Form, Row, Subtitle } from "@/components";
-import { getLib } from "@/utils";
 
 const EXT_NUMBER_KEY = "extensionNumber";
 
 // todo: create hook for logic
 export const AttorneyInfo = ({ className }) => {
     const [noExtensionNumber, setNoExtensionNumber] = useState(false);
-
-    const { useFormContext, useWatch } = getLib("ReactHookForm");
 
     const {
         setValue,
