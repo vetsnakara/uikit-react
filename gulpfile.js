@@ -144,6 +144,10 @@ function libraries() {
             `${paths.from}/scripts/**/*.js`,
             `${paths.from}/ui-kit/bootstrap/utils.js`,
             `!${paths.from}/scripts/tinymce/**/*.js`,
+
+            //! don't minify already minified lib files
+            `!${paths.from}/scripts/*.min.js`,
+            `${paths.from}/scripts/purify.min.js`,
         ],
         {
             allowEmpty: true,
@@ -152,6 +156,12 @@ function libraries() {
         .pipe(babel({ presets: [["@babel/preset-env", { modules: false }]] }))
         .pipe(gulpif(isProduction, uglify()))
         .pipe(dest(`${paths.to}/scripts`));
+}
+
+function minLibrariesMove() {
+    return src([`${paths.from}/scripts/*.min.js`, `!${paths.from}/scripts/purify.min.js`]).pipe(
+        dest(`${paths.to}/scripts`)
+    );
 }
 
 function librariesMove() {
@@ -214,6 +224,7 @@ exports.production = series(
     debug,
     libraries,
     librariesMove,
+    minLibrariesMove,
     librariesCSS,
     uikit,
     fonts,
@@ -227,7 +238,7 @@ exports.production = series(
     scss,
     autodoc,
     libraries,
-    librariesMove,
+    librariesMove, //? duplication
     uikit,
     fonts,
     images,
@@ -246,6 +257,7 @@ exports.watch = function () {
         debug,
         libraries,
         librariesMove,
+        minLibrariesMove,
         librariesCSS,
         uikit,
         fonts,
