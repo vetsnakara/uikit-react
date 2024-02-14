@@ -21,8 +21,6 @@ export const AttorneyInfo = ({ className }) => {
     const { isDirty: isExtNumberDirty } = getFieldState(EXT_NUMBER_KEY);
     const extensionNumber = useWatch({ name: EXT_NUMBER_KEY });
 
-    console.log({ isExtNumberDirty, extensionNumber });
-
     // handle reset
     useEffect(() => {
         if (!isExtNumberDirty) {

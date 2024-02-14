@@ -10,16 +10,11 @@ export const FormRadioGroup = (props) => {
 
     const radioProps = _.omit(restProps, ["value", "onChange", "error"]);
 
-    console.log("FormRadioGroup", field, formState);
-
     return (
         <Radio.Group
             name={name}
             value={field.value}
-            onChange={(value) => {
-                console.log("FormRadioGroup: value", value);
-                field.onChange(value);
-            }}
+            onChange={field.onChange}
             error={get(formState.errors, name)?.message}
             {...radioProps}
         >
