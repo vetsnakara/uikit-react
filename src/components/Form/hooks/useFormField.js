@@ -1,4 +1,4 @@
-import rhf from "react-hook-form";
+import * as rhf from "react-hook-form";
 
 console.log("rhf", rhf);
 

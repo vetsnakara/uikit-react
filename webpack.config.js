@@ -54,6 +54,7 @@ module.exports = () => {
         // NOTE: указанные ниже библиотеки не включаются в бандл библиотеки React UIKIT,
         // их UMD-модули доллжны быть загружены в браузер перед загрузкой React UIKit
         // и быть доступны глобально под указанными именами (root)
+        // externalsType: "window",
         externals: {
             react: {
                 root: "React",
