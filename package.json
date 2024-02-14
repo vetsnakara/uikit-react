@@ -24,7 +24,14 @@
         "prepare": "husky install",
         "format": "prettier ./src/**/*.{js,ts,tsx} --write",
         "lint": "eslint ./src --ext .js,.ts,jsx",
-        "lint:fix": "npm run lint -- --fix "
+        "lint:fix": "npm run lint -- --fix ",
+        "test:ui": "loki test --port 3000",
+        "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static --chromeRetries=3 --chromeConcurrency=1",
+        "test:ui:upd": "loki update --port 3000",
+        "test:ui:ok": "loki approve --port",
+        "test:ui:json": "node scripts/generateVisualJsonReport.js",
+        "test:ui:html": "reg-cli --from .loki/report.json  --report .loki/report.html",
+        "test:ui:report": "npm-run-all -s -c storybook:build test:ui:ci test:ui:json test:ui:html"
     },
     "repository": {
         "type": "git",
@@ -90,12 +97,14 @@
         "gulp-terser": "2.1.0",
         "husky": "^8.0.3",
         "lint-staged": "^15.2.0",
+        "loki": "^0.34.0",
         "msw-storybook-addon": "^1.10.0",
         "npm-run-all": "^4.1.5",
         "open": "7.4.2",
         "postcss": "8.4.16",
         "postcss-scss": "4.0.4",
         "prettier": "^3.1.1",
+        "reg-cli": "^0.18.0",
         "rimraf": "^5.0.5",
         "sass": "1.53.0",
         "sass-embedded": "1.53.0",
@@ -116,14 +125,14 @@
         "classnames": "2.3.2",
         "inputmask": "5.0.8",
         "prop-types": "15.8.1",
-        "react-hook-form": "7.50.1"
+        "react-hook-form": "7.49.2"
     },
     "peerDependencies": {
+        "@tanstack/react-query": "4.36.1",
         "axios": "1.6.7",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-hook-form": "7.49.2",
-        "@tanstack/react-query": "4.36.1"
+        "react-hook-form": "7.49.2"
     },
     "browserslist": [
         "IE 11",
@@ -142,5 +151,20 @@
             "npx prettier",
             "npx eslint --fix"
         ]
+    },
+    "loki": {
+        "configurations": {
+            "chrome.laptop": {
+                "target": "chrome.docker",
+                "width": 1366,
+                "height": 768,
+                "deviceScaleFactor": 1,
+                "mobile": false
+            },
+            "chrome.iphone7": {
+                "target": "chrome.docker",
+                "preset": "iPhone 7"
+            }
+        }
     }
 }
