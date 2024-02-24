@@ -1,10 +1,10 @@
 import cn from "classnames";
 import { forwardRef, memo, useEffect, useRef } from "react";
 
+import { SelectEvent, selectpickerEventHandlers } from "./constants";
+
 import { composeRef } from "@/utils";
 import { Icon } from "@/components";
-
-import { SelectEvent, selectpickerEventHandlers } from "./constants";
 
 const defaultSelectpickerOptions = {};
 const defaultItems = [];

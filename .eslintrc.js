@@ -8,6 +8,7 @@ module.exports = {
         moment: true,
         _: true,
         yup: true,
+        __ASSETS_BASE_URL__: true,
     },
     parser: "@typescript-eslint/parser",
     extends: [

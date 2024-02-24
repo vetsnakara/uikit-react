@@ -1,8 +1,9 @@
 import { memo } from "react";
 import cn from "classnames";
 
-import { Icon } from "@/components";
 import { FileAction } from "./constants";
+
+import { Icon } from "@/components";
 
 const getIcon = (name) => <Icon name={name} className="button__icon" />;
 
