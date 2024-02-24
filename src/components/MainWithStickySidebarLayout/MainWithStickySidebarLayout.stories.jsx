@@ -1,6 +1,6 @@
 import { MainWithStickySidebarLayout as Layout } from "./MainWithStickySidebarLayout";
 
-import { Card, Title, VStack } from "@/components";
+import { Card, Title, VStack, Icon } from "@/components";
 
 export default {
     title: "layout/LayoutStickySidebar",
@@ -43,9 +43,7 @@ export const Base = () => {
                                     className="button button_icontext button_plain"
                                     type="button"
                                 >
-                                    <svg className="icon button__icon">
-                                        <use href="uikit/icon/icons.svg#rotation"></use>
-                                    </svg>
+                                    <Icon name="rotation" className="button__icon" />
                                     Восстановить сотрудника
                                 </button>
                             </Card.Footer>

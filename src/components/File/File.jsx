@@ -3,6 +3,7 @@ import { forwardRef, memo, useEffect, useRef, useState } from "react";
 import { FilePreview } from "./FilePreview";
 import { FileAction } from "./constants";
 
+import { Icon } from "@/components";
 import { composeRef } from "@/utils";
 
 export const File = memo(
@@ -82,9 +83,7 @@ export const File = memo(
                 />
                 {!file && (
                     <span data-action={FileAction.Add} className="upload__label button button_plain button_icontext">
-                        <svg className="icon button__icon">
-                            <use href={`uikit/icon/icons.svg#${labelIcon}`}></use>
-                        </svg>
+                        <Icon name={labelIcon} className="button__icon" />
                         {labelText}
                     </span>
                 )}

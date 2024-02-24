@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { memo, useEffect, useRef, useState } from "react";
 
-import { Portal } from "../Portal";
+import { Portal, Icon } from "@/components";
 
 export const ModalVariant = {
     Modal: "modal",
@@ -21,11 +21,7 @@ const DefaultHeaderContent = ({ title, icon, disabled }) => {
     return (
         <>
             <div className="modal__header-box">
-                {icon && (
-                    <svg className="icon icon_brand modal__header-icon">
-                        <use href={`/assets/redesign-theme/uikit/icon/icons.svg#${icon}`} />
-                    </svg>
-                )}
+                {icon && <Icon name={icon} color="brand" className="modal__header-icon" />}
                 <h2 className="modal__title">{title}</h2>
             </div>
             <button type="button" disabled={disabled} className="modal__close" data-dismiss="modal"></button>

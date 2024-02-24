@@ -13,6 +13,7 @@ export * from "./Form";
 export * from "./Grid";
 export * from "./GroupContainer";
 export * from "./Input";
+export * from "./Icon";
 export * from "./List";
 export * from "./Loader";
 export * from "./MainWithStickySidebarLayout";

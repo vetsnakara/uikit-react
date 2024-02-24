@@ -2,6 +2,7 @@ import React from "react";
 
 import cn from "classnames";
 import { forwardRef } from "react";
+import { Icon } from "@/components";
 
 export const ButtonVariant = {
     Secondary: "secondary",
@@ -42,11 +43,7 @@ function Button(props, ref) {
 
     return (
         <button ref={ref} className={classNames} type={type} {...buttonProps}>
-            {icon && (
-                <svg className="icon button__icon">
-                    <use href={`uikit/icon/icons.svg#${icon}`}></use>
-                </svg>
-            )}
+            {icon && <Icon name={icon} className="button__icon" />}
             {children}
         </button>
     );

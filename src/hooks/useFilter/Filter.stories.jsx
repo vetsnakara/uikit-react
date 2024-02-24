@@ -33,6 +33,11 @@ import {
 
 export default {
     title: "hooks/useFilter",
+    parameters: {
+        loki: {
+            skip: true,
+        },
+    },
 };
 
 const selectItems = [

@@ -43,9 +43,9 @@ export const Checkbox = memo(
                 groupContext.onChange?.(event);
             };
 
-            if (groupContext.value) {
-                checkboxProps.checked = groupContext.value.includes(checkboxProps.value);
-            }
+            checkboxProps.checked = Boolean(groupContext.value)
+                ? groupContext.value.includes(checkboxProps.value)
+                : false;
 
             if (groupContext.defaultValue) {
                 checkboxProps.defaultChecked = groupContext.defaultValue.includes(checkboxProps.value);

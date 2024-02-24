@@ -1,5 +1,7 @@
 const path = require("path");
 
+const webpack = require("webpack");
+
 const TerserPlugin = require("terser-webpack-plugin");
 
 const Mode = {
@@ -48,6 +50,12 @@ module.exports = () => {
                 },
             ],
         },
+
+        plugins: [
+            new webpack.DefinePlugin({
+                __ASSETS_BASE_URL__: JSON.stringify("/assets/redesign-theme/"),
+            }),
+        ],
 
         // зависимости UMD-модуля библиотеки React UIKit
         // ---------------------------------------------

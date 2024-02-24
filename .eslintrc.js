@@ -20,6 +20,7 @@ module.exports = {
     plugins: ["react", "react-hooks", "@typescript-eslint", "import", "unused-imports"],
     rules: {
         "prefer-const": "error",
+        "no-extra-boolean-cast": "off",
 
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",

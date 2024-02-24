@@ -1,30 +1,27 @@
 import { memo } from "react";
 import cn from "classnames";
 
+import { Icon } from "@/components";
 import { FileAction } from "./constants";
+
+const getIcon = (name) => <Icon name={name} className="button__icon" />;
 
 const DownloadButton = ({ file: { url }, downloadName = true }) => (
     <a className="button button_icontext button_plain" download={downloadName} href={url}>
-        <svg className="icon button__icon">
-            <use href="uikit/icon/icons.svg#download"></use>
-        </svg>
+        {getIcon("download")}
         Скачать
     </a>
 );
 
 const EditButton = () => (
     <button data-action={FileAction.Change} className="file-preview__action button button_plain" type="button">
-        <svg className="icon button__icon">
-            <use href="uikit/icon/icons.svg#pen"></use>
-        </svg>
+        {getIcon("pen")}
     </button>
 );
 
 const RemoveButton = () => (
     <button data-action={FileAction.Remove} className="button-close file-preview__action" type="button">
-        <svg className="icon button__icon">
-            <use href="uikit/icon/icons.svg#close"></use>
-        </svg>
+        {getIcon("close")}
     </button>
 );
 

@@ -1,7 +1,10 @@
 $(document).ready(function () {
-    $("select.select__control").not('[data-init="false"]').each(function (index, element) {
-        initBootstrapSelect(element);
-    });
+    $("select.select__control")
+        .not('[data-init="false"]')
+        .each(function (index, element) {
+            console.log("initBootstrapSelect", element);
+            initBootstrapSelect(element);
+        });
 });
 
 window.initBootstrapSelect = function (element, options) {
@@ -15,7 +18,8 @@ window.initBootstrapSelect = function (element, options) {
     };
     params = $.extend(params, options);
     var optionsList = $("option:not([data-divider])", el);
-    var selectedTextFormat =  el.data("my-selected-text-format") || el.data("selected-text-format") ||params.selectedTextFormat;
+    var selectedTextFormat =
+        el.data("my-selected-text-format") || el.data("selected-text-format") || params.selectedTextFormat;
     var selectedDivider = el.data("selected-divider") || params.selectedDivider;
     var firstSelectVal = -1;
     var firstSelectLabel = "";
@@ -23,8 +27,8 @@ window.initBootstrapSelect = function (element, options) {
     //доработка для подстановки минимальной ширины
     var os = new MutationObserver(function (list) {
         _.each(list, function (item) {
-            if  (item.addedNodes && item.addedNodes.length ) {
-                var target =  $(item.addedNodes[0]);
+            if (item.addedNodes && item.addedNodes.length) {
+                var target = $(item.addedNodes[0]);
                 var width;
                 if (target.hasClass("bootstrap-select") && target.hasClass("dropdown")) {
                     width = target.css("width");
@@ -33,10 +37,9 @@ window.initBootstrapSelect = function (element, options) {
                     }
                 }
             }
-        })
-    })
-    os.observe($("body").get(0), {childList: true});
-
+        });
+    });
+    os.observe($("body").get(0), { childList: true });
 
     function getTitle(format, option) {
         switch (format) {
@@ -147,7 +150,6 @@ window.initBootstrapSelect = function (element, options) {
             }
         }
     }
-
 
     applyCustoms();
     if (el.data("selectpicker")) {

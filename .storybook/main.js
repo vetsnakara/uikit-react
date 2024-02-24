@@ -1,19 +1,17 @@
 import path from "path";
+import webpack from "webpack";
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-    stories: [
-        "../src/**/*.mdx",
-        "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
-    ],
+    stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
     addons: [
         "@storybook/addon-essentials",
         {
             name: "@storybook/addon-docs",
             options: {
                 // for import .md in .mdx files
-                transcludeMarkdown: true
-            }, 
+                transcludeMarkdown: true,
+            },
         },
     ],
     framework: {
@@ -40,6 +38,12 @@ const config = {
 
             return rule;
         });
+
+        const definePlugin = new webpack.DefinePlugin({
+            __ASSETS_BASE_URL__: JSON.stringify(""),
+        });
+
+        config.plugins?.push(definePlugin);
 
         return config;
     },

@@ -1,8 +1,5 @@
 .vscode/
 
-# temporary ignore
-.loki
-
 node_modules/
 storybook-static/
 

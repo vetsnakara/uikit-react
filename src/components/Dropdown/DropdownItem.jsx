@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { Icon } from "@/components";
 
 export const DropdownItemType = {
     Button: "button",
@@ -12,11 +13,7 @@ export const DropdownItem = (props) => {
 
     const content = (
         <>
-            {icon && (
-                <svg className="icon">
-                    <use href={`uikit/icon/icons.svg#${icon}`}></use>
-                </svg>
-            )}
+            {icon && <Icon name={icon} />}
             <span className="dropdown-item__text">{text}</span>
         </>
     );

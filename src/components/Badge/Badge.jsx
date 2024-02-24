@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { Icon } from "@/components";
 
 /**
  * Badge
@@ -25,19 +26,13 @@ export const Badge = (props) => {
 
     return (
         <div className={classNames}>
-            {icon && (
-                <svg className="icon badge__icon">
-                    <use href={`uikit/icon/icons.svg#${icon}`}></use>
-                </svg>
-            )}
+            {icon && <Icon name={icon} className="badge__icon" />}
 
             <span className="badge__text">{children}</span>
 
             {closeable && (
                 <button type="button" className="badge__button-icon" onClick={onClose}>
-                    <svg className="badge__close icon icon_s">
-                        <use href="uikit/icon/icons.svg#close"></use>
-                    </svg>
+                    <Icon name="close" size="s" className="badge__close" />
                 </button>
             )}
         </div>

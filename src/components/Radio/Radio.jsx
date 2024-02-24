@@ -31,9 +31,7 @@ export const Radio = memo(
                 radioProps.defaultChecked = props.value === groupContext.defaultValue;
             }
 
-            if (groupContext.value) {
-                radioProps.checked = props.value === groupContext.value;
-            }
+            radioProps.checked = Boolean(groupContext.value) ? props.value === groupContext.value : false;
         }
 
         const labelClassNames = cn("radio", className, { radio_error: error });

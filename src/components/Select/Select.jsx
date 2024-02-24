@@ -1,7 +1,8 @@
 import cn from "classnames";
 import { forwardRef, memo, useEffect, useRef } from "react";
 
-import { composeRef } from "../../utils/composeRef";
+import { composeRef } from "@/utils";
+import { Icon } from "@/components";
 
 import { SelectEvent, selectpickerEventHandlers } from "./constants";
 
@@ -87,6 +88,7 @@ export const Select = memo(
                 window.initBootstrapSelect(ref.current, baseSelectpickerOptions);
             }
 
+            // init plugins
             if (ajaxOptions) $select.ajaxSelectPicker(ajaxOptions);
             if (addItemsOptions) $select.addSelectPicker(addItemsOptions);
 
@@ -110,7 +112,9 @@ export const Select = memo(
         useEffect(() => {
             if (!_.isUndefined(value)) {
                 const $select = $(ref.current);
-                $select.selectpicker("val", value).selectpicker("refresh");
+
+                $select.val(value);
+                $select.selectpicker("refresh");
             }
         }, [value]);
 
@@ -123,7 +127,9 @@ export const Select = memo(
                 .filter(({ selected }) => selected)
                 .map(({ value }) => value);
 
-            onChange?.(multiple ? values : value, event);
+            const newValue = multiple ? values : value;
+
+            onChange?.(newValue, event);
         };
 
         const labelClassNames = cn(
@@ -147,6 +153,7 @@ export const Select = memo(
             <label className={labelClassNames}>
                 <select
                     ref={callbackRef}
+                    data-init="false"
                     className={selectClassNames}
                     value={value}
                     onChange={handleChange}
@@ -161,9 +168,7 @@ export const Select = memo(
 
                 {closeable && (
                     <button type="button" className="button button_plain button_icon select__close" onClick={onClose}>
-                        <svg className="icon button__icon select__close-icon">
-                            <use href="uikit/icon/icons.svg#close"></use>
-                        </svg>
+                        <Icon name="close" className="button__icon select__close-icon" />
                     </button>
                 )}
 

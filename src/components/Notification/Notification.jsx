@@ -1,5 +1,7 @@
 import cn from "classnames";
 
+import { Icon } from "@/components";
+
 export const Notification = (props) => {
     const { id, title, content, icon, visibleCloseButton = true, type } = props;
 
@@ -9,9 +11,7 @@ export const Notification = (props) => {
         <div className={classNames}>
             {icon && (
                 <div className="notifications__card-icon">
-                    <svg className="icon icon_in-text" id="question">
-                        <use href={`/assets/redesign-theme/uikit/icon/icons.svg#${icon}`} />
-                    </svg>
+                    <Icon id="question" name={icon} className="icon_in-text" />
                 </div>
             )}
 
@@ -21,9 +21,7 @@ export const Notification = (props) => {
 
             {visibleCloseButton && (
                 <button type="button" data-id={id} className="button-close notifications__card-close">
-                    <svg className="button__icon icon icon_m">
-                        <use href="/assets/redesign-theme/uikit/icon/icons.svg#close" />
-                    </svg>
+                    <Icon name="close" size="m" className="button__icon" />
                 </button>
             )}
         </div>

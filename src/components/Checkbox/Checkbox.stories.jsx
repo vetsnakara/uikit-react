@@ -53,10 +53,19 @@ export const Controlled = () => {
 
 // Group
 // --------------------------
+export const Group = () => {
+    return (
+        <Checkbox.Group name="group" value={["2"]}>
+            <Checkbox value="1" label="One" />
+            <Checkbox value="2" label="Two" />
+            <Checkbox value="3" label="Three" />
+        </Checkbox.Group>
+    );
+};
 
 export const GroupDisabled = () => {
     return (
-        <Checkbox.Group name="group" defaultValue={["2"]} disabled>
+        <Checkbox.Group name="group" value={["2"]} disabled>
             <Checkbox value="1" label="One" />
             <Checkbox value="2" label="Two" />
             <Checkbox value="3" label="Three" />
@@ -66,7 +75,7 @@ export const GroupDisabled = () => {
 
 export const GroupSwitch = () => {
     return (
-        <Checkbox.Group name="group" defaultValue={["2"]} variant={Checkbox.Variant.Switch}>
+        <Checkbox.Group name="group" value={["2"]} variant={Checkbox.Variant.Switch}>
             <VStack gap={1}>
                 <Checkbox value="1" label="One" />
                 <Checkbox value="2" label="Two" />
@@ -84,7 +93,7 @@ export const GroupUncontrolled = () => {
     };
 
     return (
-        <Checkbox.Group ref={ref} name="group" defaultValue={["2"]} onChange={handleChange}>
+        <Checkbox.Group ref={ref} name="group" value={["2"]} onChange={handleChange}>
             <Checkbox value="1" label="One" />
             <Checkbox value="2" label="Two" />
             <Checkbox value="3" label="Three" />
@@ -93,7 +102,7 @@ export const GroupUncontrolled = () => {
 };
 
 export const GroupControlled = () => {
-    const [value, setValues] = useState(["3"]);
+    const [value, setValues] = useState(["2"]);
 
     return (
         <Checkbox.Group name="group" value={value} onChange={setValues}>

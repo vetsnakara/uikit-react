@@ -36,7 +36,7 @@ export const GroupUncontrolled = () => {
         <Radio.Group
             ref={ref}
             name="group"
-            defaultValue="2"
+            value="2"
             onChange={(value) => {
                 console.log("value", value);
             }}
@@ -50,7 +50,7 @@ export const GroupUncontrolled = () => {
 
 export const GroupDisabled = () => {
     return (
-        <Radio.Group name="group" defaultValue="2" disabled>
+        <Radio.Group name="group" value="2" disabled>
             <Radio value="1" label="One" />
             <Radio value="2" label="Two" />
             <Radio value="3" label="Three" />
