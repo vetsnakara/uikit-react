@@ -22,9 +22,9 @@
         "format": "prettier ./src/**/*.{js,ts,tsx} --write",
         "lint": "eslint ./src --ext .js,.ts,jsx",
         "lint:fix": "npm run lint -- --fix ",
-        "vreg": "npm run clear:vreg; npm run vreg:test; npm run vreg:report; npm run vreg:check",
-        "vreg:test": "concurrently --kill-others --success last --names \"SB,LOKI:TEST\" --prefix-colors \"magenta,blue\" \"npm run sb:build-serve\" \"npm run loki:test:wait-sb\"",
-        "vreg:upd": "concurrently --kill-others --success last --names \"SB,LOKI:UPD\" --prefix-colors \"magenta,blue\" \"npm run sb:build-serve\" \"npm run loki:upd:wait-sb\"",
+        "vreg": "node scripts/visualRegressionTest.js ",
+        "vreg:test": "concurrently --kill-others --success first --names \"SB,LOKI:TEST\" --prefix-colors \"magenta,blue\" \"npm run sb:build-serve\" \"npm run loki:test:wait-sb\"",
+        "vreg:upd": "concurrently --kill-others --success first --names \"SB,LOKI:UPD\" --prefix-colors \"magenta,blue\" \"npm run sb:build-serve\" \"npm run loki:upd:wait-sb\"",
         "vreg:check": "node scripts/checkVRegResult.js",
         "vreg:inspect": "http-server ./.loki",
         "vreg:ok": "loki approve",
@@ -41,7 +41,7 @@
         "move-bundle": "node ./scripts/moveBundleToAssets",
         "styletest": "node autotest.js",
         "clear": "rm -rf ./lib ./assets",
-        "clear:vreg": "rm -rf ./.loki/current ./.loki/difference ./.loki/report.*",
+        "clear:vreg": "rm -rf ./.loki/current ./.loki/difference ./.loki/report.json ./.loki/index.html",
         "prepare": "husky install"
     },
     "repository": {
