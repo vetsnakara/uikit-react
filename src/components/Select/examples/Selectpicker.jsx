@@ -85,7 +85,7 @@ export const LiveSearch = () => {
 
     return (
         <VStack gap={2}>
-            <Select {...commonOptions} title="Единственный выбор" />
+            <Select {...commonOptions} title="Единственный выбор" placeholder="Выберите" />
             <Select {...commonOptions} title="Множественный выбор" multiple />
         </VStack>
     );

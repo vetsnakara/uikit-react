@@ -3,8 +3,6 @@ import React from "react";
 import cn from "classnames";
 import { forwardRef } from "react";
 
-import { Icon } from "@/components";
-
 export const ButtonVariant = {
     Secondary: "secondary",
     Plain: "plain",
@@ -30,6 +28,8 @@ const ButtonPropTypes = {};
 function Button(props, ref) {
     const { variant, theme, wide, icon, type = "button", className, children, ...buttonProps } = props;
 
+    const iconElement = icon ? React.cloneElement(icon, { className: "button__icon" }) : null;
+
     const classNames = cn(
         "button",
         {
@@ -44,7 +44,7 @@ function Button(props, ref) {
 
     return (
         <button ref={ref} className={classNames} type={type} {...buttonProps}>
-            {icon && <Icon name={icon} className="button__icon" />}
+            {iconElement}
             {children}
         </button>
     );

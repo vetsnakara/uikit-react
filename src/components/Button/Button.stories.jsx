@@ -2,7 +2,7 @@ import { Button } from "./Button";
 
 import { maxWidth } from "@/storybook/decorators";
 
-import { GroupContainer, VStack } from "@/components";
+import { GroupContainer, Icon, VStack } from "@/components";
 
 export default {
     title: "uikit/Button",
@@ -39,34 +39,42 @@ export const Default = () => (
     </VStack>
 );
 
-export const WithIcon = () => (
-    <VStack gap={1}>
-        <Buttons icon="delete" />
-        <Buttons icon="delete" theme="destruct" />
-        <Buttons icon="delete" disabled />
-    </VStack>
-);
+export const WithIcon = () => {
+    const icon = <Icon name="delete" />;
+
+    return (
+        <VStack gap={1}>
+            <Buttons icon={icon} />
+            <Buttons icon={icon} theme="destruct" />
+            <Buttons icon={icon} disabled />
+        </VStack>
+    );
+};
 
 WithIcon.parameters = {
     docs: {
         description: {
-            story: "Кнока с иконкой",
+            story: "Кнопка с иконкой",
         },
     },
 };
 
-export const IconButton = () => (
-    <VStack gap={1}>
-        <Buttons icon="delete" label="" />
-        <Buttons icon="delete" label="" theme="destruct" />
-        <Buttons icon="delete" label="" disabled />
-    </VStack>
-);
+export const IconButton = () => {
+    const icon = <Icon name="delete" />;
+
+    return (
+        <VStack gap={1}>
+            <Buttons icon={icon} label="" />
+            <Buttons icon={icon} label="" theme="destruct" />
+            <Buttons icon={icon} label="" disabled />
+        </VStack>
+    );
+};
 
 IconButton.parameters = {
     docs: {
         description: {
-            story: "Кнока с иконкой без текста",
+            story: "Кнопка с иконкой без текста",
         },
     },
 };
