@@ -42,8 +42,7 @@
         "styletest": "node autotest.js",
         "clear": "rm -rf ./lib ./assets",
         "clear:vreg": "rm -rf ./.loki/current ./.loki/difference ./.loki/report.*",
-        "prepare": "husky install",
-        "commit": "cz"
+        "prepare": "husky install"
     },
     "repository": {
         "type": "git",

@@ -7,6 +7,8 @@ import { Button, ButtonVariant, GroupContainer, VStack } from "@/components";
 
 import { maxWidth } from "@/storybook/decorators";
 
+console.log("test");
+
 export default {
     title: "inputs/Input",
     tags: ["autodocs"],
