@@ -14,7 +14,7 @@ if (diffResult) {
     console.log("🛑 Changed source files detected => Rebuild assets ...");
 
     const build = `npm run build:all`;
-    const gitAdd = `git add $${DIST_PATH}`;
+    const gitAdd = `git add ${DIST_PATH}`;
     const gitCommit = `git commit -m '[auto] add assets'`;
 
     const commands = [build, gitAdd, gitCommit].join(" && ");
