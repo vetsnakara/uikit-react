@@ -3,7 +3,7 @@ import { useCallback, useMemo } from "react";
 import { Dropdown } from "./Dropdown";
 import { DropdownItemType } from "./DropdownItem";
 
-import { Button, ButtonVariant } from "@/components";
+import { Button, ButtonVariant, Icon } from "@/components";
 
 export default {
     title: "uikit/Dropdown",
@@ -47,9 +47,9 @@ export const Default = () => {
             <Button
                 ref={ref}
                 data-toggle="dropdown"
-                icon="more"
                 variant={ButtonVariant.Plain}
                 className="content_pale"
+                icon={<Icon name="more" />}
             />
         ),
         []

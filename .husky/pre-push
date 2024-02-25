@@ -6,4 +6,4 @@
 npm run vreg
 
 # Rebuild if source files changed
-node ./scripts/rebuildAssets.js
+node ./scripts/updateDistAssets.js
