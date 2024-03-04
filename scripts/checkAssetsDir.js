@@ -7,10 +7,10 @@
 const path = require("path");
 const fs = require("fs");
 
-const dirName = path.resolve(__dirname, "..", "assets", "redesign-theme");
+const dirName = path.resolve(__dirname, "..", "..", "..", "assets", "redesign-theme");
 
 if (!fs.existsSync(dirName)) {
-    throw new Error("🛑 Directory 'assets/redesign-theme' is not exist (run 'npm run build:assets')");
+    throw new Error("🛑 Directory 'assets/redesign-theme' is not exist in main project");
 }
 
 console.log("✅ Directory 'assets/redesign-theme' exist");

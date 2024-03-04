@@ -1,7 +1,5 @@
-import React from "react";
-
 import cn from "classnames";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 export const ButtonVariant = {
     Secondary: "secondary",

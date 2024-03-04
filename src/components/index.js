@@ -1,8 +1,8 @@
-export * from "./Avatar";
-export * from "./Badge";
+export { Avatar } from "./Avatar";
+export { Badge } from "./Badge";
 export * from "./Box";
 export * from "./Button";
-export * from "./Card";
+export { Card } from "./Card";
 export * from "./Checkbox";
 export * from "./DateInput";
 export * from "./Definitions";

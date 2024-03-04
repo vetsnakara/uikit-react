@@ -1,6 +1,15 @@
 import path from "path";
 import webpack from "webpack";
 
+const { PRR_ASSETS_DIR } = process.env;
+
+if (!PRR_ASSETS_DIR) {
+    console.log("🛑 PRR_ASSETS_DIR isn't found");
+    process.exit(1);
+}
+
+console.log(`✅ PRR_ASSETS_DIR="${PRR_ASSETS_DIR}"`);
+
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
     stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -26,7 +35,7 @@ const config = {
             config.resolve.alias = {
                 ...config.resolve.alias,
                 "@/storybook": path.resolve(__dirname, "."),
-                "@": path.resolve(__dirname, "../src"),
+                "@": path.resolve(__dirname, "..", "src"),
             };
         }
 
@@ -47,7 +56,7 @@ const config = {
 
         return config;
     },
-    staticDirs: ["../assets/redesign-theme", "./public"],
+    staticDirs: [PRR_ASSETS_DIR, "./public"],
 };
 
 export default config;

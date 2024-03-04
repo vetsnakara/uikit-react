@@ -1,8 +1,0 @@
-$images: false !default;
-
-@if (not $images) {
-
-  img:not(#high-weight) {
-    display: none !important;
-  }
-}

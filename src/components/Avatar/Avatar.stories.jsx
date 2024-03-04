@@ -15,7 +15,7 @@ export default {
 
 export const Default = {
     args: {
-        src: "https://via.placeholder.com/640x480.jpg?text=Image",
+        src: "images/logo.svg",
     },
 };
 

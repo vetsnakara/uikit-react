@@ -29,7 +29,7 @@ module.exports = () => {
         },
 
         output: {
-            path: path.resolve(__dirname, "./lib"),
+            path: path.resolve(__dirname, "./libs"),
             filename: isProduction ? `${libName}.min.js` : `${libName}.js`,
 
             // собираем UMD-модуль

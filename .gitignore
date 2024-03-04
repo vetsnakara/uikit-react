@@ -3,4 +3,6 @@
 node_modules/
 storybook-static/
 
+libs/uikit-react.min.js
+
 **/__lints.log
