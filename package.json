@@ -112,6 +112,7 @@
         ]
     },
     "loki": {
+        "chromeDockerImage": "yukinying/chrome-headless-browser:124.0.6329.0",
         "configurations": {
             "chrome.laptop": {
                 "target": "chrome.docker",
