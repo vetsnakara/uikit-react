@@ -2,8 +2,11 @@ import { Card } from "../../Card";
 
 import { VStack } from "./VStack";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/Stack/VStack",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

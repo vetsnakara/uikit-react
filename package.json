@@ -6,8 +6,8 @@
     "scripts": {
         "build:prod": "cross-env NODE_ENV=production webpack",
         "build:dev": "cross-env NODE_ENV=development webpack",
-        "sb:dev": "storybook dev -p 3000",
-        "sb:build": "rm -rf ./storybook-static && storybook build",
+        "sb:dev": "node ./scripts/storybook/dev.js",
+        "sb:build": "rm -rf ./storybook-static && node ./scripts/storybook/build.js",
         "sb:serve": "http-server ./storybook-static --port 3000 --silent",
         "sb:build-serve": "run-s sb:build sb:serve",
         "wait:sb": "wait-on http-get://127.0.0.1:3000",

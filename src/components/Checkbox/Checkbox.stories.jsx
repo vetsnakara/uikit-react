@@ -3,9 +3,11 @@ import { useRef, useState } from "react";
 import { Checkbox } from "./Checkbox";
 
 import { VStack } from "@/components";
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "inputs/Checkbox",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

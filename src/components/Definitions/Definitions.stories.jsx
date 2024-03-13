@@ -3,8 +3,11 @@ import { Subtitle } from "../Text";
 
 import { Definitions } from "./Definitions";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/Definitions",
+    decorators: [maxWidth(1000)],
     tags: ["autodocs"],
 };
 

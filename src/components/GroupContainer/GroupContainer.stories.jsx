@@ -2,8 +2,11 @@ import { Button } from "../Button";
 
 import { GroupContainer } from "./GroupContainer";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "layout/GroupContainer",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

@@ -2,8 +2,11 @@ import { useEffect, useRef, useState } from "react";
 
 import { Radio } from "./Radio";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "inputs/Radio",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

@@ -1,7 +1,10 @@
 import { Paragraph, SectionSubtitle, SectionTitle, Span, Subtitle, TextColor, TextSize, Title } from "./Text";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/Text",
+    decorators: [maxWidth(1000)],
     tags: ["autodocs"],
 };
 

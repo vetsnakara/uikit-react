@@ -2,8 +2,11 @@ import { Card } from "../../Card";
 
 import { HStack } from "./HStack";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/Stack/HStack",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

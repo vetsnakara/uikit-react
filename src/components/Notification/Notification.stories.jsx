@@ -4,8 +4,11 @@ import { HStack } from "../Stack";
 
 import { NotificationContainer, notification } from "./NotificationContainer";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/Notification",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

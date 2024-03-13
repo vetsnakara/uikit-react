@@ -5,8 +5,11 @@ import { DropdownItemType } from "./DropdownItem";
 
 import { Button, ButtonVariant, Icon } from "@/components";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/Dropdown",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

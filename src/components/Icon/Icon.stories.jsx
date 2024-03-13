@@ -2,9 +2,12 @@ import { Icon } from "./Icon";
 
 import { VStack, Subtitle, Row, Col } from "@/components";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/Icon",
     component: Icon,
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
     parameters: {
         docs: {

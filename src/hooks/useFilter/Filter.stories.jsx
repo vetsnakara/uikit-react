@@ -9,6 +9,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { FormProvider, useForm } from "react-hook-form";
 
+import { maxWidth } from "@/storybook/decorators";
+
 import {
     FormCheckbox,
     FormCheckboxGroup,
@@ -38,6 +40,7 @@ export default {
             skip: true,
         },
     },
+    decorators: [maxWidth(1000)],
 };
 
 const selectItems = [

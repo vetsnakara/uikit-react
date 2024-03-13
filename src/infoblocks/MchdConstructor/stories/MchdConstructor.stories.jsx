@@ -5,13 +5,11 @@ import { MchdConstructor } from "../MchdConstructor";
 
 import { LegalEntityPrincipalType, PrincipalType, Status, UserRole } from "../constatns/constants";
 
-import { WithInfoblockLayout } from "./decorators";
-
-// todo: remove SB paddings
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "infoblocks/MchdConstructor",
-    decorators: [WithInfoblockLayout],
+    decorators: [maxWidth(1000)],
     argTypes: {
         status: {
             options: [Status.Draft, Status.Signed, Status.Revoked],

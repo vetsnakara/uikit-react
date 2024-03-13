@@ -2,8 +2,11 @@ import { useState } from "react";
 
 import { Pagination } from "./Pagination";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/Pagination",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

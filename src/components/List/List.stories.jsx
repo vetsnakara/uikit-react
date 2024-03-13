@@ -1,7 +1,10 @@
 import { OList, UList } from "./List";
 
+import { maxWidth } from "@/storybook/decorators";
+
 export default {
     title: "uikit/List",
+    decorators: [maxWidth(500)],
     tags: ["autodocs"],
 };
 

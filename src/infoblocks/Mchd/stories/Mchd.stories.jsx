@@ -7,11 +7,12 @@ import { LegalEntityPrincipalType, PrincipalType, Status, UserRole } from "../co
 import { Provider } from "../context";
 
 import { getData } from "./data";
-import { WithInfoblockLayout } from "./decorators";
+
+import { maxWidth } from "@/storybook/decorators";
 
 export default {
     title: "infoblocks/Mchd",
-    decorators: [WithInfoblockLayout],
+    decorators: [maxWidth(1000)],
     argTypes: {
         status: {
             options: [Status.Draft, Status.Signed, Status.Revoked],
