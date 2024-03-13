@@ -10,6 +10,7 @@ const Mode = {
 const parentRepoPath = getParentRepoPath();
 
 exports.runStorybook = runStorybook;
+exports.getParentRepoPath = getParentRepoPath;
 
 /**
  * todo
@@ -33,6 +34,15 @@ function runStorybookBuild() {
 }
 
 function buildAssetsFromMaster() {
+    // console.log("❗ buildAssetsFromMaster: uikit-react repo");
+    // execSync(`cd ${parentRepoPath}`);
+    // execSync(`cd -`);
+
+    // execSync(`npm run prod:master --prefix ${parentRepoPath}`, { stdio: "inherit" });
+
+    // process.chdir(parentRepoPath);
+    // console.log("process.cwd()", process.cwd());
+    // execSync(`npm run prod:master`, { stdio: "inherit" });
     execSync(`npm run prod:master --prefix ${parentRepoPath}`, { stdio: "inherit" });
 }
 

@@ -9,6 +9,8 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
+// const { getParentRepoPath } = require("./storybook/runStorybook");
+
 const dirPath = path.join(__dirname, "..", ".loki", "difference");
 
 prepare();
