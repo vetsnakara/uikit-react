@@ -28,7 +28,7 @@
         "vreg:report": "run-s vreg:report:json vreg:report:html",
         "vreg:report:json": "node scripts/generateVisualJsonReport.js",
         "vreg:report:html": "reg-cli --from .loki/report.json  --report .loki/index.html",
-        "clear:vreg": "rm -rf ./.loki/current ./.loki/difference ./.loki/report.json ./.loki/index.html",
+        "clear:vreg": "rm -rf ./.loki/current/* ./.loki/difference/* ./.loki/report.json ./.loki/index.html",
         "prepare": "husky install"
     },
     "repository": {
