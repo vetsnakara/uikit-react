@@ -1,5 +1,3 @@
-import Inputmask from "inputmask";
-
 export const formatDate = (value) => (value ? moment(value).tz("Europe/Moscow").format("DD.MM.YYYY") : "");
 
 /**
@@ -77,5 +75,5 @@ export function isAnySymbolRegex(reg) {
 }
 
 export function formatSnils(value) {
-    return Inputmask.format(value, { mask: "999-999-999 99" /* todo: DRY */ });
+    return window.Inputmask.format(value, { mask: "999-999-999 99" /* todo: DRY */ });
 }
