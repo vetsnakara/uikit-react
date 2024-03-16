@@ -1,1 +1,1 @@
-require("./runStorybook").runStorybook({ mode: "dev" });
+require("./runStorybook").runStorybookDev();

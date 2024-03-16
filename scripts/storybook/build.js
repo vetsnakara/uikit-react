@@ -1,1 +1,1 @@
-require("./runStorybook").runStorybook({ mode: "build" });
+require("./runStorybook").runStorybookBuild();

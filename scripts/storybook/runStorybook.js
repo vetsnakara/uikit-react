@@ -2,47 +2,39 @@ const path = require("path");
 const fs = require("node:fs");
 const { execSync } = require("child_process");
 
-const Mode = {
-    Dev: "dev",
-    Build: "build",
-};
-
 const parentRepoPath = getParentRepoPath();
 
-exports.runStorybook = runStorybook;
-exports.getParentRepoPath = getParentRepoPath;
+exports.runStorybookDev = runStorybookDev;
+exports.runStorybookBuild = runStorybookBuild;
 
-/**
- * todo
- * @param {*} param0
- */
-function runStorybook({ mode = Mode.Dev }) {
-    buildAssetsFromMaster();
+// Functions
+// ......................................
 
-    process.env.PRR_ASSETS_DIR = getAssetsDirPath();
-
-    if (mode === Mode.Dev) runStorybookDev();
-    if (mode === Mode.Build) runStorybookBuild();
+function runStorybookBuild() {
+    buildAssetsFromMasterBranch();
+    buildStorybook();
 }
 
 function runStorybookDev() {
+    buildAssetsFromCurrentBranch();
+    runStorybookServer();
+}
+
+function runStorybookServer() {
+    process.env.PRR_ASSETS_DIR = getAssetsDirPath();
     execSync("npx storybook dev -p 3000", { stdio: "inherit" });
 }
 
-function runStorybookBuild() {
+function buildStorybook() {
+    process.env.PRR_ASSETS_DIR = getAssetsDirPath();
     execSync("npx storybook build", { stdio: "inherit" });
 }
 
-function buildAssetsFromMaster() {
-    // console.log("❗ buildAssetsFromMaster: uikit-react repo");
-    // execSync(`cd ${parentRepoPath}`);
-    // execSync(`cd -`);
+function buildAssetsFromCurrentBranch() {
+    execSync(`npm run prod --prefix ${parentRepoPath}`, { stdio: "inherit" });
+}
 
-    // execSync(`npm run prod:master --prefix ${parentRepoPath}`, { stdio: "inherit" });
-
-    // process.chdir(parentRepoPath);
-    // console.log("process.cwd()", process.cwd());
-    // execSync(`npm run prod:master`, { stdio: "inherit" });
+function buildAssetsFromMasterBranch() {
     execSync(`npm run prod:master --prefix ${parentRepoPath}`, { stdio: "inherit" });
 }
 
